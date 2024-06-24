@@ -1,0 +1,369 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadBoxComponent should match snapshot 1`] = `
+<Memo(UploadBoxComponent)
+  header="Header"
+  icon="left-arrow"
+  onCapture={[MockFunction]}
+  onDelete={[MockFunction]}
+  subHeader="subHeader"
+>
+  <UploadBtn
+    header="Header"
+    icon="left-arrow"
+    onPress={[Function]}
+    subHeader="subHeader"
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "#78B7FA",
+            "borderRadius": 4,
+            "borderStyle": "dashed",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "padding": 8,
+          },
+          undefined,
+        ]
+      }
+    >
+      <TouchableOpacity
+        hostRef={null}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "borderColor": "#78B7FA",
+              "borderRadius": 4,
+              "borderStyle": "dashed",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 8,
+            },
+            undefined,
+          ]
+        }
+      >
+        <ForwardRef(AnimatedComponentWrapper)
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Array [
+                Object {
+                  "borderColor": "#78B7FA",
+                  "borderRadius": 4,
+                  "borderStyle": "dashed",
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "padding": 8,
+                },
+                undefined,
+              ],
+              Object {
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <AnimatedComponent
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Array [
+                  Object {
+                    "borderColor": "#78B7FA",
+                    "borderRadius": 4,
+                    "borderStyle": "dashed",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "padding": 8,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderColor": "#78B7FA",
+                  "borderRadius": 4,
+                  "borderStyle": "dashed",
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "padding": 8,
+                }
+              }
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderColor": "#78B7FA",
+                    "borderRadius": 4,
+                    "borderStyle": "dashed",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "padding": 8,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 4,
+                      "flex": 1,
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "borderRadius": 4,
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Icon
+                      allowFontScaling={false}
+                      color="#0084F8"
+                      name="left-arrow"
+                      size={40}
+                    >
+                      <Text
+                        allowFontScaling={false}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#0084F8",
+                              "fontSize": 40,
+                            },
+                            undefined,
+                            Object {
+                              "fontFamily": "icomoon",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        <Text
+                          allowFontScaling={false}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#0084F8",
+                                "fontSize": 40,
+                              },
+                              undefined,
+                              Object {
+                                "fontFamily": "icomoon",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              Object {},
+                            ]
+                          }
+                        >
+                          
+                        </Text>
+                      </Text>
+                    </Icon>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Object {
+                      "flex": 4,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "flex": 4,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#0084F8",
+                          },
+                          undefined,
+                        ]
+                      }
+                      textType="semiBold"
+                      type="small"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                              "lineHeight": 20,
+                              "textAlign": "left",
+                            },
+                            Object {
+                              "fontFamily": "OpenSans-SemiBold",
+                              "fontWeight": "600",
+                            },
+                            Array [
+                              Object {
+                                "color": "#0084F8",
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "fontSize": 16,
+                                "lineHeight": 20,
+                                "textAlign": "left",
+                              },
+                              Object {
+                                "fontFamily": "OpenSans-SemiBold",
+                                "fontWeight": "600",
+                              },
+                              Array [
+                                Object {
+                                  "color": "#0084F8",
+                                },
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          Header
+                        </Text>
+                      </Text>
+                    </Text>
+                    <Label
+                      style={
+                        Array [
+                          Object {
+                            "color": "#667686",
+                            "paddingTop": 8,
+                          },
+                          undefined,
+                        ]
+                      }
+                      textType="regular"
+                      type="regular"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "fontSize": 12,
+                              "lineHeight": 18,
+                              "textAlign": "left",
+                            },
+                            Object {
+                              "fontFamily": "OpenSans-Regular",
+                              "fontWeight": "400",
+                            },
+                            Array [
+                              Object {
+                                "color": "#667686",
+                                "paddingTop": 8,
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "fontSize": 12,
+                                "lineHeight": 18,
+                                "textAlign": "left",
+                              },
+                              Object {
+                                "fontFamily": "OpenSans-Regular",
+                                "fontWeight": "400",
+                              },
+                              Array [
+                                Object {
+                                  "color": "#667686",
+                                  "paddingTop": 8,
+                                },
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          subHeader
+                        </Text>
+                      </Text>
+                    </Label>
+                  </View>
+                </View>
+                <PressabilityDebugView
+                  color="cyan"
+                />
+              </View>
+            </View>
+          </AnimatedComponent>
+        </ForwardRef(AnimatedComponentWrapper)>
+      </TouchableOpacity>
+    </ForwardRef>
+  </UploadBtn>
+  <Memo(FileUpload)
+    onDelete={[MockFunction]}
+  />
+</Memo(UploadBoxComponent)>
+`;

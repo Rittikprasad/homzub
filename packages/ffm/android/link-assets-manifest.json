@@ -1,0 +1,45 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "../common/src/assets/fonts/OpenSans-Bold.ttf",
+      "sha1": "1e3704ee48b5ff7e582488ead87b05249f14dc1c"
+    },
+    {
+      "path": "../common/src/assets/fonts/OpenSans-ExtraBold.ttf",
+      "sha1": "5acb1de2513aca9ce4fcf5d1e1e49aad86f1888c"
+    },
+    {
+      "path": "../common/src/assets/fonts/OpenSans-Light.ttf",
+      "sha1": "bf0d133b628259eca01049d30fa6316094d00bcf"
+    },
+    {
+      "path": "../common/src/assets/fonts/OpenSans-Regular.ttf",
+      "sha1": "babe8dce93a3e48b6c3c79720a0c048e88dd1fe7"
+    },
+    {
+      "path": "../common/src/assets/fonts/OpenSans-SemiBold.ttf",
+      "sha1": "e256f8391718ef61f253dfb4e95bbeb3c5857afc"
+    },
+    {
+      "path": "../common/src/assets/fonts/Raleway-Bold.ttf",
+      "sha1": "6860363db5ea3dc384addbc4ff5d0aaee17b91eb"
+    },
+    {
+      "path": "../common/src/assets/fonts/Raleway-Light.ttf",
+      "sha1": "557e12899c0c636753aa19259c2cea336e0c927d"
+    },
+    {
+      "path": "../common/src/assets/fonts/Raleway-Medium.ttf",
+      "sha1": "0c8681407d5de2de363187e7911e790d34d808c1"
+    },
+    {
+      "path": "../common/src/assets/fonts/fonts.ts",
+      "sha1": "a5bb63d3ef44c62152a65dda58822f59cb9bea3d"
+    },
+    {
+      "path": "../common/src/assets/fonts/icomoon.ttf",
+      "sha1": "39d3ff1b3c469dee640b6bc5b2e96f5c1a67051c"
+    }
+  ]
+}

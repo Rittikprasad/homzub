@@ -1,0 +1,14 @@
+.react-multi-carousel-dot {
+  & > button {
+    background: #ccd1d7;
+    border: none;
+    width: 9px;
+    height: 9px;
+  }
+  &--active {
+    & > button {
+      background: #4c5f72;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+$blackOverlayGradient: linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+$blueOverlayGradient: linear-gradient(
+  90deg,
+  rgba(0, 132, 248, 0.7) 0%,
+  rgba(45, 200, 195, 0.7) 79.17%,
+  rgba(50, 207, 190, 0.7) 91.51%
+);
+$patternImg: url('../../../../../common/src/assets/images/navigationBreadCrumbBg.svg');
+
+.navigation-bg {
+  display: flex;
+  position: absolute;
+  background-image: $blackOverlayGradient, $blueOverlayGradient, $patternImg;
+  background-position: bottom center;
+  min-height: 150px;
+  min-width: 100%;
+
+  & > div {
+    max-width: 90vw;
+  }
+}

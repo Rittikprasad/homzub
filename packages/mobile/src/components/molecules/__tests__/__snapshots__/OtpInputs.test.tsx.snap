@@ -1,0 +1,1256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OtpInputs should call focus next function  1`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value={1}
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#F23C06",
+        "marginTop": 8,
+      }
+    }
+    type="regular"
+  >
+    Error
+  </Label>
+</View>
+`;
+
+exports[`OtpInputs should call focus previous function  1`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#F23C06",
+        "marginTop": 8,
+      }
+    }
+    type="regular"
+  >
+    Error
+  </Label>
+</View>
+`;
+
+exports[`OtpInputs should call otp handler function  1`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#F23C06",
+        "marginTop": 8,
+      }
+    }
+    type="regular"
+  >
+    Error
+  </Label>
+</View>
+`;
+
+exports[`OtpInputs should call otp handler function  2`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="1"
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="2"
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="3"
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="4"
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="5"
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value="6"
+      />
+    </View>
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#F23C06",
+        "marginTop": 8,
+      }
+    }
+    type="regular"
+  >
+    Error
+  </Label>
+</View>
+`;
+
+exports[`OtpInputs should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#C9D6DF",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`OtpInputs should match snapshot for error 1`] = `
+<View
+  style={
+    Object {
+      "marginVertical": 24,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      key="0-otp"
+      pointerEvents="auto"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        caretHidden={true}
+        key="0-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="1-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="1-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="2-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="2-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="3-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="3-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="4-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="4-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      key="5-otp"
+      pointerEvents="none"
+    >
+      <Component
+        allowFontScaling={true}
+        autoFocus={false}
+        caretHidden={true}
+        key="5-otp"
+        keyboardType="number-pad"
+        maxLength={1}
+        onChangeText={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "#F23C06",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "height": 48,
+            "textAlign": "center",
+            "width": 48,
+          }
+        }
+        testID="otpInput"
+        textContentType="oneTimeCode"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#F23C06",
+        "marginTop": 8,
+      }
+    }
+    type="regular"
+  >
+    Error
+  </Label>
+</View>
+`;

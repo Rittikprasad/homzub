@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StateAwareComponent should render snapshot 1`] = `
+<StateAwareComponent
+  loading={false}
+  renderComponent={
+    <Text>
+      StateAwareComponent
+    </Text>
+  }
+>
+  <Text>
+    <Text>
+      StateAwareComponent
+    </Text>
+  </Text>
+</StateAwareComponent>
+`;
+
+exports[`StateAwareComponent should render snapshot when loading is true 1`] = `
+<StateAwareComponent
+  loading={true}
+  renderComponent={
+    <Text>
+      StateAwareComponent
+    </Text>
+  }
+>
+  <Loader
+    visible={true}
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          "bottom": 0,
+          "elevation": 1,
+          "flex": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+            "bottom": 0,
+            "elevation": 1,
+            "flex": 1,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "bottom": 0,
+              "justifyContent": "center",
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderRadius": 10,
+                  "justifyContent": "center",
+                  "position": "absolute",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FFFFFF",
+                    "borderRadius": 10,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                  }
+                }
+              >
+                <ActivityIndicator
+                  animating={true}
+                  color="#4C5F72"
+                  hidesWhenStopped={true}
+                  size="large"
+                  style={
+                    Object {
+                      "marginHorizontal": 24,
+                      "marginVertical": 12,
+                    }
+                  }
+                >
+                  <ActivityIndicator
+                    animating={true}
+                    color="#4C5F72"
+                    hidesWhenStopped={true}
+                    size="large"
+                    style={
+                      Object {
+                        "marginHorizontal": 24,
+                        "marginVertical": 12,
+                      }
+                    }
+                  />
+                </ActivityIndicator>
+                <Label
+                  style={
+                    Object {
+                      "color": "#4C5F72",
+                      "marginBottom": 12,
+                    }
+                  }
+                  textType="regular"
+                  type="regular"
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 12,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                        },
+                        Object {
+                          "fontFamily": "OpenSans-Regular",
+                          "fontWeight": "400",
+                        },
+                        Object {
+                          "color": "#4C5F72",
+                          "marginBottom": 12,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "fontSize": 12,
+                            "lineHeight": 18,
+                            "textAlign": "left",
+                          },
+                          Object {
+                            "fontFamily": "OpenSans-Regular",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "color": "#4C5F72",
+                            "marginBottom": 12,
+                          },
+                        ]
+                      }
+                    >
+                      loading
+                    </Text>
+                  </Text>
+                </Label>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Loader>
+</StateAwareComponent>
+`;

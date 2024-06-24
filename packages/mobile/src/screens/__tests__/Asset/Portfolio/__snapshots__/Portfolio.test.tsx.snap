@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portfolio Screen should render snapshot 1`] = `
+<Fragment>
+  <Memo(AnimatedProfileHeader)
+    title="portfolio"
+  >
+    <Memo(AssetMetricsList)
+      containerStyle={
+        Object {
+          "marginVertical": 12,
+        }
+      }
+      data={Array []}
+      onPlusIconClicked={[Function]}
+      title="0"
+    />
+    <Text
+      style={
+        Object {
+          "color": "#001B36",
+          "marginBottom": 16,
+          "marginTop": 4,
+        }
+      }
+      textType="semiBold"
+      type="small"
+    >
+      tenancies
+    </Text>
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "assetStatusInfo": Object {
+            "leaseTenantInfo": Object {},
+            "leaseTransaction": Object {},
+            "tag": Object {},
+          },
+          "asset_group": Object {
+            "id": 1,
+            "name": "Residential",
+          },
+          "asset_type": Object {
+            "id": 5,
+            "name": "Studio Apartment",
+          },
+          "attachments": Array [
+            Object {
+              "file_name": "prof.jpg",
+              "is_cover_image": true,
+              "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+              "media_attributes": Object {},
+              "media_type": "IMAGE",
+            },
+          ],
+          "block_number": "B",
+          "carpet_area": 2500,
+          "carpet_area_unit": Object {
+            "id": 1,
+            "label": "Square feet",
+            "name": "SQ_FT",
+            "title": "Sq.ft",
+          },
+          "construction_year": null,
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "description": "",
+          "digital_id": "8fad8389-6893-411a-bd4a-4b1575523d4a",
+          "floor_number": 2,
+          "furnishing": "SEMI",
+          "id": 5,
+          "is_gated": null,
+          "latitude": 25.6207722,
+          "longitude": 85.1280892,
+          "notifications": Object {
+            "count": 5,
+          },
+          "progress_percentage": 74,
+          "project_name": "House 2",
+          "serviceTickets": Object {
+            "count": 0,
+          },
+          "spaces": Array [
+            Object {
+              "count": 2,
+              "id": 1,
+              "name": "Bedroom",
+            },
+            Object {
+              "count": 1,
+              "id": 2,
+              "name": "Bathroom",
+            },
+          ],
+          "total_floors": 3,
+          "unit_number": "103",
+          "verification_documents": Array [],
+          "verifications": Object {
+            "description": "**What is this verification?**
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium.
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+aut odit aut fugit. Neque porro quisquam est,
+qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+sed quia non numquam eius modi tempora incidunt ut labore et dolore
+magnam aliquam quaerat voluptatem.",
+            "verification_status": 2,
+          },
+        }
+      }
+      expandedId={0}
+      key="0"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#001B36",
+            "marginBottom": 16,
+            "marginTop": 4,
+          }
+        }
+        textType="semiBold"
+        type="small"
+      >
+        propertyPortfolio
+      </Text>
+      <Icon
+        allowFontScaling={false}
+        color="#4C5F72"
+        name="vertical-dots"
+        onPress={[Function]}
+        size={18}
+        testID="menu"
+      />
+    </View>
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#CE9B6C",
+          "contacts": Object {
+            "country_code": "+91",
+            "email": "anuvrat.somnath@nineleaps.com",
+            "full_name": "Anuvrat Somnath",
+            "id": 1,
+            "phone_number": "7903470293",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 1,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": true,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "OWNER",
+        }
+      }
+      expandedId={0}
+      key="0"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#61D773",
+          "contacts": Object {
+            "country_code": "+91",
+            "email": "anuvrat.somnath@nineleaps.com",
+            "full_name": "Anuvrat Somnath",
+            "id": 1,
+            "phone_number": "7903470293",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 2,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": true,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "RENTED",
+        }
+      }
+      expandedId={0}
+      key="1"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#FF8576",
+          "contacts": Object {
+            "country_code": "+91",
+            "email": "anuvrat.somnath@nineleaps.com",
+            "full_name": "Anuvrat Somnath",
+            "id": 1,
+            "phone_number": "7903470293",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 3,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": true,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "VACANT",
+        }
+      }
+      expandedId={0}
+      key="2"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#FF8576",
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 4,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": false,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "VACANT",
+        }
+      }
+      expandedId={0}
+      key="3"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#FBC02D",
+          "contacts": Object {
+            "country_code": "+91",
+            "email": "anuvrat.somnath@nineleaps.com",
+            "full_name": "Anuvrat Somnath",
+            "id": 1,
+            "phone_number": "7903470293",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 5,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": true,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "FOR SALE",
+        }
+      }
+      expandedId={0}
+      key="4"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <withI18nextTranslation(AssetCard)
+      assetData={
+        Object {
+          "address": "Sindhi Society, Chembur, Mumbai- 400071",
+          "color": "#58C2f1",
+          "contacts": Object {
+            "country_code": "+91",
+            "email": "anuvrat.somnath@nineleaps.com",
+            "full_name": "Anuvrat Somnath",
+            "id": 1,
+            "phone_number": "7903470293",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "id": 6,
+          "images": Array [
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/08/13/Photos/house--621x414.jpg",
+            },
+          ],
+          "isPropertyCompleted": true,
+          "property_name": "2BHK - Godrej Prime",
+          "type": "MAINTAIN",
+        }
+      }
+      expandedId={0}
+      key="5"
+      onPressArrow={[Function]}
+      onViewProperty={[Function]}
+    />
+    <BottomSheetListView
+      data={Array []}
+      isBottomSheetVisible={false}
+      listHeight={500}
+      listTitle="propertySearch:filters"
+      onCloseDropDown={[Function]}
+      onSelectItem={[Function]}
+    />
+  </Memo(AnimatedProfileHeader)>
+  <Loader
+    visible={false}
+  />
+  <Loader />
+</Fragment>
+`;

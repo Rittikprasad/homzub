@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lease Progress should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#667686"
+    name="calendar"
+    size={22}
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginStart": 8,
+      }
+    }
+  >
+    <Label
+      style={
+        Array [
+          Object {
+            "color": "#4C5F72",
+          },
+          Object {},
+        ]
+      }
+      type="large"
+    >
+      leasePeriod
+    </Label>
+    <Component
+      borderRadius={4}
+      color="#FF8576"
+      progress={70}
+      style={
+        Object {
+          "borderColor": "#F0F5F9",
+          "marginTop": 8,
+        }
+      }
+      unfilledColor="#2CBA67"
+      width={null}
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginVertical": 6,
+        }
+      }
+    >
+      <Label
+        style={
+          Object {
+            "color": "#808D9B",
+          }
+        }
+        type="regular"
+      />
+      <Label
+        style={
+          Object {
+            "color": "#808D9B",
+          }
+        }
+        type="regular"
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Lease Progress should match snapshot 2`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#667686"
+    name="calendar"
+    size={22}
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginStart": 8,
+      }
+    }
+  >
+    <Label
+      style={
+        Array [
+          Object {
+            "color": "#4C5F72",
+          },
+          Object {},
+        ]
+      }
+      type="large"
+    >
+      leasePeriod
+    </Label>
+    <Component
+      borderRadius={4}
+      color="#FF8576"
+      progress={70}
+      style={
+        Object {
+          "borderColor": "#F0F5F9",
+          "marginTop": 8,
+        }
+      }
+      unfilledColor="#2CBA67"
+      width={null}
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginVertical": 6,
+        }
+      }
+    >
+      <Label
+        style={
+          Object {
+            "color": "#808D9B",
+          }
+        }
+        type="regular"
+      />
+      <Label
+        style={
+          Object {
+            "color": "#808D9B",
+          }
+        }
+        type="regular"
+      />
+    </View>
+  </View>
+</View>
+`;

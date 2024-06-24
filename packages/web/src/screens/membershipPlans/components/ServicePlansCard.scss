@@ -1,0 +1,92 @@
+.service-plans-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+  flex-basis: calc((100% / 3) - 30px);
+  min-height: 550px;
+  background-color: white;
+  border-radius: 8px;
+  margin: 30px 15px;
+  box-shadow: 0px 42px 60px rgba(0, 0, 0, 0.08);
+  padding-bottom: 54px;
+  .expanded-view {
+    background-color: red;
+    height: auto;
+  }
+  .collapsed-view {
+    height: auto;
+  }
+  .service-plans-card-content {
+    padding: 24px;
+  }
+  .service-plans-card-label {
+    margin-top: 24px;
+    color: #001b36;
+    line-height: 1.5em;
+    height: 3em;
+  }
+  .service-plans-card-description {
+    margin-top: 8px;
+    color: #33495e;
+    line-height: 1.5em;
+    min-height: 4.5em;
+    -webkit-line-clamp: 3;
+  }
+  .service-plans-card-price-label-container {
+    background-color: #f7fafc;
+    height: 94px;
+    padding: 12px 24px;
+    margin: 24px -24px;
+    .service-plans-card-price-label {
+      color: #667686;
+    }
+    .service-plans-card-price-title {
+      color: #001b36;
+    }
+  }
+  .service-plans-card-features-container {
+    margin: 24px -24px;
+    // overflow-y: scroll;
+    line-height: 1.5em;
+    min-height: 6em;
+    .service-plans-card-features-li {
+      color: #33495e;
+      margin-top: 12px;
+    }
+    .know-more-container {
+      height: auto;
+    }
+    .know-less-container {
+      height: 7em;
+    }
+  }
+  .service-plans-know-more-button {
+    margin-bottom: 12px;
+    color: #0084f8;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .button-container {
+    margin-top: 12px;
+    position: absolute;
+    bottom: 12px;
+    width: 84%;
+  }
+}
+
+@media (min-width: 694px) and (max-width: 991px) {
+  //Tablet
+  .service-plans-card {
+    flex-basis: calc((100% / 2) - 30px);
+    height: 'max-content';
+  }
+}
+
+@media (max-width: 693px) {
+  //Mobile
+  .service-plans-card {
+    flex-basis: 100%;
+    height: 'max-content';
+  }
+}

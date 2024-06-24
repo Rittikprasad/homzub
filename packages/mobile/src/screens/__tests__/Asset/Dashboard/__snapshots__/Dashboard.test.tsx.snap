@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Screen should render snapshot 1`] = `
+<Fragment>
+  <Memo(UserScreen)
+    isGradient={true}
+    loading={false}
+    onPlusIconClicked={[Function]}
+    title="dashboard"
+  >
+    <Memo(AssetMetricsList)
+      data={Array []}
+      onMetricsClicked={[Function]}
+      subTitleText="common:properties"
+      title="0"
+    />
+    <AssetSummary
+      containerStyle={
+        Object {
+          "marginVertical": 12,
+        }
+      }
+      dues={0}
+      messages={0}
+      notification={0}
+      onPressMessages={[Function]}
+      onPressNotification={[Function]}
+      onPressServiceTickets={[Function]}
+      serviceTickets={0}
+    />
+    <WelcomeCard
+      handlePress={[Function]}
+    />
+    <Connect(withI18nextTranslation(FinanceOverview)) />
+    <withI18nextTranslation(AssetMarketTrends)
+      isDashboard={true}
+      onTrendPress={[Function]}
+      onViewAll={[Function]}
+    />
+    <AssetAdvertisementBanner />
+    <IconSheet
+      data={
+        Array [
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "property:addProperty",
+            "onPress": [Function],
+          },
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "assetFinancial:addFinancials",
+            "onPress": [Function],
+          },
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "assetDashboard:serviceTicket",
+            "onPress": [Function],
+          },
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "propertySearch:shareRequirement",
+            "onPress": [Function],
+          },
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "common:askHelp",
+            "onPress": [Function],
+          },
+          Object {
+            "icon": <UNDEFINED
+              height={38}
+              width={38}
+            />,
+            "label": "common:bugReport",
+            "onPress": [Function],
+          },
+        ]
+      }
+      isVisible={false}
+      numOfColumns={3}
+      onCloseSheet={[Function]}
+    />
+  </Memo(UserScreen)>
+</Fragment>
+`;

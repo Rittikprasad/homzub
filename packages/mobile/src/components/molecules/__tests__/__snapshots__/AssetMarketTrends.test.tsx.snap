@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetMarketTrends should match snapshot with empty results 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+        "padding": 16,
+        "paddingBottom": 0,
+      },
+      false,
+    ]
+  }
+>
+  <View>
+    <SelectionPicker
+      data={
+        Array [
+          Object {
+            "title": "Perspective",
+            "value": "PERSPECTIVE",
+          },
+          Object {
+            "title": "Video",
+            "value": "VIDEO",
+          },
+        ]
+      }
+      onValueChange={[Function]}
+      selectedItem={
+        Array [
+          "PERSPECTIVE",
+        ]
+      }
+    />
+    <SearchBar
+      containerStyle={
+        Object {
+          "marginVertical": 16,
+        }
+      }
+      placeholder="searchByKeyword"
+      updateValue={[Function]}
+      value=""
+    />
+  </View>
+  <EmptyState
+    title="assetMore:noTrends"
+  />
+</View>
+`;
+
+exports[`AssetMarketTrends should match snapshot with results 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+        "padding": 16,
+        "paddingBottom": 0,
+      },
+      false,
+    ]
+  }
+>
+  <View>
+    <SelectionPicker
+      data={
+        Array [
+          Object {
+            "title": "Perspective",
+            "value": "PERSPECTIVE",
+          },
+          Object {
+            "title": "Video",
+            "value": "VIDEO",
+          },
+        ]
+      }
+      onValueChange={[Function]}
+      selectedItem={
+        Array [
+          "PERSPECTIVE",
+        ]
+      }
+    />
+    <SearchBar
+      containerStyle={
+        Object {
+          "marginVertical": 16,
+        }
+      }
+      placeholder="searchByKeyword"
+      updateValue={[Function]}
+      value=""
+    />
+  </View>
+  <EmptyState
+    title="assetMore:noTrends"
+  />
+</View>
+`;

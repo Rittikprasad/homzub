@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Marker should match snapshot for selected false 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#0084F8",
+      "borderRadius": 8,
+      "height": 16,
+      "width": 16,
+    }
+  }
+/>
+`;
+
+exports[`Custom Marker should match snapshot for selected true 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(0, 132, 248, 0.3)",
+      "borderRadius": 20,
+      "height": 40,
+      "justifyContent": "center",
+      "width": 40,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#0084F8",
+        "borderRadius": 8,
+        "height": 16,
+        "width": 16,
+      }
+    }
+  />
+</View>
+`;

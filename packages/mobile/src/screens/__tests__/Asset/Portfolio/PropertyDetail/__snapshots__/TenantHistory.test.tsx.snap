@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tenant History Screen should render snapshot 1`] = `
+<Memo(UserScreen)
+  loading={true}
+  pageTitle="assetPortfolio:tenantHistory"
+  title="assetPortfolio:portfolio"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "paddingHorizontal": 16,
+        "paddingVertical": 24,
+      }
+    }
+  >
+    <SearchBar
+      containerStyle={
+        Object {
+          "marginBottom": 6,
+        }
+      }
+      placeholder="assetPortfolio:searchByName"
+      updateValue={[Function]}
+      value=""
+    />
+    <EmptyState />
+  </View>
+</Memo(UserScreen)>
+`;

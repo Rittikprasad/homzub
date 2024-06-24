@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Screen should render login screen 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "icon": "close",
+      "onIconPress": [Function],
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  pageHeaderProps={
+    Object {
+      "contentLink": "auth:signup",
+      "contentSubTitle": "auth:newAroundHere",
+      "contentTitle": "login",
+      "onLinkPress": [Function],
+    }
+  }
+>
+  <withI18nextTranslation(Connect(LoginForm))
+    onLoginSuccess={[Function]}
+    testID="loginForm"
+  />
+  <Connect(withI18nextTranslation(AuthenticationGateways))
+    isFromLogin={true}
+    navigation={
+      Object {
+        "goBack": [MockFunction],
+        "navigate": [MockFunction],
+      }
+    }
+    onEmailLogin={[Function]}
+    onSuccessCallback={[MockFunction]}
+    testID="socialEmailLogin"
+    toggleLoading={[Function]}
+  />
+</Screen>
+`;

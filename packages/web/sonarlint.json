@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/silverbulleters/sonarqube-inject-vsc/master/schemas/sonarlint.json",
+  "serverId": "http://3.7.159.10/sonar/projects",
+  "projectKey": "Homzhub-FE-Web",
+  "extends": ["plugin:sonarjs/recommended"]
+}

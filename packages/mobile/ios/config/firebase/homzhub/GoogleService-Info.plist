@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>894249713165-4c1riqt38nv51dsvlumfhsoadmnjsomr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.894249713165-4c1riqt38nv51dsvlumfhsoadmnjsomr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>894249713165-3k466ns9jctl4gco38j6hkq3k8d3kv7p.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC7aQFTLVCwx1H-RwmTNyylPCV9baOT6As</string>
+	<key>GCM_SENDER_ID</key>
+	<string>894249713165</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.homzhub.rn</string>
+	<key>PROJECT_ID</key>
+	<string>homzhub-deeplinking</string>
+	<key>STORAGE_BUCKET</key>
+	<string>homzhub-deeplinking.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:894249713165:ios:547c73551317e19312df44</string>
+	<key>DATABASE_URL</key>
+	<string>https://homzhub-deeplinking.firebaseio.com</string>
+</dict>
+</plist>

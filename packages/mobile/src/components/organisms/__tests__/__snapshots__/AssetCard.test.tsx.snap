@@ -1,0 +1,286 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetCard should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 14,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 4,
+          "borderWidth": 0.5,
+          "marginBottom": 2,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Badge
+          badgeColor=""
+          badgeStyle={
+            Object {
+              "alignSelf": "flex-start",
+              "minWidth": 75,
+              "paddingHorizontal": 8,
+              "paddingVertical": 1,
+            }
+          }
+          title=""
+        />
+      </View>
+      <Icon
+        allowFontScaling={false}
+        color="#0084F8"
+        name="down-arrow"
+        onPress={[Function]}
+        size={20}
+        testID="collapseIcon"
+      />
+    </View>
+    <ForwardRef
+      activeOpacity={0.3}
+      onPress={[Function]}
+    >
+      <PropertyAddressCountry
+        containerStyle={
+          Object {
+            "marginTop": 14,
+          }
+        }
+        subAddress="undefined undefined"
+      />
+    </ForwardRef>
+  </View>
+</View>
+`;
+
+exports[`AssetCard should match snapshot for detail view 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 14,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 4,
+          "borderWidth": 0.5,
+          "marginBottom": 2,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      activeOpacity={1}
+      onPress={[Function]}
+    >
+      <ForwardRef
+        onPress={[Function]}
+      />
+      <Badge
+        badgeColor=""
+        badgeStyle={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "minWidth": 75,
+              "paddingHorizontal": 8,
+              "paddingVertical": 1,
+            },
+            Object {
+              "marginTop": 12,
+            },
+          ]
+        }
+        title=""
+      />
+      <PropertyAddressCountry
+        containerStyle={
+          Object {
+            "marginTop": 14,
+          }
+        }
+        subAddress="undefined undefined"
+      />
+    </ForwardRef>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`AssetCard should match snapshot for expanded view 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 14,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#FFFFFF",
+        "borderRadius": 4,
+        "borderWidth": 0.5,
+        "marginBottom": 2,
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          false,
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Badge
+          badgeStyle={
+            Object {
+              "alignSelf": "flex-start",
+              "minWidth": 75,
+              "paddingHorizontal": 8,
+              "paddingVertical": 1,
+            }
+          }
+        />
+        <Icon
+          allowFontScaling={false}
+          color="#99A4AF"
+          name="round-filled"
+          size={8}
+          style={
+            Object {
+              "marginHorizontal": 12,
+              "marginTop": 8,
+            }
+          }
+        />
+        <Icon
+          allowFontScaling={false}
+          color="#0084F8"
+          name="bell"
+          size={18}
+          style={
+            Object {
+              "marginTop": 2,
+            }
+          }
+        />
+        <Label
+          style={
+            Object {
+              "color": "#0084F8",
+              "marginLeft": 6,
+            }
+          }
+          type="large"
+        >
+          5
+        </Label>
+        <Icon
+          allowFontScaling={false}
+          color="#99A4AF"
+          name="round-filled"
+          size={8}
+          style={
+            Object {
+              "marginHorizontal": 12,
+              "marginTop": 8,
+            }
+          }
+        />
+        <Icon
+          allowFontScaling={false}
+          color="#0084F8"
+          name="head-phone"
+          size={18}
+          style={
+            Object {
+              "marginTop": 2,
+            }
+          }
+        />
+        <Label
+          style={
+            Object {
+              "color": "#0084F8",
+              "marginLeft": 6,
+            }
+          }
+          type="large"
+        >
+          0
+        </Label>
+      </View>
+      <Icon
+        allowFontScaling={false}
+        color="#0084F8"
+        name="down-arrow"
+        onPress={[Function]}
+        size={20}
+        testID="collapseIcon"
+      />
+    </View>
+    <PropertyAddressCountry
+      containerStyle={
+        Object {
+          "marginTop": 14,
+        }
+      }
+      subAddress="undefined undefined"
+    />
+  </View>
+</View>
+`;

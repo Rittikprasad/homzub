@@ -1,0 +1,443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Thumbnail should match snapshot for handleIconPress when onIconPress prop is not there 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <ImageBackground
+    imageStyle={
+      Array [
+        Object {
+          "borderRadius": 4,
+        },
+        undefined,
+      ]
+    }
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 200,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "borderRadius": 30,
+          "bottom": 0,
+          "height": 30,
+          "justifyContent": "center",
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+          "width": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="close"
+        size={22}
+      />
+    </ForwardRef>
+  </ImageBackground>
+</View>
+`;
+
+exports[`Image Thumbnail should match snapshot for handleIconPress when onIconPress prop is there  1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <ImageBackground
+    imageStyle={
+      Array [
+        Object {
+          "borderRadius": 4,
+        },
+        undefined,
+      ]
+    }
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 200,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "borderRadius": 30,
+          "bottom": 0,
+          "height": 30,
+          "justifyContent": "center",
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+          "width": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="close"
+        size={22}
+      />
+    </ForwardRef>
+  </ImageBackground>
+</View>
+`;
+
+exports[`Image Thumbnail should match snapshot for isCoverPhotoContainer 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <ImageBackground
+    imageStyle={
+      Array [
+        Object {
+          "borderRadius": 4,
+        },
+        undefined,
+      ]
+    }
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 200,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "borderRadius": 30,
+          "bottom": 0,
+          "height": 30,
+          "justifyContent": "center",
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+          "width": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="close"
+        size={22}
+      />
+    </ForwardRef>
+    <ForwardRef
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(0, 27, 54, 0.6)",
+            "borderRadius": 4,
+            "flexDirection": "row",
+            "height": 35,
+            "opacity": 0.8,
+            "paddingLeft": 10,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "flex": 7,
+              "opacity": 1,
+            }
+          }
+          textType="regular"
+          type="small"
+        >
+          Cover Photo
+        </Text>
+        <Icon
+          allowFontScaling={false}
+          color="#FFFFFF"
+          name="unfilled-star"
+          size={20}
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+    </ForwardRef>
+  </ImageBackground>
+</View>
+`;
+
+exports[`Image Thumbnail should match snapshot for isCoverPhotoContainer when isFavourite is true  1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <ImageBackground
+    imageStyle={
+      Array [
+        Object {
+          "borderRadius": 4,
+        },
+        undefined,
+      ]
+    }
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 200,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "borderRadius": 30,
+          "bottom": 0,
+          "height": 30,
+          "justifyContent": "center",
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+          "width": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="close"
+        size={22}
+      />
+    </ForwardRef>
+    <ForwardRef
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(0, 27, 54, 0.6)",
+            "borderRadius": 4,
+            "flexDirection": "row",
+            "height": 35,
+            "opacity": 0.8,
+            "paddingLeft": 10,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "flex": 7,
+              "opacity": 1,
+            }
+          }
+          textType="regular"
+          type="small"
+        >
+          Cover Photo
+        </Text>
+        <Icon
+          allowFontScaling={false}
+          color="#FFFFFF"
+          name="filled-star"
+          size={20}
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+    </ForwardRef>
+  </ImageBackground>
+</View>
+`;
+
+exports[`Image Thumbnail should match snapshot for isLastThumbnail  1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <ImageBackground
+    imageStyle={
+      Array [
+        Object {
+          "borderRadius": 4,
+        },
+        undefined,
+      ]
+    }
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 200,
+        },
+        undefined,
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "borderRadius": 30,
+          "bottom": 0,
+          "height": 30,
+          "justifyContent": "center",
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+          "width": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="close"
+        size={22}
+      />
+    </ForwardRef>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#001B36",
+          "borderRadius": 4,
+          "bottom": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "left": 0,
+          "opacity": 0.75,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <ForwardRef>
+        <Text
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "justifyContent": "center",
+              "opacity": 1,
+              "padding": 30,
+            }
+          }
+          textType="semiBold"
+          type="regular"
+        >
+          + 
+        </Text>
+      </ForwardRef>
+    </View>
+  </ImageBackground>
+</View>
+`;

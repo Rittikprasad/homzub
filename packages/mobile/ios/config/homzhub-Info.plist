@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key> UIFileSharingEnabled</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb306770337332135</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
+			<key>CFBundleURLName</key>
+			<string>homzhub</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>homzhub</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.894249713165-4c1riqt38nv51dsvlumfhsoadmnjsomr</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>306770337332135</string>
+	<key>FacebookDisplayName</key>
+	<string>homzhub</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fb</string>
+		<string>fb306770337332135</string>
+		<string>twitter</string>
+		<string>whatsapp</string>
+		<string>fbshareextension</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This allows us to access your camera so that you can easily submit verification documents required to approve property listings on our app.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This allows us to use your location to set the default locale of the app, so that you can use the access the information and pay for services comfortably.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This allows us to use your location to set the default locale of the app, so that you can use the access the information and pay for services comfortably.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This allows us to access to the photo library so that you can upload pictures of your property to your listings and also save important documents on the application.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This allows us to access to the photo library so that you can upload pictures of your property to your listings and also save important documents on the application.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>OpenSans-SemiBold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-ExtraBold.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>icomoon.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreenHomzhub</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>

@@ -1,0 +1,1128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Financials Screen should render snapshot 1`] = `
+<Memo(UserScreen)
+  isGradient={true}
+  title="assetMore:more"
+>
+  <Connect(MoreProfile)
+    onIconPress={[Function]}
+  />
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+      }
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-1"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="alert"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:notifications
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-2"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="service"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:tickets
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-3"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="documents"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:kycDocuments
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-4"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="chat"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:messages
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-5"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="bank-building"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:bankDetails
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F8FCFF",
+          "borderWidth": 10,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-6"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="search"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            common:search
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-7"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="heart-outline"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:savedProperties
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-8"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="visit"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:propertyVisits
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-9"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="offers"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            common:offers
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-10"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="new-launch"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:newLaunches
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-11"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="increase"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:marketTrends
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F8FCFF",
+          "borderWidth": 10,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-12"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="setting"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:settings
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-13"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="payment"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:paymentMethods
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F8FCFF",
+          "borderWidth": 10,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-14"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="refer"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:referFriend
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-15"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="headset"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:support
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#F2F9FF",
+          "borderWidth": 1,
+          "marginLeft": 65,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <View
+        key="item-16"
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#78B7FA"
+            name="faq"
+            size={22}
+            style={
+              Object {
+                "paddingHorizontal": 5,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={true}
+            minimumFontScale={0.1}
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "marginStart": 10,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            textType="regular"
+            type="small"
+          >
+            assetMore:faqs
+          </Text>
+        </View>
+        <Icon
+          allowFontScaling={false}
+          color="#78B7FA"
+          name="right-arrow"
+          size={18}
+        />
+      </View>
+    </ForwardRef>
+  </View>
+</Memo(UserScreen)>
+`;

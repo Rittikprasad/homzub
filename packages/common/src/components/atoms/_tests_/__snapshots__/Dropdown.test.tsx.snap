@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `
+<View
+  pointerEvents="auto"
+  style={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderColor": "#C9D6DF",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "paddingHorizontal": 16,
+          "paddingVertical": 6,
+        },
+        Object {},
+        false,
+      ]
+    }
+  >
+    <Label
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#001B36",
+            "flex": 1,
+          },
+          Object {},
+          Object {},
+        ]
+      }
+      textType="regular"
+      type="large"
+    >
+      India (+91)
+    </Label>
+    <Icon
+      allowFontScaling={false}
+      color="#99A4AF"
+      name="down-arrow-filled"
+      size={16}
+      style={
+        Array [
+          Object {
+            "marginStart": 8,
+          },
+          undefined,
+        ]
+      }
+    />
+  </ForwardRef>
+  <BottomSheetListView
+    data={
+      Array [
+        Object {
+          "label": "India (+91)",
+          "value": "+91",
+        },
+        Object {
+          "label": "USA (+122)",
+          "value": "+122",
+        },
+        Object {
+          "label": "Hong Kong (+852)",
+          "value": "+852",
+        },
+        Object {
+          "label": "Hungary (+36)",
+          "value": "+36",
+        },
+        Object {
+          "label": "Iceland (+354)",
+          "value": "+354",
+        },
+        Object {
+          "label": "Indonesia (+62)",
+          "value": "+62",
+        },
+        Object {
+          "label": "Iran (+98)",
+          "value": "+98",
+        },
+        Object {
+          "label": "Iraq (+964)",
+          "value": "+964",
+        },
+        Object {
+          "label": "Ireland (+353)",
+          "value": "+353",
+        },
+        Object {
+          "label": "Isle of Man (+44)",
+          "value": "+44",
+        },
+        Object {
+          "label": "Israel (+972)",
+          "value": "+972",
+        },
+        Object {
+          "label": "Italy (+39)",
+          "value": "uae",
+        },
+        Object {
+          "label": "Ivory Cost (+225)",
+          "value": "+225",
+        },
+      ]
+    }
+    isBottomSheetVisible={false}
+    listTitle="common:selectFromHere"
+    numColumns={1}
+    onCloseDropDown={[Function]}
+    onSelectItem={[Function]}
+    selectedValue="+91"
+  />
+</View>
+`;
+
+exports[`Dropdown should match snapshot for disabled 1`] = `
+<View
+  pointerEvents="none"
+  style={
+    Array [
+      Object {
+        "opacity": 0.5,
+      },
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderColor": "#C9D6DF",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "paddingHorizontal": 16,
+          "paddingVertical": 6,
+        },
+        Object {},
+        false,
+      ]
+    }
+  >
+    <Label
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#001B36",
+            "flex": 1,
+          },
+          Object {
+            "color": "#B2BBC3",
+          },
+          Object {},
+        ]
+      }
+      textType="regular"
+      type="large"
+    >
+      Select
+    </Label>
+    <Icon
+      allowFontScaling={false}
+      color="#99A4AF"
+      name="down-arrow-filled"
+      size={16}
+      style={
+        Array [
+          Object {
+            "marginStart": 8,
+          },
+          undefined,
+        ]
+      }
+    />
+  </ForwardRef>
+  <BottomSheetListView
+    data={Array []}
+    isBottomSheetVisible={false}
+    listTitle="common:selectFromHere"
+    numColumns={1}
+    onCloseDropDown={[Function]}
+    onSelectItem={[Function]}
+    selectedValue=""
+  />
+</View>
+`;
+
+exports[`Dropdown should match snapshot when data is empty 1`] = `
+<View
+  pointerEvents="auto"
+  style={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderColor": "#C9D6DF",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "paddingHorizontal": 16,
+          "paddingVertical": 6,
+        },
+        Object {},
+        false,
+      ]
+    }
+  >
+    <Label
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#001B36",
+            "flex": 1,
+          },
+          Object {
+            "color": "#B2BBC3",
+          },
+          Object {},
+        ]
+      }
+      textType="regular"
+      type="large"
+    >
+      Select
+    </Label>
+    <Icon
+      allowFontScaling={false}
+      color="#99A4AF"
+      name="down-arrow-filled"
+      size={16}
+      style={
+        Array [
+          Object {
+            "marginStart": 8,
+          },
+          undefined,
+        ]
+      }
+    />
+  </ForwardRef>
+  <BottomSheetListView
+    data={Array []}
+    isBottomSheetVisible={false}
+    listTitle="common:selectFromHere"
+    numColumns={1}
+    onCloseDropDown={[Function]}
+    onSelectItem={[Function]}
+    selectedValue=""
+  />
+</View>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyAmenities should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      undefined,
+    ]
+  }
+>
+  <AmenitiesIcon
+    direction="row"
+    icon=""
+    isLastIndex={true}
+    key="0"
+    label=""
+  />
+</View>
+`;

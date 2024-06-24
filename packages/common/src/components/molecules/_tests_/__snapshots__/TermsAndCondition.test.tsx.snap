@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test cases for TermsAndCondition should render snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 12,
+        "marginTop": 24,
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 12,
+          "lineHeight": 18,
+          "textAlign": "left",
+        },
+        Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontWeight": "400",
+        },
+        Object {
+          "color": "#667686",
+        },
+      ]
+    }
+  >
+    auth:signUpConfirm
+     
+    <Text
+      onPress={[MockFunction]}
+      style={
+        Array [
+          Object {
+            "fontSize": 12,
+            "lineHeight": 18,
+            "textAlign": "left",
+          },
+          Object {
+            "fontFamily": "OpenSans-Regular",
+            "fontWeight": "400",
+          },
+          Object {
+            "color": "#0084F8",
+          },
+        ]
+      }
+    >
+      termsCondition
+    </Text>
+  </Text>
+</View>
+`;

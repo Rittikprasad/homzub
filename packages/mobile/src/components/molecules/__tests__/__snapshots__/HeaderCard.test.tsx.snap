@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Card should match snapshot 1`] = `
+<HeaderCard
+  onIconPress={[MockFunction]}
+  title="Header"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 2,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 2,
+            "padding": 16,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <Icon
+                allowFontScaling={false}
+                color="#0084F8"
+                name="left-arrow"
+                onPress={[MockFunction]}
+                size={30}
+                style={
+                  Object {
+                    "paddingRight": 12,
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  onPress={[MockFunction]}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#0084F8",
+                        "fontSize": 30,
+                      },
+                      Object {
+                        "paddingRight": 12,
+                      },
+                      Object {
+                        "fontFamily": "icomoon",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Text
+                    allowFontScaling={false}
+                    onPress={[MockFunction]}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#0084F8",
+                          "fontSize": 30,
+                        },
+                        Object {
+                          "paddingRight": 12,
+                        },
+                        Object {
+                          "fontFamily": "icomoon",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                </Text>
+              </Icon>
+              <Text
+                textType="bold"
+                type="regular"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontSize": 20,
+                        "lineHeight": 30,
+                        "textAlign": "left",
+                      },
+                      Object {
+                        "fontFamily": "OpenSans-Bold",
+                        "fontWeight": "700",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 20,
+                          "lineHeight": 30,
+                          "textAlign": "left",
+                        },
+                        Object {
+                          "fontFamily": "OpenSans-Bold",
+                          "fontWeight": "700",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Header
+                  </Text>
+                </Text>
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</HeaderCard>
+`;

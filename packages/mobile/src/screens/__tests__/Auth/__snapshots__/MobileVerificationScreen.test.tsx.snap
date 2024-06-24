@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mobile verification Screen should render snapshot 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [Function],
+      "type": "secondary",
+    }
+  }
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "test@yopmail.com",
+      "contentTitle": "loginWithFacebook",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#33495E",
+        "marginBottom": 12,
+      }
+    }
+    type="small"
+  >
+    enterNumberForProfileForLogin
+  </Text>
+  <Formik
+    initialValues={
+      Object {
+        "phone": "",
+        "phoneCode": "",
+      }
+    }
+    onSubmit={[Function]}
+    validate={[Function]}
+  >
+    <Component />
+  </Formik>
+</Screen>
+`;
+
+exports[`Mobile verification Screen should render snapshot when its not from login 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [Function],
+      "type": "secondary",
+    }
+  }
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "test@yopmail.com",
+      "contentTitle": "signUpWithGoogle",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#33495E",
+        "marginBottom": 12,
+      }
+    }
+    type="small"
+  >
+    enterNumberForProfileForSignUp
+  </Text>
+  <Formik
+    initialValues={
+      Object {
+        "phone": "",
+        "phoneCode": "",
+      }
+    }
+    onSubmit={[Function]}
+    validate={[Function]}
+  >
+    <Component />
+  </Formik>
+</Screen>
+`;

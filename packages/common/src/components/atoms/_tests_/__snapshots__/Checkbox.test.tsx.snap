@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should match snapshot for selected false 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#C9D6DF"
+    name="square-box"
+    size={22}
+    style={Object {}}
+  />
+  <Label
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "marginEnd": 4,
+          "marginStart": 12,
+        },
+        Object {},
+      ]
+    }
+    textType="regular"
+    type="large"
+  >
+    Some Label
+  </Label>
+</ForwardRef>
+`;
+
+exports[`Checkbox should match snapshot for selected true 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name="square-check"
+    size={22}
+    style={Object {}}
+  />
+  <Label
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "marginEnd": 4,
+          "marginStart": 12,
+        },
+        Object {},
+      ]
+    }
+    textType="regular"
+    type="large"
+  >
+    Some Label
+  </Label>
+</ForwardRef>
+`;

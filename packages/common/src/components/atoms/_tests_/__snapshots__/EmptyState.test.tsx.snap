@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyState should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "minHeight": 150,
+      },
+      undefined,
+    ]
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#80C1FC"
+    name="search"
+    size={30}
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#808D9B",
+          "marginVertical": 16,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    common:noResultsFound
+  </Text>
+</View>
+`;

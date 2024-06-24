@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PricePerUnit should match snapshot 1`] = `
+<Text
+  adjustsFontSizeToFit={true}
+  minimumFontScale={0.5}
+  textType="semiBold"
+  type="regular"
+>
+  $ 1,000
+</Text>
+`;
+
+exports[`PricePerUnit should render with currency other than INR 1`] = `
+<Text
+  adjustsFontSizeToFit={true}
+  minimumFontScale={0.5}
+  textType="semiBold"
+  type="regular"
+>
+  $ 1,000
+  <Label
+    adjustsFontSizeToFit={true}
+    minimumFontScale={0.5}
+    textType="regular"
+    type="large"
+  >
+    / 
+    mo
+  </Label>
+</Text>
+`;
+
+exports[`PricePerUnit should render with priceTransformation 1`] = `
+<Text
+  adjustsFontSizeToFit={true}
+  minimumFontScale={0.5}
+  textType="semiBold"
+  type="regular"
+>
+  $ 1,000
+  <Label
+    adjustsFontSizeToFit={true}
+    minimumFontScale={0.5}
+    textType="regular"
+    type="large"
+  >
+    / 
+    mo
+  </Label>
+</Text>
+`;
+
+exports[`PricePerUnit should render with priceTransformation false 1`] = `
+<Text
+  adjustsFontSizeToFit={true}
+  minimumFontScale={0.5}
+  textType="semiBold"
+  type="regular"
+>
+  $ 1000
+  <Label
+    adjustsFontSizeToFit={true}
+    minimumFontScale={0.5}
+    textType="regular"
+    type="large"
+  >
+    / 
+    mo
+  </Label>
+</Text>
+`;
+
+exports[`PricePerUnit should render with unit 1`] = `
+<Text
+  adjustsFontSizeToFit={true}
+  minimumFontScale={0.5}
+  textType="semiBold"
+  type="regular"
+>
+  $ 1,000
+  <Label
+    adjustsFontSizeToFit={true}
+    minimumFontScale={0.5}
+    textType="regular"
+    type="large"
+  >
+    / 
+    mo
+  </Label>
+</Text>
+`;

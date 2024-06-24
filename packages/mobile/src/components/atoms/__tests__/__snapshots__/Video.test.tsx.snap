@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Video
+    onEnd={[Function]}
+    onFullScreen={false}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onProgress={[Function]}
+    paused={false}
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": undefined,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    volume={1}
+  />
+  <MediaControls
+    duration={0}
+    isFullScreen={false}
+    isLoading={true}
+    mainColor="#000"
+    onFullScreen={[Function]}
+    onPaused={[Function]}
+    onReplay={[Function]}
+    onSeek={[Function]}
+    onSeeking={[Function]}
+    playerState={0}
+    progress={0}
+  />
+</View>
+`;
+
+exports[`Video should match snapshot for full screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignSelf": "flex-start",
+        "backgroundColor": "rgba(0,0,0,0)",
+        "left": 20,
+        "position": "absolute",
+        "top": 20,
+        "zIndex": 1,
+      }
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="left-arrow"
+        size={22}
+      />
+    </ForwardRef>
+  </View>
+  <Video
+    onEnd={[Function]}
+    onFullScreen={false}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onProgress={[Function]}
+    paused={false}
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": undefined,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    volume={1}
+  />
+  <MediaControls
+    duration={0}
+    isFullScreen={false}
+    isLoading={true}
+    mainColor="#000"
+    onFullScreen={[Function]}
+    onPaused={[Function]}
+    onReplay={[Function]}
+    onSeek={[Function]}
+    onSeeking={[Function]}
+    playerState={0}
+    progress={0}
+  />
+</View>
+`;

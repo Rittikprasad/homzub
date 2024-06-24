@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+    }
+  }
+>
+  <Label
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F0F5F9",
+          "color": "#4C5F72",
+          "paddingBottom": 6,
+          "paddingStart": 16,
+          "paddingTop": 20,
+        },
+        Object {},
+      ]
+    }
+    textType="semiBold"
+    type="large"
+  >
+    common:searchResults
+  </Label>
+  <ForwardRef
+    key="EiNTa3lsaW5lIERyaXZlLCBGcm9udCBSb3lhbCwgVkEsIFVTQSIuKiwKFAoSCYHx83sTSbSJEV1IwH3456fxEhQKEgnDiLgttMW1iRF4Tul0g-os2g"
+    onPress={[Function]}
+    style={
+      Object {
+        "borderBottomColor": "#E5E8EB",
+        "borderBottomWidth": 1,
+        "marginStart": 16,
+      }
+    }
+    testID="pressResult"
+  >
+    <Label
+      numberOfLines={2}
+      style={
+        Object {
+          "marginEnd": 16,
+          "marginVertical": 16,
+        }
+      }
+      type="large"
+    >
+      Skyline Drive, Front Royal, VA, USA
+    </Label>
+  </ForwardRef>
+  <ForwardRef
+    key="ChIJ2dcxm-WHj4ARCb3uXMSH7bo"
+    onPress={[Function]}
+    style={
+      Object {
+        "borderBottomColor": "#E5E8EB",
+        "borderBottomWidth": 1,
+        "marginStart": 16,
+      }
+    }
+    testID="pressResult"
+  >
+    <Label
+      numberOfLines={2}
+      style={
+        Object {
+          "marginEnd": 16,
+          "marginVertical": 16,
+        }
+      }
+      type="large"
+    >
+      Skyline Gate Staging Area, Skyline Boulevard, Oakland, CA, USA
+    </Label>
+  </ForwardRef>
+  <ForwardRef
+    key="ChIJVVVVVVgJvUcRnLadHAeWTSA"
+    onPress={[Function]}
+    style={
+      Object {
+        "borderBottomColor": "#E5E8EB",
+        "borderBottomWidth": 1,
+        "marginStart": 16,
+      }
+    }
+    testID="pressResult"
+  >
+    <Label
+      numberOfLines={2}
+      style={
+        Object {
+          "marginEnd": 16,
+          "marginVertical": 16,
+        }
+      }
+      type="large"
+    >
+      Skyline Plaza Frankfurt, Europa-Allee, Frankfurt, Germany
+    </Label>
+  </ForwardRef>
+  <ForwardRef
+    key="ChIJsw6Z2TNls4kRWcVwsI36BIQ"
+    onPress={[Function]}
+    style={
+      Object {
+        "borderBottomColor": "#E5E8EB",
+        "borderBottomWidth": 1,
+        "marginStart": 16,
+      }
+    }
+    testID="pressResult"
+  >
+    <Label
+      numberOfLines={2}
+      style={
+        Object {
+          "marginEnd": 16,
+          "marginVertical": 16,
+        }
+      }
+      type="large"
+    >
+      Skyline Drive Scenic Roadway, South Terminus, Skyline Drive, Afton, VA, USA
+    </Label>
+  </ForwardRef>
+  <ForwardRef
+    key="ChIJVVCGitOZEmsR2m8B7wkTQYs"
+    onPress={[Function]}
+    style={
+      Object {
+        "borderBottomColor": "#E5E8EB",
+        "borderBottomWidth": 1,
+        "marginStart": 16,
+      }
+    }
+    testID="pressResult"
+  >
+    <Label
+      numberOfLines={2}
+      style={
+        Object {
+          "marginEnd": 16,
+          "marginVertical": 16,
+        }
+      }
+      type="large"
+    >
+      Skyline Drive In Blacktown, Cricketers Arms Road, Blacktown NSW, Australia
+    </Label>
+  </ForwardRef>
+</View>
+`;

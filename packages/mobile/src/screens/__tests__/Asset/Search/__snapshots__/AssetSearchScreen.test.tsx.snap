@@ -1,0 +1,747 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Asset Search Screen should render snapshot 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#FFFFFF"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <ForwardRef(SafeAreaView)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "justifyContent": "space-around",
+        }
+      }
+    >
+      <ForwardRef
+        onPress={[Function]}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "borderColor": "#E0E0E0",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "margin": 16,
+              "marginBottom": 10,
+              "padding": 8,
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#667686"
+            name="search"
+            size={20}
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              Object {
+                "marginStart": 15,
+                "width": 220,
+              }
+            }
+            textType="regular"
+            type="small"
+          />
+        </View>
+      </ForwardRef>
+      <View
+        style={
+          Object {
+            "flex": 0,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "marginHorizontal": 5,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="TYPE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="type"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="PRICE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="price"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="ROOMS"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="rooms"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          icon="filter"
+          iconColor="#0084F8"
+          iconSize={20}
+          iconStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          key="MORE"
+          onPress={[Function]}
+          type="secondary"
+        />
+      </View>
+    </View>
+    <Divider />
+    <View
+      style={
+        Object {
+          "flex": 4,
+        }
+      }
+    >
+      <withI18nextTranslation(PropertySearchMap)
+        favIds={Array []}
+        onFavorite={[Function]}
+        onSelectedProperty={[Function]}
+        searchLocation={Object {}}
+        transaction_type={0}
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "bottom": 20,
+            "padding": 7,
+            "position": "absolute",
+            "width": 250,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#4C5F72",
+              "textAlign": "center",
+            }
+          }
+          textType="regular"
+          type="small"
+        >
+          noResultsMapView
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "position": "absolute",
+            "top": 266.8,
+            "width": 750,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "elevation": 3,
+            "paddingHorizontal": 12,
+            "paddingVertical": 8,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.22,
+            "shadowRadius": 2.22,
+          }
+        }
+      >
+        <Label
+          textType="regular"
+          type="regular"
+        >
+          0
+           
+          propertiesFound
+        </Label>
+      </View>
+      <ToggleButton
+        icon="list"
+        onToggle={[Function]}
+        title="common:list"
+      />
+    </View>
+  </ForwardRef(SafeAreaView)>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;
+
+exports[`Asset Search Screen should render snapshot for Map view 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#FFFFFF"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <ForwardRef(SafeAreaView)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "justifyContent": "space-around",
+        }
+      }
+    >
+      <ForwardRef
+        onPress={[Function]}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "borderColor": "#E0E0E0",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "margin": 16,
+              "marginBottom": 10,
+              "padding": 8,
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#667686"
+            name="search"
+            size={20}
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              Object {
+                "marginStart": 15,
+                "width": 220,
+              }
+            }
+            textType="regular"
+            type="small"
+          />
+        </View>
+      </ForwardRef>
+      <View
+        style={
+          Object {
+            "flex": 0,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "marginHorizontal": 5,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="TYPE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="type"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="PRICE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="price"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="ROOMS"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="rooms"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          icon="filter"
+          iconColor="#0084F8"
+          iconSize={20}
+          iconStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          key="MORE"
+          onPress={[Function]}
+          type="secondary"
+        />
+      </View>
+    </View>
+    <Divider />
+    <View
+      style={
+        Object {
+          "flex": 4,
+        }
+      }
+    >
+      <withI18nextTranslation(PropertySearchMap)
+        favIds={Array []}
+        onFavorite={[Function]}
+        onSelectedProperty={[Function]}
+        searchLocation={Object {}}
+        transaction_type={0}
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "bottom": 20,
+            "padding": 7,
+            "position": "absolute",
+            "width": 250,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#4C5F72",
+              "textAlign": "center",
+            }
+          }
+          textType="regular"
+          type="small"
+        >
+          noResultsMapView
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "position": "absolute",
+            "top": 266.8,
+            "width": 750,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "elevation": 3,
+            "paddingHorizontal": 12,
+            "paddingVertical": 8,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.22,
+            "shadowRadius": 2.22,
+          }
+        }
+      >
+        <Label
+          textType="regular"
+          type="regular"
+        >
+          0
+           
+          propertiesFound
+        </Label>
+      </View>
+      <ToggleButton
+        icon="list"
+        onToggle={[Function]}
+        title="common:list"
+      />
+    </View>
+  </ForwardRef(SafeAreaView)>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;
+
+exports[`Asset Search Screen should render snapshot with filterData 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#FFFFFF"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <ForwardRef(SafeAreaView)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "justifyContent": "space-around",
+        }
+      }
+    >
+      <ForwardRef
+        onPress={[Function]}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "borderColor": "#E0E0E0",
+              "borderRadius": 4,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "margin": 16,
+              "marginBottom": 10,
+              "padding": 8,
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#667686"
+            name="search"
+            size={20}
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              Object {
+                "marginStart": 15,
+                "width": 220,
+              }
+            }
+            textType="regular"
+            type="small"
+          />
+        </View>
+      </ForwardRef>
+      <View
+        style={
+          Object {
+            "flex": 0,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "marginHorizontal": 5,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="TYPE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="type"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="PRICE"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="price"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          fontType="regular"
+          key="ROOMS"
+          onPress={[Function]}
+          textSize="regular"
+          textType="label"
+          title="rooms"
+          titleStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          type="secondary"
+        />
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          icon="filter"
+          iconColor="#0084F8"
+          iconSize={20}
+          iconStyle={
+            Object {
+              "marginHorizontal": 20,
+              "marginVertical": 8,
+            }
+          }
+          key="MORE"
+          onPress={[Function]}
+          type="secondary"
+        />
+      </View>
+    </View>
+    <Divider />
+    <View
+      style={
+        Object {
+          "flex": 4,
+        }
+      }
+    >
+      <withI18nextTranslation(PropertySearchMap)
+        favIds={Array []}
+        onFavorite={[Function]}
+        onSelectedProperty={[Function]}
+        searchLocation={Object {}}
+        transaction_type={0}
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "bottom": 20,
+            "padding": 7,
+            "position": "absolute",
+            "width": 250,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#4C5F72",
+              "textAlign": "center",
+            }
+          }
+          textType="regular"
+          type="small"
+        >
+          noResultsMapView
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 4,
+            "padding": 15,
+            "paddingTop": 10,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+  </ForwardRef(SafeAreaView)>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;

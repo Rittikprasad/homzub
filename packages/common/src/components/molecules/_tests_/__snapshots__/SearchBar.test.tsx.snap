@@ -1,0 +1,526 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Bar should match snapshot 1`] = `
+<SearchBar
+  placeholder="Search"
+  updateValue={[MockFunction]}
+  value="doc"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderColor": "#E5E8EB",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 4,
+        },
+        Object {},
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderColor": "#E5E8EB",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "paddingVertical": 4,
+          },
+          Object {},
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": 4,
+              "flex": 1,
+              "flexDirection": "row",
+              "height": 40,
+              "paddingHorizontal": 8,
+            },
+            Object {},
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 4,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 40,
+                "paddingHorizontal": 8,
+              },
+              Object {},
+            ]
+          }
+        >
+          <Button
+            containerStyle={
+              Array [
+                Object {
+                  "backgroundColor": "#FFFFFF",
+                  "flex": 0,
+                },
+                Object {
+                  "marginEnd": 16,
+                },
+                undefined,
+              ]
+            }
+            icon="search"
+            iconColor="#808D9B"
+            iconSize={20}
+            testID="btnSearch"
+            type="primary"
+          >
+            <ForwardRef
+              activeOpacity={0.5}
+              disabled={false}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderRadius": 4,
+                  "flex": 0,
+                  "justifyContent": "center",
+                  "marginEnd": 16,
+                }
+              }
+              testID="btnSearch"
+            >
+              <TouchableOpacity
+                activeOpacity={0.5}
+                disabled={false}
+                hostRef={null}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FFFFFF",
+                    "borderRadius": 4,
+                    "flex": 0,
+                    "justifyContent": "center",
+                    "marginEnd": 16,
+                  }
+                }
+                testID="btnSearch"
+              >
+                <ForwardRef(AnimatedComponentWrapper)
+                  accessible={true}
+                  focusable={false}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FFFFFF",
+                        "borderRadius": 4,
+                        "flex": 0,
+                        "justifyContent": "center",
+                        "marginEnd": 16,
+                      },
+                      Object {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="btnSearch"
+                >
+                  <AnimatedComponent
+                    accessible={true}
+                    focusable={false}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#FFFFFF",
+                          "borderRadius": 4,
+                          "flex": 0,
+                          "justifyContent": "center",
+                          "marginEnd": 16,
+                        },
+                        Object {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="btnSearch"
+                  >
+                    <View
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#FFFFFF",
+                          "borderRadius": 4,
+                          "flex": 0,
+                          "justifyContent": "center",
+                          "marginEnd": 16,
+                          "opacity": 1,
+                        }
+                      }
+                      testID="btnSearch"
+                    >
+                      <View
+                        accessible={true}
+                        focusable={false}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#FFFFFF",
+                            "borderRadius": 4,
+                            "flex": 0,
+                            "justifyContent": "center",
+                            "marginEnd": 16,
+                            "opacity": 1,
+                          }
+                        }
+                        testID="btnSearch"
+                      >
+                        <Icon
+                          allowFontScaling={false}
+                          color="#808D9B"
+                          name="search"
+                          size={20}
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#808D9B",
+                                  "fontSize": 20,
+                                },
+                                undefined,
+                                Object {
+                                  "fontFamily": "icomoon",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            <Text
+                              allowFontScaling={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#808D9B",
+                                    "fontSize": 20,
+                                  },
+                                  undefined,
+                                  Object {
+                                    "fontFamily": "icomoon",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  Object {},
+                                ]
+                              }
+                            >
+                              
+                            </Text>
+                          </Text>
+                        </Icon>
+                        <PressabilityDebugView
+                          color="cyan"
+                        />
+                      </View>
+                    </View>
+                  </AnimatedComponent>
+                </ForwardRef(AnimatedComponentWrapper)>
+              </TouchableOpacity>
+            </ForwardRef>
+          </Button>
+          <Component
+            allowFontScaling={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+            numberOfLines={1}
+            onChangeText={[Function]}
+            placeholder="Search"
+            placeholderTextColor="#99A4AF"
+            rejectResponderTermination={true}
+            returnKeyType="done"
+            style={
+              Object {
+                "color": "#001B36",
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+            testID="textInput"
+            underlineColorAndroid="transparent"
+            value="doc"
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoCorrect={false}
+              numberOfLines={1}
+              onChangeText={[Function]}
+              placeholder="Search"
+              placeholderTextColor="#99A4AF"
+              rejectResponderTermination={true}
+              returnKeyType="done"
+              style={
+                Object {
+                  "color": "#001B36",
+                  "flex": 1,
+                  "marginLeft": 16,
+                }
+              }
+              testID="textInput"
+              underlineColorAndroid="transparent"
+              value="doc"
+            />
+          </Component>
+          <Button
+            containerStyle={
+              Object {
+                "backgroundColor": "#FFFFFF",
+                "flex": 0,
+              }
+            }
+            icon="circular-cross-filled"
+            iconColor="#808D9B"
+            iconSize={20}
+            onPress={[Function]}
+            testID="btnCross"
+            type="primary"
+          >
+            <ForwardRef
+              activeOpacity={0.5}
+              disabled={false}
+              onPress={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderRadius": 4,
+                  "flex": 0,
+                  "justifyContent": "center",
+                }
+              }
+              testID="btnCross"
+            >
+              <TouchableOpacity
+                activeOpacity={0.5}
+                disabled={false}
+                hostRef={null}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FFFFFF",
+                    "borderRadius": 4,
+                    "flex": 0,
+                    "justifyContent": "center",
+                  }
+                }
+                testID="btnCross"
+              >
+                <ForwardRef(AnimatedComponentWrapper)
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FFFFFF",
+                        "borderRadius": 4,
+                        "flex": 0,
+                        "justifyContent": "center",
+                      },
+                      Object {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="btnCross"
+                >
+                  <AnimatedComponent
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#FFFFFF",
+                          "borderRadius": 4,
+                          "flex": 0,
+                          "justifyContent": "center",
+                        },
+                        Object {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="btnCross"
+                  >
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#FFFFFF",
+                          "borderRadius": 4,
+                          "flex": 0,
+                          "justifyContent": "center",
+                          "opacity": 1,
+                        }
+                      }
+                      testID="btnCross"
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#FFFFFF",
+                            "borderRadius": 4,
+                            "flex": 0,
+                            "justifyContent": "center",
+                            "opacity": 1,
+                          }
+                        }
+                        testID="btnCross"
+                      >
+                        <Icon
+                          allowFontScaling={false}
+                          color="#808D9B"
+                          name="circular-cross-filled"
+                          size={20}
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#808D9B",
+                                  "fontSize": 20,
+                                },
+                                undefined,
+                                Object {
+                                  "fontFamily": "icomoon",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            <Text
+                              allowFontScaling={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#808D9B",
+                                    "fontSize": 20,
+                                  },
+                                  undefined,
+                                  Object {
+                                    "fontFamily": "icomoon",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  Object {},
+                                ]
+                              }
+                            >
+                              
+                            </Text>
+                          </Text>
+                        </Icon>
+                        <PressabilityDebugView
+                          color="cyan"
+                        />
+                      </View>
+                    </View>
+                  </AnimatedComponent>
+                </ForwardRef(AnimatedComponentWrapper)>
+              </TouchableOpacity>
+            </ForwardRef>
+          </Button>
+        </View>
+      </View>
+    </View>
+  </View>
+</SearchBar>
+`;

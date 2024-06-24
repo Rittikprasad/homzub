@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageVideoPagination should match snapshot for IMAGE 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(25, 50, 74, 0.65)",
+      "borderRadius": 2,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingHorizontal": 7,
+      "paddingVertical": 3,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#FFFFFF"
+    name="camera"
+    size={20}
+    style={Object {}}
+  />
+  <Icon
+    allowFontScaling={false}
+    color="#667686"
+    name="video"
+    size={20}
+    style={
+      Object {
+        "paddingHorizontal": 5,
+      }
+    }
+  />
+  <Label
+    style={
+      Object {
+        "color": "#FFFFFF",
+      }
+    }
+    textType="regular"
+    type="large"
+  >
+    2
+     / 
+    3
+  </Label>
+</View>
+`;
+
+exports[`ImageVideoPagination should match snapshot for VIDEO 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(25, 50, 74, 0.65)",
+      "borderRadius": 2,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingHorizontal": 7,
+      "paddingVertical": 3,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="#667686"
+    name="camera"
+    size={20}
+    style={Object {}}
+  />
+  <Icon
+    allowFontScaling={false}
+    color="#FFFFFF"
+    name="video"
+    size={20}
+    style={
+      Object {
+        "paddingHorizontal": 5,
+      }
+    }
+  />
+  <Label
+    style={
+      Object {
+        "color": "#FFFFFF",
+      }
+    }
+    textType="regular"
+    type="large"
+  >
+    2
+     / 
+    3
+  </Label>
+</View>
+`;

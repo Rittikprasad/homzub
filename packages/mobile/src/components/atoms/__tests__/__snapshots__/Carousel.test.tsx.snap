@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Atom should match snapshot 1`] = `
+<Carousel
+  activeAnimationOptions={null}
+  activeAnimationType="timing"
+  activeSlideAlignment="center"
+  activeSlideOffset={20}
+  apparitionDelay={0}
+  autoplay={false}
+  autoplayDelay={1000}
+  autoplayInterval={3000}
+  callbackOffsetMargin={5}
+  containerCustomStyle={Object {}}
+  contentContainerCustomStyle={Object {}}
+  data={
+    Array [
+      Object {
+        "description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+        "image_url": "https://homzhub-bucket.s3.amazonaws.com/Search_Onboarding.svg",
+        "title": "Search",
+      },
+      Object {
+        "description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+        "image_url": "https://homzhub-bucket.s3.amazonaws.com/Post_Onboarding.svg",
+        "title": "Post",
+      },
+      Object {
+        "description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+        "image_url": "https://homzhub-bucket.s3.amazonaws.com/Maintain_Onboarding.svg",
+        "title": "Maintain",
+      },
+    ]
+  }
+  enableMomentum={false}
+  enableSnap={true}
+  firstItem={0}
+  hasParallaxImages={false}
+  inactiveSlideOpacity={0.7}
+  inactiveSlideScale={0.9}
+  inactiveSlideShift={0}
+  initialNumToRender={10}
+  itemWidth={720}
+  layout="default"
+  lockScrollTimeoutDuration={1000}
+  lockScrollWhileSnapping={false}
+  loop={false}
+  loopClonesPerSide={3}
+  onEndReached={[Function]}
+  onLayout={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEnabled={true}
+  shouldOptimizeUpdates={true}
+  slideStyle={Object {}}
+  sliderWidth={750}
+  swipeThreshold={20}
+  testID="carsl"
+  useScrollView={false}
+  vertical={false}
+/>
+`;

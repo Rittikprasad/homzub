@@ -1,0 +1,372 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExploreSections should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "elevation": 8,
+        "paddingBottom": 12,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 4.65,
+      }
+    }
+  >
+    <FlatList
+      contentContainerStyle={
+        Object {
+          "paddingStart": 16,
+        }
+      }
+      data={Array []}
+      disableVirtualization={false}
+      horizontal={true}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      showsHorizontalScrollIndicator={false}
+      testID="placesList"
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#80C1FC"
+      name="search"
+      size={30}
+    />
+    <Text
+      style={
+        Object {
+          "color": "#33495E",
+          "marginVertical": 10,
+        }
+      }
+      textType="semiBold"
+      type="small"
+    >
+      common:noResultsFound
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`ExploreSections should match snapshot for places keyExtractor 1`] = `"undefined-[object Object]"`;
+
+exports[`ExploreSections should match snapshot for places renderItem 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "borderRadius": 4,
+        "marginEnd": 16,
+        "padding": 12,
+      },
+      Object {
+        "backgroundColor": "#F0F5F9",
+      },
+    ]
+  }
+  testID="iconPress"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name=""
+    size={24}
+  />
+</ForwardRef>
+`;
+
+exports[`ExploreSections should match snapshot for places renderItem with selectedPlaces 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "borderRadius": 4,
+        "marginEnd": 16,
+        "padding": 12,
+      },
+      Object {
+        "backgroundColor": "#0084F8",
+      },
+    ]
+  }
+  testID="iconPress"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#FFFFFF"
+    name=""
+    size={24}
+  />
+</ForwardRef>
+`;
+
+exports[`ExploreSections should match snapshot for poi keyExtractor 1`] = `""`;
+
+exports[`ExploreSections should match snapshot for point of interest header 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#4C5F72"
+      size={24}
+    />
+    <Text
+      style={
+        Object {
+          "color": "#4C5F72",
+          "paddingStart": 12,
+          "width": 232,
+        }
+      }
+      type="small"
+    />
+  </View>
+  <Divider
+    containerStyles={
+      Object {
+        "marginVertical": 12,
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`ExploreSections should match snapshot for point of interest renderItem 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 16,
+    }
+  }
+  testID="resultPress"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#667686"
+      size={16}
+    />
+    <Label
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#4C5F72",
+            "paddingStart": 12,
+            "width": 232,
+          },
+          Object {
+            "color": "#667686",
+          },
+        ]
+      }
+      type="large"
+    />
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#667686",
+      }
+    }
+    type="regular"
+  >
+    56.00 undefined
+  </Label>
+</ForwardRef>
+`;
+
+exports[`ExploreSections should match snapshot for point of interest renderItem with selectedPoi 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 16,
+    }
+  }
+  testID="resultPress"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      size={16}
+    />
+    <Label
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#4C5F72",
+            "paddingStart": 12,
+            "width": 232,
+          },
+          Object {
+            "color": "#0084F8",
+          },
+        ]
+      }
+      type="large"
+    />
+  </View>
+  <Label
+    style={
+      Object {
+        "color": "#0084F8",
+      }
+    }
+    type="regular"
+  >
+    56.00 undefined
+  </Label>
+</ForwardRef>
+`;
+
+exports[`ExploreSections should match snapshot with additional props 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "elevation": 8,
+        "paddingBottom": 12,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 4.65,
+      }
+    }
+  >
+    <FlatList
+      contentContainerStyle={
+        Object {
+          "paddingStart": 16,
+        }
+      }
+      data={Array []}
+      disableVirtualization={false}
+      horizontal={true}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      showsHorizontalScrollIndicator={false}
+      testID="placesList"
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </View>
+  <FlatList
+    ListHeaderComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "distanceFromOrigin": 56,
+          "latitude": 35.513327,
+          "longitude": 97.39535869999999,
+          "name": "",
+          "placeId": "ChIJkbeSa_BfYzARphNChaFPjNc",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    extraData=""
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    style={
+      Object {
+        "flex": 1,
+        "marginHorizontal": 16,
+        "marginVertical": 20,
+      }
+    }
+    testID="interestList"
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

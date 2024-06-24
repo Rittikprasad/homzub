@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetSubscriptionPlan should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 4,
+      "flex": 1,
+      "marginTop": 16,
+      "paddingHorizontal": 16,
+      "paddingVertical": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingBottom": 16,
+      }
+    }
+  >
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "#33495E",
+          }
+        }
+        textType="regular"
+        type="small"
+      >
+        subscribedFor
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#33495E",
+          }
+        }
+        textType="bold"
+        type="regular"
+      >
+        common:homzhub undefined
+      </Text>
+    </View>
+    <[object Object] />
+  </View>
+  <Divider />
+  <Text
+    style={
+      Object {
+        "color": "#33495E",
+        "marginVertical": 16,
+      }
+    }
+    textType="semiBold"
+    type="small"
+  >
+    subscriptionHelper 
+    <Text
+      style={
+        Object {
+          "color": "#33495E",
+        }
+      }
+      textType="bold"
+      type="small"
+    >
+      common:homzhub undefined
+    </Text>
+     subscriptionHelperServices
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "column",
+          "flexWrap": "wrap",
+        },
+        false,
+      ]
+    }
+  />
+  <Button
+    onPress={[Function]}
+    testID="btnUpgrade"
+    title="upgrade"
+    type="secondary"
+  />
+</View>
+`;

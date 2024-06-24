@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OtpTimer should match snapshot 1`] = `
+<OtpTimer
+  onResentPress={[MockFunction]}
+>
+  <Label
+    style={
+      Object {
+        "color": "#4C5F72",
+      }
+    }
+    textType="regular"
+    type="large"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 14,
+            "lineHeight": 22,
+            "textAlign": "left",
+          },
+          Object {
+            "fontFamily": "OpenSans-Regular",
+            "fontWeight": "400",
+          },
+          Object {
+            "color": "#4C5F72",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 14,
+              "lineHeight": 22,
+              "textAlign": "left",
+            },
+            Object {
+              "fontFamily": "OpenSans-Regular",
+              "fontWeight": "400",
+            },
+            Object {
+              "color": "#4C5F72",
+            },
+          ]
+        }
+      >
+        receiveOtp 
+        <Label
+          textType="semiBold"
+          type="large"
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontSize": 14,
+                  "lineHeight": 22,
+                  "textAlign": "left",
+                },
+                Object {
+                  "fontFamily": "OpenSans-SemiBold",
+                  "fontWeight": "600",
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontSize": 14,
+                    "lineHeight": 22,
+                    "textAlign": "left",
+                  },
+                  Object {
+                    "fontFamily": "OpenSans-SemiBold",
+                    "fontWeight": "600",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              resendIn
+            </Text>
+          </Text>
+        </Label>
+      </Text>
+    </Text>
+  </Label>
+</OtpTimer>
+`;

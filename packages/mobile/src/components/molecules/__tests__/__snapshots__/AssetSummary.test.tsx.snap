@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetSummary should match snapshot 1`] = `
+<LinearGradient
+  angle={180}
+  colors={
+    Array [
+      "#FFFFFF",
+      "#F0F5F9",
+    ]
+  }
+  end={
+    Object {
+      "x": 0.5,
+      "y": 1,
+    }
+  }
+  locations={
+    Array [
+      0,
+      1,
+    ]
+  }
+  start={
+    Object {
+      "x": 0.5,
+      "y": 0,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 4,
+        "flex": 1,
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+  useAngle={true}
+/>
+`;
+
+exports[`AssetSummary should match snapshot without values 1`] = `
+<LinearGradient
+  angle={180}
+  colors={
+    Array [
+      "#FFFFFF",
+      "#F0F5F9",
+    ]
+  }
+  end={
+    Object {
+      "x": 0.5,
+      "y": 1,
+    }
+  }
+  locations={
+    Array [
+      0,
+      1,
+    ]
+  }
+  start={
+    Object {
+      "x": 0.5,
+      "y": 0,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 4,
+        "flex": 1,
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+  useAngle={true}
+/>
+`;

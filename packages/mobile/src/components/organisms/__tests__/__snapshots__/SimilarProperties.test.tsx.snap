@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimilarProperties should match snapshot 1`] = `""`;
+
+exports[`SimilarProperties should match snapshot for keyExtractor 1`] = `"undefined-[object Object]"`;
+
+exports[`SimilarProperties should match snapshot for renderItem 1`] = `
+<withI18nextTranslation(PropertyListCard)
+  containerStyle={
+    Object {
+      "elevation": 3,
+      "marginHorizontal": 10,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 3,
+        "width": 0,
+      },
+      "shadowOpacity": 0.3,
+      "shadowRadius": 4.65,
+      "width": 670,
+    }
+  }
+  isCarousel={false}
+  key="1"
+  onSelectedProperty={[Function]}
+  property={
+    Object {
+      "asset_group": Object {
+        "id": 1,
+        "name": "Residential",
+      },
+      "asset_type": Object {
+        "id": 2,
+        "name": "Apartment / Condo",
+      },
+      "block_number": "B",
+      "carpet_area": "5000",
+      "carpet_area_unit": Object {
+        "id": 1,
+        "label": "Square feet",
+        "name": "SQ_FT",
+        "title": "Sq.ft",
+      },
+      "country": Object {
+        "currencies": Array [],
+      },
+      "floor_number": 1,
+      "furnishing": "SEMI",
+      "id": 1,
+      "images": Array [
+        Object {
+          "file_name": "House-1a",
+          "is_cover_image": true,
+          "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+        },
+        Object {
+          "file_name": "House-1b",
+          "is_cover_image": false,
+          "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+        },
+      ],
+      "latitude": "25.61900000",
+      "lease_term": Object {
+        "currency_code": "INR",
+        "expected_price": "20000.0000",
+        "id": 1,
+      },
+      "longitude": "85.12300000",
+      "project_name": "Malti Kunj",
+      "spaces": Array [
+        Object {
+          "count": 3,
+          "id": 1,
+          "name": "Bedroom",
+        },
+        Object {
+          "count": 3,
+          "id": 2,
+          "name": "Bathroom",
+        },
+      ],
+      "total_floors": 4,
+      "unit_number": "41",
+    }
+  }
+  testID="listCard"
+  textSizeType="small"
+  transaction_type={1}
+/>
+`;
+
+exports[`SimilarProperties should match snapshot with similar properties 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginVertical": 24,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#4C5F72",
+      }
+    }
+    textType="semiBold"
+    type="small"
+  >
+    similarProperties
+  </Text>
+  <FlatList
+    data={
+      Array [
+        Object {
+          "asset_group": Object {
+            "id": 1,
+            "name": "Residential",
+          },
+          "asset_type": Object {
+            "id": 2,
+            "name": "Apartment / Condo",
+          },
+          "block_number": "B",
+          "carpet_area": "5000",
+          "carpet_area_unit": Object {
+            "id": 1,
+            "label": "Square feet",
+            "name": "SQ_FT",
+            "title": "Sq.ft",
+          },
+          "country": Object {
+            "currencies": Array [],
+          },
+          "floor_number": 1,
+          "furnishing": "SEMI",
+          "id": 1,
+          "images": Array [
+            Object {
+              "file_name": "House-1a",
+              "is_cover_image": true,
+              "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+            },
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": false,
+              "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+            },
+          ],
+          "latitude": "25.61900000",
+          "lease_term": Object {
+            "currency_code": "INR",
+            "expected_price": "20000.0000",
+            "id": 1,
+          },
+          "longitude": "85.12300000",
+          "project_name": "Malti Kunj",
+          "spaces": Array [
+            Object {
+              "count": 3,
+              "id": 1,
+              "name": "Bedroom",
+            },
+            Object {
+              "count": 3,
+              "id": 2,
+              "name": "Bathroom",
+            },
+          ],
+          "total_floors": 4,
+          "unit_number": "41",
+        },
+        Object {
+          "asset_group": Object {
+            "id": 1,
+            "name": "Residential",
+          },
+          "asset_type": Object {
+            "id": 2,
+            "name": "Apartment / Condo",
+          },
+          "block_number": "B",
+          "carpet_area": "2000",
+          "carpet_area_unit": Object {
+            "id": 1,
+            "label": "Square feet",
+            "name": "SQ_FT",
+            "title": "Sq.ft",
+          },
+          "country": Object {
+            "currencies": Array [
+              Object {
+                "currency_code": "",
+                "currency_name": "",
+                "currency_symbol": "",
+              },
+            ],
+            "id": 1,
+            "iso2_code": "",
+            "iso3_code": "",
+            "name": "",
+            "phone_codes": Array [],
+          },
+          "floor_number": 2,
+          "furnishing": "SEMI",
+          "id": 2,
+          "images": Array [
+            Object {
+              "file_name": "House-1a",
+              "is_cover_image": true,
+              "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+            },
+            Object {
+              "file_name": "House-1b",
+              "is_cover_image": true,
+              "link": "https://www.investopedia.com/thmb/7GOsX_NmY3KrIYoZPWOu6SldNFI=/735x0/houses_and_land-5bfc3326c9e77c0051812eb3.jpg",
+            },
+          ],
+          "latitude": "25.31400000",
+          "lease_term": Object {
+            "currency_code": "INR",
+            "expected_price": "22000.0000",
+            "id": 2,
+          },
+          "longitude": "85.12350000",
+          "project_name": "Mira Sadan",
+          "spaces": Array [
+            Object {
+              "count": 4,
+              "id": 1,
+              "name": "Bedroom",
+            },
+            Object {
+              "count": 2,
+              "id": 2,
+              "name": "Bathroom",
+            },
+          ],
+          "total_floors": 3,
+          "unit_number": "42",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={true}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    testID="similarPropertiesList"
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

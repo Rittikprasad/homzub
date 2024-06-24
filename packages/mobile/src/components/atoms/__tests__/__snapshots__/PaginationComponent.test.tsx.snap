@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationComponent should match snapshot 1`] = `
+<Pagination
+  activeDotIndex={0}
+  animatedDuration={250}
+  animatedFriction={4}
+  animatedTension={50}
+  delayPressInDot={0}
+  dotStyle={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#0084F8",
+        "borderRadius": 5,
+        "borderStyle": "solid",
+        "borderWidth": 3,
+        "height": 10,
+        "marginHorizontal": 2,
+        "width": 10,
+      },
+      undefined,
+    ]
+  }
+  dotsLength={0}
+  inactiveDotOpacity={1}
+  inactiveDotScale={1}
+  inactiveDotStyle={
+    Array [
+      Object {
+        "backgroundColor": "#0084F8",
+      },
+      undefined,
+    ]
+  }
+  tappableDots={false}
+  vertical={false}
+/>
+`;

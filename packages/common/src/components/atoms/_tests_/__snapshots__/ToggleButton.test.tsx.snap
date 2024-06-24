@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle Button should match snapshot 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#0084F8",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "paddingHorizontal": 6,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#0084F8",
+      }
+    }
+    type="small"
+  >
+    Badge
+  </Text>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name="list"
+    size={18}
+    style={
+      Object {
+        "marginLeft": 8,
+      }
+    }
+  />
+</ForwardRef>
+`;

@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyMapCard should match snapshot 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "elevation": 8,
+        "flexDirection": "row",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 4.65,
+      }
+    }
+  >
+    <Image
+      borderBottomLeftRadius={4}
+      borderTopLeftRadius={4}
+      source={
+        Object {
+          "uri": Object {},
+        }
+      }
+      style={
+        Object {
+          "height": 120,
+          "width": 120,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "padding": 8,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Memo(PricePerUnit)
+          currency=""
+          price={0}
+          unit=""
+        />
+        <Favorite />
+      </View>
+      <Label
+        numberOfLines={1}
+        textType="semiBold"
+        type="large"
+      />
+      <PropertyAmenities
+        data={
+          Array [
+            Object {
+              "icon": "",
+              "iconColor": "",
+              "iconSize": 0,
+              "label": "",
+            },
+            Object {
+              "icon": "",
+              "iconColor": "",
+              "iconSize": 0,
+              "label": "",
+            },
+          ]
+        }
+        direction="row"
+      />
+    </View>
+  </View>
+</ForwardRef>
+`;
+
+exports[`PropertyMapCard should match snapshot when isFavourite is true 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "elevation": 8,
+        "flexDirection": "row",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 4.65,
+      }
+    }
+  >
+    <Image
+      borderBottomLeftRadius={4}
+      borderTopLeftRadius={4}
+      source={
+        Object {
+          "uri": Object {},
+        }
+      }
+      style={
+        Object {
+          "height": 120,
+          "width": 120,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "padding": 8,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Memo(PricePerUnit)
+          currency=""
+          price={0}
+          unit=""
+        />
+        <Favorite />
+      </View>
+      <Label
+        numberOfLines={1}
+        textType="semiBold"
+        type="large"
+      />
+      <PropertyAmenities
+        data={
+          Array [
+            Object {
+              "icon": "",
+              "iconColor": "",
+              "iconSize": 0,
+              "label": "",
+            },
+            Object {
+              "icon": "",
+              "iconColor": "",
+              "iconSize": 0,
+              "label": "",
+            },
+          ]
+        }
+        direction="row"
+      />
+    </View>
+  </View>
+</ForwardRef>
+`;

@@ -1,0 +1,17 @@
+{
+  "name": "@homzhub/common",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage --env=jsdom",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "format": "prettier --write './**/*.{ts,tsx,js,json}'",
+    "sonar": "ts-node sonar-project.ts"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  }
+}

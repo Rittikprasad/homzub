@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetNeighbourhood should render snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Memo(Header)
+    icon="left-arrow"
+    onIconPress={[Function]}
+    type="secondary"
+  />
+  <MapView
+    initialRegion={
+      Object {
+        "latitude": 25.619,
+        "latitudeDelta": 0.1,
+        "longitude": 85.123,
+        "longitudeDelta": 0.1,
+      }
+    }
+    provider="google"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 25.619,
+          "longitude": 85.123,
+        }
+      }
+      stopPropagation={false}
+    >
+      <Memo(CustomMarker)
+        selected={true}
+      />
+    </MapMarker>
+  </MapView>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "left": 0,
+        "marginHorizontal": 12,
+        "position": "absolute",
+        "right": 0,
+        "top": 120,
+      }
+    }
+  >
+    <SelectionPicker
+      data={
+        Array [
+          Object {
+            "title": "nearby",
+            "value": 0,
+          },
+          Object {
+            "title": "commute",
+            "value": 1,
+          },
+        ]
+      }
+      onValueChange={[Function]}
+      selectedItem={
+        Array [
+          0,
+        ]
+      }
+    />
+  </View>
+  <BottomSheet
+    onCloseSheet={[Function]}
+    renderHeader={false}
+    sheetHeight={600.3000000000001}
+    visible={false}
+  >
+    <withI18nextTranslation(ExploreSections)
+      onPlaceTypePress={[Function]}
+      onPoiPress={[Function]}
+      placeTypes={
+        Array [
+          Object {
+            "icon": "school",
+            "key": "school",
+            "label": "schools",
+            "mapMarker": "school-marker",
+          },
+          Object {
+            "icon": "mall",
+            "key": "shopping_mall",
+            "label": "malls",
+            "mapMarker": "mall-marker",
+          },
+          Object {
+            "icon": "restaurant",
+            "key": "restaurant",
+            "label": "restaurants",
+            "mapMarker": "restaurant-marker",
+          },
+          Object {
+            "icon": "fuel",
+            "key": "gas_station",
+            "label": "fuelStations",
+            "mapMarker": "fuel-marker",
+          },
+          Object {
+            "icon": "hospital",
+            "key": "hospital",
+            "label": "hospitals",
+            "mapMarker": "hospital-marker",
+          },
+          Object {
+            "icon": "grocery",
+            "key": "supermarket",
+            "label": "groceryStores",
+            "mapMarker": "grocery-marker",
+          },
+          Object {
+            "icon": "park",
+            "key": "park",
+            "label": "parks",
+            "mapMarker": "park-marker",
+          },
+          Object {
+            "icon": "cinema",
+            "key": "movie_theater",
+            "label": "filmTheaters",
+            "mapMarker": "cinema-marker",
+          },
+          Object {
+            "icon": "bank",
+            "key": "atm",
+            "label": "atms",
+            "mapMarker": "bank-marker",
+          },
+          Object {
+            "icon": "chemist",
+            "key": "pharmacy",
+            "label": "pharmacies",
+            "mapMarker": "chemist-marker",
+          },
+          Object {
+            "icon": "lodge",
+            "key": "lodging",
+            "label": "hotels",
+            "mapMarker": "lodge-marker",
+          },
+        ]
+      }
+      pointsOfInterest={Array []}
+      selectedPlaceType={
+        Object {
+          "icon": "school",
+          "key": "school",
+          "label": "schools",
+          "mapMarker": "school-marker",
+        }
+      }
+      selectedPoiId=""
+    />
+  </BottomSheet>
+</View>
+`;

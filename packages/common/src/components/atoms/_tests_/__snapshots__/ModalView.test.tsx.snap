@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `
+<Component
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef
+    onPress={[MockFunction]}
+    style={Object {}}
+  >
+    <TouchableWithoutFeedback>
+      <View
+        style={Object {}}
+      >
+        <Text>
+          Test
+        </Text>
+      </View>
+    </TouchableWithoutFeedback>
+  </ForwardRef>
+</Component>
+`;

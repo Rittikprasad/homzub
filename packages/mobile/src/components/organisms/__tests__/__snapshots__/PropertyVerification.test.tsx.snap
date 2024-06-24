@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyVerification should match snapshot 1`] = `
+<Fragment>
+  <Component
+    deleteDocument={[Function]}
+    existingDocuments={Array []}
+    handleTypes={[Function]}
+    handleUpload={[Function]}
+    localDocuments={Array []}
+  />
+  <Button
+    containerStyle={
+      Object {
+        "flex": 0,
+        "marginVertical": 20,
+      }
+    }
+    disabled={true}
+    onPress={[Function]}
+    title="common:continue"
+    type="primary"
+  />
+</Fragment>
+`;

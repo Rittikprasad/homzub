@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentLocation should match snapshot 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "elevation": 1,
+      "flexDirection": "row",
+      "marginBottom": 4,
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 1,
+    }
+  }
+  testID="touchableNearMe"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name="location"
+    size={16}
+  />
+  <Label
+    style={
+      Object {
+        "color": "#0084F8",
+        "marginStart": 8,
+      }
+    }
+    textType="semiBold"
+    type="large"
+  >
+    common:nearMe
+  </Label>
+</ForwardRef>
+`;
+
+exports[`CurrentLocation should match snapshot with props 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "elevation": 1,
+      "flexDirection": "row",
+      "marginBottom": 4,
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 1,
+    }
+  }
+  testID="touchableNearMe"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name="location"
+    size={16}
+  />
+  <Label
+    style={
+      Object {
+        "color": "#0084F8",
+        "marginStart": 8,
+      }
+    }
+    textType="semiBold"
+    type="large"
+  >
+    common:nearMe
+  </Label>
+</ForwardRef>
+`;

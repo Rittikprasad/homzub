@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonRepository should fetch OnBoarding screen data 1`] = `
+Array [
+  OnBoarding {
+    "_description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+    "_imageUrl": "https://homzhub-bucket.s3.amazonaws.com/Search_Onboarding.svg",
+    "_title": "Search",
+  },
+  OnBoarding {
+    "_description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+    "_imageUrl": "https://homzhub-bucket.s3.amazonaws.com/Post_Onboarding.svg",
+    "_title": "Post",
+  },
+  OnBoarding {
+    "_description": "Sit amet, in enim nunc, etiam amet velit. Malesuada non neque nec in a.",
+    "_imageUrl": "https://homzhub-bucket.s3.amazonaws.com/Maintain_Onboarding.svg",
+    "_title": "Maintain",
+  },
+]
+`;
+
+exports[`CommonRepository should fetch a list of county codes 1`] = `
+Array [
+  CountryCode {
+    "_alphaCode": "IN",
+    "_country": "INDIA",
+    "_countryCode": "+91",
+    "_id": 1,
+  },
+  CountryCode {
+    "_alphaCode": "SG",
+    "_country": "SINGAPORE",
+    "_countryCode": "+65",
+    "_id": 2,
+  },
+  CountryCode {
+    "_alphaCode": "AU",
+    "_country": "AUSTRALIA",
+    "_countryCode": "+36",
+    "_id": 3,
+  },
+]
+`;
+
+exports[`CommonRepository should fetch a list of currency codes 1`] = `
+Array [
+  Currency {
+    "_currencyCode": "AUD",
+    "_currencyName": "AUD",
+    "_currencySymbol": "$",
+  },
+  Currency {
+    "_currencyCode": "INR",
+    "_currencyName": "AUD",
+    "_currencySymbol": "₹",
+  },
+  Currency {
+    "_currencyCode": "SGD",
+    "_currencyName": "AUD",
+    "_currencySymbol": "$",
+  },
+]
+`;
+
+exports[`CommonRepository should fetch a list of unit areas 1`] = `
+Array [
+  CarpetArea {
+    "_id": 1,
+    "_label": "Square Feet",
+    "_name": "SQ_FT",
+    "_title": "Sq.ft",
+  },
+  CarpetArea {
+    "_id": 2,
+    "_label": "Square Meter",
+    "_name": "SQ_M",
+    "_title": "Sq.m",
+  },
+  CarpetArea {
+    "_id": 3,
+    "_label": "Square Yard",
+    "_name": "SQ_YARD",
+    "_title": "Sq.yard",
+  },
+  CarpetArea {
+    "_id": 4,
+    "_label": "Acres",
+    "_name": "ACRES",
+    "_title": "Acres",
+  },
+  CarpetArea {
+    "_id": 5,
+    "_label": "Hectares",
+    "_name": "HECTARES",
+    "_title": "Hectares",
+  },
+]
+`;
+
+exports[`CommonRepository should fetch social media data 1`] = `
+Array [
+  SocialAuthProvider {
+    "_clientID": "1008014324415-kclkc41epc41nqjp0uc4gdgg528m1nc6.apps.googleusercontent.com",
+    "_description": "with Google",
+    "_provider": "GOOGLE",
+  },
+  SocialAuthProvider {
+    "_clientID": "",
+    "_description": "with Facebook",
+    "_provider": "FACEBOOK",
+  },
+  SocialAuthProvider {
+    "_clientID": "",
+    "_description": "with Linkedin",
+    "_provider": "LINKEDIN",
+  },
+]
+`;

@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoubleBarGraph should match snapshot 1`] = `
+<Fragment>
+  <ScrollViewMock
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "column",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <YAxis
+          contentInset={
+            Object {
+              "bottom": 8,
+              "top": 8,
+            }
+          }
+          data={
+            Array [
+              1,
+              2,
+              3,
+              4,
+            ]
+          }
+          formatLabel={[Function]}
+          numberOfTicks={10}
+          scale={[Function]}
+          spacingInner={0.05}
+          spacingOuter={0.05}
+          style={
+            Object {
+              "alignItems": "flex-start",
+              "width": 107.14285714285714,
+            }
+          }
+          svg={
+            Object {
+              "fill": "#808D9B",
+              "fontSize": 12,
+              "fontWeight": "600",
+            }
+          }
+          yAccessor={[Function]}
+        />
+        <BarChartGate
+          contentInset={
+            Object {
+              "bottom": 8,
+              "top": 8,
+            }
+          }
+          data={
+            Array [
+              Object {
+                "data": Array [
+                  1,
+                  2,
+                ],
+                "svg": Object {
+                  "fill": "#FFC5BE",
+                },
+              },
+              Object {
+                "data": Array [
+                  3,
+                  4,
+                ],
+                "svg": Object {
+                  "fill": "#85DACF",
+                },
+              },
+            ]
+          }
+          style={
+            Array [
+              Object {
+                "height": 667,
+                "width": 1312.5,
+              },
+              false,
+            ]
+          }
+        >
+          <Grid
+            belowChart={true}
+            direction="HORIZONTAL"
+            svg={
+              Object {
+                "stroke": "#99A4AF",
+                "strokeDasharray": Array [
+                  5,
+                  5,
+                ],
+                "width": "100%",
+              }
+            }
+          />
+        </BarChartGate>
+      </View>
+      <XAxis
+        contentInset={
+          Object {
+            "left": 24,
+            "right": 24,
+          }
+        }
+        data={
+          Array [
+            "A",
+            "B",
+          ]
+        }
+        formatLabel={[Function]}
+        scale={[Function]}
+        spacingInner={0.05}
+        spacingOuter={0.05}
+        style={
+          Array [
+            Object {
+              "marginStart": 107.14285714285714,
+              "padding": 12,
+              "width": 1312.5,
+            },
+            false,
+          ]
+        }
+        svg={
+          Object {
+            "fill": "#808D9B",
+            "fontSize": 12,
+            "fontWeight": "600",
+          }
+        }
+        xAccessor={[Function]}
+      />
+    </View>
+  </ScrollViewMock>
+  <Memo(GraphLegends)
+    data={
+      Array [
+        Object {
+          "key": 1,
+          "svg": Object {
+            "fill": "#FFC5BE",
+          },
+          "title": "Expense",
+          "value": 3,
+        },
+        Object {
+          "key": 1,
+          "svg": Object {
+            "fill": "#85DACF",
+          },
+          "title": "Income",
+          "value": 7,
+        },
+      ]
+    }
+    direction="row"
+  />
+</Fragment>
+`;

@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyDuesCardContainer should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 4,
+      "marginTop": 16,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        name="wallet"
+        size={22}
+        style={
+          Object {
+            "marginRight": 10,
+          }
+        }
+      />
+      <Text
+        textType="semiBold"
+        type="small"
+      >
+        assetDashboard:dues
+      </Text>
+    </View>
+    <Memo(PricePerUnit)
+      currency="INR"
+      price={1200}
+      priceTransformation={false}
+      textSizeType="small"
+      textStyle={
+        Object {
+          "color": "#D60D31",
+        }
+      }
+    />
+  </View>
+  <Divider />
+  <View
+    style={
+      Object {
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      key="Eaton Garth Manor0"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "",
+            }
+          }
+          style={
+            Object {
+              "marginRight": 6,
+            }
+          }
+        />
+        <Text
+          textType="semiBold"
+          type="small"
+        >
+          Eaton Garth Manor
+        </Text>
+      </View>
+      <Label
+        type="large"
+      >
+        Sindhi Society, Chembur, Mumbai- 400071
+      </Label>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 16,
+          }
+        }
+      >
+        <View>
+          <Label
+            type="large"
+          >
+            Plumbing fees
+          </Label>
+          <Memo(PricePerUnit)
+            currency="USD"
+            price={20000}
+            priceTransformation={false}
+            textSizeType="small"
+          />
+        </View>
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          textSize="small"
+          textType="text"
+          title="assetFinancial:payNow"
+          titleStyle={
+            Object {
+              "marginHorizontal": 24,
+              "marginVertical": 6,
+            }
+          }
+          type="primary"
+        />
+      </View>
+      <Divider
+        containerStyles={
+          Object {
+            "marginVertical": 24,
+          }
+        }
+      />
+    </View>
+    <View
+      key="Eaton Garth Manor1"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "",
+            }
+          }
+          style={
+            Object {
+              "marginRight": 6,
+            }
+          }
+        />
+        <Text
+          textType="semiBold"
+          type="small"
+        >
+          Eaton Garth Manor
+        </Text>
+      </View>
+      <Label
+        type="large"
+      >
+        Sindhi Society, Chembur, Mumbai- 400071
+      </Label>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 16,
+          }
+        }
+      >
+        <View>
+          <Label
+            type="large"
+          >
+            Plumbing fees
+          </Label>
+          <Memo(PricePerUnit)
+            currency="USD"
+            price={30000}
+            priceTransformation={false}
+            textSizeType="small"
+          />
+        </View>
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          textSize="small"
+          textType="text"
+          title="assetFinancial:payNow"
+          titleStyle={
+            Object {
+              "marginHorizontal": 24,
+              "marginVertical": 6,
+            }
+          }
+          type="primary"
+        />
+      </View>
+      <Divider
+        containerStyles={
+          Object {
+            "marginVertical": 24,
+          }
+        }
+      />
+    </View>
+    <View
+      key="Eaton Garth Manor2"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "",
+            }
+          }
+          style={
+            Object {
+              "marginRight": 6,
+            }
+          }
+        />
+        <Text
+          textType="semiBold"
+          type="small"
+        >
+          Eaton Garth Manor
+        </Text>
+      </View>
+      <Label
+        type="large"
+      >
+        Sindhi Society, Chembur, Mumbai- 400071
+      </Label>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 16,
+          }
+        }
+      >
+        <View>
+          <Label
+            type="large"
+          >
+            Plumbing fees
+          </Label>
+          <Memo(PricePerUnit)
+            currency="USD"
+            price={20000}
+            priceTransformation={false}
+            textSizeType="small"
+          />
+        </View>
+        <Button
+          containerStyle={
+            Object {
+              "flex": 0,
+            }
+          }
+          textSize="small"
+          textType="text"
+          title="assetFinancial:payNow"
+          titleStyle={
+            Object {
+              "marginHorizontal": 24,
+              "marginVertical": 6,
+            }
+          }
+          type="primary"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

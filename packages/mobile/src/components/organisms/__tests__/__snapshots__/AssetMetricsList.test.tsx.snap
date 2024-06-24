@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetMetricsList should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "paddingVertical": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "marginHorizontal": 12,
+        },
+        false,
+      ]
+    }
+  >
+    <[object Object]
+      height={50}
+      style={
+        Object {
+          "marginEnd": 12,
+        }
+      }
+      width={50}
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#001B36",
+          }
+        }
+        textType="bold"
+        type="regular"
+      >
+        0
+      </Text>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Label
+          style={
+            Object {
+              "color": "#4C5F72",
+            }
+          }
+          textType="semiBold"
+          type="large"
+        >
+          common:properties
+        </Label>
+      </View>
+    </View>
+  </View>
+  <SnapCarousel
+    activeIndex={0}
+    carouselData={
+      Array [
+        Array [
+          Miscellaneous {
+            "_colorCode": "#C2E4FF",
+            "_count": 3,
+            "_currency_symbol": "",
+            "_label": "Occupied",
+            "_name": "OCCUPIED",
+          },
+          Miscellaneous {
+            "_colorCode": "#C2E4FF",
+            "_count": 2,
+            "_currency_symbol": "",
+            "_label": "Vacant",
+            "_name": "VACANT",
+          },
+          Miscellaneous {
+            "_colorCode": "#C2E4FF",
+            "_count": 1,
+            "_currency_symbol": "",
+            "_label": "Renewal",
+            "_name": "RENEWAL",
+          },
+        ],
+        Array [
+          Miscellaneous {
+            "_colorCode": "#C2E4FF",
+            "_count": 4,
+            "_currency_symbol": "",
+            "_label": "Sell",
+            "_name": "SELL",
+          },
+        ],
+      ]
+    }
+    carouselItem={[Function]}
+    itemWidth={718}
+    onSnapToItem={[Function]}
+    sliderWidth={718}
+  />
+  <PaginationComponent
+    activeDotStyle={
+      Array [
+        Object {
+          "height": 8.5,
+          "width": 8.5,
+        },
+        Object {
+          "borderWidth": 1.5,
+        },
+      ]
+    }
+    activeSlide={0}
+    containerStyle={
+      Object {
+        "marginTop": 12,
+        "paddingVertical": 0,
+      }
+    }
+    dotsLength={2}
+    inactiveDotStyle={
+      Array [
+        Object {
+          "height": 8.5,
+          "width": 8.5,
+        },
+        Object {
+          "backgroundColor": "#C9D6DF",
+          "borderWidth": 0,
+        },
+      ]
+    }
+  />
+</View>
+`;

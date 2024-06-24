@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Payment Success Component should render payment success component 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginBottom": 16,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginTop": 16,
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#47C2B1"
+      name="circular-check-filled"
+      size={28}
+    />
+    <Text
+      style={
+        Object {
+          "color": "#001B36",
+          "marginLeft": 12,
+          "marginTop": 8,
+        }
+      }
+      type="large"
+    >
+      common:allDone
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "#33495E",
+        "marginBottom": 24,
+        "marginTop": 6,
+      }
+    }
+    type="small"
+  >
+    paymentSuccessful
+  </Text>
+  <Divider />
+  <Text
+    style={
+      Object {
+        "color": "#19324A",
+        "marginBottom": 24,
+        "marginTop": 16,
+      }
+    }
+    type="regular"
+  >
+    reviewProperty
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#33495E",
+        "marginBottom": 38,
+      }
+    }
+    type="small"
+  >
+    expectCall
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#19324A",
+        "marginTop": 16,
+      }
+    }
+    textType="semiBold"
+    type="small"
+  >
+    visitInfo
+    <Text
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#0084F8",
+        }
+      }
+      testID="txtPress"
+      textType="semiBold"
+      type="small"
+    >
+      common:why
+    </Text>
+  </Text>
+</View>
+`;

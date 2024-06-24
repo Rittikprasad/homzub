@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapsibleSection should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 24,
+      },
+      undefined,
+    ]
+  }
+>
+  <ForwardRef
+    disabled={false}
+    onPress={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+    testID="collapse"
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "maxWidth": 250,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#4C5F72",
+            },
+            undefined,
+          ]
+        }
+        textType="semiBold"
+        type="small"
+      />
+    </View>
+    <Icon
+      allowFontScaling={false}
+      color="#4C5F72"
+      name="minus"
+      size={20}
+    />
+  </ForwardRef>
+  <Collapsible
+    align="top"
+    collapsed={false}
+    collapsedHeight={0}
+    duration={300}
+    easing="easeOutCubic"
+    enablePointerEvents={false}
+    onAnimationEnd={[Function]}
+    renderChildrenCollapsed={true}
+  >
+    <View />
+  </Collapsible>
+</View>
+`;
+
+exports[`CollapsibleSection should match snapshot with press 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginTop": 24,
+      },
+      undefined,
+    ]
+  }
+>
+  <ForwardRef
+    disabled={false}
+    onPress={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+    testID="collapse"
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "maxWidth": 250,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#4C5F72",
+            },
+            undefined,
+          ]
+        }
+        textType="semiBold"
+        type="small"
+      />
+    </View>
+    <Icon
+      allowFontScaling={false}
+      color="#4C5F72"
+      name="minus"
+      size={20}
+    />
+  </ForwardRef>
+  <Collapsible
+    align="top"
+    collapsed={false}
+    collapsedHeight={0}
+    duration={300}
+    easing="easeOutCubic"
+    enablePointerEvents={false}
+    onAnimationEnd={[Function]}
+    renderChildrenCollapsed={true}
+  >
+    <View />
+  </Collapsible>
+</View>
+`;

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider should match snapshot 1`] = `
+<Fragment>
+  <View
+    onLayout={[Function]}
+  >
+    <Component
+      allowOverlap={true}
+      customLabel={[Function]}
+      customMarkerLeft={[Function]}
+      enableLabel={false}
+      isMarkersSeparated={true}
+      onValuesChange={[Function]}
+      selectedStyle={
+        Object {
+          "backgroundColor": "#0084F8",
+        }
+      }
+      sliderLength={350}
+      values={
+        Array [
+          0,
+        ]
+      }
+    />
+  </View>
+</Fragment>
+`;
+
+exports[`Slider should match snapshot for max value to be 0 1`] = `
+<Fragment>
+  <View>
+    <Component
+      customMarkerLeft={[Function]}
+      customMarkerRight={[Function]}
+      isMarkersSeparated={true}
+      markerContainerStyle={
+        Object {
+          "justifyContent": "center",
+        }
+      }
+      max={10}
+      min={0}
+      onValuesChange={[Function]}
+      selectedStyle={
+        Object {
+          "backgroundColor": "#0084F8",
+        }
+      }
+      sliderLength={350}
+      snapped={true}
+      step={0.01}
+      values={
+        Array [
+          0,
+          0,
+        ]
+      }
+    />
+  </View>
+</Fragment>
+`;
+
+exports[`Slider should match snapshot for multiple slider 1`] = `
+<Fragment>
+  <View>
+    <Component
+      customMarkerLeft={[Function]}
+      customMarkerRight={[Function]}
+      isMarkersSeparated={true}
+      markerContainerStyle={
+        Object {
+          "justifyContent": "center",
+        }
+      }
+      max={10}
+      min={0}
+      onValuesChange={[Function]}
+      selectedStyle={
+        Object {
+          "backgroundColor": "#0084F8",
+        }
+      }
+      sliderLength={350}
+      snapped={true}
+      step={0.01}
+      values={
+        Array [
+          0,
+          0,
+        ]
+      }
+    />
+  </View>
+</Fragment>
+`;

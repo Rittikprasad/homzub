@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp Screen should render signup screen 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "icon": "close",
+      "onIconPress": [Function],
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  keyboardShouldPersistTaps={true}
+  pageHeaderProps={
+    Object {
+      "contentLink": "login",
+      "contentSubTitle": "auth:alreadyRegistered",
+      "contentTitle": "signUp",
+      "onLinkPress": [Function],
+    }
+  }
+>
+  <withI18nextTranslation(Connect(SignUpForm))
+    onPressLink={[Function]}
+    onSubmitFormSuccess={[Function]}
+    testID="signupForm"
+  />
+</Screen>
+`;

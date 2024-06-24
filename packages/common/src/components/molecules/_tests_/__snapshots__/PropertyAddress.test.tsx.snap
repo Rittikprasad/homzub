@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyAddress should match snapshot with icon 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "color": "#000",
+          "flex": 1,
+          "justifyContent": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="regular"
+  >
+    Primary Address
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#33495E"
+      name="location-marker"
+      size={24}
+    />
+    <Label
+      numberOfLines={3}
+      style={
+        Array [
+          Object {
+            "color": "#33495E",
+            "flex": 1,
+            "marginVertical": 6,
+          },
+          Object {
+            "marginHorizontal": 10,
+          },
+          undefined,
+        ]
+      }
+      textType="regular"
+      type="large"
+    >
+      Sub Address
+    </Label>
+  </View>
+</View>
+`;
+
+exports[`PropertyAddress should match snapshot without icon 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "color": "#000",
+          "flex": 1,
+          "justifyContent": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="regular"
+  >
+    Primary Address
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Label
+      numberOfLines={3}
+      style={
+        Array [
+          Object {
+            "color": "#33495E",
+            "flex": 1,
+            "marginVertical": 6,
+          },
+          undefined,
+          undefined,
+        ]
+      }
+      textType="regular"
+      type="large"
+    >
+      Sub Address
+    </Label>
+  </View>
+</View>
+`;

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Documents Screen should match snapshot for keyExtractor 1`] = `"undefined-[object Object]"`;
+
+exports[`Documents Screen should match snapshot for renderItem 1`] = `
+<DocumentCard
+  document={Object {}}
+  handleDelete={[Function]}
+  handleDownload={[Function]}
+  handleShare={[Function]}
+  testID="documentCard"
+  userEmail=""
+/>
+`;
+
+exports[`Documents Screen should match snapshot for renderSeparator 1`] = `
+<Divider
+  containerStyles={
+    Object {
+      "borderColor": "#E5E8EB",
+      "marginTop": 16,
+    }
+  }
+/>
+`;
+
+exports[`Documents Screen should render snapshot 1`] = `undefined`;
+
+exports[`Documents Screen should render snapshot with documents 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "padding": 16,
+    }
+  }
+>
+  <UploadBox
+    containerStyle={
+      Object {
+        "paddingVertical": 16,
+      }
+    }
+    header="Upload Document"
+    icon="document"
+    onPress={[Function]}
+    subHeader="Supports: JPG, JPEG, PNG, PDF "
+  />
+  <SearchBar
+    containerStyle={
+      Object {
+        "marginTop": 16,
+      }
+    }
+    placeholder="Search by document name"
+    testID="searchBar"
+    updateValue={[Function]}
+    value=""
+  />
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    data={
+      Array [
+        Object {},
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    testID="documentList"
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+  <Loader
+    visible={true}
+  />
+</View>
+`;

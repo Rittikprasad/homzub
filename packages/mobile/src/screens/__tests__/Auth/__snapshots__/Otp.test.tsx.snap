@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OTP Screen should match snapshot in error 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [MockFunction],
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "enterOTP",
+      "contentTitle": "Otp",
+      "disableDivider": true,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      textType="semiBold"
+      type="small"
+    >
+      INR 99999999999
+    </Text>
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      name="note-book"
+      onPress={[Function]}
+      size={16}
+      style={
+        Object {
+          "marginStart": 8,
+        }
+      }
+      testID="icnEdit"
+    />
+  </View>
+  <OtpInputs
+    bubbleOtp={[Function]}
+    error="otpError"
+    otpType="PhoneOrEmail"
+    toggleError={[Function]}
+  />
+  <OtpTimer
+    onResentPress={[Function]}
+  />
+</Screen>
+`;
+
+exports[`OTP Screen should render snapshot 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [MockFunction],
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "enterOTP",
+      "contentTitle": "Otp",
+      "disableDivider": true,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      textType="semiBold"
+      type="small"
+    >
+      INR 99999999999
+    </Text>
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      name="note-book"
+      onPress={[Function]}
+      size={16}
+      style={
+        Object {
+          "marginStart": 8,
+        }
+      }
+      testID="icnEdit"
+    />
+  </View>
+  <OtpInputs
+    bubbleOtp={[Function]}
+    otpType="PhoneOrEmail"
+    toggleError={[Function]}
+  />
+  <OtpTimer
+    onResentPress={[Function]}
+  />
+</Screen>
+`;
+
+exports[`OTP Screen should render snapshot with userData 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [MockFunction],
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "enterOTP",
+      "contentTitle": "verifyNumber",
+      "disableDivider": true,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      textType="semiBold"
+      type="small"
+    >
+      INR 
+    </Text>
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      name="note-book"
+      onPress={[Function]}
+      size={16}
+      style={
+        Object {
+          "marginStart": 8,
+        }
+      }
+      testID="icnEdit"
+    />
+  </View>
+  <OtpInputs
+    bubbleOtp={[Function]}
+    otpType="PhoneOrEmail"
+    toggleError={[Function]}
+  />
+  <OtpTimer
+    onResentPress={[Function]}
+  />
+</Screen>
+`;
+
+exports[`OTP Screen should verify otp 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  headerProps={
+    Object {
+      "onIconPress": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "callback": [MockFunction] {
+                "calls": [Circular],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "data": Object {
+                "action": "OTP_LOGIN",
+                "payload": Object {
+                  "otp": "123456",
+                  "phone_code": "INR",
+                  "phone_number": "99999999999",
+                },
+              },
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "type": "secondary",
+    }
+  }
+  isLoading={false}
+  pageHeaderProps={
+    Object {
+      "contentSubTitle": "enterOTP",
+      "contentTitle": "Otp",
+      "disableDivider": true,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      textType="semiBold"
+      type="small"
+    >
+      INR 99999999999
+    </Text>
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      name="note-book"
+      onPress={[Function]}
+      size={16}
+      style={
+        Object {
+          "marginStart": 8,
+        }
+      }
+      testID="icnEdit"
+    />
+  </View>
+  <OtpInputs
+    bubbleOtp={[Function]}
+    otpType="PhoneOrEmail"
+    toggleError={[Function]}
+  />
+  <OtpTimer
+    onResentPress={[Function]}
+  />
+</Screen>
+`;

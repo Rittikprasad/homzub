@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButtonGroup should call render button 1`] = `
+<RadioButton
+  containerStyle={
+    Object {
+      "flex": 1,
+      "marginBottom": 20,
+    }
+  }
+  label="Radio Button 1"
+  labelStyle={Object {}}
+  onToggle={[Function]}
+  selected={true}
+/>
+`;
+
+exports[`RadioButtonGroup should match snapshot 1`] = `
+<FlatList
+  contentContainerStyle={Object {}}
+  data={
+    Array [
+      Object {
+        "id": 1,
+        "label": "Radio Button 1",
+        "value": "1",
+      },
+      Object {
+        "id": 2,
+        "label": "Radio Button 2",
+        "value": "2",
+      },
+    ]
+  }
+  disableVirtualization={false}
+  extraData={1}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={2}
+  onEndReachedThreshold={2}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  testID="ftlist"
+  updateCellsBatchingPeriod={50}
+  windowSize={21}
+/>
+`;

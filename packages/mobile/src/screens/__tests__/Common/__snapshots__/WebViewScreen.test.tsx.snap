@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Web View Screen should render snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Memo(Header)
+    icon="left-arrow"
+    onIconPress={[Function]}
+  />
+  <WebView
+    cacheEnabled={true}
+    javaScriptEnabled={true}
+    originWhitelist={
+      Array [
+        "http://*",
+        "https://*",
+      ]
+    }
+    renderLoading={[Function]}
+    source={
+      Object {
+        "uri": "",
+      }
+    }
+    startInLoadingState={true}
+    useSharedProcessPool={true}
+  />
+</View>
+`;

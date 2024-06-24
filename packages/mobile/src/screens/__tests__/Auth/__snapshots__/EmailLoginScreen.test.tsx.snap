@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Email Login Screen should render email login screen 1`] = `
+<Screen
+  backgroundColor="#FFFFFF"
+  containerStyle={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+  headerProps={
+    Object {
+      "icon": "left-arrow",
+      "onIconPress": [Function],
+      "type": "secondary",
+    }
+  }
+  keyboardShouldPersistTaps={true}
+  pageHeaderProps={
+    Object {
+      "contentTitle": "auth:logInWithEmail",
+    }
+  }
+>
+  <withI18nextTranslation(Connect(LoginForm))
+    handleForgotPassword={[Function]}
+    isEmailLogin={true}
+    onLoginSuccess={[Function]}
+    testID="loginForm"
+  />
+</Screen>
+`;

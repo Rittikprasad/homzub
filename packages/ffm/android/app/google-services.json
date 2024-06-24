@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "854478832801",
+    "firebase_url": "https://homzhub-ffm-default-rtdb.firebaseio.com",
+    "project_id": "homzhub-ffm",
+    "storage_bucket": "homzhub-ffm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854478832801:android:af627b95c11321d5439ce0",
+        "android_client_info": {
+          "package_name": "com.ffm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854478832801-dp3fog0dq9jmqqq8v63phl2uhfch54u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmHOrwcNL2NnoDLdOa_gZmv9CPPr2UY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854478832801-dp3fog0dq9jmqqq8v63phl2uhfch54u7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "854478832801-2627inktsgsknbpj6kbatqtn4abkvdvc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ffm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

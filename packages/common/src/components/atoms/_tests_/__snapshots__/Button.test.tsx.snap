@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should match snapshot for disabled 1`] = `
+<ForwardRef
+  activeOpacity={0.5}
+  disabled={true}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#C9D6DF",
+      "borderRadius": 4,
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "marginHorizontal": 18,
+          "marginVertical": 12,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    Test
+  </Text>
+</ForwardRef>
+`;
+
+exports[`Button should match snapshot for primary 1`] = `
+<ForwardRef
+  activeOpacity={0.5}
+  disabled={false}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#0084F8",
+      "borderRadius": 4,
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "marginHorizontal": 18,
+          "marginVertical": 12,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    Test
+  </Text>
+</ForwardRef>
+`;
+
+exports[`Button should match snapshot for secondary 1`] = `
+<ForwardRef
+  activeOpacity={0.5}
+  disabled={false}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#0084F8",
+      "borderRadius": 4,
+      "borderWidth": 1,
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#0084F8",
+          "marginHorizontal": 18,
+          "marginVertical": 12,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    Test
+  </Text>
+</ForwardRef>
+`;
+
+exports[`Button should render with icon 1`] = `
+<ForwardRef
+  activeOpacity={0.5}
+  disabled={true}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#C9D6DF",
+      "borderRadius": 4,
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Label
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "marginHorizontal": 18,
+          "marginVertical": 12,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    Test
+  </Label>
+  <Icon
+    allowFontScaling={false}
+    name="search"
+    size={12}
+  />
+</ForwardRef>
+`;

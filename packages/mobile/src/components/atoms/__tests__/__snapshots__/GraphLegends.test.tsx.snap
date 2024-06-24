@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphLegends should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "flex-start",
+        "justifyContent": "flex-start",
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    key="legend-0"
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+        Object {
+          "marginBottom": 16,
+          "marginHorizontal": 12,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderRadius": 6,
+            "height": 12,
+            "marginEnd": 6,
+            "marginTop": 4,
+            "width": 12,
+          },
+          Object {
+            "backgroundColor": "#A2D2FD",
+          },
+        ]
+      }
+    />
+    <View>
+      <Label
+        style={
+          Object {
+            "color": "#4C5F72",
+          }
+        }
+        textType="regular"
+        type="regular"
+      >
+        Some Title
+      </Label>
+      <PricePerUnit
+        currency="INR"
+        price={1000}
+        textFontWeight="regular"
+        textSizeType="small"
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GraphLegends should match snapshot for column direction 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "flex-start",
+        "justifyContent": "flex-start",
+      },
+      Object {
+        "flexDirection": "column",
+      },
+    ]
+  }
+>
+  <View
+    key="legend-0"
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+        Object {
+          "marginVertical": 16,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderRadius": 6,
+            "height": 12,
+            "marginEnd": 6,
+            "marginTop": 4,
+            "width": 12,
+          },
+          Object {
+            "backgroundColor": "#A2D2FD",
+          },
+        ]
+      }
+    />
+    <View>
+      <Label
+        style={
+          Object {
+            "color": "#4C5F72",
+          }
+        }
+        textType="regular"
+        type="regular"
+      >
+        Some Title
+      </Label>
+      <PricePerUnit
+        currency="INR"
+        price={1000}
+        textFontWeight="regular"
+        textSizeType="small"
+      />
+    </View>
+  </View>
+</View>
+`;

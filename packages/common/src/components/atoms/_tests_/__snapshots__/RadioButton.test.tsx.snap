@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton should match snapshot for not selected 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+  testID="to"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#C9D6DF"
+    name="circle-outline"
+    size={22}
+    style={Object {}}
+  />
+  <Text
+    style={
+      Object {
+        "color": "#4C5F72",
+        "marginStart": 12,
+      }
+    }
+    textType="regular"
+    type="small"
+  >
+    Some label
+  </Text>
+</ForwardRef>
+`;
+
+exports[`RadioButton should match snapshot for selected 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+  testID="to"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#0084F8"
+    name="circle-filled"
+    size={22}
+    style={Object {}}
+  />
+  <Text
+    style={
+      Object {
+        "color": "#001B36",
+        "marginStart": 12,
+      }
+    }
+    textType="regular"
+    type="small"
+  >
+    Some label
+  </Text>
+</ForwardRef>
+`;

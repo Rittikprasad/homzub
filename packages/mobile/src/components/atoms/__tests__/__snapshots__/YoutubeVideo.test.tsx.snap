@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YoutubeVideo should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <YouTube
+    apiKey="youtube"
+    controls={1}
+    fullscreen={false}
+    loop={false}
+    onError={[Function]}
+    play={true}
+    resumePlayAndroid={false}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "height": "100%",
+        "width": 750,
+      }
+    }
+    videoId="ATSgwZXOuUo"
+  />
+</View>
+`;
+
+exports[`YoutubeVideo should match snapshot for full screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <YouTube
+    apiKey="youtube"
+    controls={1}
+    fullscreen={true}
+    loop={false}
+    onError={[Function]}
+    play={true}
+    resumePlayAndroid={false}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "height": "100%",
+        "width": 750,
+      }
+    }
+    videoId="ATSgwZXOuUo"
+  />
+</View>
+`;
+
+exports[`YoutubeVideo should match snapshot for loop 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <YouTube
+    apiKey="youtube"
+    controls={1}
+    fullscreen={false}
+    loop={true}
+    onError={[Function]}
+    play={true}
+    resumePlayAndroid={false}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "height": "100%",
+        "width": 750,
+      }
+    }
+    videoId="ATSgwZXOuUo"
+  />
+</View>
+`;
+
+exports[`YoutubeVideo should match snapshot for no play 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <YouTube
+    apiKey="youtube"
+    controls={1}
+    fullscreen={false}
+    loop={false}
+    onError={[Function]}
+    play={false}
+    resumePlayAndroid={false}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "height": "100%",
+        "width": 750,
+      }
+    }
+    videoId="ATSgwZXOuUo"
+  />
+</View>
+`;

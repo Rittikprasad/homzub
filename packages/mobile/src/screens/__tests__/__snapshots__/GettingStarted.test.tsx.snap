@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Getting started Screen should render the getting started screen 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "flex": 1,
+        "justifyContent": "space-around",
+        "padding": 16,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "",
+        }
+      }
+      style={
+        Object {
+          "alignSelf": "center",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "lineHeight": 30,
+          "textAlign": "center",
+        }
+      }
+      textType="semiBold"
+      type="regular"
+    >
+      header
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "stretch",
+          "marginHorizontal": 20,
+        }
+      }
+    >
+      <Button
+        containerStyle={
+          Object {
+            "flex": 0,
+          }
+        }
+        onPress={[Function]}
+        testID="btnSearchProperty"
+        textSize="small"
+        title="common:searchProperties"
+        type="primary"
+      />
+      <Button
+        containerStyle={
+          Object {
+            "flex": 0,
+            "marginVertical": 20,
+          }
+        }
+        onPress={[Function]}
+        testID="btnLogin"
+        title="login"
+        type="secondary"
+      />
+      <Label
+        style={
+          Object {
+            "alignSelf": "center",
+          }
+        }
+        textType="regular"
+        type="large"
+      >
+        newAroundHere
+          
+        <Label
+          onPress={[Function]}
+          style={
+            Object {
+              "color": "#0084F8",
+            }
+          }
+          testID="lblSignup"
+          textType="bold"
+          type="large"
+        >
+          signUp
+        </Label>
+      </Label>
+    </View>
+  </View>
+</Fragment>
+`;

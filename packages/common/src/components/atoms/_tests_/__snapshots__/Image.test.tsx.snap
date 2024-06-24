@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageRound /> renders a round image 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "https://cdn57.androidauthority.net/wp-content/uploads/2020/04/oneplus-8-pro-ultra-wide-sample-twitter-1.jpg",
+    }
+  }
+  style={
+    Array [
+      undefined,
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`<ImageSquare /> renders a square image 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "https://cdn57.androidauthority.net/wp-content/uploads/2020/04/oneplus-8-pro-ultra-wide-sample-twitter-1.jpg",
+    }
+  }
+  style={
+    Array [
+      undefined,
+      Object {
+        "height": 50,
+        "width": 50,
+      },
+    ]
+  }
+/>
+`;

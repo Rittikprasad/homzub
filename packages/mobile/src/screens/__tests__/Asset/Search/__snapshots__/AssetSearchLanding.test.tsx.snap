@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Asset Search Landing Screen should render snapshot 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+        "marginTop": 16,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#F0F5F9"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#F0F5F9",
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text
+        type="regular"
+      >
+        findingRightProperty
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginTop": 6,
+          }
+        }
+        textType="bold"
+        type="regular"
+      >
+        madeEasy
+      </Text>
+      <withI18nextTranslation(GoogleSearchBar)
+        cancelButtonStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+          }
+        }
+        cancelTextStyle={
+          Object {
+            "color": "#0084F8",
+          }
+        }
+        containerStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+            "paddingBottom": 0,
+            "paddingHorizontal": 0,
+            "paddingTop": 24,
+          }
+        }
+        onFocusChange={[Function]}
+        onRef={[Function]}
+        placeholder="enterLocation"
+        updateValue={[Function]}
+        value=""
+      />
+    </View>
+  </View>
+  <WithShadowView
+    outerViewStyle={
+      Object {
+        "marginBottom": 20,
+        "paddingBottom": 0,
+        "paddingTop": 10,
+      }
+    }
+  >
+    <Button
+      containerStyle={
+        Object {
+          "flex": 0,
+          "margin": 16,
+        }
+      }
+      disabled={true}
+      onPress={[Function]}
+      title="showProperties"
+      type="primary"
+    />
+  </WithShadowView>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;
+
+exports[`Asset Search Landing Screen should render snapshot for search bar focused 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+        "marginTop": 16,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#F0F5F9"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#F0F5F9",
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text
+        type="regular"
+      >
+        findingRightProperty
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginTop": 6,
+          }
+        }
+        textType="bold"
+        type="regular"
+      >
+        madeEasy
+      </Text>
+      <withI18nextTranslation(GoogleSearchBar)
+        cancelButtonStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+          }
+        }
+        cancelTextStyle={
+          Object {
+            "color": "#0084F8",
+          }
+        }
+        containerStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+            "paddingBottom": 0,
+            "paddingHorizontal": 0,
+            "paddingTop": 24,
+          }
+        }
+        onFocusChange={[Function]}
+        onRef={[Function]}
+        placeholder="enterLocation"
+        updateValue={[Function]}
+        value=""
+      />
+    </View>
+    <Memo(CurrentLocation)
+      onGetCurrentPositionSuccess={[Function]}
+    />
+  </View>
+  <WithShadowView
+    outerViewStyle={
+      Object {
+        "marginBottom": 20,
+        "paddingBottom": 0,
+        "paddingTop": 10,
+      }
+    }
+  >
+    <Button
+      containerStyle={
+        Object {
+          "flex": 0,
+          "margin": 16,
+        }
+      }
+      disabled={true}
+      onPress={[Function]}
+      title="showProperties"
+      type="primary"
+    />
+  </WithShadowView>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;
+
+exports[`Asset Search Landing Screen should render snapshot with filterData 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "height": 30,
+        "marginTop": 16,
+      }
+    }
+  >
+    <StatusBar
+      animated={false}
+      backgroundColor="#F0F5F9"
+      barStyle="dark-content"
+      showHideTransition="fade"
+      translucent={true}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#F0F5F9",
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text
+        type="regular"
+      >
+        findingRightProperty
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginTop": 6,
+          }
+        }
+        textType="bold"
+        type="regular"
+      >
+        madeEasy
+      </Text>
+      <withI18nextTranslation(GoogleSearchBar)
+        cancelButtonStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+          }
+        }
+        cancelTextStyle={
+          Object {
+            "color": "#0084F8",
+          }
+        }
+        containerStyle={
+          Object {
+            "backgroundColor": "#F0F5F9",
+            "paddingBottom": 0,
+            "paddingHorizontal": 0,
+            "paddingTop": 24,
+          }
+        }
+        onFocusChange={[Function]}
+        onRef={[Function]}
+        placeholder="enterLocation"
+        updateValue={[Function]}
+        value=""
+      />
+    </View>
+    <ScrollViewMock
+      showsVerticalScrollIndicator={false}
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "margin": 16,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#4C5F72",
+            "marginVertical": 20,
+          }
+        }
+        textType="semiBold"
+        type="small"
+      >
+        propertyType
+      </Text>
+      <SelectionPicker
+        data={
+          Array [
+            Object {
+              "title": "Residential",
+              "value": 1,
+            },
+            Object {
+              "title": "Commercial",
+              "value": 2,
+            },
+          ]
+        }
+        onValueChange={[Function]}
+        selectedItem={
+          Array [
+            1,
+          ]
+        }
+      />
+      <Text
+        style={
+          Object {
+            "color": "#4C5F72",
+            "marginVertical": 20,
+          }
+        }
+        textType="semiBold"
+        type="small"
+      >
+        lookingFor
+      </Text>
+      <SelectionPicker
+        data={
+          Array [
+            Object {
+              "title": "Rent",
+              "value": 0,
+            },
+            Object {
+              "title": "Buy",
+              "value": 1,
+            },
+          ]
+        }
+        onValueChange={[Function]}
+        selectedItem={
+          Array [
+            0,
+          ]
+        }
+      />
+      <Range
+        containerStyle={
+          Object {
+            "marginVertical": 30,
+          }
+        }
+        currencySymbol="₹"
+        dropdownData={Array []}
+        isPriceRange={true}
+        maxChangedValue={-1}
+        minChangedValue={-1}
+        onChangeSlide={[Function]}
+        range={Object {}}
+        selectedUnit="INR"
+      />
+    </ScrollViewMock>
+  </View>
+  <WithShadowView
+    outerViewStyle={
+      Object {
+        "marginBottom": 20,
+        "paddingBottom": 0,
+        "paddingTop": 10,
+      }
+    }
+  >
+    <Button
+      containerStyle={
+        Object {
+          "flex": 0,
+          "margin": 16,
+        }
+      }
+      disabled={true}
+      onPress={[Function]}
+      title="showProperties"
+      type="primary"
+    />
+  </WithShadowView>
+  <Loader
+    visible={false}
+  />
+</Fragment>
+`;

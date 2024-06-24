@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label Component Snapshot tests for <Label> Type: Default 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 10,
+        "lineHeight": 15,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Label Component Snapshot tests for <Label> Type: Regular 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 12,
+        "lineHeight": 18,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Label Component Snapshot tests for <Label> Type: Small 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 10,
+        "lineHeight": 15,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Text Component Snapshot tests for <Text> Type: Default 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 16,
+        "lineHeight": 20,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Demo
+</Text>
+`;
+
+exports[`Text Component Snapshot tests for <Text> Type: Large 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 24,
+        "lineHeight": 26,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Demo
+</Text>
+`;
+
+exports[`Text Component Snapshot tests for <Text> Type: Regular 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 20,
+        "lineHeight": 30,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Demo
+</Text>
+`;
+
+exports[`Text Component Snapshot tests for <Text> Type: Small 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 16,
+        "lineHeight": 20,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  Demo
+</Text>
+`;

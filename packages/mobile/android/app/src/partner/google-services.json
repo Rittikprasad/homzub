@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "700231203480",
+    "firebase_url": "https://homzhub-partner-14ee1-default-rtdb.firebaseio.com",
+    "project_id": "homzhub-partner-14ee1",
+    "storage_bucket": "homzhub-partner-14ee1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700231203480:android:602f48e3e1fcdaf25aaeed",
+        "android_client_info": {
+          "package_name": "com.homzhub.partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700231203480-8d0pnlvq84msu24mku5bnq09sfjadoo7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub.partner",
+            "certificate_hash": "33f39769f23493aa5b96fdb6b305838e51c1c31b"
+          }
+        },
+        {
+          "client_id": "700231203480-b47tufev5gmqcnpelgi0uokjsshjjc4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub.partner",
+            "certificate_hash": "e65c25039ff75115a711d3630e228a906bf84144"
+          }
+        },
+        {
+          "client_id": "700231203480-tqidh7tsuu6uhvjrkb9oct2kcl3cabac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub.partner",
+            "certificate_hash": "ef2e647f142557d87842289e710308baf4002d37"
+          }
+        },
+        {
+          "client_id": "700231203480-aoob9udq5ufk1ulg06p4abkrt2craohf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpcAwZ-8Qbs5nIdjN67WLNDjWn4dqfgAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700231203480-aoob9udq5ufk1ulg06p4abkrt2craohf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700231203480-e42vd208i2ipnblq2hv4lq4uaitpuv1j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.homzhub.partner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

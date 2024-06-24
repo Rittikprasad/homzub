@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should match snapshot for android 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgba(0, 0, 0, 0.25)",
+      "bottom": 0,
+      "elevation": 1,
+      "flex": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 10,
+          "justifyContent": "center",
+          "position": "absolute",
+        }
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#4C5F72"
+        hidesWhenStopped={true}
+        size={50}
+        style={
+          Object {
+            "marginHorizontal": 24,
+            "marginVertical": 12,
+          }
+        }
+      />
+      <Label
+        style={
+          Object {
+            "color": "#4C5F72",
+            "marginBottom": 12,
+          }
+        }
+        textType="regular"
+        type="regular"
+      >
+        loading
+      </Label>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Loader should match snapshot for ios 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgba(0, 0, 0, 0.25)",
+      "bottom": 0,
+      "elevation": 1,
+      "flex": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 10,
+          "justifyContent": "center",
+          "position": "absolute",
+        }
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#4C5F72"
+        hidesWhenStopped={true}
+        size="large"
+        style={
+          Object {
+            "marginHorizontal": 24,
+            "marginVertical": 12,
+          }
+        }
+      />
+      <Label
+        style={
+          Object {
+            "color": "#4C5F72",
+            "marginBottom": 12,
+          }
+        }
+        textType="regular"
+        type="regular"
+      >
+        loading
+      </Label>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Loader should match snapshot for visible false 1`] = `""`;

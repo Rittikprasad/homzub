@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown View should render snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Memo(Header)
+    icon="left-arrow"
+    onIconPress={[Function]}
+    testID="header"
+    title=""
+    type="primary"
+  />
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "margin": 16,
+        }
+      }
+    >
+      <Markdown
+        debug={false}
+        markdownStyles={
+          Object {
+            "strong": Object {
+              "fontWeight": "bold",
+            },
+            "text": Object {
+              "fontSize": 16,
+              "fontWeight": "normal",
+            },
+          }
+        }
+        parseInline={false}
+        useDefaultStyles={true}
+      />
+    </View>
+  </ScrollView>
+</View>
+`;
+
+exports[`Markdown View should render snapshot when is from verification 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Memo(Header)
+    icon="left-arrow"
+    onIconPress={[Function]}
+    testID="header"
+    title=""
+    type="primary"
+  />
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "margin": 16,
+        }
+      }
+    >
+      <Markdown
+        debug={false}
+        markdownStyles={
+          Object {
+            "strong": Object {
+              "fontWeight": "bold",
+            },
+            "text": Object {
+              "fontSize": 16,
+              "fontWeight": "normal",
+            },
+          }
+        }
+        parseInline={false}
+        useDefaultStyles={true}
+      />
+    </View>
+  </ScrollView>
+</View>
+`;

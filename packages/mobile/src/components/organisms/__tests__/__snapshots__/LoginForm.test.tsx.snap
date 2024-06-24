@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test cases for LoginForm should render snapshot 1`] = `
+<Connect(LoginForm)
+  i18n={Object {}}
+  onLoginSuccess={[MockFunction]}
+  t={[Function]}
+  tReady={false}
+/>
+`;
+
+exports[`Test cases for LoginForm should render snapshot for dropdown selection 1`] = `
+LoginForm {
+  "context": Object {},
+  "handleSubmit": [Function],
+  "loginEmailFormSchema": [Function],
+  "loginPhoneFormSchema": [Function],
+  "password": Object {
+    "current": null,
+  },
+  "props": Object {
+    "i18n": Object {},
+    "onLoginSuccess": [MockFunction],
+    "t": [Function],
+    "tReady": false,
+  },
+  "refs": Object {},
+  "renderLoginFields": [Function],
+  "setState": [Function],
+  "state": Object {
+    "email": "",
+    "isEmailFlow": false,
+    "password": "",
+    "phone": "",
+    "phoneCode": "",
+  },
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_didScheduleRenderPhaseUpdate": false,
+      "_dispatcher": Object {
+        "readContext": [Function],
+        "useCallback": [Function],
+        "useContext": [Function],
+        "useDebugValue": [Function],
+        "useDeferredValue": [Function],
+        "useEffect": [Function],
+        "useImperativeHandle": [Function],
+        "useLayoutEffect": [Function],
+        "useMemo": [Function],
+        "useReducer": [Function],
+        "useRef": [Function],
+        "useResponder": [Function],
+        "useState": [Function],
+        "useTransition": [Function],
+      },
+      "_element": <LoginForm
+        i18n={Object {}}
+        onLoginSuccess={[MockFunction]}
+        t={[Function]}
+        tReady={false}
+      />,
+      "_firstWorkInProgressHook": null,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_isReRender": false,
+      "_newState": null,
+      "_numberOfReRenders": 0,
+      "_renderPhaseUpdates": null,
+      "_rendered": <KeyboardAvoidingView
+        behavior="padding"
+        enabled={true}
+        keyboardVerticalOffset={0}
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Formik
+          initialValues={
+            Object {
+              "email": "",
+              "isEmailFlow": false,
+              "password": "",
+              "phone": "",
+              "phoneCode": "",
+            }
+          }
+          onSubmit={[Function]}
+          validate={[Function]}
+        >
+          [Function]
+        </Formik>
+      </KeyboardAvoidingView>,
+      "_rendering": false,
+      "_updater": [Circular],
+      "_workInProgressHook": null,
+    },
+  },
+}
+`;

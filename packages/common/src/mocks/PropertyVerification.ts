@@ -1,0 +1,55 @@
+export const PropertyVerificationTypes = [
+  {
+    id: 1,
+    category: 'IDENTITY',
+    name: 'ID_PROOF',
+    title: 'ID Proof',
+    label: 'Upload ID proof',
+    icon: 'id-proof',
+    help_text: 'Supports: JPG, JPEG, PNG, PDF',
+    description: '',
+  },
+  {
+    id: 2,
+    category: 'IDENTITY',
+    name: 'SELFIE_ID_PROOF',
+    title: 'Click a selfie with the ID proof',
+    label: 'Capture Your Selfie',
+    icon: 'selfie',
+    help_text: 'Note: Feugiat sed morbi feuiat enim.',
+    description: 'Please ensure that the ID is clearly visible in your photo',
+  },
+  {
+    id: 3,
+    category: 'RENT',
+    name: 'OWNERSHIP_VERIFICATION_DOCUMENT',
+    title: 'Upload Ownership Verification Document',
+    label: 'Upload Document',
+    icon: 'document',
+    help_text: "Supports: JPG, JPEG, PNG, PDF'",
+    description:
+      'You can upload Electricity bill or Property tax reciepts which mentions your name and the property address',
+  },
+  {
+    id: 4,
+    category: 'SALE',
+    name: 'OCCUPANCY_CERTIFICATE',
+    title: 'Upload Occupancy Document',
+    label: 'Upload Document',
+    icon: 'document',
+    help_text: "Supports: JPG, JPEG, PNG, PDF'",
+    description:
+      'You can upload Electricity bill or Property tax reciepts which mentions your name and the property address',
+  },
+  {
+    id: 5,
+    category: 'SALE',
+    name: 'PROPERTY_TAX',
+    title: 'Upload Property Tax',
+    label: 'Upload Document',
+    icon: 'document',
+    help_text: "Supports: JPG, JPEG, PNG, PDF'",
+    description:
+      'You can upload Electricity bill or Property tax reciepts which mentions your name and the property address',
+  },
+];

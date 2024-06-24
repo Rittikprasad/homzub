@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar should match snapshot 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 6,
+      }
+    }
+  >
+    <Label
+      style={
+        Object {
+          "color": "#828282",
+          "marginTop": 6,
+        }
+      }
+      type="large"
+    >
+      Progress
+    </Label>
+    <Label
+      style={
+        Object {
+          "color": "#4F4F4F",
+          "marginTop": 6,
+        }
+      }
+      type="large"
+    >
+      50
+      %
+    </Label>
+  </View>
+  <Component
+    borderRadius={5}
+    color="#2CBA67"
+    progress={0.5}
+    style={
+      Object {
+        "borderColor": "#C9D6DF",
+      }
+    }
+    width={null}
+  />
+</View>
+`;

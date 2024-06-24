@@ -1,0 +1,8 @@
+{
+  "API_BASE_URL": "https://dev.homzhub.com/api/v1/",
+  "PLACES_API_BASE_URL": "https://maps.googleapis.com/maps/api/",
+  "PLACES_API_KEY": "AIzaSyAxmAMQxzq9rG52lulvRexqkDxZlqN52GE",
+  "RAZOR_API_KEY": "rzp_test_i3k6SWZsfTo9Wq",
+  "OTP_LENGTH": 6,
+  "storage_secret": "secret"
+}

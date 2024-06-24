@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginHorizontal": 26,
+      },
+      undefined,
+    ]
+  }
+>
+  <ForwardRef
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "paddingVertical": 16,
+          },
+          undefined,
+        ]
+      }
+      textType="regular"
+      type="small"
+    >
+      Test
+    </Text>
+    <Icon
+      allowFontScaling={false}
+      color="#0084F8"
+      name="check-filled"
+      size={16}
+    />
+  </ForwardRef>
+</View>
+`;

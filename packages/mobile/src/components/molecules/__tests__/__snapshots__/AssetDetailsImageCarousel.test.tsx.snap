@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetDetailsImageCarousel should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#001B36",
+        "borderRadius": 4,
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <SnapCarousel
+    activeIndex={0}
+    carouselData={
+      Array [
+        Object {
+          "fileName": "prof.jpg",
+          "isCoverImage": true,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+          "mediaAttributes": Object {
+            "videoId": 1,
+          },
+          "mediaType": "IMAGE",
+        },
+        Object {
+          "fileName": "prof.jpg",
+          "isCoverImage": true,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+          "mediaAttributes": Object {
+            "videoId": 1,
+          },
+          "mediaType": "VIDEO",
+        },
+      ]
+    }
+    carouselItem={[Function]}
+    itemWidth={750}
+    onSnapToItem={[Function]}
+    sliderWidth={750}
+    testID="assetSnap"
+  />
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "rgba(0, 27, 54, 0.25)",
+        "bottom": 15,
+        "position": "absolute",
+      }
+    }
+  >
+    <ImageVideoPagination
+      currentSlide={0}
+      totalSlides={2}
+      type="IMAGE"
+    />
+  </View>
+</View>
+`;
+
+exports[`AssetDetailsImageCarousel should match snapshot for carouselItem 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+/>
+`;
+
+exports[`AssetDetailsImageCarousel should match snapshot for carouselItem 2`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+/>
+`;

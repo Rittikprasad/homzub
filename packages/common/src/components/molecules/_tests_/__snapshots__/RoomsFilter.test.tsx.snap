@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomsFilter should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 0,
+        "paddingHorizontal": 2,
+        "paddingTop": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#4C5F72",
+        },
+        undefined,
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    beds
+  </Text>
+  <SelectionPicker
+    data={
+      Array [
+        Object {
+          "title": "common:any",
+          "value": -1,
+        },
+        Object {
+          "title": "common:one",
+          "value": 1,
+        },
+        Object {
+          "title": "common:two",
+          "value": 2,
+        },
+        Object {
+          "title": "common:three",
+          "value": 3,
+        },
+        Object {
+          "title": "common:four",
+          "value": 4,
+        },
+        Object {
+          "title": "common:fivePlus",
+          "value": 5,
+        },
+      ]
+    }
+    onValueChange={[Function]}
+    selectedItem={
+      Array [
+        1,
+      ]
+    }
+    testID="bedPicker"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#4C5F72",
+        },
+        Object {
+          "marginVertical": 15,
+        },
+      ]
+    }
+    textType="semiBold"
+    type="small"
+  >
+    baths
+  </Text>
+  <SelectionPicker
+    data={
+      Array [
+        Object {
+          "title": "common:any",
+          "value": -1,
+        },
+        Object {
+          "title": "common:onePlus",
+          "value": 1,
+        },
+        Object {
+          "title": "common:twoPlus",
+          "value": 2,
+        },
+        Object {
+          "title": "common:threePlus",
+          "value": 3,
+        },
+        Object {
+          "title": "common:fourPlus",
+          "value": 4,
+        },
+        Object {
+          "title": "common:fivePlus",
+          "value": 5,
+        },
+      ]
+    }
+    onValueChange={[Function]}
+    selectedItem={
+      Array [
+        1,
+      ]
+    }
+    testID="bathPicker"
+  />
+</View>
+`;

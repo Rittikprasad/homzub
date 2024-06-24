@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Group Component should render item group label 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+      },
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flex": 0.5,
+        "justifyContent": "center",
+        "marginEnd": 16,
+        "paddingVertical": 6,
+      }
+    }
+    testID="btngrp"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#667686",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flex": 0.5,
+        "justifyContent": "center",
+        "paddingVertical": 6,
+      }
+    }
+    testID="btngrp"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#667686",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+</View>
+`;
+
+exports[`Button Group Component should render item group text 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+      },
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flex": 0.5,
+        "justifyContent": "center",
+        "marginEnd": 16,
+        "paddingVertical": 6,
+      }
+    }
+    testID="btngrp"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#667686",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flex": 0.5,
+        "justifyContent": "center",
+        "paddingVertical": 6,
+      }
+    }
+    testID="btngrp"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#667686",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+</View>
+`;

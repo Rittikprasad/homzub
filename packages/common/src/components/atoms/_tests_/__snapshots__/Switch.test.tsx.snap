@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should match snapshot for not selected 1`] = `
+<Switch
+  ios_backgroundColor="#C9D6DF"
+  onValueChange={[MockFunction]}
+  style={
+    Object {
+      "transform": Array [
+        Object {
+          "scaleX": 0.7,
+        },
+        Object {
+          "scaleY": 0.7,
+        },
+      ],
+    }
+  }
+  thumbColor="#FFFFFF"
+  trackColor={
+    Object {
+      "false": "#C9D6DF",
+      "true": "#0084F8",
+    }
+  }
+  value={false}
+/>
+`;
+
+exports[`Switch should match snapshot for selected 1`] = `
+<Switch
+  ios_backgroundColor="#C9D6DF"
+  onValueChange={[MockFunction]}
+  style={
+    Object {
+      "transform": Array [
+        Object {
+          "scaleX": 0.7,
+        },
+        Object {
+          "scaleY": 0.7,
+        },
+      ],
+    }
+  }
+  thumbColor="#FFFFFF"
+  trackColor={
+    Object {
+      "false": "#C9D6DF",
+      "true": "#0084F8",
+    }
+  }
+  value={true}
+/>
+`;

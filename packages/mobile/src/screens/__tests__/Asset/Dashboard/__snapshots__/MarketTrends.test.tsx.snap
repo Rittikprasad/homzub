@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Market Trends Screen should render snapshot 1`] = `
+<Memo(UserScreen)
+  onBackPress={[MockFunction]}
+  pageTitle="assetMore:marketTrends"
+  scrollEnabled={false}
+  title="assetMore:more"
+>
+  <withI18nextTranslation(AssetMarketTrends)
+    onTrendPress={[Function]}
+  />
+</Memo(UserScreen)>
+`;

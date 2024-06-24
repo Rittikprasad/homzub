@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionPicker should match snapshot 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "borderRadius": 4,
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      undefined,
+      false,
+    ]
+  }
+>
+  <ForwardRef
+    disabled={false}
+    key="0"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopWidth": 1.5,
+          "flexDirection": "row",
+        },
+        Object {
+          "backgroundColor": "#0084F8",
+        },
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomStartRadius": 4,
+          "borderBottomWidth": 1.5,
+          "borderStartColor": "#0084F8",
+          "borderStartWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopStartRadius": 4,
+          "borderTopWidth": 1.5,
+        },
+        false,
+        false,
+        false,
+        false,
+      ]
+    }
+    testID="to"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "padding": 8,
+            "textAlign": "center",
+          },
+          false,
+          Object {
+            "color": "#FFFFFF",
+            "width": 375,
+          },
+        ]
+      }
+      textType="semiBold"
+      type="small"
+    >
+      Title 1
+    </Text>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#C9D6DF",
+          "borderWidth": 0.5,
+          "height": "100%",
+        }
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    disabled={false}
+    key="1"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopWidth": 1.5,
+          "flexDirection": "row",
+        },
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        false,
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomEndRadius": 4,
+          "borderBottomWidth": 1.5,
+          "borderEndColor": "#0084F8",
+          "borderEndWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopEndRadius": 4,
+          "borderTopWidth": 1.5,
+        },
+        false,
+        false,
+        false,
+      ]
+    }
+    testID="to"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "padding": 8,
+            "textAlign": "center",
+          },
+          false,
+          Object {
+            "color": "#0084F8",
+            "width": 375,
+          },
+        ]
+      }
+      textType="semiBold"
+      type="small"
+    >
+      Title 2
+    </Text>
+  </ForwardRef>
+</View>
+`;
+
+exports[`SelectionPicker should match snapshot for optional width 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "borderRadius": 4,
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      undefined,
+      false,
+    ]
+  }
+>
+  <ForwardRef
+    disabled={false}
+    key="0"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopWidth": 1.5,
+          "flexDirection": "row",
+        },
+        Object {
+          "backgroundColor": "#0084F8",
+        },
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomStartRadius": 4,
+          "borderBottomWidth": 1.5,
+          "borderStartColor": "#0084F8",
+          "borderStartWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopStartRadius": 4,
+          "borderTopWidth": 1.5,
+        },
+        false,
+        false,
+        false,
+        false,
+      ]
+    }
+    testID="to"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "padding": 8,
+            "textAlign": "center",
+          },
+          false,
+          Object {
+            "color": "#FFFFFF",
+            "width": 375,
+          },
+        ]
+      }
+      textType="semiBold"
+      type="small"
+    >
+      Title 1
+    </Text>
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#C9D6DF",
+          "borderWidth": 0.5,
+          "height": "100%",
+        }
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    disabled={false}
+    key="1"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopWidth": 1.5,
+          "flexDirection": "row",
+        },
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        false,
+        Object {
+          "borderBottomColor": "#0084F8",
+          "borderBottomEndRadius": 4,
+          "borderBottomWidth": 1.5,
+          "borderEndColor": "#0084F8",
+          "borderEndWidth": 1.5,
+          "borderTopColor": "#0084F8",
+          "borderTopEndRadius": 4,
+          "borderTopWidth": 1.5,
+        },
+        false,
+        false,
+        false,
+      ]
+    }
+    testID="to"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "padding": 8,
+            "textAlign": "center",
+          },
+          false,
+          Object {
+            "color": "#0084F8",
+            "width": 375,
+          },
+        ]
+      }
+      textType="semiBold"
+      type="small"
+    >
+      Title 2
+    </Text>
+  </ForwardRef>
+</View>
+`;

@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Asset Notifications Screen should render snapshot 1`] = `
+<Memo(UserScreen)
+  isOuterScrollEnabled={true}
+  onBackPress={[Function]}
+  pageTitle="notification"
+  rightNode={
+    <ForwardRef
+      disabled={false}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#0084F8"
+        name="tick-with-circle"
+        size={20}
+      />
+    </ForwardRef>
+  }
+  title="dashboard"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        Object {
+          "height": 800,
+        },
+      ]
+    }
+  >
+    <SearchBar
+      containerStyle={
+        Object {
+          "margin": 16,
+        }
+      }
+      placeholder="searchByKeyword"
+      updateValue={[Function]}
+      value=""
+    />
+    <Memo(NotificationBox)
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      onLoadMore={[Function]}
+      onPress={[Function]}
+      shouldEnableOuterScroll={[Function]}
+      unreadCount={0}
+    />
+  </View>
+</Memo(UserScreen)>
+`;
+
+exports[`Asset Notifications Screen should render snapshot with empty notifications 1`] = `
+<Memo(UserScreen)
+  isOuterScrollEnabled={true}
+  onBackPress={[Function]}
+  pageTitle="notification"
+  rightNode={
+    <ForwardRef
+      disabled={false}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#0084F8"
+        name="tick-with-circle"
+        size={20}
+      />
+    </ForwardRef>
+  }
+  title="dashboard"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        Object {
+          "height": 200,
+        },
+      ]
+    }
+  >
+    <SearchBar
+      containerStyle={
+        Object {
+          "margin": 16,
+        }
+      }
+      placeholder="searchByKeyword"
+      updateValue={[Function]}
+      value=""
+    />
+    <EmptyState />
+  </View>
+</Memo(UserScreen)>
+`;

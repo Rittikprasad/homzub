@@ -1,0 +1,81 @@
+require_relative '../../../node_modules/react-native/scripts/react_native_pods'
+require_relative '../../../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+project 'homzhub',
+    'Partner.Debug' => :debug,
+    'Partner.Release' => :release,
+    'Homzhub.Debug' => :debug,
+    'Homzhub.Release' => :release
+
+target 'homzhub' do
+  # Pods for homzhub
+
+  pod 'Permission-LocationAlways', :path => "../../../node_modules/react-native-permissions/ios/LocationAlways.podspec"
+  pod 'Permission-LocationWhenInUse', :path => "../../../node_modules/react-native-permissions/ios/LocationWhenInUse.podspec"
+
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+
+  config = use_native_modules!
+
+  use_react_native!(
+      :path => config[:reactNativePath],
+      # to enable hermes on iOS, change `false` to `true` and then install pods
+      :hermes_enabled => false
+    )
+
+  target 'homzhubTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+#   use_flipper!()
+  post_install do |installer|
+  installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+         config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+         config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES'
+         config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+        end
+      end
+#    flipper_post_install(installer)
+  end
+end
+
+target 'homzhub-partner' do
+    # Pods for homzhub-partner
+
+      pod 'Permission-LocationAlways', :path => "../../../node_modules/react-native-permissions/ios/LocationAlways.podspec"
+      pod 'Permission-LocationWhenInUse', :path => "../../../node_modules/react-native-permissions/ios/LocationWhenInUse.podspec"
+
+      pod 'GoogleMaps'
+      pod 'Google-Maps-iOS-Utils'
+
+      config = use_native_modules!
+
+        use_react_native!(
+            :path => config[:reactNativePath],
+            # to enable hermes on iOS, change `false` to `true` and then install pods
+            :hermes_enabled => false
+          )
+
+end
+
+target 'homzhub-tvOS' do
+  # Pods for homzhub-tvOS
+  target 'homzhub-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
+
+target 'ImageNotification' do
+  pod 'Firebase/Messaging', '~> 7.6.0' # eg 6.31.0
+end

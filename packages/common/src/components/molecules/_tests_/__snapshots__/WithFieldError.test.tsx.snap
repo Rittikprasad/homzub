@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test cases for WithFieldError render snapshot when hideError is true:: WithFieldError 1`] = `null`;
+
+exports[`Test cases for WithFieldError render snapshot:: WithFieldError 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontSize": 12,
+        "lineHeight": 18,
+        "textAlign": "left",
+      },
+      Object {
+        "fontFamily": "OpenSans-Regular",
+        "fontWeight": "400",
+      },
+      Array [
+        Object {
+          "color": "#F23C06",
+          "marginTop": 3,
+        },
+        undefined,
+      ],
+    ]
+  }
+>
+  Error
+</Text>
+`;

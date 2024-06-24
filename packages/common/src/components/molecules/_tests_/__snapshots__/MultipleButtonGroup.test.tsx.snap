@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultipleButtonGroup should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 0,
+        "flexDirection": "row",
+        "flexGrow": 1,
+        "flexWrap": "wrap",
+      },
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    key=""
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#0084F8",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "marginEnd": 10,
+        "marginVertical": 4,
+        "paddingHorizontal": 12,
+        "paddingVertical": 6,
+      }
+    }
+    testID="touchableTitle"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#FFFFFF",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+</View>
+`;
+
+exports[`MultipleButtonGroup should match snapshot with optional props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 0,
+        "flexDirection": "row",
+        "flexGrow": 1,
+        "flexWrap": "wrap",
+      },
+      Object {},
+    ]
+  }
+>
+  <ForwardRef
+    key=""
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#0084F8",
+        "borderColor": "#C9D6DF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "marginEnd": 10,
+        "marginVertical": 4,
+        "paddingHorizontal": 12,
+        "paddingVertical": 6,
+      }
+    }
+    testID="touchableTitle"
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FFFFFF",
+        }
+      }
+      textType="regular"
+      type="large"
+    />
+  </ForwardRef>
+</View>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default Login Screen should render snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <[object Object]
+    height={100}
+    width={100}
+  />
+  <Text
+    style={
+      Object {
+        "marginVertical": 10,
+      }
+    }
+    textType="regular"
+    type="small"
+  >
+    pleaseSignup
+  </Text>
+  <Button
+    containerStyle={
+      Object {
+        "flex": 0,
+        "marginVertical": 10,
+      }
+    }
+    onPress={[Function]}
+    title="signUp"
+    type="primary"
+  />
+</View>
+`;

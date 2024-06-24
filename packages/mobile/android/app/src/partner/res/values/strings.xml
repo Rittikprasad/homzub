@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Homzhub Partner</string>
+    <string name="server_client_id">1008014324415-kclkc41epc41nqjp0uc4gdgg528m1nc6.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">306770337332135</string>
+    <string name="fb_login_protocol_scheme">fb1034466930282873</string>
+    <string name="google_geolocation_id">AIzaSyC6E-iEcPeohwZXXMtSQCRDhpwDmoTIcTo</string>
+</resources>

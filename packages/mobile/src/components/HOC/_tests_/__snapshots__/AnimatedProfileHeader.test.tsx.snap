@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnimatedProfileHeader should render snapshot 1`] = `
+<AnimatedProfileHeader
+  onIconPress={[MockFunction]}
+  title="Service"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F0F5F9",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#F0F5F9",
+          "flex": 1,
+        }
+      }
+    >
+      <Memo(StatusBarComponent)
+        backgroundColor="#0084F8"
+        barStyle="light-content"
+        isTranslucent={true}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 30,
+              },
+              Object {
+                "backgroundColor": "#0084F8",
+              },
+              Object {},
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 30,
+                },
+                Object {
+                  "backgroundColor": "#0084F8",
+                },
+                Object {},
+              ]
+            }
+          >
+            <StatusBar
+              animated={false}
+              backgroundColor="#0084F8"
+              barStyle="light-content"
+              showHideTransition="fade"
+              translucent={true}
+            />
+          </View>
+        </View>
+      </Memo(StatusBarComponent)>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0084F8",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "paddingBottom": 10,
+            "paddingHorizontal": 16,
+            "paddingTop": 30,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0084F8",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingTop": 30,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#FFFFFF",
+              }
+            }
+            textType="semiBold"
+            type="regular"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontSize": 20,
+                    "lineHeight": 30,
+                    "textAlign": "left",
+                  },
+                  Object {
+                    "fontFamily": "OpenSans-SemiBold",
+                    "fontWeight": "600",
+                  },
+                  Object {
+                    "color": "#FFFFFF",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "fontFamily": "OpenSans-SemiBold",
+                      "fontWeight": "600",
+                    },
+                    Object {
+                      "color": "#FFFFFF",
+                    },
+                  ]
+                }
+              >
+                Service
+              </Text>
+            </Text>
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#99A4AF",
+                "borderColor": "#FFFFFF",
+                "borderRadius": 17.5,
+                "borderWidth": 1,
+                "height": 35,
+                "justifyContent": "center",
+                "width": 35,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#99A4AF",
+                  "borderColor": "#FFFFFF",
+                  "borderRadius": 17.5,
+                  "borderWidth": 1,
+                  "height": 35,
+                  "justifyContent": "center",
+                  "width": 35,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                  }
+                }
+                textType="regular"
+                type="small"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                        "lineHeight": 24,
+                        "textAlign": "left",
+                      },
+                      Object {
+                        "fontFamily": "OpenSans-Regular",
+                        "fontWeight": "400",
+                      },
+                      Object {
+                        "color": "#FFFFFF",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 16,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                        },
+                        Object {
+                          "fontFamily": "OpenSans-Regular",
+                          "fontWeight": "400",
+                        },
+                        Object {
+                          "color": "#FFFFFF",
+                        },
+                      ]
+                    }
+                  >
+                    U
+                  </Text>
+                </Text>
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <ScrollViewMock
+        nestedScrollEnabled={true}
+        showsVerticalScrollIndicator={false}
+      >
+        <RCTScrollView
+          nestedScrollEnabled={true}
+          showsVerticalScrollIndicator={false}
+        >
+          <RCTScrollView
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <View>
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#0084F8",
+                      "borderBottomColor": "#2CBA67",
+                      "borderBottomWidth": 8,
+                      "height": 100,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#0084F8",
+                        "borderBottomColor": "#2CBA67",
+                        "borderBottomWidth": 8,
+                        "height": 100,
+                      }
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Object {
+                      "bottom": 85,
+                      "paddingHorizontal": 16,
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "bottom": 85,
+                        "paddingHorizontal": 16,
+                        "position": "relative",
+                      }
+                    }
+                  >
+                    <Text>
+                      <Text>
+                        Testing Element
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </RCTScrollView>
+        </RCTScrollView>
+      </ScrollViewMock>
+    </View>
+  </View>
+</AnimatedProfileHeader>
+`;

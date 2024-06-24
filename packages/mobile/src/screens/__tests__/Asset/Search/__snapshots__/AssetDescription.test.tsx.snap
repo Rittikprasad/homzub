@@ -1,0 +1,746 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown View should render snapshot 1`] = `
+<Fragment>
+  <Loader
+    visible={false}
+  />
+  <Memo(SocialMediaShareComp)
+    headerTitle="shareProperty"
+    onCloseSharing={[Function]}
+    visible={false}
+  />
+</Fragment>
+`;
+
+exports[`Markdown View should render snapshot with assetDetails 1`] = `
+<Fragment>
+  <Loader
+    visible={false}
+  />
+  <Memo(HomzhubStatusBar)
+    barStyle="dark-content"
+    statusBarBackground="#FFFFFF"
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "position": "absolute",
+          "zIndex": 100,
+        },
+        Object {
+          "backgroundColor": AnimatedValue {
+            " __value": 16777215,
+          },
+          "elevation": AnimatedValue {
+            " __value": 0,
+          },
+        },
+        Object {
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "left": 15,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="left-arrow"
+        onPress={[Function]}
+        size={26}
+      />
+      <View
+        style={
+          Object {
+            "left": 10,
+            "opacity": AnimatedValue {
+              " __value": 0,
+            },
+          }
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Object {
+              "color": "#000",
+              "fontSize": 18,
+            }
+          }
+          textType="semiBold"
+          type="regular"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+          "right": 30,
+        }
+      }
+    >
+      <Favorite
+        containerStyle={
+          Object {
+            "marginHorizontal": 22.5,
+          }
+        }
+        fromScreen="PropertyAssetDescription"
+        iconColor="#FFFFFF"
+        iconSize={24}
+        leaseId={1}
+        saleId={1}
+      />
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="share"
+        onPress={[Function]}
+        size={22}
+      />
+    </View>
+  </View>
+  <ForwardRef(AnimatedComponentWrapper)
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    showsVerticalScrollIndicator={false}
+  >
+    <View
+      style={
+        Object {
+          "height": 275,
+          "opacity": AnimatedValue {
+            " __value": 0,
+          },
+        }
+      }
+    >
+      <AssetDetailsImageCarousel
+        activeSlide={0}
+        containerStyles={
+          Object {
+            "borderRadius": 0,
+          }
+        }
+        data={
+          Array [
+            Object {
+              "file_name": "prof.jpg",
+              "is_cover_image": true,
+              "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+              "media_attributes": Object {},
+              "media_type": "IMAGE",
+            },
+            Object {
+              "file_name": "DjangoBackendLLD (1).jpg",
+              "is_cover_image": false,
+              "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/01d71336-cd92-11ea-972b-34e12d38d70eDjangoBackendLLD%201.jpg",
+              "media_attributes": Object {},
+              "media_type": "IMAGE",
+            },
+          ]
+        }
+        enterFullScreen={[Function]}
+        updateSlide={[Function]}
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "paddingHorizontal": 16,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#E5E8EB",
+            "borderBottomWidth": 1,
+          }
+        }
+      >
+        <ShieldGroup
+          isInfoRequired={true}
+          propertyType="Apartment / Condo"
+          text="It was popularised in the 1960s with the release of Letraset sheets."
+        />
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginVertical": 8,
+            }
+          }
+        >
+          <Memo(PricePerUnit)
+            currency={
+              Object {
+                "currency_code": "INR",
+                "currency_name": "Indian Rupee",
+                "currency_symbol": "₹",
+              }
+            }
+            price={0}
+            unit="mo"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginVertical": 8,
+            }
+          }
+        >
+          <PropertyAddress
+            isIcon={false}
+            subAddress=" "
+            subAddressStyle={
+              Object {
+                "marginLeft": 0,
+                "maxWidth": 240,
+              }
+            }
+          />
+          <ForwardRef
+            disabled={false}
+            onPress={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "borderColor": "#E5E8EB",
+                  "borderWidth": 1,
+                  "height": 30,
+                  "marginRight": 14,
+                }
+              }
+            />
+            <Icon
+              allowFontScaling={false}
+              color="#0084F8"
+              name="house-marker"
+              size={30}
+              style={
+                Object {
+                  "marginHorizontal": 6,
+                }
+              }
+            />
+          </ForwardRef>
+        </View>
+        <PropertyAmenities
+          containerStyle={
+            Object {
+              "flexWrap": "wrap",
+              "justifyContent": "space-between",
+              "marginBottom": 14,
+            }
+          }
+          data={
+            Array [
+              Object {
+                "icon": "furnishing",
+                "iconColor": "#33495E",
+                "iconSize": 20,
+                "label": "None",
+              },
+              Object {
+                "icon": "open-parking",
+                "iconColor": "#33495E",
+                "iconSize": 20,
+                "label": "-",
+              },
+              Object {
+                "icon": "area",
+                "iconColor": "#33495E",
+                "iconSize": 20,
+                "label": "-",
+              },
+            ]
+          }
+          direction="row"
+        />
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingVertical": 16,
+            }
+          }
+        >
+          <ForwardRef
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 5,
+                  "flexDirection": "row",
+                  "padding": 16,
+                },
+                Object {
+                  "backgroundColor": "rgba(0, 132, 248, 0.1)",
+                },
+              ]
+            }
+          >
+            <Icon
+              allowFontScaling={false}
+              color="#0084F8"
+              name="offers"
+              size={20}
+            />
+            <Text
+              style={
+                Object {
+                  "color": "#0084F8",
+                  "paddingLeft": 8,
+                }
+              }
+              type="small"
+            >
+              assetMore:makeAnOfferText
+            </Text>
+          </ForwardRef>
+        </View>
+      </View>
+      <withI18nextTranslation(PropertyDetail)
+        detail={
+          Object {
+            "amenities": Array [
+              Object {
+                "attachment": Object {
+                  "id": 7,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/096a9ac6a0c144158a1a3b893e6e8661.svg",
+                  "name": "gym.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 1,
+                "name": "Gymnasium",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 8,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/32cef5dd96c54363848f16a28157c9bd.svg",
+                  "name": "pool.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 2,
+                "name": "Swimming Pool",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 9,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/e1b50cf36b274f82832d06d534740dfe.svg",
+                  "name": "cctv.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 3,
+                "name": "CCTV Security",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 10,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/744c4c3752f34240aefad6b7ca31cdb0.svg",
+                  "name": "parking.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 4,
+                "name": "Parking",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 11,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/8ef69654fe634098bfb3b0d749bb6abe.svg",
+                  "name": "wifi.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 5,
+                "name": "Wifi",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 12,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/58f8157e972742f896044b2c943a7319.svg",
+                  "name": "intercom.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 6,
+                "name": "Intercom",
+              },
+              Object {
+                "attachment": Object {
+                  "id": 13,
+                  "link": "https://homzhub-bucket.s3.us-east-1.amazonaws.com/19fe670df70c4ff8b9fc6de68bef8efb.svg",
+                  "name": "balcony.svg",
+                },
+                "category": Object {
+                  "id": 1,
+                  "name": "General",
+                },
+                "id": 7,
+                "name": "Balcony",
+              },
+            ],
+            "assetGroup": Object {
+              "id": 1,
+              "name": "Residential",
+            },
+            "assetLocation": Object {
+              "latitude": 25.619,
+              "longitude": 85.123,
+            },
+            "assetType": Object {
+              "id": 2,
+              "name": "Apartment / Condo",
+            },
+            "attachments": Array [
+              Object {
+                "file_name": "prof.jpg",
+                "is_cover_image": true,
+                "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+                "media_attributes": Object {},
+                "media_type": "IMAGE",
+              },
+              Object {
+                "file_name": "DjangoBackendLLD (1).jpg",
+                "is_cover_image": false,
+                "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/01d71336-cd92-11ea-972b-34e12d38d70eDjangoBackendLLD%201.jpg",
+                "media_attributes": Object {},
+                "media_type": "IMAGE",
+              },
+            ],
+            "block_number": "B",
+            "carpet_area": 5000,
+            "carpet_area_unit": Object {
+              "id": 1,
+              "label": "Square feet",
+              "name": "SQ_FT",
+              "title": "Sq.ft",
+            },
+            "city_name": "Bengaluru",
+            "contacts": Object {
+              "country_code": "+91",
+              "email": "anuvrat.somnath@nineleaps.com",
+              "full_name": "Anuvrat Somnath",
+              "id": 1,
+              "phone_number": "7903470293",
+            },
+            "country": Object {
+              "currencies": Array [
+                Object {
+                  "currency_code": "INR",
+                  "currency_name": "Indian Rupee",
+                  "currency_symbol": "₹",
+                },
+              ],
+              "id": 1,
+              "iso2_code": "IN",
+              "iso3_code": "IN",
+              "name": "India",
+              "phone_codes": Array [],
+            },
+            "country_name": "India",
+            "description": "It is a long established fact that the readable content of a page when looking at its layout.",
+            "features": Array [
+              Object {
+                "locale_key": "security_deposit",
+                "name": "Security Deposit",
+                "value": "₹ 2 Lacs",
+              },
+              Object {
+                "locale_key": "min_lease_period",
+                "name": "Min Lease Period",
+                "value": "3 Months",
+              },
+              Object {
+                "locale_key": "maintenance_paid_by",
+                "name": "Maintenance Paid By",
+                "value": "Owner",
+              },
+              Object {
+                "locale_key": "utilities_paid_by",
+                "name": "Utilities Paid By",
+                "value": "Tenant",
+              },
+              Object {
+                "locale_key": "maintenance",
+                "name": "Maintenance",
+                "value": "₹ 5,000",
+              },
+              Object {
+                "locale_key": "building_age",
+                "name": "Building Age",
+                "value": "5 Years",
+              },
+              Object {
+                "locale_key": "building_type",
+                "name": "Building Type",
+                "value": "Apartment",
+              },
+            ],
+            "floor_number": 1,
+            "furnishing": "NONE",
+            "highlights": Array [
+              Object {
+                "covered": true,
+                "name": "Power Backup",
+              },
+              Object {
+                "covered": true,
+                "name": "Gated Society",
+              },
+            ],
+            "id": 1,
+            "is_managed": true,
+            "lastVisitedStep": Object {
+              "assetCreation": Object {
+                "percentage": 10,
+              },
+              "listing": Object {
+                "type": "RENT",
+              },
+            },
+            "latitude": 25.619,
+            "leaseTerm": Object {
+              "annual_increment_percentage": 11,
+              "available_from_date": "2020-07-03",
+              "currency_code": "INR",
+              "furnishing_status": "Semi",
+              "id": 1,
+              "maintenance_amount": 1200,
+              "maintenance_paid_by": "5th Every Month",
+              "maintenance_schedule": null,
+              "minimum_lease_period": 11,
+              "monthly_rent_price": 20000,
+              "security_deposit_price": 40000,
+              "utility_paid_by": "2",
+            },
+            "longitude": 85.123,
+            "postal_code": "560097",
+            "posted_on": "2020-06-03",
+            "project_name": "Malti Kunj",
+            "saleTerm": Object {
+              "available_from_date": "2020-08-20",
+              "currency_code": "INR",
+              "expected_booking_amount": 1234,
+              "expected_price": 1234,
+              "id": 1,
+              "maintenance_amount": 100,
+              "maintenance_schedule": "MONTHLY",
+              "year_of_construction": 2000,
+            },
+            "spaces": Array [
+              Object {
+                "count": 1,
+                "id": 1,
+                "name": "Bedroom",
+              },
+              Object {
+                "count": 1,
+                "id": 2,
+                "name": "Bathroom",
+              },
+            ],
+            "state_name": "Karnataka",
+            "total_floors": 4,
+            "unit_number": "41",
+            "verifications": Object {
+              "description": "It was popularised in the 1960s with the release of Letraset sheets.",
+              "verification_status": 3,
+            },
+          }
+        }
+        isFromPortfolio={false}
+      />
+      <View
+        style={
+          Object {
+            "marginTop": 24,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#4C5F72",
+            }
+          }
+          textType="semiBold"
+          type="small"
+        >
+          exploreNeighbourhood
+        </Text>
+        <Label
+          style={
+            Object {
+              "color": "#33495E",
+              "marginTop": 12,
+            }
+          }
+          textType="regular"
+          type="large"
+        />
+        <MapView
+          initialRegion={
+            Object {
+              "latitude": 25.619,
+              "latitudeDelta": 0.01,
+              "longitude": 85.123,
+              "longitudeDelta": 0.01,
+            }
+          }
+          pointerEvents="none"
+          provider="google"
+          style={
+            Object {
+              "flex": 1,
+              "height": 180,
+              "marginTop": 12,
+            }
+          }
+        >
+          <MapMarker
+            coordinate={
+              Object {
+                "latitude": 25.619,
+                "longitude": 85.123,
+              }
+            }
+            stopPropagation={false}
+          >
+            <Memo(CustomMarker)
+              selected={true}
+            />
+          </MapMarker>
+        </MapView>
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": 4,
+              "bottom": 36,
+              "paddingHorizontal": 12,
+              "paddingVertical": 6,
+              "position": "absolute",
+            }
+          }
+        >
+          <Label
+            style={
+              Object {
+                "color": "#0084F8",
+              }
+            }
+            textType="regular"
+            type="regular"
+          >
+            exploreMap
+          </Label>
+        </ForwardRef>
+        <Divider
+          containerStyles={
+            Object {
+              "marginTop": 24,
+            }
+          }
+        />
+      </View>
+      <Text
+        style={
+          Object {
+            "color": "#4C5F72",
+            "marginTop": 10,
+          }
+        }
+        textType="regular"
+        type="small"
+      >
+        property:contactOwner
+      </Text>
+      <Memo(ContactPerson)
+        designation="Owner"
+        email="anuvrat.somnath@nineleaps.com"
+        isShadowRequired={false}
+        onContactTypeClicked={[Function]}
+        phoneNumber="undefinedundefined"
+      />
+      <Divider />
+      <Memo(CollapsibleSection)
+        isDividerRequired={true}
+        title="reviewsRatings"
+      >
+        <EmptyState
+          icon="reviews"
+          title="property:noPropertyReview"
+        />
+      </Memo(CollapsibleSection)>
+    </View>
+  </ForwardRef(AnimatedComponentWrapper)>
+  <Memo(ContactPerson)
+    designation="Owner"
+    email="anuvrat.somnath@nineleaps.com"
+    isShadowRequired={true}
+    onContactTypeClicked={[Function]}
+    phoneNumber="undefinedundefined"
+  />
+  <Memo(SocialMediaShareComp)
+    headerTitle="shareProperty"
+    onCloseSharing={[Function]}
+    sharingUrl="https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg"
+    visible={false}
+  />
+</Fragment>
+`;

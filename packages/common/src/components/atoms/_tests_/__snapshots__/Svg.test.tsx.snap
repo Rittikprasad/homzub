@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Svg should match snapshot 1`] = `
+<SvgUri
+  height="100%"
+  uri="https://socion-s3-bucket.s3.amazonaws.com/Search_Onboarding.svg"
+  width="100%"
+/>
+`;

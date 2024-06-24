@@ -1,0 +1,10 @@
+.DS_Store
+.vscode
+node_modules/
+yarn-error.log
+.idea/
+yarn.lock
+
+# misc
+.env
+.env.development

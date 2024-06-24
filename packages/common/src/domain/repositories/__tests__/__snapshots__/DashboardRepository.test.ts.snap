@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardRepository should get Asset Metrics 1`] = `
+AssetMetrics {
+  "_assetMetrics": AssetMetricsData {
+    "_assetGroups": Array [],
+    "_assets": Count {
+      "_count": 10,
+    },
+    "_miscellaneous": Array [
+      Miscellaneous {
+        "_code": "",
+        "_colorCode": "#C2E4FF",
+        "_count": 3,
+        "_currency_symbol": "",
+        "_label": "Occupied",
+        "_name": "OCCUPIED",
+      },
+      Miscellaneous {
+        "_code": "",
+        "_colorCode": "#C2E4FF",
+        "_count": 2,
+        "_currency_symbol": "",
+        "_label": "Vacant",
+        "_name": "VACANT",
+      },
+      Miscellaneous {
+        "_code": "",
+        "_colorCode": "#C2E4FF",
+        "_count": 1,
+        "_currency_symbol": "",
+        "_label": "Renewal",
+        "_name": "RENEWAL",
+      },
+      Miscellaneous {
+        "_code": "",
+        "_colorCode": "#C2E4FF",
+        "_count": 4,
+        "_currency_symbol": "",
+        "_label": "Sell",
+        "_name": "SELL",
+      },
+    ],
+    "_userServicePlan": UserServicePlan {
+      "_id": 0,
+      "_label": "",
+      "_name": "",
+    },
+  },
+  "_dashboardRole": "OWNER",
+  "_ownerMetrics": AssetMetricsData {
+    "_assetGroups": Array [],
+    "_assets": Count {
+      "_count": 0,
+    },
+    "_miscellaneous": Array [],
+    "_userServicePlan": UserServicePlan {
+      "_id": 0,
+      "_label": "",
+      "_name": "",
+    },
+  },
+  "_tenantMetrics": AssetMetricsData {
+    "_assetGroups": Array [],
+    "_assets": Count {
+      "_count": 0,
+    },
+    "_miscellaneous": Array [],
+    "_userServicePlan": UserServicePlan {
+      "_id": 0,
+      "_label": "",
+      "_name": "",
+    },
+  },
+  "_updates": AssetUpdates {
+    "_dues": Count {
+      "_count": 2,
+    },
+    "_messages": MetricsCount {
+      "_closed": Count {
+        "_count": 0,
+      },
+      "_count": 0,
+      "_message": Count {
+        "_count": 0,
+      },
+      "_offer": Count {
+        "_count": 0,
+      },
+      "_open": Count {
+        "_count": 0,
+      },
+      "_read": Count {
+        "_count": 0,
+      },
+      "_siteVisit": Count {
+        "_count": 0,
+      },
+      "_unread": Count {
+        "_count": 0,
+      },
+    },
+    "_notifications": MetricsCount {
+      "_closed": Count {
+        "_count": 0,
+      },
+      "_count": 2,
+      "_message": Count {
+        "_count": 0,
+      },
+      "_offer": Count {
+        "_count": 0,
+      },
+      "_open": Count {
+        "_count": 0,
+      },
+      "_read": Count {
+        "_count": 0,
+      },
+      "_siteVisit": Count {
+        "_count": 0,
+      },
+      "_unread": Count {
+        "_count": 0,
+      },
+    },
+    "_tickets": MetricsCount {
+      "_closed": Count {
+        "_count": 0,
+      },
+      "_count": 3,
+      "_message": Count {
+        "_count": 0,
+      },
+      "_offer": Count {
+        "_count": 0,
+      },
+      "_open": Count {
+        "_count": 0,
+      },
+      "_read": Count {
+        "_count": 0,
+      },
+      "_siteVisit": Count {
+        "_count": 0,
+      },
+      "_unread": Count {
+        "_count": 0,
+      },
+    },
+  },
+  "_userServicePlan": UserServicePlan {
+    "_id": 1,
+    "_label": "HomzHub PRO",
+    "_name": "HOMZHUB_PRO",
+  },
+}
+`;
+
+exports[`DashboardRepository should get advertisements 1`] = `
+AssetAdvertisement {
+  "_count": 1,
+  "_links": Links {
+    "_next": "",
+    "_previous": "",
+  },
+  "_results": Array [
+    AssetAdvertisementResults {
+      "_attachment": Attachment {
+        "_attachmentLink": "",
+        "_fileName": "DjangoBackendLLD (1).jpg",
+        "_id": 14,
+        "_isCoverImage": false,
+        "_label": "",
+        "_link": "https://www.bookadsnow.com/images/mobile/Newspaper-banner_3.jpg",
+        "_mediaAttributes": MediaAttributes {
+          "_duration": "",
+          "_thumbnail": "",
+          "_thumbnailBest": "",
+          "_thumbnailHD": "",
+          "_thumbnailSD": "",
+          "_title": "",
+          "_videoId": "",
+        },
+        "_mediaType": "IMAGE",
+        "_name": "",
+        "_presignedReferenceKey": "",
+      },
+      "_id": 1,
+      "_link": "https://www.google.com",
+    },
+    AssetAdvertisementResults {
+      "_attachment": Attachment {
+        "_attachmentLink": "",
+        "_fileName": "DjangoBackendLLD (1).jpg",
+        "_id": 14,
+        "_isCoverImage": false,
+        "_label": "",
+        "_link": "https://is1-3.housingcdn.com/4f2250e8/6ec86b0c4555a4f83e0ea77c552db2a0/v0/fs/vessella_meadows-narsingi-hyderabad-vessella_group.jpg",
+        "_mediaAttributes": MediaAttributes {
+          "_duration": "",
+          "_thumbnail": "",
+          "_thumbnailBest": "",
+          "_thumbnailHD": "",
+          "_thumbnailSD": "",
+          "_title": "",
+          "_videoId": "",
+        },
+        "_mediaType": "IMAGE",
+        "_name": "",
+        "_presignedReferenceKey": "",
+      },
+      "_id": 2,
+      "_link": "https://www.google.com",
+    },
+    AssetAdvertisementResults {
+      "_attachment": Attachment {
+        "_attachmentLink": "",
+        "_fileName": "DjangoBackendLLD (1).jpg",
+        "_id": 14,
+        "_isCoverImage": false,
+        "_label": "",
+        "_link": "https://www.icicibank.com/managed-assets/images/blog/big/how-is-tax-on-sale-of-inherited-property-calculated.jpg",
+        "_mediaAttributes": MediaAttributes {
+          "_duration": "",
+          "_thumbnail": "",
+          "_thumbnailBest": "",
+          "_thumbnailHD": "",
+          "_thumbnailSD": "",
+          "_title": "",
+          "_videoId": "",
+        },
+        "_mediaType": "IMAGE",
+        "_name": "",
+        "_presignedReferenceKey": "",
+      },
+      "_id": 3,
+      "_link": "https://www.google.com",
+    },
+  ],
+}
+`;

@@ -1,0 +1,72 @@
+{
+  "project_info": {
+    "project_number": "894249713165",
+    "firebase_url": "https://homzhub-deeplinking.firebaseio.com",
+    "project_id": "homzhub-deeplinking",
+    "storage_bucket": "homzhub-deeplinking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894249713165:android:e57126d6061e41cb12df44",
+        "android_client_info": {
+          "package_name": "com.homzhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894249713165-3k466ns9jctl4gco38j6hkq3k8d3kv7p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub",
+            "certificate_hash": "33f39769f23493aa5b96fdb6b305838e51c1c31b"
+          }
+        },
+        {
+          "client_id": "894249713165-emkoed21qi57lqlaf703tg2oo41cia9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub",
+            "certificate_hash": "e65c25039ff75115a711d3630e228a906bf84144"
+          }
+        },
+        {
+          "client_id": "894249713165-h7tf369p1pqc7k3rh0tga6urnf0jcvpt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homzhub",
+            "certificate_hash": "ef2e647f142557d87842289e710308baf4002d37"
+          }
+        },
+        {
+          "client_id": "894249713165-ig82ihgl39q5u4sqk5vu0u1vr67rqnhk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX0TTAKXeT2wmxblaZeMOumS6VYI9t8C0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894249713165-ig82ihgl39q5u4sqk5vu0u1vr67rqnhk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "894249713165-4c1riqt38nv51dsvlumfhsoadmnjsomr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.homzhub.rn",
+                "app_store_id": "1516772395"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

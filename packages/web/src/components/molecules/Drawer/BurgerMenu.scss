@@ -1,0 +1,129 @@
+@mixin body-style {
+  body {
+    overflow: hidden;
+  }
+}
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow-wrap: unset;
+  z-index: 3000;
+}
+.landing-bm {
+  .bm-menu-wrap {
+    top: 84px;
+    right: 0px;
+  }
+}
+
+.dashboard-bm {
+  .bm-menu-wrap {
+    top: 50px;
+    left: 0px;
+  }
+}
+
+#outer-container {
+  height: 100vh;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: white;
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 25px;
+  height: 15px;
+  right: 36px;
+  top: 36px;
+  z-index: 2000;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  display: none;
+}
+.react-burger-cross-btn {
+  top: 15px;
+}
+
+/* Color/shape of close button cross */
+span.bm-cross {
+  background: #000;
+  height: 20px !important;
+}
+
+body.bm-menu {
+  overflow-y: hidden;
+  height: 100vh;
+}
+/* General sidebar styles */
+.bm-menu {
+  background: white;
+  font-size: 1.15em;
+  z-index: 2000;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+.noscroll {
+  overflow: hidden;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.signupMenu {
+  background-color: #f4f9fe;
+}
+
+.menuButton {
+  right: 100px;
+  top: 50px;
+  z-index: 2000;
+}

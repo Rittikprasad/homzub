@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#808D9B",
+            "borderColor": "#FFFFFF",
+            "borderWidth": 1,
+            "justifyContent": "center",
+          },
+          Object {
+            "borderRadius": 21,
+            "height": 42,
+            "width": 42,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFFFFF",
+          }
+        }
+        textType="regular"
+        type="small"
+      >
+        JD
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "marginLeft": 12,
+          "marginRight": 6,
+          "width": 335,
+        }
+      }
+    >
+      <Label
+        adjustsFontSizeToFit={true}
+        minimumFontScale={0.5}
+        textType="regular"
+        type="large"
+      >
+        John Doe
+      </Label>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Label
+          style={
+            Object {
+              "color": "#667686",
+              "marginTop": 2,
+            }
+          }
+          textType="regular"
+          type="regular"
+        >
+          CEO
+        </Label>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Avatar should match snapshot with phone number 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#808D9B",
+            "borderColor": "#FFFFFF",
+            "borderWidth": 1,
+            "justifyContent": "center",
+          },
+          Object {
+            "borderRadius": 21,
+            "height": 42,
+            "width": 42,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFFFFF",
+          }
+        }
+        textType="regular"
+        type="small"
+      >
+        JD
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "marginLeft": 12,
+          "marginRight": 6,
+          "width": 335,
+        }
+      }
+    >
+      <Label
+        adjustsFontSizeToFit={true}
+        minimumFontScale={0.5}
+        textType="regular"
+        type="large"
+      >
+        John Doe
+      </Label>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Label
+          style={
+            Object {
+              "color": "#667686",
+              "marginTop": 2,
+            }
+          }
+          textType="regular"
+          type="regular"
+        >
+          CEO
+        </Label>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#C9D6DF"
+            name="round-filled"
+            size={12}
+            style={
+              Object {
+                "marginHorizontal": 4,
+                "marginTop": 6,
+              }
+            }
+          />
+          <Label
+            style={
+              Object {
+                "color": "#667686",
+                "marginTop": 2,
+              }
+            }
+            textType="regular"
+            type="regular"
+          >
+            9876543210
+          </Label>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test cases for SignUpForm should render snapshot 1`] = `
+<Connect(SignUpForm)
+  i18n={Object {}}
+  onSubmitFormSuccess={[MockFunction]}
+  t={[Function]}
+  tReady={false}
+/>
+`;
+
+exports[`Test cases for SignUpForm should render snapshot for dropdown selection 1`] = `
+SignUpForm {
+  "context": Object {},
+  "email": Object {
+    "current": null,
+  },
+  "formSchema": [Function],
+  "handleSubmit": [Function],
+  "lastName": Object {
+    "current": null,
+  },
+  "phone": Object {
+    "current": null,
+  },
+  "props": Object {
+    "i18n": Object {},
+    "onSubmitFormSuccess": [MockFunction],
+    "t": [Function],
+    "tReady": false,
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": Object {
+    "email": "",
+    "firstName": "",
+    "lastName": "",
+    "password": "",
+    "phone": "",
+    "phoneCode": "",
+    "referralCode": undefined,
+  },
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_didScheduleRenderPhaseUpdate": false,
+      "_dispatcher": Object {
+        "readContext": [Function],
+        "useCallback": [Function],
+        "useContext": [Function],
+        "useDebugValue": [Function],
+        "useDeferredValue": [Function],
+        "useEffect": [Function],
+        "useImperativeHandle": [Function],
+        "useLayoutEffect": [Function],
+        "useMemo": [Function],
+        "useReducer": [Function],
+        "useRef": [Function],
+        "useResponder": [Function],
+        "useState": [Function],
+        "useTransition": [Function],
+      },
+      "_element": <SignUpForm
+        i18n={Object {}}
+        onSubmitFormSuccess={[MockFunction]}
+        t={[Function]}
+        tReady={false}
+      />,
+      "_firstWorkInProgressHook": null,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_isReRender": false,
+      "_newState": null,
+      "_numberOfReRenders": 0,
+      "_renderPhaseUpdates": null,
+      "_rendered": <View
+        style={
+          Object {
+            "flex": 1,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Formik
+          enableReinitialize={true}
+          initialValues={
+            Object {
+              "email": "",
+              "firstName": "",
+              "lastName": "",
+              "password": "",
+              "phone": "",
+              "phoneCode": "",
+              "referralCode": undefined,
+            }
+          }
+          onSubmit={[Function]}
+          validate={[Function]}
+        >
+          [Function]
+        </Formik>
+      </View>,
+      "_rendering": false,
+      "_updater": [Circular],
+      "_workInProgressHook": null,
+    },
+  },
+}
+`;

@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetAdvertisementBanner should call function 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 200,
+      "marginTop": 16,
+    }
+  }
+>
+  <SnapCarousel
+    activeIndex={1}
+    carouselData={
+      Array [
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://www.bookadsnow.com/images/mobile/Newspaper-banner_3.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 1,
+          "link": "https://www.google.com",
+        },
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://is1-3.housingcdn.com/4f2250e8/6ec86b0c4555a4f83e0ea77c552db2a0/v0/fs/vessella_meadows-narsingi-hyderabad-vessella_group.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 2,
+          "link": "https://www.google.com",
+        },
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://www.icicibank.com/managed-assets/images/blog/big/how-is-tax-on-sale-of-inherited-property-calculated.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 3,
+          "link": "https://www.google.com",
+        },
+      ]
+    }
+    carouselItem={[Function]}
+    containerStyle={
+      Object {
+        "borderRadius": 4,
+      }
+    }
+    itemWidth={718}
+    onSnapToItem={[Function]}
+    sliderWidth={718}
+    testID="bannerSnap"
+  />
+  <PaginationComponent
+    activeDotStyle={
+      Object {
+        "borderWidth": 1,
+      }
+    }
+    activeSlide={1}
+    containerStyle={
+      Object {
+        "alignSelf": "center",
+        "bottom": 0,
+        "paddingVertical": 10,
+        "position": "absolute",
+      }
+    }
+    dotsLength={3}
+    inactiveDotStyle={
+      Object {
+        "backgroundColor": "#808D9B",
+        "borderColor": "rgba(0,0,0,0)",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`AssetAdvertisementBanner should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 200,
+      "marginTop": 16,
+    }
+  }
+>
+  <SnapCarousel
+    activeIndex={0}
+    carouselData={
+      Array [
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://www.bookadsnow.com/images/mobile/Newspaper-banner_3.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 1,
+          "link": "https://www.google.com",
+        },
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://is1-3.housingcdn.com/4f2250e8/6ec86b0c4555a4f83e0ea77c552db2a0/v0/fs/vessella_meadows-narsingi-hyderabad-vessella_group.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 2,
+          "link": "https://www.google.com",
+        },
+        Object {
+          "attachment": Object {
+            "file_name": "DjangoBackendLLD (1).jpg",
+            "id": 14,
+            "link": "https://www.icicibank.com/managed-assets/images/blog/big/how-is-tax-on-sale-of-inherited-property-calculated.jpg",
+            "media_attributes": Object {},
+            "media_type": "IMAGE",
+          },
+          "id": 3,
+          "link": "https://www.google.com",
+        },
+      ]
+    }
+    carouselItem={[Function]}
+    containerStyle={
+      Object {
+        "borderRadius": 4,
+      }
+    }
+    itemWidth={718}
+    onSnapToItem={[Function]}
+    sliderWidth={718}
+    testID="bannerSnap"
+  />
+  <PaginationComponent
+    activeDotStyle={
+      Object {
+        "borderWidth": 1,
+      }
+    }
+    activeSlide={0}
+    containerStyle={
+      Object {
+        "alignSelf": "center",
+        "bottom": 0,
+        "paddingVertical": 10,
+        "position": "absolute",
+      }
+    }
+    dotsLength={3}
+    inactiveDotStyle={
+      Object {
+        "backgroundColor": "#808D9B",
+        "borderColor": "rgba(0,0,0,0)",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`AssetAdvertisementBanner should match snapshot with null banners 1`] = `""`;
+
+exports[`AssetAdvertisementBanner should match snapshot without banners 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 200,
+      "marginTop": 16,
+    }
+  }
+>
+  <SnapCarousel
+    activeIndex={0}
+    carouselData={Array []}
+    carouselItem={[Function]}
+    containerStyle={
+      Object {
+        "borderRadius": 4,
+      }
+    }
+    itemWidth={718}
+    onSnapToItem={[Function]}
+    sliderWidth={718}
+    testID="bannerSnap"
+  />
+  <PaginationComponent
+    activeDotStyle={
+      Object {
+        "borderWidth": 1,
+      }
+    }
+    activeSlide={0}
+    containerStyle={
+      Object {
+        "alignSelf": "center",
+        "bottom": 0,
+        "paddingVertical": 10,
+        "position": "absolute",
+      }
+    }
+    dotsLength={0}
+    inactiveDotStyle={
+      Object {
+        "backgroundColor": "#808D9B",
+        "borderColor": "rgba(0,0,0,0)",
+      }
+    }
+  />
+</View>
+`;

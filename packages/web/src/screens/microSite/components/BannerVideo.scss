@@ -1,0 +1,19 @@
+.wistia_responsive_padding {
+  padding-top: 12%;
+  position: static;
+  background-color: #f0f5f9;
+}
+.wistia_embed {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+#image {
+  filter: blur(5px);
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.banner-video {
+  background-color: #f0f5f9;
+}

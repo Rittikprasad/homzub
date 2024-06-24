@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Form Screen should render snapshot 1`] = `
+<HandleBack
+  navigation={
+    Object {
+      "goBack": [MockFunction],
+    }
+  }
+  onBack={[Function]}
+>
+  <Memo(Header)
+    barVisible={false}
+    icon="close"
+    onIconPress={[Function]}
+    testID="header"
+    title="contact"
+    type="secondary"
+  />
+  <KeyboardAwareScrollView
+    enableAutomaticScroll={true}
+    enableOnAndroid={false}
+    enableResetScrollToCoords={true}
+    extraHeight={75}
+    extraScrollHeight={0}
+    keyboardOpeningTime={250}
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "paddingHorizontal": 16,
+        "paddingVertical": 10,
+      }
+    }
+    viewIsInsideTabBar={false}
+  >
+    <Label
+      style={
+        Object {
+          "color": "#33495E",
+        }
+      }
+      textType="semiBold"
+      type="large"
+    >
+      youContacting
+    </Label>
+    <Memo(Avatar)
+      containerStyle={
+        Object {
+          "paddingVertical": 18,
+        }
+      }
+      designation="Owner"
+      fullName=""
+      phoneNumber="undefinedundefined"
+    />
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#E5E8EB",
+          "marginBottom": 24,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#33495E",
+        }
+      }
+      textType="semiBold"
+      type="small"
+    >
+      iAm
+    </Text>
+    <RadioButtonGroup
+      containerStyle={
+        Object {
+          "marginVertical": 16,
+        }
+      }
+      data={
+        Array [
+          Object {
+            "id": 1,
+            "label": "Tenant",
+            "order": 1,
+            "value": "TENANT",
+          },
+          Object {
+            "id": 2,
+            "label": "Property Agent",
+            "order": 2,
+            "value": "PROPERTY_AGENT",
+          },
+        ]
+      }
+      onToggle={[Function]}
+      selectedValue={1}
+    />
+    <Label
+      style={
+        Object {
+          "color": "#33495E",
+          "marginVertical": 12,
+        }
+      }
+      textType="semiBold"
+      type="large"
+    >
+      lookingFor
+    </Label>
+    <MultipleButtonGroup
+      containerStyle={
+        Object {
+          "marginBottom": 18,
+        }
+      }
+      data={
+        Array [
+          Object {
+            "title": "1BHK",
+            "value": "1BHK",
+          },
+          Object {
+            "title": "2BHK",
+            "value": "2BHK",
+          },
+          Object {
+            "title": "3BHK",
+            "value": "3BHK",
+          },
+          Object {
+            "title": "4BHK",
+            "value": "4BHK",
+          },
+          Object {
+            "title": "5BHK+",
+            "value": "5BHK+",
+          },
+        ]
+      }
+      onItemSelect={[Function]}
+      selectedItem={Array []}
+    />
+    <Label
+      style={
+        Object {
+          "color": "#33495E",
+          "marginVertical": 12,
+        }
+      }
+      textType="semiBold"
+      type="large"
+    >
+      preferredTime
+    </Label>
+    <TimeSlotGroup
+      data={
+        Array [
+          Object {
+            "formatted": "8 AM - 12 PM",
+            "from": 8,
+            "icon": "sun-rise",
+            "id": 1,
+            "to": 12,
+          },
+          Object {
+            "formatted": "12 PM - 3 PM",
+            "from": 12,
+            "icon": "sun",
+            "id": 2,
+            "to": 15,
+          },
+          Object {
+            "formatted": "3 PM - 6 PM",
+            "from": 15,
+            "icon": "sun-set",
+            "id": 3,
+            "to": 18,
+          },
+          Object {
+            "formatted": "6 PM - 9 PM",
+            "from": 18,
+            "icon": "moon",
+            "id": 4,
+            "to": 21,
+          },
+        ]
+      }
+      onItemSelect={[Function]}
+      selectedItem={Array []}
+    />
+    <TextArea
+      containerStyle={
+        Object {
+          "marginVertical": 20,
+        }
+      }
+      label="message"
+      onMessageChange={[Function]}
+      placeholder="typeYourMessage"
+      value=""
+    />
+    <Button
+      containerStyle={
+        Object {
+          "flex": 0,
+          "flexDirection": "row-reverse",
+          "margin": 16,
+        }
+      }
+      disabled={true}
+      icon="envelope"
+      iconColor="#FFFFFF"
+      iconSize={22}
+      onPress={[Function]}
+      title="sendMessage"
+      titleStyle={
+        Object {
+          "marginHorizontal": 12,
+        }
+      }
+      type="primary"
+    />
+  </KeyboardAwareScrollView>
+</HandleBack>
+`;

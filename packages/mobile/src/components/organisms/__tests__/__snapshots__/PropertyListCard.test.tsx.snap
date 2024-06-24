@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyListCard should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "marginVertical": 10,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <PropertyListImageCarousel
+    images={
+      Array [
+        Object {
+          "file_name": "prof.jpg",
+          "is_cover_image": true,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+          "media_attributes": Object {},
+          "media_type": "IMAGE",
+        },
+        Object {
+          "file_name": "DjangoBackendLLD (1).jpg",
+          "is_cover_image": false,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/01d71336-cd92-11ea-972b-34e12d38d70eDjangoBackendLLD%201.jpg",
+          "media_attributes": Object {},
+          "media_type": "IMAGE",
+        },
+      ]
+    }
+    isFavorite={false}
+    onFavorite={[MockFunction]}
+  />
+  <ShieldGroup
+    propertyType="Apartment / Condo"
+  />
+  <ForwardRef
+    onPress={[MockFunction]}
+  >
+    <PropertyAddress
+      isIcon={true}
+      subAddress=" "
+    />
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#C9D6DF",
+          "borderWidth": 0.5,
+          "marginVertical": 6,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginVertical": 6,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Memo(PricePerUnit)
+        currency={
+          Object {
+            "currency_code": "",
+            "currency_name": "",
+            "currency_symbol": "",
+          }
+        }
+        price={NaN}
+        textSizeType="regular"
+        unit=""
+      />
+      <PropertyAmenities
+        contentContainerStyle={
+          Object {
+            "marginStart": 5,
+          }
+        }
+        data={
+          Array [
+            Object {
+              "icon": "furnishing",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "None",
+            },
+            Object {
+              "icon": "open-parking",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "-",
+            },
+            Object {
+              "icon": "area",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "-",
+            },
+          ]
+        }
+        direction="row"
+      />
+    </View>
+  </ForwardRef>
+</View>
+`;
+
+exports[`PropertyListCard should match snapshot for optional props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "marginVertical": 10,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <PropertyListImageCarousel
+    images={
+      Array [
+        Object {
+          "file_name": "prof.jpg",
+          "is_cover_image": true,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/8e8c48fc-c089-11ea-8247-34e12d38d70eprof.jpg",
+          "media_attributes": Object {},
+          "media_type": "IMAGE",
+        },
+        Object {
+          "file_name": "DjangoBackendLLD (1).jpg",
+          "is_cover_image": false,
+          "link": "https://homzhub-bucket.s3.amazonaws.com/asset_images/01d71336-cd92-11ea-972b-34e12d38d70eDjangoBackendLLD%201.jpg",
+          "media_attributes": Object {},
+          "media_type": "IMAGE",
+        },
+      ]
+    }
+    isFavorite={false}
+    onFavorite={[MockFunction]}
+  />
+  <ShieldGroup
+    propertyType="Apartment / Condo"
+  />
+  <ForwardRef
+    onPress={[MockFunction]}
+  >
+    <PropertyAddress
+      isIcon={true}
+      subAddress=" "
+    />
+    <Divider
+      containerStyles={
+        Object {
+          "borderColor": "#C9D6DF",
+          "borderWidth": 0.5,
+          "marginVertical": 6,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginVertical": 6,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Memo(PricePerUnit)
+        currency={
+          Object {
+            "currency_code": "",
+            "currency_name": "",
+            "currency_symbol": "",
+          }
+        }
+        price={NaN}
+        textSizeType="regular"
+        unit="mo"
+      />
+      <PropertyAmenities
+        contentContainerStyle={
+          Object {
+            "marginStart": 5,
+          }
+        }
+        data={
+          Array [
+            Object {
+              "icon": "furnishing",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "None",
+            },
+            Object {
+              "icon": "open-parking",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "-",
+            },
+            Object {
+              "icon": "area",
+              "iconColor": "#33495E",
+              "iconSize": 20,
+              "label": "-",
+            },
+          ]
+        }
+        direction="row"
+      />
+    </View>
+  </ForwardRef>
+</View>
+`;

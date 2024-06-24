@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rent And Maintenance should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "width": undefined,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#33495E"
+        name="home"
+        size={20}
+        style={
+          Object {
+            "marginRight": 8,
+          }
+        }
+      />
+      <Label
+        type="large"
+      >
+        Rent
+      </Label>
+    </View>
+    <Text
+      style={
+        Object {
+          "marginLeft": 24,
+          "marginTop": 2,
+        }
+      }
+      textType="semiBold"
+      type="small"
+    >
+       2700
+    </Text>
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#33495E"
+        name="setting-outline"
+        size={20}
+        style={
+          Object {
+            "marginRight": 8,
+          }
+        }
+      />
+      <Label
+        type="large"
+      >
+        Deposit
+      </Label>
+    </View>
+    <Text
+      style={
+        Object {
+          "marginLeft": 24,
+          "marginTop": 2,
+        }
+      }
+      textType="semiBold"
+      type="small"
+    >
+       5000
+    </Text>
+  </View>
+</View>
+`;

@@ -1,0 +1,36 @@
+.table-web {
+  border-collapse: collapse;
+  width: 100%;
+
+  td {
+    border: 1px solid #f0f5f9;
+    width: 205px;
+  }
+  tr {
+    height: 56px;
+  }
+  .header-row {
+    background-color: white;
+    justify-content: 'center';
+    .image-cell {
+      width: 380px;
+    }
+    .header-cards {
+      text-align: center;
+      .card-container {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-bottom: 20px;
+        .card-description {
+          min-height: 75px;
+        }
+      }
+    }
+  }
+  .header-cell {
+    padding-left: 26px;
+    .feature-text {
+      margin-top: 8px;
+    }
+  }
+}

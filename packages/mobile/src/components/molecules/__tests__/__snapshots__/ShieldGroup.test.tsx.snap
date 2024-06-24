@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShieldGroup should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row-reverse",
+      "justifyContent": "space-between",
+      "marginVertical": 8,
+    }
+  }
+>
+  <AmenitiesShieldIconGroup
+    badgesInfo={
+      Array [
+        Object {
+          "color": "#F9A901",
+        },
+        Object {
+          "color": "#F9A901",
+        },
+        Object {
+          "color": "#B3BBC3",
+        },
+      ]
+    }
+    iconSize={23}
+    onBadgePress={[Function]}
+  />
+  <BottomSheet
+    headerTitle="Shield Status"
+    isShadowView={true}
+    onCloseSheet={[Function]}
+    sheetHeight={500}
+    visible={false}
+  >
+    <ScrollView
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "padding": 16,
+          }
+        }
+      >
+        <Markdown
+          debug={false}
+          markdownStyles={Object {}}
+          parseInline={false}
+          useDefaultStyles={true}
+        />
+      </View>
+    </ScrollView>
+  </BottomSheet>
+</View>
+`;
+
+exports[`ShieldGroup should match snapshot with props 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginVertical": 8,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#0084F8",
+        },
+        undefined,
+      ]
+    }
+    textType="regular"
+    type="small"
+  >
+    Villa
+  </Text>
+  <AmenitiesShieldIconGroup
+    badgesInfo={
+      Array [
+        Object {
+          "color": "#F9A901",
+        },
+        Object {
+          "color": "#F9A901",
+        },
+        Object {
+          "color": "#B3BBC3",
+        },
+      ]
+    }
+    iconSize={23}
+    onBadgePress={[Function]}
+  />
+  <BottomSheet
+    headerTitle="Shield Status"
+    isShadowView={true}
+    onCloseSheet={[Function]}
+    sheetHeight={500}
+    visible={false}
+  >
+    <ScrollView
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "padding": 16,
+          }
+        }
+      >
+        <Markdown
+          debug={false}
+          markdownStyles={Object {}}
+          parseInline={false}
+          useDefaultStyles={true}
+        />
+      </View>
+    </ScrollView>
+  </BottomSheet>
+</View>
+`;

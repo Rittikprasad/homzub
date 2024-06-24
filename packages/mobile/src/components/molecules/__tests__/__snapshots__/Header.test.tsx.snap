@@ -1,0 +1,760 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<Memo(Header)
+  icon="left-arrow"
+  onIconPress={[MockFunction]}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#0084F8",
+        "height": 34,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#0084F8",
+          "height": 34,
+        }
+      }
+    >
+      <Memo(StatusBarComponent)
+        backgroundColor="#0084F8"
+        barStyle="light-content"
+        isTranslucent={true}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 30,
+              },
+              Object {
+                "backgroundColor": "#0084F8",
+              },
+              Object {},
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 30,
+                },
+                Object {
+                  "backgroundColor": "#0084F8",
+                },
+                Object {},
+              ]
+            }
+          >
+            <StatusBar
+              animated={false}
+              backgroundColor="#0084F8"
+              barStyle="light-content"
+              showHideTransition="fade"
+              translucent={true}
+            />
+          </View>
+        </View>
+      </Memo(StatusBarComponent)>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 12,
+          "paddingTop": 20,
+        },
+        Object {
+          "backgroundColor": "#0084F8",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingBottom": 12,
+            "paddingTop": 20,
+          },
+          Object {
+            "backgroundColor": "#0084F8",
+          },
+        ]
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="left-arrow"
+        onPress={[MockFunction]}
+        size={22}
+        style={
+          Object {
+            "bottom": 12,
+            "left": 16,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          onPress={[MockFunction]}
+          style={
+            Array [
+              Object {
+                "color": "#FFFFFF",
+                "fontSize": 22,
+              },
+              Object {
+                "bottom": 12,
+                "left": 16,
+                "position": "absolute",
+              },
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            onPress={[MockFunction]}
+            style={
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 22,
+                },
+                Object {
+                  "bottom": 12,
+                  "left": 16,
+                  "position": "absolute",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </Text>
+      </Icon>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "textAlign": "center",
+              "width": 300,
+            },
+            Object {
+              "color": "#FFFFFF",
+            },
+          ]
+        }
+        textType="semiBold"
+        type="small"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+                "lineHeight": 24,
+                "textAlign": "left",
+              },
+              Object {
+                "fontFamily": "OpenSans-SemiBold",
+                "fontWeight": "600",
+              },
+              Array [
+                Object {
+                  "textAlign": "center",
+                  "width": 300,
+                },
+                Object {
+                  "color": "#FFFFFF",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                },
+                Object {
+                  "fontFamily": "OpenSans-SemiBold",
+                  "fontWeight": "600",
+                },
+                Array [
+                  Object {
+                    "textAlign": "center",
+                    "width": 300,
+                  },
+                  Object {
+                    "color": "#FFFFFF",
+                  },
+                ],
+              ]
+            }
+          />
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2CBA67",
+        "height": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#2CBA67",
+          "height": 4,
+        }
+      }
+    />
+  </View>
+</Memo(Header)>
+`;
+
+exports[`Header should match snapshot for secondary theme 1`] = `
+<Memo(Header)
+  icon="left-arrow"
+  isHeadingVisible={true}
+  onIconPress={[MockFunction]}
+  title="Header"
+  type="secondary"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 34,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "height": 34,
+        }
+      }
+    >
+      <Memo(StatusBarComponent)
+        backgroundColor="#FFFFFF"
+        barStyle="dark-content"
+        isTranslucent={true}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 30,
+              },
+              Object {
+                "backgroundColor": "#FFFFFF",
+              },
+              Object {},
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 30,
+                },
+                Object {
+                  "backgroundColor": "#FFFFFF",
+                },
+                Object {},
+              ]
+            }
+          >
+            <StatusBar
+              animated={false}
+              backgroundColor="#FFFFFF"
+              barStyle="dark-content"
+              showHideTransition="fade"
+              translucent={true}
+            />
+          </View>
+        </View>
+      </Memo(StatusBarComponent)>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 12,
+          "paddingTop": 20,
+        },
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingBottom": 12,
+            "paddingTop": 20,
+          },
+          Object {
+            "backgroundColor": "#FFFFFF",
+          },
+        ]
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#001B36"
+        name="left-arrow"
+        onPress={[MockFunction]}
+        size={22}
+        style={
+          Object {
+            "bottom": 12,
+            "left": 16,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          onPress={[MockFunction]}
+          style={
+            Array [
+              Object {
+                "color": "#001B36",
+                "fontSize": 22,
+              },
+              Object {
+                "bottom": 12,
+                "left": 16,
+                "position": "absolute",
+              },
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            onPress={[MockFunction]}
+            style={
+              Array [
+                Object {
+                  "color": "#001B36",
+                  "fontSize": 22,
+                },
+                Object {
+                  "bottom": 12,
+                  "left": 16,
+                  "position": "absolute",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </Text>
+      </Icon>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "textAlign": "center",
+              "width": 300,
+            },
+            Object {
+              "color": "#001B36",
+            },
+          ]
+        }
+        textType="semiBold"
+        type="small"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+                "lineHeight": 24,
+                "textAlign": "left",
+              },
+              Object {
+                "fontFamily": "OpenSans-SemiBold",
+                "fontWeight": "600",
+              },
+              Array [
+                Object {
+                  "textAlign": "center",
+                  "width": 300,
+                },
+                Object {
+                  "color": "#001B36",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                },
+                Object {
+                  "fontFamily": "OpenSans-SemiBold",
+                  "fontWeight": "600",
+                },
+                Array [
+                  Object {
+                    "textAlign": "center",
+                    "width": 300,
+                  },
+                  Object {
+                    "color": "#001B36",
+                  },
+                ],
+              ]
+            }
+          >
+            Header
+          </Text>
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2CBA67",
+        "height": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#2CBA67",
+          "height": 4,
+        }
+      }
+    />
+  </View>
+</Memo(Header)>
+`;
+
+exports[`Header should match snapshot without title 1`] = `
+<Memo(Header)
+  icon="left-arrow"
+  isHeadingVisible={true}
+  onIconPress={[MockFunction]}
+  title="Header"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#0084F8",
+        "height": 34,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#0084F8",
+          "height": 34,
+        }
+      }
+    >
+      <Memo(StatusBarComponent)
+        backgroundColor="#0084F8"
+        barStyle="light-content"
+        isTranslucent={true}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 30,
+              },
+              Object {
+                "backgroundColor": "#0084F8",
+              },
+              Object {},
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 30,
+                },
+                Object {
+                  "backgroundColor": "#0084F8",
+                },
+                Object {},
+              ]
+            }
+          >
+            <StatusBar
+              animated={false}
+              backgroundColor="#0084F8"
+              barStyle="light-content"
+              showHideTransition="fade"
+              translucent={true}
+            />
+          </View>
+        </View>
+      </Memo(StatusBarComponent)>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 12,
+          "paddingTop": 20,
+        },
+        Object {
+          "backgroundColor": "#0084F8",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingBottom": 12,
+            "paddingTop": 20,
+          },
+          Object {
+            "backgroundColor": "#0084F8",
+          },
+        ]
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFFFFF"
+        name="left-arrow"
+        onPress={[MockFunction]}
+        size={22}
+        style={
+          Object {
+            "bottom": 12,
+            "left": 16,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          onPress={[MockFunction]}
+          style={
+            Array [
+              Object {
+                "color": "#FFFFFF",
+                "fontSize": 22,
+              },
+              Object {
+                "bottom": 12,
+                "left": 16,
+                "position": "absolute",
+              },
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            onPress={[MockFunction]}
+            style={
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 22,
+                },
+                Object {
+                  "bottom": 12,
+                  "left": 16,
+                  "position": "absolute",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </Text>
+      </Icon>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "textAlign": "center",
+              "width": 300,
+            },
+            Object {
+              "color": "#FFFFFF",
+            },
+          ]
+        }
+        textType="semiBold"
+        type="small"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+                "lineHeight": 24,
+                "textAlign": "left",
+              },
+              Object {
+                "fontFamily": "OpenSans-SemiBold",
+                "fontWeight": "600",
+              },
+              Array [
+                Object {
+                  "textAlign": "center",
+                  "width": 300,
+                },
+                Object {
+                  "color": "#FFFFFF",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "fontSize": 16,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                },
+                Object {
+                  "fontFamily": "OpenSans-SemiBold",
+                  "fontWeight": "600",
+                },
+                Array [
+                  Object {
+                    "textAlign": "center",
+                    "width": 300,
+                  },
+                  Object {
+                    "color": "#FFFFFF",
+                  },
+                ],
+              ]
+            }
+          >
+            Header
+          </Text>
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2CBA67",
+        "height": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#2CBA67",
+          "height": 4,
+        }
+      }
+    />
+  </View>
+</Memo(Header)>
+`;

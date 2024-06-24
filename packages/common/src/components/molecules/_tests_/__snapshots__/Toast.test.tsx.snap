@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast should match snapshot for type danger 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "red",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 40,
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#FFFFFF"
+      name="circular-cross-filled"
+      size={20}
+      style={
+        Object {
+          "marginEnd": 12,
+        }
+      }
+    />
+    <View>
+      <Label
+        numberOfLines={2}
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "flex": 1,
+            "marginEnd": 16,
+          }
+        }
+        type="large"
+      >
+        Test Message
+      </Label>
+    </View>
+  </View>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "borderRadius": 4,
+      }
+    }
+    testID="toHighPress"
+    underlayColor="#FF8576"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "marginHorizontal": 16,
+          "marginVertical": 4,
+        }
+      }
+      textType="semiBold"
+      type="large"
+    >
+      ok
+    </Label>
+  </ForwardRef>
+</View>
+`;
+
+exports[`Toast should match snapshot for type success 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "red",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 40,
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#FFFFFF"
+      name="circular-check-filled"
+      size={20}
+      style={
+        Object {
+          "marginEnd": 12,
+        }
+      }
+    />
+    <View>
+      <Label
+        numberOfLines={2}
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "flex": 1,
+            "marginEnd": 16,
+          }
+        }
+        type="large"
+      >
+        Test Message
+      </Label>
+    </View>
+  </View>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "borderRadius": 4,
+      }
+    }
+    testID="toHighPress"
+    underlayColor="#FF8576"
+  >
+    <Label
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "marginHorizontal": 16,
+          "marginVertical": 4,
+        }
+      }
+      textType="semiBold"
+      type="large"
+    >
+      ok
+    </Label>
+  </ForwardRef>
+</View>
+`;
