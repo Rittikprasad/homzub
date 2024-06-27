@@ -333,6 +333,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingVertical: 7,
+    paddingHorizontal: 7,
     borderColor: theme.colors.disabled,
     borderRadius: 4,
     borderWidth: 1,

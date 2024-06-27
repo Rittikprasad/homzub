@@ -85,19 +85,25 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
   };
 
   const generatePayload = async (callback: (payload: IQuoteGroup[]) => void): Promise<void> => {
+    console.log('step7')
     if (selectedTicket && quotes.length > 0) {
+      console.log('step8')
       setLoader(true);
       const errorData: boolean[] = [];
       const quoteGroupData = quotes.map(async (item) => {
+        console.log('step9')
         const updatedData: IQuoteData[] = [];
         const formData = new FormData();
         const quote: IInitialQuote[] = item.data;
         const quoteData = quote.map(async (quoteItem) => {
+          console.log(quoteItem.document,'step10')
           if (quoteItem.document) {
             // @ts-ignore
             formData.append('files[]', quoteItem.document);
+            console.log(formData,'formdata')
             // Upload Attachment to S3 and get attachment id
             const response = await AttachmentService.uploadImage(formData, AttachmentType.TICKET_DOCUMENTS);
+            console.log(response,'tttt')
             const { data, error } = response;
             if (data && data.length) {
               updatedData.push({
@@ -131,13 +137,16 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
           setLoader(false);
         }
       });
+      console.log('step12')
     }
   };
 
   const onSubmit = async (): Promise<void> => {
     if (selectedTicket && quotes.length > 0) {
       setLoader(true);
+      console.log('step1')
       await generatePayload((data) => {
+        console.log('step2')
         /* Creating Final payload for submit quote */
         const submitPayload: IQuoteSubmitPayload = {
           param: {
@@ -149,10 +158,13 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
             ...(!!comment && { comment }),
           },
         };
+        console.log('step3')
 
         setLoader(false);
         dispatch(TicketActions.submitQuote({ data: submitPayload, onCallback: handleCallback }));
+        console.log('step4')
       });
+      console.log('step5')
     }
   };
 

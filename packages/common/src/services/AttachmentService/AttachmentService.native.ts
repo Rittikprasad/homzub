@@ -15,6 +15,7 @@ const baseUrl = ConfigHelper.getBaseUrl();
 class AttachmentService {
   public uploadImage = async (formData: any, type: AttachmentType): Promise<any> => {
     const token = StoreProviderService.getUserToken();
+    console.log(token, 'token')
 
     return await fetch(`${baseUrl}v1/attachments/upload/?category=${type}`, {
       method: 'POST',
@@ -24,8 +25,12 @@ class AttachmentService {
       },
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response,'attached file')
+        return response.json()
+      })
       .then((responseJson) => {
+        console.log(responseJson,'responseJson')
         return responseJson;
       })
       .catch((e) => {

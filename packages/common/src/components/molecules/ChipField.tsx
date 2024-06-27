@@ -113,6 +113,7 @@ const ChipField = (props: IProps): React.ReactElement => {
       }
       if (isEmailField) {
         setError('auth:duplicateEmail');
+      
       } else {
         setError('common:duplicateValue');
       }
@@ -161,7 +162,7 @@ const ChipField = (props: IProps): React.ReactElement => {
               onChange={handleChange}
               autoFocus={chips.length > 0}
               onEndEditing={onEndEditing}
-              onBlur={onEndEditing}
+              // onBlur={onEndEditing}
               editable={!isDisabled}
               style={isDisabled && styles.disabled}
               placeholder={placeholder}
