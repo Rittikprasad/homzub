@@ -64,7 +64,7 @@
     "react": "18.1.0",
     "react-dropzone": "^11.3.1",
     "react-i18next": "^11.4.0",
-    "react-native": "0.71.0",
+    "react-native": "0.71.19",
     "react-native-device-info": "^8.0.1",
     "react-native-flash-message": "^0.1.15",
     "react-native-progress": "^4.1.2",
@@ -78,11 +78,11 @@
     "yup": "^0.28.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.12.5",
+    "@babel/core": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "7.8.3",
-    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-env": "^7.20.0",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@types/enzyme": "^3.10.3",
@@ -99,7 +99,7 @@
     "@types/yup": "^0.28.3",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
-    "@react-native-community/eslint-config": "^3.0.0",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^29.2.1",
     "@types/react": "^18.0.24",
@@ -133,7 +133,7 @@
     "typescript": "^4.8.4"
   },
   "resolutions": {
-    "react-native": "0.71.0",
+    "react-native": "0.71.19",
     "react-native-maps": "^0.27.1",
     "react-native-screens": "~3.18.0"
   },

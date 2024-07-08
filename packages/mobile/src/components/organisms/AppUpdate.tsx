@@ -123,39 +123,40 @@ const AppUpdate = (): React.ReactElement => {
   const { isForceUpdate, messages, isUnderMaintenance, isUpdateAvailable } = configValues;
   const isAlwaysVisible = isForceUpdate || isUnderMaintenance;
   return (
-    <BottomSheet
-      visible={isSheetVisible}
-      isShadowView
-      headerTitle={isUpdateAvailable ? I18nService.t('common:timeToUpdate') : I18nService.t('common:underMaintenance')}
-      sheetHeight={isUpdateAvailable ? 420 : 300}
-      isCloseOnDrag={!isAlwaysVisible}
-      isAlwaysVisible={isAlwaysVisible}
-      onCloseSheet={(): void => setVisibility(false)}
-    >
-      <View style={styles.container}>
-        <Rocket style={styles.iconStyle} />
-        <Label type="large" style={styles.message}>
-          {isUpdateAvailable ? messages?.update : messages?.maintenance}
-        </Label>
-        {!isUnderMaintenance && (
-          <Button
-            type="primary"
-            title={I18nService.t('common:updateNow')}
-            containerStyle={styles.updateButton}
-            onPress={onUpdateNow}
-          />
-        )}
-        {!isAlwaysVisible && (
-          <Button
-            type="secondaryOutline"
-            title={I18nService.t('common:doLater')}
-            containerStyle={styles.secondaryButton}
-            textStyle={styles.buttonTitle}
-            onPress={(): void => setVisibility(false)}
-          />
-        )}
-      </View>
-    </BottomSheet>
+    // <BottomSheet
+    //   visible={isSheetVisible}
+    //   isShadowView
+    //   headerTitle={isUpdateAvailable ? I18nService.t('common:timeToUpdate') : I18nService.t('common:underMaintenance')}
+    //   sheetHeight={isUpdateAvailable ? 420 : 300}
+    //   isCloseOnDrag={!isAlwaysVisible}
+    //   isAlwaysVisible={isAlwaysVisible}
+    //   onCloseSheet={(): void => setVisibility(false)}
+    // >
+    //   <View style={styles.container}>
+    //     <Rocket style={styles.iconStyle} />
+    //     <Label type="large" style={styles.message}>
+    //       {isUpdateAvailable ? messages?.update : messages?.maintenance}
+    //     </Label>
+    //     {!isUnderMaintenance && (
+    //       <Button
+    //         type="primary"
+    //         title={I18nService.t('common:updateNow')}
+    //         containerStyle={styles.updateButton}
+    //         onPress={onUpdateNow}
+    //       />
+    //     )}
+    //     {!isAlwaysVisible && (
+    //       <Button
+    //         type="secondaryOutline"
+    //         title={I18nService.t('common:doLater')}
+    //         containerStyle={styles.secondaryButton}
+    //         textStyle={styles.buttonTitle}
+    //         onPress={(): void => setVisibility(false)}
+    //       />
+    //     )}
+    //   </View>
+    // </BottomSheet>
+    <></>
   );
 };
 
