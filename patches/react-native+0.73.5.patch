@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native/index.js b/node_modules/react-native/index.js
+index c962062..e0efb08 100644
+--- a/node_modules/react-native/index.js
++++ b/node_modules/react-native/index.js
+@@ -378,7 +378,6 @@ module.exports = {
+         'LogBox is enabled by default so there is no need to call unstable_enableLogBox() anymore. This is a no op and will be removed in the next version.',
+       );
+   },
+-  // Deprecated Prop Types
+   get ColorPropType(): $FlowFixMe {
+     return require("deprecated-react-native-prop-types").ColorPropType
+   },

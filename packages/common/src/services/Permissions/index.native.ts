@@ -1,11 +1,17 @@
-import { request, check, RESULTS, Permission, PERMISSIONS } from 'react-native-permissions';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
+import {
+  request,
+  check,
+  RESULTS,
+  Permission,
+  PERMISSIONS,
+} from "react-native-permissions";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
 
 // List out all required permission types here
 export enum PERMISSION_TYPE {
-  location = 'location',
-  storage = 'storage',
-  camera = 'camera',
+  location = "location",
+  storage = "storage",
+  camera = "camera",
 }
 
 // Define platform specific permissions for each of the above type here
@@ -33,7 +39,10 @@ export const REQUEST_PERMISSION_TYPE = {
 
 class Permissions {
   public checkPermission = async (type: PERMISSION_TYPE): Promise<boolean> => {
-    const permission = REQUEST_PERMISSION_TYPE[type][PlatformUtils.getPlatform() as 'ios' | 'android'];
+    const permission =
+      REQUEST_PERMISSION_TYPE[type][
+        PlatformUtils.getPlatform() as "ios" | "android"
+      ];
 
     try {
       const permissionStatus = await check(permission);
@@ -46,9 +55,12 @@ class Permissions {
     }
   };
 
-  private requestPermission = async (permission: Permission): Promise<boolean> => {
+  private requestPermission = async (
+    permission: Permission
+  ): Promise<boolean> => {
     try {
       const response = await request(permission);
+
       return response === RESULTS.GRANTED;
     } catch (e) {
       return false;

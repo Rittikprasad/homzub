@@ -75,6 +75,7 @@ import { EventType } from '@homzhub/common/src/services/Analytics/EventType';
 import { ICallback, IState } from '@homzhub/common/src/modules/interfaces';
 import { IAssetState, IGetAssetPayload } from '@homzhub/common/src/modules/asset/interfaces';
 import { NavigationScreenProps, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
+import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 const { StatusBarManager } = NativeModules;
 
@@ -137,12 +138,12 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
   public state = initialState;
 
   // ANIMATION VALUES START
-  public scrollY = setAnimatedValue(0);
-  public headerOpacityAnimated = interpolateAnimation(this.scrollY, [20, 50], increasingTransparency);
-  public carouselOpacityAnimated = interpolateAnimation(this.scrollY, [10, 250], decreasingTransparency);
-  public bgColorOpacityAnimated = interpolateAnimation(this.scrollY, [0, 100], increasingTransparency);
+  public scrollY = useSharedValue(0);
+  public headerOpacityAnimated = interpolateAnimation(this.scrollY.value, [20, 50], increasingTransparency);
+  public carouselOpacityAnimated = interpolateAnimation(this.scrollY.value, [10, 250], decreasingTransparency);
+  public bgColorOpacityAnimated = interpolateAnimation(this.scrollY.value, [0, 100], increasingTransparency);
   public backgroundColorAnimated = colorAnimation(255, 255, 255, this.bgColorOpacityAnimated);
-  public elevationAnimated = interpolateAnimation(this.scrollY, [130, 150], [0, 10]);
+  public elevationAnimated = interpolateAnimation(this.scrollY.value, [130, 150], [0, 10]);
   // ANIMATION VALUES END
 
   public componentDidMount = (): void => {
@@ -222,14 +223,25 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
     if (!assetDetails) return null;
     const { leaseTerm, saleTerm, isAssetOwner } = assetDetails;
     const iconColor = isScroll ? theme.colors.darkTint1 : theme.colors.white;
-    const animatedViewStyle = { backgroundColor: this.backgroundColorAnimated, elevation: this.elevationAnimated };
+    const animatedStyles = useAnimatedStyle(() => {
+      return {
+        backgroundColor: this.backgroundColorAnimated,
+        elevation: this.elevationAnimated,
+      };
+    });
+    // const animatedViewStyle = {};
     const top = PlatformUtils.isIOS() ? statusBarHeight : RNStatusBar.currentHeight;
 
     return (
-      <Animated.View style={[styles.headerView, animatedViewStyle, { top }]}>
+      <Animated.View style={[styles.headerView, animatedStyles, { top }]}>
         <View style={styles.headerContent}>
           <Icon name={icons.leftArrow} size={26} color={iconColor} onPress={this.onGoBack} />
-          <Animated.View style={{ ...styles.headerTextView, opacity: this.headerOpacityAnimated }}>
+          <Animated.View
+            style={{
+              ...styles.headerTextView,
+              opacity: this.headerOpacityAnimated,
+            }}
+          >
             <Text type="regular" textType="semiBold" style={styles.headerText} numberOfLines={1}>
               {assetDetails?.projectName ?? ''}
             </Text>
@@ -278,7 +290,12 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
           onScroll={this.handleScrollAnimations}
           showsVerticalScrollIndicator={false}
         >
-          <Animated.View style={{ ...styles.carouselHeight, opacity: this.carouselOpacityAnimated }}>
+          <Animated.View
+            style={{
+              ...styles.carouselHeight,
+              opacity: this.carouselOpacityAnimated,
+            }}
+          >
             {this.renderCarousel()}
           </Animated.View>
           <View style={styles.screen}>
@@ -360,7 +377,13 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
         {!isAssetOwner && (
           <TouchableOpacity style={[styles.offerButton, { backgroundColor }]} onPress={this.onOfferButtonClicked}>
             <Icon name={icons.offers} color={hasCreatedOffer ? theme.colors.green : theme.colors.blue} size={20} />
-            <Text style={{ ...styles.offerText, ...(hasCreatedOffer && styles.seeOfferText) }} type="small">
+            <Text
+              style={{
+                ...styles.offerText,
+                ...(hasCreatedOffer && styles.seeOfferText),
+              }}
+              type="small"
+            >
               {t(hasCreatedOffer ? 'assetMore:seeOfferText' : 'assetMore:makeAnOfferText')}
             </Text>
           </TouchableOpacity>
@@ -852,7 +875,10 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
       : 0;
 
     const detail = `${bhk > 0 ? `${bhk} BHK, ` : ''}${assetDetails?.projectName}`;
-    const sharingMessage = I18nService.t('common:shareMessage', { url, detail });
+    const sharingMessage = I18nService.t('common:shareMessage', {
+      url,
+      detail,
+    });
     this.setState({ sharingMessage });
   };
 
@@ -862,7 +888,10 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
     } = e;
     const isThresholdReached =
       layoutMeasurement.height + contentOffset.y >= contentSize.height - contentSize.height / 3;
-    this.setState({ isScroll: contentOffset.y >= 25, showContactDetailsInFooter: !isThresholdReached });
+    this.setState({
+      isScroll: contentOffset.y >= 25,
+      showContactDetailsInFooter: !isThresholdReached,
+    });
     updateAnimatedValue(this.scrollY, contentOffset.y);
   };
 
@@ -901,7 +930,10 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
         params: { propertyTermId },
       },
     } = this.props;
-    navigation.navigate(ScreensKeys.ContactForm, { contactDetail: assetDetails?.contacts ?? null, propertyTermId });
+    navigation.navigate(ScreensKeys.ContactForm, {
+      contactDetail: assetDetails?.contacts ?? null,
+      propertyTermId,
+    });
   };
 
   private navigateToSubmitOfferScreen = (): void => {

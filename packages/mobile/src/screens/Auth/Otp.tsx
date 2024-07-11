@@ -1,38 +1,49 @@
-import React, { ReactElement } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { StringUtils } from '@homzhub/common/src/utils/StringUtils';
-import { ObjectMapper } from '@homzhub/common/src/utils/ObjectMapper';
-import { UserRepository } from '@homzhub/common/src/domain/repositories/UserRepository';
-import { IUserTokens, StorageKeys, StorageService } from '@homzhub/common/src/services/storage/StorageService';
-import { AnalyticsService } from '@homzhub/common/src/services/Analytics/AnalyticsService';
-import { IRedirectionDetails } from '@homzhub/mobile/src/services/LinkingService';
-import { NavigationService } from '@homzhub/mobile/src/services/NavigationService';
-import { UserService } from '@homzhub/common/src/services/UserService';
-import { CommonSelectors } from '@homzhub/common/src/modules/common/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { UserActions } from '@homzhub/common/src/modules/user/actions';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { OtpTimer } from '@homzhub/common/src/components/atoms/OtpTimer';
-import { OtpInputs, OtpTypes } from '@homzhub/common/src/components/molecules/OtpInputs';
-import { Screen } from '@homzhub/mobile/src/components/HOC/Screen';
-import { User } from '@homzhub/common/src/domain/models/User';
-import { AuthStackParamList } from '@homzhub/mobile/src/navigation/AuthStack';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { NavigationScreenProps, OtpNavTypes, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
+import React, { ReactElement } from "react";
+import { StyleSheet, View } from "react-native";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { StringUtils } from "@homzhub/common/src/utils/StringUtils";
+import { ObjectMapper } from "@homzhub/common/src/utils/ObjectMapper";
+import { UserRepository } from "@homzhub/common/src/domain/repositories/UserRepository";
+import {
+  IUserTokens,
+  StorageKeys,
+  StorageService,
+} from "@homzhub/common/src/services/storage/StorageService";
+import { AnalyticsService } from "@homzhub/common/src/services/Analytics/AnalyticsService";
+import { IRedirectionDetails } from "@homzhub/mobile/src/services/LinkingService";
+import { NavigationService } from "@homzhub/mobile/src/services/NavigationService";
+import { UserService } from "@homzhub/common/src/services/UserService";
+import { CommonSelectors } from "@homzhub/common/src/modules/common/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { UserActions } from "@homzhub/common/src/modules/user/actions";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import { OtpTimer } from "@homzhub/common/src/components/atoms/OtpTimer";
+import {
+  OtpInputs,
+  OtpTypes,
+} from "@homzhub/common/src/components/molecules/OtpInputs";
+import { Screen } from "@homzhub/mobile/src/components/HOC/Screen";
+import { User } from "@homzhub/common/src/domain/models/User";
+import { AuthStackParamList } from "@homzhub/mobile/src/navigation/AuthStack";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import {
+  NavigationScreenProps,
+  OtpNavTypes,
+  ScreensKeys,
+} from "@homzhub/mobile/src/navigation/interfaces";
 import {
   IEmailLoginPayload,
   ILoginPayload,
   IOtpLoginPayload,
   LoginTypes,
-} from '@homzhub/common/src/domain/repositories/interfaces';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { EventType } from '@homzhub/common/src/services/Analytics/EventType';
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { EventType } from "@homzhub/common/src/services/Analytics/EventType";
 
 interface IStateProps {
   isLoading: boolean;
@@ -44,7 +55,8 @@ interface IDispatchProps {
   loginSuccess: (data: IUserTokens) => void;
 }
 
-type libraryProps = NavigationScreenProps<AuthStackParamList, ScreensKeys.OTP> & WithTranslation;
+type libraryProps = NavigationScreenProps<AuthStackParamList, ScreensKeys.OTP> &
+  WithTranslation;
 type IProps = IDispatchProps & IStateProps & libraryProps;
 
 interface IOtpState {
@@ -56,8 +68,8 @@ interface IOtpState {
 export class Otp extends React.PureComponent<IProps, IOtpState> {
   public state = {
     error: false,
-    emailOtp: '',
-    phoneOrEmailOtp: '',
+    emailOtp: "",
+    phoneOrEmailOtp: "",
   };
 
   public componentDidMount = async (): Promise<void> => {
@@ -79,30 +91,36 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
       navigation: { goBack },
       route: { params },
     } = this.props;
-    const title = params?.title ?? t('verifyNumber');
-    const otpSentTo = params?.otpSentTo ?? '';
-    const countryCode = params?.countryCode ?? '';
+    const title = params?.title ?? t("verifyNumber");
+    const otpSentTo = params?.otpSentTo ?? "";
+    const countryCode = params?.countryCode ?? "";
 
     return (
       <Screen
-        headerProps={{ type: 'secondary', onIconPress: goBack }}
+        headerProps={{ type: "secondary", onIconPress: goBack }}
         pageHeaderProps={{
           contentTitle: title,
-          contentSubTitle: t('enterOTP'),
+          contentSubTitle: t("enterOTP"),
           disableDivider: true,
         }}
         isLoading={isLoading}
         backgroundColor={theme.colors.white}
       >
-        {this.renderOtpInputSection(`${countryCode} ${otpSentTo}`, OtpTypes.PhoneOrEmail)}
+        {this.renderOtpInputSection(
+          `${countryCode} ${otpSentTo}`,
+          OtpTypes.PhoneOrEmail
+        )}
         {params.type === OtpNavTypes.UpdateProfileByEmailPhoneOtp
-          ? this.renderOtpInputSection(params?.email || '', OtpTypes.Email)
+          ? this.renderOtpInputSection(params?.email || "", OtpTypes.Email)
           : null}
       </Screen>
     );
   };
 
-  private renderOtpInputSection = (otpSentTo: string, otpType?: OtpTypes): ReactElement => {
+  private renderOtpInputSection = (
+    otpSentTo: string,
+    otpType?: OtpTypes
+  ): ReactElement => {
     const {
       t,
       route: {
@@ -131,7 +149,11 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
           />
         </View>
         <OtpInputs
-          error={type !== OtpNavTypes.UpdateProfileByEmailPhoneOtp && error ? t('otpError') : undefined}
+          error={
+            type !== OtpNavTypes.UpdateProfileByEmailPhoneOtp && error
+              ? t("otpError")
+              : undefined
+          }
           bubbleOtp={this.handleOtpVerification}
           toggleError={toggleError}
           otpType={otpType}
@@ -175,7 +197,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
     } = this.props;
 
     if (type === OtpNavTypes.Login) {
-      this.loginOtp(otp ?? '');
+      this.loginOtp(otp ?? "");
       return;
     }
 
@@ -230,7 +252,10 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
 
   private handleDynamicLink = (): void => {
     const { redirectionDetails } = this.props;
-    if (redirectionDetails.shouldRedirect && redirectionDetails.redirectionLink) {
+    if (
+      redirectionDetails.shouldRedirect &&
+      redirectionDetails.redirectionLink
+    ) {
       NavigationService.handleDynamicLinkNavigation(redirectionDetails).then();
     }
   };
@@ -262,15 +287,23 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
         phone_number: otpSentTo,
       });
 
-      const tokens = { refresh_token: data.refreshToken, access_token: data.accessToken };
+      const tokens = {
+        refresh_token: data.refreshToken,
+        access_token: data.accessToken,
+      };
       loginSuccess(tokens);
       await StorageService.set<IUserTokens>(StorageKeys.USER, tokens);
 
       AnalyticsService.track(EventType.SignupSuccess, trackData);
       // @ts-ignore
-      AnalyticsService.setUser(ObjectMapper.deserialize(User, socialUserData.user));
+      AnalyticsService.setUser(
+        ObjectMapper.deserialize(User, socialUserData.user)
+      );
     } catch (e) {
-      AnalyticsService.track(EventType.SignupFailure, { ...trackData, error: e.message });
+      AnalyticsService.track(EventType.SignupFailure, {
+        ...trackData,
+        error: e.message,
+      });
       AlertHelper.error({ message: e.message });
     }
   };
@@ -297,14 +330,16 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
       callback: onCallback,
       handleDynamicLink: this.handleDynamicLink,
     };
-    login(loginPayload);
   };
 
   private toggleErrorState = (error: boolean): void => {
     this.setState({ error });
   };
 
-  private handleOtpVerification = async (otp: string, otpType?: OtpTypes): Promise<void> => {
+  private handleOtpVerification = async (
+    otp: string,
+    otpType?: OtpTypes
+  ): Promise<void> => {
     const {
       route: {
         params: { updateProfileCallback, type },
@@ -318,7 +353,10 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
 
     if (type === OtpNavTypes.UpdateProfileByEmailPhoneOtp) {
       this.setState(
-        () => (otpType === OtpTypes.PhoneOrEmail ? { phoneOrEmailOtp: otp } : { emailOtp: otp }),
+        () =>
+          otpType === OtpTypes.PhoneOrEmail
+            ? { phoneOrEmailOtp: otp }
+            : { emailOtp: otp },
         () => {
           const { emailOtp, phoneOrEmailOtp } = this.state;
           if (emailOtp && phoneOrEmailOtp) {
@@ -336,7 +374,9 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
 export const mapStateToProps = (state: IState): IStateProps => {
   return {
     isLoading: UserSelector.getLoadingState(state),
-    redirectionDetails: CommonSelectors.getRedirectionDetails(state) as IRedirectionDetails,
+    redirectionDetails: CommonSelectors.getRedirectionDetails(
+      state
+    ) as IRedirectionDetails,
   };
 };
 
@@ -358,8 +398,8 @@ export default connect<IStateProps, IDispatchProps, WithTranslation, IState>(
 
 const styles = StyleSheet.create({
   numberContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   icon: {
     marginStart: 8,

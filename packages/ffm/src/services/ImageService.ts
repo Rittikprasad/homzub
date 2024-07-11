@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import ImagePicker, { Image as ImagePickerResponse } from 'react-native-image-crop-picker';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { PermissionsService } from '@homzhub/common/src/services/Permissions/PermissionService';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
-import { PERMISSION_TYPE } from '@homzhub/common/src/constants/PermissionTypes';
-import { ISpaceAttachment } from '@homzhub/common/src/modules/ffm/interface';
+import ImagePicker, {
+  Image as ImagePickerResponse,
+} from "react-native-image-crop-picker";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { PermissionsService } from "@homzhub/common/src/services/Permissions/PermissionService";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
+import { PERMISSION_TYPE } from "@homzhub/common/src/constants/PermissionTypes";
+import { ISpaceAttachment } from "@homzhub/common/src/modules/ffm/interface";
 
 interface IUploadImage {
   selectedImages: ISpaceAttachment[];
@@ -25,21 +27,26 @@ class ImageService {
         multiple: true,
         compressImageQuality: PlatformUtils.isAndroid() ? 1 : 0.8,
         includeBase64: true,
-        mediaType: 'photo',
+        mediaType: "photo",
       });
       setLoading(true);
       const formData = new FormData();
       images.forEach((image) => {
-        formData.append('files[]', {
+        formData.append("files[]", {
           // @ts-ignore
-          name: PlatformUtils.isIOS() ? image.filename : image.path.substring(image.path.lastIndexOf('/') + 1),
+          name: PlatformUtils.isIOS()
+            ? image.filename
+            : image.path.substring(image.path.lastIndexOf("/") + 1),
           uri: image.path,
           type: image.mime,
         });
       });
 
       try {
-        const response = await AttachmentService.uploadImage(formData, AttachmentType.INSPECTION_REPORT_IMAGES);
+        const response = await AttachmentService.uploadImage(
+          formData,
+          AttachmentType.INSPECTION_REPORT_IMAGES
+        );
 
         const { data } = response;
         const localSelectedImages: ISpaceAttachment[] = [...selectedImages];
@@ -58,7 +65,7 @@ class ImageService {
       }
     } catch (e) {
       setLoading(false);
-      if (e.code !== 'E_PICKER_CANCELLED') {
+      if (e.code !== "E_PICKER_CANCELLED") {
         AlertHelper.error({ message: e.message });
       }
     }
@@ -66,7 +73,9 @@ class ImageService {
 
   public handleCameraUpload = async (props: IUploadImage): Promise<void> => {
     const { selectedImages, onUploadImage, setLoading, onClose } = props;
-    const permissionCheck = await PermissionsService.checkPermission(PERMISSION_TYPE.camera);
+    const permissionCheck = await PermissionsService.checkPermission(
+      PERMISSION_TYPE.camera
+    );
 
     try {
       if (permissionCheck) {
@@ -77,19 +86,24 @@ class ImageService {
           compressImageMaxWidth: 400,
           compressImageQuality: PlatformUtils.isAndroid() ? 1 : 0.8,
           includeBase64: true,
-          mediaType: 'photo',
+          mediaType: "photo",
         });
         setLoading(true);
         const formData = new FormData();
-        formData.append('files[]', {
+        formData.append("files[]", {
           // @ts-ignore
-          name: PlatformUtils.isIOS() ? image.filename : image.path.substring(image.path.lastIndexOf('/') + 1),
+          name: PlatformUtils.isIOS()
+            ? image.filename
+            : image.path.substring(image.path.lastIndexOf("/") + 1),
           uri: image.path,
           type: image.mime,
         });
 
         try {
-          const response = await AttachmentService.uploadImage(formData, AttachmentType.INSPECTION_REPORT_IMAGES);
+          const response = await AttachmentService.uploadImage(
+            formData,
+            AttachmentType.INSPECTION_REPORT_IMAGES
+          );
           const { data } = response;
           const localSelectedImages: ISpaceAttachment[] = selectedImages;
           if (data) {
@@ -108,7 +122,7 @@ class ImageService {
       }
     } catch (e) {
       setLoading(false);
-      if (e.code !== 'E_PICKER_CANCELLED') {
+      if (e.code !== "E_PICKER_CANCELLED") {
         AlertHelper.error({ message: e.message });
       }
     }

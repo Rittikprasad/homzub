@@ -1,19 +1,22 @@
-import React, { createRef, PureComponent, RefObject } from 'react';
-import { KeyboardAvoidingView, StyleSheet } from 'react-native';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
-import { Formik, FormikHelpers, FormikProps } from 'formik';
-import * as yup from 'yup';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { FormUtils } from '@homzhub/common/src/utils/FormUtils';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { CommonSelectors } from '@homzhub/common/src/modules/common/selectors';
-import { UserRepository } from '@homzhub/common/src/domain/repositories/UserRepository';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { FormButton } from '@homzhub/common/src/components/molecules/FormButton';
-import { FormTextInput, IWebProps } from '@homzhub/common/src/components/molecules/FormTextInput';
-import { ILoginFormData } from '@homzhub/common/src/domain/repositories/interfaces';
-import { IState } from '@homzhub/common/src/modules/interfaces';
+import React, { createRef, PureComponent, RefObject } from "react";
+import { KeyboardAvoidingView, StyleSheet } from "react-native";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { Formik, FormikHelpers, FormikProps } from "formik";
+import * as yup from "yup";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { FormUtils } from "@homzhub/common/src/utils/FormUtils";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { CommonSelectors } from "@homzhub/common/src/modules/common/selectors";
+import { UserRepository } from "@homzhub/common/src/domain/repositories/UserRepository";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { FormButton } from "@homzhub/common/src/components/molecules/FormButton";
+import {
+  FormTextInput,
+  IWebProps,
+} from "@homzhub/common/src/components/molecules/FormTextInput";
+import { ILoginFormData } from "@homzhub/common/src/domain/repositories/interfaces";
+import { IState } from "@homzhub/common/src/modules/interfaces";
 
 interface ILoginFormProps extends WithTranslation {
   isEmailLogin?: boolean;
@@ -48,11 +51,11 @@ class LoginForm extends PureComponent<Props, IFormData> {
   public constructor(props: Props) {
     super(props);
     this.state = {
-      email: '',
-      phone: '',
-      password: '',
+      email: "",
+      phone: "",
+      password: "",
       isEmailFlow: props.isEmailLogin || false,
-      phoneCode: '',
+      phoneCode: "",
     };
   }
 
@@ -61,7 +64,10 @@ class LoginForm extends PureComponent<Props, IFormData> {
     this.setState({ phoneCode: defaultPhoneCode });
   }
 
-  public componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<IFormData>): void {
+  public componentDidUpdate(
+    prevProps: Readonly<Props>,
+    prevState: Readonly<IFormData>
+  ): void {
     const { defaultPhoneCode: prevDefaultPhoneCode } = prevProps;
     const { defaultPhoneCode } = this.props;
     if (prevDefaultPhoneCode !== defaultPhoneCode) {
@@ -71,14 +77,21 @@ class LoginForm extends PureComponent<Props, IFormData> {
   }
 
   public render(): React.ReactNode {
-    const { t, handleForgotPassword, isEmailLogin, testID, buttonTitle } = this.props;
+    const { t, handleForgotPassword, isEmailLogin, testID, buttonTitle } =
+      this.props;
     const formData = { ...this.state };
+
     return (
-      <KeyboardAvoidingView style={styles.flexOne} behavior={PlatformUtils.isIOS() ? 'padding' : undefined}>
+      <KeyboardAvoidingView
+        style={styles.flexOne}
+        behavior={PlatformUtils.isIOS() ? "padding" : undefined}
+      >
         <Formik
           initialValues={formData}
           enableReinitialize
-          validate={FormUtils.validate(isEmailLogin ? this.loginEmailFormSchema : this.loginPhoneFormSchema)}
+          validate={FormUtils.validate(
+            isEmailLogin ? this.loginEmailFormSchema : this.loginPhoneFormSchema
+          )}
           onSubmit={this.handleSubmit}
         >
           {(formProps: FormikProps<IFormData>): React.ReactElement => (
@@ -89,20 +102,22 @@ class LoginForm extends PureComponent<Props, IFormData> {
                 onPress={formProps.handleSubmit}
                 formProps={formProps}
                 type="primary"
-                title={buttonTitle || t('login')}
+                title={buttonTitle || t("login")}
                 containerStyle={styles.submitStyle}
               />
-              {isEmailLogin && PlatformUtils.isMobile() && handleForgotPassword && (
-                <Button
-                  type="secondary"
-                  title={t('auth:forgotPassword')}
-                  fontType="semiBold"
-                  textSize="small"
-                  onPress={handleForgotPassword}
-                  containerStyle={styles.forgotButtonStyle}
-                  testID={testID}
-                />
-              )}
+              {isEmailLogin &&
+                PlatformUtils.isMobile() &&
+                handleForgotPassword && (
+                  <Button
+                    type="secondary"
+                    title={t("auth:forgotPassword")}
+                    fontType="semiBold"
+                    textSize="small"
+                    onPress={handleForgotPassword}
+                    containerStyle={styles.forgotButtonStyle}
+                    testID={testID}
+                  />
+                )}
             </>
           )}
         </Formik>
@@ -110,19 +125,24 @@ class LoginForm extends PureComponent<Props, IFormData> {
     );
   }
 
-  private renderLoginFields = (formProps: FormikProps<IFormData>): React.ReactElement => {
-    const { t, handleForgotPassword, isEmailLogin, webGroupPrefix } = this.props;
+  private renderLoginFields = (
+    formProps: FormikProps<IFormData>
+  ): React.ReactElement => {
+    const { t, handleForgotPassword, isEmailLogin, webGroupPrefix } =
+      this.props;
 
     const onPasswordFocus = (): void => this.password.current?.focus();
 
     const ForgotPasswordButtonWeb = React.memo(() => (
       <Button
         type="secondary"
-        title={t('auth:forgotPassword')}
+        title={t("auth:forgotPassword")}
         fontType="semiBold"
         textSize="small"
         onPress={handleForgotPassword}
-        containerStyle={PlatformUtils.isWeb() ? styles.forgotButtonStyleWeb : null}
+        containerStyle={
+          PlatformUtils.isWeb() ? styles.forgotButtonStyleWeb : null
+        }
         titleStyle={styles.forgotButtonTextStyle}
       />
     ));
@@ -135,7 +155,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
               name="email"
               label="Email"
               inputType="email"
-              placeholder={t('auth:enterEmail')}
+              placeholder={t("auth:enterEmail")}
               isMandatory
               formProps={formProps}
               onSubmitEditing={onPasswordFocus}
@@ -145,7 +165,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
               name="password"
               label="Password"
               inputType="password"
-              placeholder={t('auth:newPassword')}
+              placeholder={t("auth:newPassword")}
               isMandatory
               formProps={formProps}
               // secondaryLabel={<ForgotPasswordButtonWeb />}
@@ -157,9 +177,9 @@ class LoginForm extends PureComponent<Props, IFormData> {
             label="Phone"
             inputType="phone"
             inputPrefixText={formProps.values.phoneCode}
-            placeholder={t('auth:yourNumber')}
-            helpText={t('auth:otpVerification')}
-            phoneFieldDropdownText={t('auth:countryRegion')}
+            placeholder={t("auth:yourNumber")}
+            helpText={t("auth:otpVerification")}
+            phoneFieldDropdownText={t("auth:countryRegion")}
             isMandatory
             formProps={formProps}
             webGroupPrefix={webGroupPrefix}
@@ -169,29 +189,41 @@ class LoginForm extends PureComponent<Props, IFormData> {
     );
   };
 
-  public handleSubmit = async (values: IFormData, formActions: FormikHelpers<IFormData>): Promise<void> => {
+  public handleSubmit = async (
+    values: IFormData,
+    formActions: FormikHelpers<IFormData>
+  ): Promise<void> => {
     const { onLoginSuccess, isEmailLogin, t, isFromLogin } = this.props;
-    console.log('🚀 ~ file: LoginForm.tsx ~ line 174 ~ LoginForm ~ handleSubmit= ~ onLoginSuccess', onLoginSuccess);
+    console.log(
+      "🚀 ~ file: LoginForm.tsx ~ line 174 ~ LoginForm ~ handleSubmit= ~ onLoginSuccess",
+      onLoginSuccess
+    );
     formActions.setSubmitting(true);
     if (!isEmailLogin) {
       try {
         const phone = `${values.phoneCode}~${values.phone}`;
         const isPhoneUsed = await UserRepository.phoneExists(phone);
         if (!isFromLogin && PlatformUtils.isWeb() && isPhoneUsed.is_exists) {
-          AlertHelper.error({ message: t('auth:phoneAlreadyExists') });
+          AlertHelper.error({ message: t("auth:phoneAlreadyExists") });
           return;
         }
         if (isFromLogin && PlatformUtils.isWeb() && !isPhoneUsed.is_exists) {
-          AlertHelper.error({ message: t('auth:phoneNotExists') });
+          AlertHelper.error({ message: t("auth:phoneNotExists") });
           return;
         }
         if (!PlatformUtils.isWeb() && !isPhoneUsed.is_exists) {
-          AlertHelper.error({ message: t('auth:phoneNotExists') });
+          AlertHelper.error({ message: t("auth:phoneNotExists") });
           return;
         }
       } catch (err) {
-        console.log('🚀 ~ file: LoginForm.tsx ~ line 193 ~ LoginForm ~ handleSubmit= ~ err', err.details);
-        AlertHelper.error({ message: t('common:genericErrorMessage'), statusCode: err.details.statusCode });
+        console.log(
+          "🚀 ~ file: LoginForm.tsx ~ line 193 ~ LoginForm ~ handleSubmit= ~ err",
+          err.details
+        );
+        AlertHelper.error({
+          message: t("common:genericErrorMessage"),
+          statusCode: err.details.statusCode,
+        });
         return;
       }
     }
@@ -201,6 +233,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
       phone_code: values.phoneCode,
       phone_number: values.phone,
     };
+
     onLoginSuccess(loginFormData);
     formActions.setSubmitting(false);
   };
@@ -210,7 +243,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
   }> => {
     const { t } = this.props;
     return yup.object().shape({
-      phone: yup.string().required(t('moreProfile:fieldRequiredError')),
+      phone: yup.string().required(t("moreProfile:fieldRequiredError")),
     });
   };
 
@@ -220,12 +253,15 @@ class LoginForm extends PureComponent<Props, IFormData> {
   }> => {
     const { t } = this.props;
     return yup.object().shape({
-      email: yup.string().email(t('auth:emailValidation')).required(t('auth:emailRequired')),
+      email: yup
+        .string()
+        .email(t("auth:emailValidation"))
+        .required(t("auth:emailRequired")),
       password: yup
         .string()
-        .matches(FormUtils.passwordRegex, t('auth:passwordValidation'))
-        .min(6, t('auth:minimumCharacters', { count: 6 }))
-        .required(t('auth:passwordRequired')),
+        .matches(FormUtils.passwordRegex, t("auth:passwordValidation"))
+        .min(6, t("auth:minimumCharacters", { count: 6 }))
+        .required(t("auth:passwordRequired")),
     });
   };
 }
@@ -248,11 +284,11 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   webLoginPasswordField: {
-    position: 'relative',
+    position: "relative",
   },
   forgotButtonStyleWeb: {
     borderWidth: 0,
-    width: 'fit-content',
+    width: "fit-content",
   },
   forgotButtonTextStyle: {
     marginHorizontal: 0,

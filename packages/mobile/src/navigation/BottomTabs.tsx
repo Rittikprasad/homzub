@@ -1,28 +1,46 @@
 // @ts-noCheck
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/core';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useTranslation } from 'react-i18next';
-import { StackActions } from '@react-navigation/native';
-import Focused from '@homzhub/common/src/assets/images/homzhubLogo.svg';
-import Unfocused from '@homzhub/common/src/assets/images/homzhubLogoUnfocused.svg';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { CommonActions } from '@homzhub/common/src/modules/common/actions';
-import { FinancialActions } from '@homzhub/common/src/modules/financials/actions';
-import { PortfolioActions } from '@homzhub/common/src/modules/portfolio/actions';
-import { OfferActions } from '@homzhub/common/src/modules/offers/actions';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import DefaultLogin from '@homzhub/mobile/src/screens/Asset/DefaultLogin';
-import { AuthStackParamList } from '@homzhub/mobile/src/navigation/AuthStack';
-import { MoreStack, MoreStackNavigatorParamList } from '@homzhub/mobile/src/navigation/MoreStack';
-import { DashboardNavigatorParamList, DashboardStack } from '@homzhub/mobile/src/navigation/DashboardStack';
-import { FinancialsNavigatorParamList, FinancialsStack } from '@homzhub/mobile/src/navigation/FinancialStack';
-import { PortfolioNavigatorParamList, PortfolioStack } from '@homzhub/mobile/src/navigation/PortfolioStack';
-import { ServiceNavigatorParamList, ServiceStack } from '@homzhub/mobile/src/navigation/ServiceStack';
-import { NestedNavigatorParams, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/core";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useTranslation } from "react-i18next";
+import { StackActions } from "@react-navigation/native";
+import Focused from "@homzhub/common/src/assets/images/homzhubLogo.svg";
+import Unfocused from "@homzhub/common/src/assets/images/homzhubLogoUnfocused.svg";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { CommonActions } from "@homzhub/common/src/modules/common/actions";
+import { FinancialActions } from "@homzhub/common/src/modules/financials/actions";
+import { PortfolioActions } from "@homzhub/common/src/modules/portfolio/actions";
+import { OfferActions } from "@homzhub/common/src/modules/offers/actions";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import DefaultLogin from "@homzhub/mobile/src/screens/Asset/DefaultLogin";
+import { AuthStackParamList } from "@homzhub/mobile/src/navigation/AuthStack";
+import {
+  MoreStack,
+  MoreStackNavigatorParamList,
+} from "@homzhub/mobile/src/navigation/MoreStack";
+import {
+  DashboardNavigatorParamList,
+  DashboardStack,
+} from "@homzhub/mobile/src/navigation/DashboardStack";
+import {
+  FinancialsNavigatorParamList,
+  FinancialsStack,
+} from "@homzhub/mobile/src/navigation/FinancialStack";
+import {
+  PortfolioNavigatorParamList,
+  PortfolioStack,
+} from "@homzhub/mobile/src/navigation/PortfolioStack";
+import {
+  ServiceNavigatorParamList,
+  ServiceStack,
+} from "@homzhub/mobile/src/navigation/ServiceStack";
+import {
+  NestedNavigatorParams,
+  ScreensKeys,
+} from "@homzhub/mobile/src/navigation/interfaces";
 
 export type BottomTabNavigatorParamList = {
   [ScreensKeys.Portfolio]: NestedNavigatorParams<PortfolioNavigatorParamList>;
@@ -34,7 +52,8 @@ export type BottomTabNavigatorParamList = {
   [ScreensKeys.DefaultLogin]: undefined;
 };
 
-const BottomTabNavigator = createBottomTabNavigator<BottomTabNavigatorParamList>();
+const BottomTabNavigator =
+  createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 export const BottomTabs = (): React.ReactElement => {
   const { t } = useTranslation();
@@ -46,13 +65,14 @@ export const BottomTabs = (): React.ReactElement => {
   return (
     <BottomTabNavigator.Navigator
       initialRouteName={initialRoute}
-      tabBarOptions={{
-        activeTintColor: theme.colors.primaryColor,
-        keyboardHidesTabBar: true,
-        labelStyle: {
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: theme.colors.primaryColor,
+        tabBarKeyboardHidesTabBar: true,
+        tabBarLabelStyle: {
           marginBottom: 4,
         },
-        style: {
+        tabBarStyle: {
           height: PlatformUtils.isIOS() ? theme.viewport.height * 0.1 : 60,
           shadowOffset: {
             width: 0,
@@ -75,8 +95,12 @@ export const BottomTabs = (): React.ReactElement => {
         })}
         options={({ route }): any => ({
           tabBarVisible: getTabBarVisibility(route),
-          tabBarLabel: t('landing:home'),
-          tabBarIcon: ({ focused }: { focused: boolean }): React.ReactElement => {
+          tabBarLabel: t("landing:home"),
+          tabBarIcon: ({
+            focused,
+          }: {
+            focused: boolean;
+          }): React.ReactElement => {
             return focused ? <Focused /> : <Unfocused />;
           },
         })}
@@ -96,8 +120,14 @@ export const BottomTabs = (): React.ReactElement => {
         })}
         options={({ route }): any => ({
           tabBarVisible: getTabBarVisibility(route),
-          tabBarLabel: t('common:properties'),
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }): React.ReactElement => {
+          tabBarLabel: t("common:properties"),
+          tabBarIcon: ({
+            color,
+            focused,
+          }: {
+            color: string;
+            focused: boolean;
+          }): React.ReactElement => {
             return focused ? (
               <Icon name={icons.portfolioFilled} color={color} size={22} />
             ) : (
@@ -121,8 +151,14 @@ export const BottomTabs = (): React.ReactElement => {
         })}
         options={({ route }): any => ({
           tabBarVisible: getTabBarVisibility(route),
-          tabBarLabel: t('assetFinancial:financial'),
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }): React.ReactElement => {
+          tabBarLabel: t("assetFinancial:financial"),
+          tabBarIcon: ({
+            color,
+            focused,
+          }: {
+            color: string;
+            focused: boolean;
+          }): React.ReactElement => {
             return focused ? (
               <Icon name={icons.barChartFilled} color={color} size={22} />
             ) : (
@@ -142,8 +178,14 @@ export const BottomTabs = (): React.ReactElement => {
         })}
         options={({ route }): any => ({
           tabBarVisible: getTabBarVisibility(route),
-          tabBarLabel: t('common:marketPlace'),
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }): React.ReactElement => {
+          tabBarLabel: t("common:marketPlace"),
+          tabBarIcon: ({
+            color,
+            focused,
+          }: {
+            color: string;
+            focused: boolean;
+          }): React.ReactElement => {
             return focused ? (
               <Icon name={icons.marketPlace} color={color} size={26} />
             ) : (
@@ -167,8 +209,14 @@ export const BottomTabs = (): React.ReactElement => {
         })}
         options={({ route }): any => ({
           tabBarVisible: getTabBarVisibility(route),
-          tabBarLabel: t('assetMore:more'),
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }): React.ReactElement => {
+          tabBarLabel: t("assetMore:more"),
+          tabBarIcon: ({
+            color,
+            focused,
+          }: {
+            color: string;
+            focused: boolean;
+          }): React.ReactElement => {
             return focused ? (
               <Icon name={icons.threeDots} color={color} size={22} />
             ) : (
@@ -186,7 +234,7 @@ export const BottomTabs = (): React.ReactElement => {
  * @param route
  */
 const getTabBarVisibility = (route: any): boolean => {
-  const currentRouteName = getFocusedRouteNameFromRoute(route) ?? '';
+  const currentRouteName = getFocusedRouteNameFromRoute(route) ?? "";
 
   const notAllowedRoutes = [
     ScreensKeys.PropertyAssetDescription,
@@ -249,7 +297,7 @@ const getTabBarVisibility = (route: any): boolean => {
 };
 
 const resetStackOnTabPress = (e, navigation): void => {
-  const state = navigation.dangerouslyGetState();
+  const state = navigation.getState();
 
   if (state) {
     // Grab all the tabs that are NOT the one we just pressed

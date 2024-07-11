@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Animated from 'react-native-reanimated';
+import Animated, { SharedValue } from 'react-native-reanimated';
 
-const { Extrapolate, Value, createAnimatedComponent } = Animated;
+import { Extrapolation } from 'react-native-reanimated';
+import { interpolate } from 'react-native-reanimated';
+
+const { createAnimatedComponent } = Animated;
 
 export type AnimatedValue = string | number | boolean;
 export type AnimatedAdaptable = Animated.Adaptable<AnimatedValue>;
@@ -17,9 +20,9 @@ class AnimationService {
    * Updates an animated value.
    */
   public updateAnimatedValue = (
-    valueToBeUpdated: Animated.Value<AnimatedValue>,
+    valueToBeUpdated: SharedValue<any>,
     newValue: Animated.Adaptable<AnimatedValue>
-  ): void => valueToBeUpdated.setValue(newValue);
+  ): void => (valueToBeUpdated.value += newValue);
 
   /**
    * Creates and returns an animated component.
@@ -31,25 +34,19 @@ class AnimationService {
    */
   public interpolateAnimation = (
     value: any,
-    inputRange: number[],
-    outputRange: Array<string | number>,
-    extrapolate?: Animated.Extrapolate
-  ): any =>
-    value.interpolate({
-      inputRange,
-      outputRange,
-      extrapolate: extrapolate || Extrapolate.CLAMP,
-    });
+    inputRange: readonly number[],
+    outputRange: readonly number[],
+    extrapolate?: Extrapolation
+  ): any => interpolate(value, inputRange, outputRange, extrapolate || Extrapolation.CLAMP);
 
   /**
    * Animates a color with passed rgb values.
    */
-  public colorAnimation = (
-    r: Animated.Adaptable<number>,
-    g: Animated.Adaptable<number>,
-    b: Animated.Adaptable<number>,
-    opacity?: Animated.Node<number>
-  ): Animated.Node<number> => Animated.color(r, g, b, opacity);
+  public colorAnimation = (r: any, g: any, b: any, opacity?: SharedValue<number>): AnimatedNode<number> => {
+    const color = '';
+    const result = color.concat(String(r), String(g), String(b), String(opacity));
+    return result;
+  };
 }
 
 const animationService = new AnimationService();

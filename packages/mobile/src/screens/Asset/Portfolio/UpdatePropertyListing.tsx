@@ -1,31 +1,35 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { AssetRepository } from '@homzhub/common/src/domain/repositories/AssetRepository';
-import { PortfolioNavigatorParamList } from '@homzhub/mobile/src/navigation/PortfolioStack';
-import { RecordAssetActions } from '@homzhub/common/src/modules/recordAsset/actions';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { BottomSheet } from '@homzhub/common/src/components/molecules/BottomSheet';
-import { IDropdownOption } from '@homzhub/common/src/components/molecules/FormDropdown';
-import { PropertyAddressCountry } from '@homzhub/common/src/components/molecules/PropertyAddressCountry';
+import React, { Component } from "react";
+import { StyleSheet, View } from "react-native";
+import { WithTranslation, withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
+import { PortfolioNavigatorParamList } from "@homzhub/mobile/src/navigation/PortfolioStack";
+import { RecordAssetActions } from "@homzhub/common/src/modules/recordAsset/actions";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import { BottomSheet } from "@homzhub/common/src/components/molecules/BottomSheet";
+import { IDropdownOption } from "@homzhub/common/src/components/molecules/FormDropdown";
+import { PropertyAddressCountry } from "@homzhub/common/src/components/molecules/PropertyAddressCountry";
 import CancelTerminateListing, {
   ISubmitPayload,
-} from '@homzhub/mobile/src/components/organisms/CancelTerminateListing';
-import { UserScreen } from '@homzhub/mobile/src/components/HOC/UserScreen';
+} from "@homzhub/mobile/src/components/organisms/CancelTerminateListing";
+import { UserScreen } from "@homzhub/mobile/src/components/HOC/UserScreen";
 import {
   ICancelListingPayload,
   ITerminateListingPayload,
   ListingType,
-} from '@homzhub/common/src/domain/repositories/interfaces';
-import { NavigationScreenProps, ScreensKeys, UpdatePropertyFormTypes } from '@homzhub/mobile/src/navigation/interfaces';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import {
+  NavigationScreenProps,
+  ScreensKeys,
+  UpdatePropertyFormTypes,
+} from "@homzhub/mobile/src/navigation/interfaces";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IDispatchProps {
   resetState: () => void;
@@ -38,7 +42,11 @@ interface IScreenState {
   reasons: IDropdownOption[];
 }
 
-type libProps = WithTranslation & NavigationScreenProps<PortfolioNavigatorParamList, ScreensKeys.UpdatePropertyScreen>;
+type libProps = WithTranslation &
+  NavigationScreenProps<
+    PortfolioNavigatorParamList,
+    ScreensKeys.UpdatePropertyScreen
+  >;
 type Props = IDispatchProps & libProps;
 
 class UpdatePropertyListing extends Component<Props, IScreenState> {
@@ -59,12 +67,11 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
     this.setState({ isLoading: true });
     AssetRepository.getClosureReason(params.payload)
       .then((res) => {
-        console.log('API Response:', res); // Log the API response
         const formattedData: IDropdownOption[] = res.map((item) => ({
           value: item.id,
           label: item.title,
         }));
-        console.log('Formatted Data:', formattedData); // Log the formatted data
+
         this.setState({
           reasons: formattedData,
           isLoading: false,
@@ -88,7 +95,7 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
     return (
       <>
         <UserScreen
-          title={t('portfolio')}
+          title={t("portfolio")}
           loading={isLoading}
           pageTitle={this.renderSectionHeader()}
           onBackPress={(): void => this.onBack(false)}
@@ -104,21 +111,25 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
             {this.renderFormOnType()}
           </View>
         </UserScreen>
-        <BottomSheet visible={isSheetVisible} headerTitle={t('common:backText')} onCloseSheet={this.onCloseSheet}>
+        <BottomSheet
+          visible={isSheetVisible}
+          headerTitle={t("common:backText")}
+          onCloseSheet={this.onCloseSheet}
+        >
           <View style={styles.sheetContainer}>
             <Text type="small" textType="regular">
-              {t('common:wantToLeave')}
+              {t("common:wantToLeave")}
             </Text>
             <View style={styles.buttonView}>
               <Button
                 type="primary"
-                title={t('common:yes')}
+                title={t("common:yes")}
                 containerStyle={styles.leftButton}
                 onPress={(): void => this.onBack(true)}
               />
               <Button
                 type="secondary"
-                title={t('common:no')}
+                title={t("common:no")}
                 containerStyle={styles.buttonContainer}
                 onPress={this.onCloseSheet}
               />
@@ -137,13 +148,13 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
 
     switch (params.formType) {
       case UpdatePropertyFormTypes.CancelListing:
-        return t('property:cancelListing');
+        return t("property:cancelListing");
       case UpdatePropertyFormTypes.TerminateListing:
-        return t('property:noticeToVacate');
+        return t("property:noticeToVacate");
       case UpdatePropertyFormTypes.RenewListing:
-        return t('property:renewListing');
+        return t("property:renewListing");
       default:
-        return t('property:cancelListing');
+        return t("property:cancelListing");
     }
   };
 
@@ -157,7 +168,11 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
     switch (formType) {
       case UpdatePropertyFormTypes.CancelListing:
         return (
-          <CancelTerminateListing onFormEdit={this.onFormEdit} reasonData={reasons} onSubmit={this.handleSubmit} />
+          <CancelTerminateListing
+            onFormEdit={this.onFormEdit}
+            reasonData={reasons}
+            onSubmit={this.handleSubmit}
+          />
         );
       case UpdatePropertyFormTypes.TerminateListing:
         return (
@@ -225,13 +240,19 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
       AssetRepository.terminateLease(payload)
         .then((res) => {
           navigation.goBack();
-          const role = res.app_permissions.is_asset_owner ? t('property:tenant') : t('property:owner');
+          const role = res.app_permissions.is_asset_owner
+            ? t("property:tenant")
+            : t("property:owner");
           this.setState({ isLoading: false });
-          AlertHelper.success({ message: t('property:terminationRequest', { role }) });
+          AlertHelper.success({
+            message: t("property:terminationRequest", { role }),
+          });
         })
         .catch((err) => {
           this.setState({ isLoading: false });
-          AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.detail) });
+          AlertHelper.error({
+            message: ErrorUtils.getErrorMessage(err.detail),
+          });
         });
     } else {
       if (!assetStatusInfo) return;
@@ -239,8 +260,14 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
 
       const payload: ICancelListingPayload = {
         param: {
-          listingType: leaseListingId && leaseListingId > 0 ? ListingType.LEASE_LISTING : ListingType.SALE_LISTING,
-          listingId: leaseListingId && leaseListingId > 0 ? leaseListingId : saleListingId ?? 0,
+          listingType:
+            leaseListingId && leaseListingId > 0
+              ? ListingType.LEASE_LISTING
+              : ListingType.SALE_LISTING,
+          listingId:
+            leaseListingId && leaseListingId > 0
+              ? leaseListingId
+              : saleListingId ?? 0,
           assetId: id,
         },
         data: {
@@ -253,13 +280,17 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
           this.updateAsset().then();
           this.setState({ isLoading: false });
           // @ts-ignore
-          navigation.navigate(ScreensKeys.PropertyPostStack, { screen: ScreensKeys.PortfolioLandingScreen });
+          navigation.navigate(ScreensKeys.PropertyPostStack, {
+            screen: ScreensKeys.PortfolioLandingScreen,
+          });
           // navigation.navigate(ScreensKeys.PortfolioLandingScreen);
-          AlertHelper.success({ message: t('property:listingCancelled') });
+          AlertHelper.success({ message: t("property:listingCancelled") });
         })
         .catch((err) => {
           this.setState({ isLoading: false });
-          AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+          AlertHelper.error({
+            message: ErrorUtils.getErrorMessage(err.details),
+          });
         });
     }
   };
@@ -277,7 +308,7 @@ class UpdatePropertyListing extends Component<Props, IScreenState> {
       ...lastVisitedStepSerialized,
       listing: {
         ...lastVisitedStepSerialized.listing,
-        type: '',
+        type: "",
         is_listing_created: false,
         is_verification_done: false,
         is_services_done: false,
@@ -299,7 +330,11 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
 export default connect(
   null,
   mapDispatchToProps
-)(withTranslation(LocaleConstants.namespacesKey.assetPortfolio)(UpdatePropertyListing));
+)(
+  withTranslation(LocaleConstants.namespacesKey.assetPortfolio)(
+    UpdatePropertyListing
+  )
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -314,10 +349,10 @@ const styles = StyleSheet.create({
   },
   sheetContainer: {
     paddingHorizontal: 16,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonView: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 24,
   },
   leftButton: {

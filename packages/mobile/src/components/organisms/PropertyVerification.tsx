@@ -1,29 +1,35 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import DocumentPicker from 'react-native-document-picker';
-import ImagePicker from 'react-native-image-crop-picker';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ObjectMapper } from '@homzhub/common/src/utils/ObjectMapper';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { AssetRepository } from '@homzhub/common/src/domain/repositories/AssetRepository';
-import { IDocsProps, ListingService } from '@homzhub/common/src/services/Property/ListingService';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import VerificationTypes from '@homzhub/common/src/components/organisms/VerificationTypes';
-import { TypeOfPlan } from '@homzhub/common/src/domain/models/AssetPlan';
-import { AllowedAttachmentFormats } from '@homzhub/common/src/domain/models/Attachment';
-import { ILastVisitedStep } from '@homzhub/common/src/domain/models/LastVisitedStep';
+import React from "react";
+import { StyleSheet } from "react-native";
+import DocumentPicker from "react-native-document-picker";
+import ImagePicker from "react-native-image-crop-picker";
+import { WithTranslation, withTranslation } from "react-i18next";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ObjectMapper } from "@homzhub/common/src/utils/ObjectMapper";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
+import {
+  IDocsProps,
+  ListingService,
+} from "@homzhub/common/src/services/Property/ListingService";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import VerificationTypes from "@homzhub/common/src/components/organisms/VerificationTypes";
+import { TypeOfPlan } from "@homzhub/common/src/domain/models/AssetPlan";
+import { AllowedAttachmentFormats } from "@homzhub/common/src/domain/models/Attachment";
+import { ILastVisitedStep } from "@homzhub/common/src/domain/models/LastVisitedStep";
 import {
   ExistingVerificationDocuments,
   IExistingVerificationDocuments,
   IPostVerificationDocuments,
   VerificationDocumentCategory,
   VerificationDocumentTypes,
-} from '@homzhub/common/src/domain/models/VerificationDocuments';
-import { IUpdateAssetParams } from '@homzhub/common/src/domain/repositories/interfaces';
-import { AttachmentError, AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+} from "@homzhub/common/src/domain/models/VerificationDocuments";
+import { IUpdateAssetParams } from "@homzhub/common/src/domain/repositories/interfaces";
+import {
+  AttachmentError,
+  AttachmentType,
+} from "@homzhub/common/src/constants/AttachmentTypes";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IPropertyVerificationState {
   verificationTypes: VerificationDocumentTypes[];
@@ -41,7 +47,10 @@ interface IProps {
 
 type Props = WithTranslation & IProps;
 
-export class PropertyVerification extends React.PureComponent<Props, IPropertyVerificationState> {
+export class PropertyVerification extends React.PureComponent<
+  Props,
+  IPropertyVerificationState
+> {
   public state = {
     verificationTypes: [],
     existingDocuments: [],
@@ -56,10 +65,13 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
 
   public render(): React.ReactElement {
     const { t, typeOfPlan } = this.props;
-    const { existingDocuments, localDocuments, isLoading, verificationTypes } = this.state;
+    const { existingDocuments, localDocuments, isLoading, verificationTypes } =
+      this.state;
     const totalDocuments = existingDocuments.concat(localDocuments);
 
-    const uploadedTypes = totalDocuments.map((doc: ExistingVerificationDocuments) => doc.verificationDocumentType.name);
+    const uploadedTypes = totalDocuments.map(
+      (doc: ExistingVerificationDocuments) => doc.verificationDocumentType.name
+    );
     const containsAllReqd = uploadedTypes.length === verificationTypes.length;
 
     return (
@@ -74,7 +86,7 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
         />
         <Button
           type="primary"
-          title={t('common:continue')}
+          title={t("common:continue")}
           disabled={!containsAllReqd || isLoading}
           containerStyle={styles.buttonStyle}
           onPress={this.postPropertyVerificationDocuments}
@@ -103,23 +115,32 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
     );
   };
 
-  public handleVerificationTypes = (types: VerificationDocumentTypes[]): void => {
+  public handleVerificationTypes = (
+    types: VerificationDocumentTypes[]
+  ): void => {
     this.setState({
       verificationTypes: types,
     });
   };
 
-  public handleVerificationDocumentUploads = async (data: VerificationDocumentTypes): Promise<void> => {
+  public handleVerificationDocumentUploads = async (
+    data: VerificationDocumentTypes
+  ): Promise<void> => {
     const verificationDocumentId = data.id;
     const verificationDocumentType = data.name;
-    if (verificationDocumentType === VerificationDocumentCategory.SELFIE_ID_PROOF) {
+    if (
+      verificationDocumentType === VerificationDocumentCategory.SELFIE_ID_PROOF
+    ) {
       this.captureSelfie(verificationDocumentId, data);
     } else {
       await this.uploadDocument(verificationDocumentId, data);
     }
   };
 
-  public captureSelfie = (verificationDocumentId: number, data: VerificationDocumentTypes): void => {
+  public captureSelfie = (
+    verificationDocumentId: number,
+    data: VerificationDocumentTypes
+  ): void => {
     ImagePicker.openCamera({
       width: 400,
       height: 400,
@@ -134,25 +155,33 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
           uri: image.path,
           type: image.mime,
           name: PlatformUtils.isIOS()
-            ? image.filename ?? image.path.substring(image.path.lastIndexOf('/') + 1)
-            : image.path.substring(image.path.lastIndexOf('/') + 1),
+            ? image.filename ??
+              image.path.substring(image.path.lastIndexOf("/") + 1)
+            : image.path.substring(image.path.lastIndexOf("/") + 1),
         };
         this.updateLocalDocuments(verificationDocumentId, source, data);
       })
       .catch((e) => {
-        if (e.code !== 'E_PICKER_CANCELLED') {
-          AlertHelper.error({ message: e.message });
+        if (e.code !== "E_PICKER_CANCELLED") {
+          AlertHelper.error({ message: "error" });
         }
       });
   };
 
-  public uploadDocument = async (verificationDocumentId: number, data: VerificationDocumentTypes): Promise<void> => {
+  public uploadDocument = async (
+    verificationDocumentId: number,
+    data: VerificationDocumentTypes
+  ): Promise<void> => {
     try {
       const document = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
       if (Object.values(AllowedAttachmentFormats).includes(document.type)) {
-        const source = { uri: document.uri, type: document.type, name: document.name };
+        const source = {
+          uri: document.uri,
+          type: document.type,
+          name: document.name,
+        };
         this.updateLocalDocuments(verificationDocumentId, source, data);
       } else {
         AlertHelper.error({ message: data.helpText });
@@ -183,7 +212,10 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
     };
     const { localDocuments } = this.state;
     this.setState({
-      localDocuments: [...localDocuments, ObjectMapper.deserialize(ExistingVerificationDocuments, imageObject)],
+      localDocuments: [
+        ...localDocuments,
+        ObjectMapper.deserialize(ExistingVerificationDocuments, imageObject),
+      ],
     });
   };
 
@@ -202,7 +234,8 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
   // API'S START
 
   public postPropertyVerificationDocuments = async (): Promise<void> => {
-    const { propertyId, updateStep, t, lastVisitedStep, typeOfPlan } = this.props;
+    const { propertyId, updateStep, t, lastVisitedStep, typeOfPlan } =
+      this.props;
     const { localDocuments, existingDocuments } = this.state;
 
     const updateAssetPayload: IUpdateAssetParams = {
@@ -223,7 +256,7 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
     }
     const formData = new FormData();
     localDocuments.forEach((document: ExistingVerificationDocuments) => {
-      formData.append('files[]', {
+      formData.append("files[]", {
         // @ts-ignore
         name: document.document.name,
         uri: document.document.link,
@@ -235,17 +268,22 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
     this.setState({ isLoading: true });
 
     try {
-      const response = await AttachmentService.uploadImage(formData, AttachmentType.ASSET_VERIFICATION);
+      const response = await AttachmentService.uploadImage(
+        formData,
+        AttachmentType.ASSET_VERIFICATION
+      );
 
       const { data } = response;
       const postRequestBody: IPostVerificationDocuments[] = [];
 
-      localDocuments.forEach((document: ExistingVerificationDocuments, index: number) => {
-        postRequestBody.push({
-          verification_document_type_id: document.verificationDocumentType.id,
-          document_id: data[index].id,
-        });
-      });
+      localDocuments.forEach(
+        (document: ExistingVerificationDocuments, index: number) => {
+          postRequestBody.push({
+            verification_document_type_id: document.verificationDocumentType.id,
+            document_id: data[index].id,
+          });
+        }
+      );
 
       existingDocuments.forEach((document: ExistingVerificationDocuments) => {
         if (!document.id) {
@@ -257,14 +295,17 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
       });
       this.setState({ isLoading: false });
 
-      await AssetRepository.postVerificationDocuments(propertyId, postRequestBody);
+      await AssetRepository.postVerificationDocuments(
+        propertyId,
+        postRequestBody
+      );
       await ListingService.getExistingDocuments(propertyId, this.updateState);
       await AssetRepository.updateAsset(propertyId, updateAssetPayload);
       updateStep();
     } catch (e) {
       this.setState({ isLoading: false });
       if (e === AttachmentError.UPLOAD_IMAGE_ERROR) {
-        AlertHelper.error({ message: t('common:fileCorrupt') });
+        AlertHelper.error({ message: t("common:fileCorrupt") });
       }
     }
   };
@@ -272,7 +313,9 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
   // API'S END
 }
 
-export default withTranslation(LocaleConstants.namespacesKey.property)(PropertyVerification);
+export default withTranslation(LocaleConstants.namespacesKey.property)(
+  PropertyVerification
+);
 
 const styles = StyleSheet.create({
   buttonStyle: {

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { connect } from 'react-redux';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Label, Text } from '@homzhub/common/src/components/atoms/Text';
-import { Avatar } from '@homzhub/common/src/components/molecules/Avatar';
-import { UserProfile as UserProfileModel } from '@homzhub/common/src/domain/models/UserProfile';
+import React, { Component } from "react";
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import { connect } from "react-redux";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Label, Text } from "@homzhub/common/src/components/atoms/Text";
+import { Avatar } from "@homzhub/common/src/components/molecules/Avatar";
+import { UserProfile as UserProfileModel } from "@homzhub/common/src/domain/models/UserProfile";
 
 interface IProps {
   onIconPress: () => void;
@@ -29,25 +29,32 @@ class MoreProfile extends Component<Props> {
     const { onIconPress, userProfile, headerContainerStyle } = this.props;
 
     return (
-      <TouchableOpacity onPress={onIconPress} style={[styles.headerContainer, headerContainerStyle]}>
+      <TouchableOpacity
+        onPress={onIconPress}
+        style={[styles.headerContainer, headerContainerStyle]}
+      >
         <View style={styles.flexRow}>
           <Avatar
             isOnlyAvatar
             imageSize={60}
-            fullName={userProfile?.name ?? 'User'}
+            fullName={userProfile?.name ?? "User"}
             initialsContainerStyle={styles.initialsContainer}
-            image={userProfile?.profilePicture ?? ''}
+            image={userProfile?.profilePicture ?? ""}
           />
           <View style={styles.nameContainer}>
             <Text maxLength={14} type="regular" textType="semiBold">
-              {userProfile?.name ?? 'User'}
+              {userProfile?.name ?? "User"}
             </Text>
             <Label type="large" textType="semiBold" style={styles.progressMsg}>
               {`${userProfile?.profileProgress}% Profile Completed`}
             </Label>
           </View>
         </View>
-        <Icon name={icons.rightArrow} size={18} color={theme.colors.lowPriority} />
+        <Icon
+          name={icons.rightArrow}
+          size={18}
+          color={theme.colors.lowPriority}
+        />
       </TouchableOpacity>
     );
   };
@@ -55,6 +62,7 @@ class MoreProfile extends Component<Props> {
 
 const mapStateToProps = (state: IState): IStateProps => {
   const { getUserProfile } = UserSelector;
+
   return {
     userProfile: getUserProfile(state),
   };
@@ -70,14 +78,14 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 4,
   },
   flexRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   headerContainer: {
     flex: 1,
     backgroundColor: theme.colors.moreSeparator,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: theme.layout.screenPadding,
     height: 120,
   },
@@ -88,7 +96,7 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     marginStart: 12,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   progressMsg: {
     color: theme.colors.green,

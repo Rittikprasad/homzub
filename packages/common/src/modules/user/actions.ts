@@ -1,17 +1,38 @@
-import { ObjectMapper } from '@homzhub/common/src/utils/ObjectMapper';
-import { IUserTokens } from '@homzhub/common/src/services/storage/StorageService';
-import { Asset, IAsset } from '@homzhub/common/src/domain/models/Asset';
-import { BankInfo, IBankInfo } from '@homzhub/common/src/domain/models/BankInfo';
-import { CoinTransaction, ICoinTransaction } from '@homzhub/common/src/domain/models/CoinTransaction';
-import { IUserProfile, UserProfile } from '@homzhub/common/src/domain/models/UserProfile';
-import { IUserPreferences, UserPreferences } from '@homzhub/common/src/domain/models/UserPreferences';
-import { IUserSubscription, UserSubscription } from '@homzhub/common/src/domain/models/UserSubscription';
-import { IWishlist, Wishlist } from '@homzhub/common/src/domain/models/Wishlist';
-import { IAuthCallback } from '@homzhub/common/src/modules/user/interface';
-import { IFluxStandardAction } from '@homzhub/common/src/modules/interfaces';
-import { ILoginPayload, IUpdateUserPreferences } from '@homzhub/common/src/domain/repositories/interfaces';
+import { ObjectMapper } from "@homzhub/common/src/utils/ObjectMapper";
+import { IUserTokens } from "@homzhub/common/src/services/storage/StorageService";
+import { Asset, IAsset } from "@homzhub/common/src/domain/models/Asset";
+import {
+  BankInfo,
+  IBankInfo,
+} from "@homzhub/common/src/domain/models/BankInfo";
+import {
+  CoinTransaction,
+  ICoinTransaction,
+} from "@homzhub/common/src/domain/models/CoinTransaction";
+import {
+  IUserProfile,
+  UserProfile,
+} from "@homzhub/common/src/domain/models/UserProfile";
+import {
+  IUserPreferences,
+  UserPreferences,
+} from "@homzhub/common/src/domain/models/UserPreferences";
+import {
+  IUserSubscription,
+  UserSubscription,
+} from "@homzhub/common/src/domain/models/UserSubscription";
+import {
+  IWishlist,
+  Wishlist,
+} from "@homzhub/common/src/domain/models/Wishlist";
+import { IAuthCallback } from "@homzhub/common/src/modules/user/interface";
+import { IFluxStandardAction } from "@homzhub/common/src/modules/interfaces";
+import {
+  ILoginPayload,
+  IUpdateUserPreferences,
+} from "@homzhub/common/src/domain/repositories/interfaces";
 
-const actionTypePrefix = 'User/';
+const actionTypePrefix = "User/";
 
 export const UserActionTypes = {
   AUTH: {
@@ -83,14 +104,18 @@ const loginFailure = (error: string): IFluxStandardAction => {
   };
 };
 
-const logout = (payload?: IAuthCallback): IFluxStandardAction<IAuthCallback> => {
+const logout = (
+  payload?: IAuthCallback
+): IFluxStandardAction<IAuthCallback> => {
   return {
     type: UserActionTypes.AUTH.LOGOUT,
     payload,
   };
 };
 
-const deactivateUserAccount = (payload?: IAuthCallback): IFluxStandardAction<IAuthCallback> => {
+const deactivateUserAccount = (
+  payload?: IAuthCallback
+): IFluxStandardAction<IAuthCallback> => {
   return {
     type: UserActionTypes.AUTH.DEACTIVATE_USER_ACCOUNT,
     payload,
@@ -110,7 +135,9 @@ const logoutFailure = (error: string): IFluxStandardAction => {
   };
 };
 
-const updateOnBoarding = (updatedOnBoarding: boolean): IFluxStandardAction<boolean> => ({
+const updateOnBoarding = (
+  updatedOnBoarding: boolean
+): IFluxStandardAction<boolean> => ({
   type: UserActionTypes.UPDATE.ONBOARDING,
   payload: updatedOnBoarding,
 });
@@ -129,7 +156,9 @@ const getUserProfile = (): IFluxStandardAction => ({
   type: UserActionTypes.GET.USER_PROFILE,
 });
 
-const getUserProfileSuccess = (payload: UserProfile): IFluxStandardAction<IUserProfile> => ({
+const getUserProfileSuccess = (
+  payload: UserProfile
+): IFluxStandardAction<IUserProfile> => ({
   type: UserActionTypes.GET.USER_PROFILE_SUCCESS,
   payload: ObjectMapper.serialize(payload),
 });
@@ -144,7 +173,9 @@ const getUserPreferences = (): IFluxStandardAction => {
   };
 };
 
-const getUserPreferencesSuccess = (payload: UserPreferences): IFluxStandardAction<IUserPreferences> => {
+const getUserPreferencesSuccess = (
+  payload: UserPreferences
+): IFluxStandardAction<IUserPreferences> => {
   return {
     type: UserActionTypes.GET.USER_PREFERENCES_SUCCESS,
     payload: ObjectMapper.serialize(payload),
@@ -155,12 +186,16 @@ const getUserPreferencesFailure = (): IFluxStandardAction => ({
   type: UserActionTypes.GET.USER_PREFERENCES_FAILURE,
 });
 
-const setAddPropertyFlow = (payload: boolean): IFluxStandardAction<boolean> => ({
+const setAddPropertyFlow = (
+  payload: boolean
+): IFluxStandardAction<boolean> => ({
   type: UserActionTypes.SET.IS_ADD_PROPERTY_FLOW,
   payload,
 });
 
-const updateUserPreferences = (payload: IUpdateUserPreferences): IFluxStandardAction<IUpdateUserPreferences> => ({
+const updateUserPreferences = (
+  payload: IUpdateUserPreferences
+): IFluxStandardAction<IUpdateUserPreferences> => ({
   type: UserActionTypes.UPDATE.USER_PREFERENCES,
   payload,
 });
@@ -182,7 +217,9 @@ const getFavouriteProperties = (): IFluxStandardAction => ({
   type: UserActionTypes.GET.FAVOURITE_PROPERTIES,
 });
 
-const getFavouritePropertiesSuccess = (data: Wishlist[]): IFluxStandardAction<Asset[]> => ({
+const getFavouritePropertiesSuccess = (
+  data: Wishlist[]
+): IFluxStandardAction<Asset[]> => ({
   type: UserActionTypes.GET.FAVOURITE_PROPERTIES_SUCCESS,
   payload: ObjectMapper.serializeArray(data),
 });
@@ -201,7 +238,9 @@ const getUserSubscriptions = (): IFluxStandardAction => {
   };
 };
 
-const getUserSubscriptionsSuccess = (payload: UserSubscription): IFluxStandardAction<IUserSubscription> => {
+const getUserSubscriptionsSuccess = (
+  payload: UserSubscription
+): IFluxStandardAction<IUserSubscription> => {
   return {
     type: UserActionTypes.GET.USER_SUBSCRIPTIONS_SUCCESS,
     payload: ObjectMapper.serialize(payload),
@@ -218,7 +257,9 @@ const getUserServices = (): IFluxStandardAction => {
   };
 };
 
-const getUserServicesSuccess = (payload: Asset[]): IFluxStandardAction<IAsset[]> => {
+const getUserServicesSuccess = (
+  payload: Asset[]
+): IFluxStandardAction<IAsset[]> => {
   return {
     type: UserActionTypes.GET.USER_SERVICES_SUCCESS,
     payload: ObjectMapper.serializeArray(payload),
@@ -235,7 +276,9 @@ const getUserCoinTransaction = (): IFluxStandardAction => {
   };
 };
 
-const getUserCoinTransactionSuccess = (payload: CoinTransaction[]): IFluxStandardAction<ICoinTransaction[]> => {
+const getUserCoinTransactionSuccess = (
+  payload: CoinTransaction[]
+): IFluxStandardAction<ICoinTransaction[]> => {
   return {
     type: UserActionTypes.GET.USER_COIN_TRANSACTION_SUCCESS,
     payload: ObjectMapper.serializeArray(payload),
@@ -253,7 +296,9 @@ const getBankInfo = (userId: number): IFluxStandardAction<number> => {
   };
 };
 
-const getBankInfoSuccess = (payload: BankInfo[]): IFluxStandardAction<IBankInfo[]> => {
+const getBankInfoSuccess = (
+  payload: BankInfo[]
+): IFluxStandardAction<IBankInfo[]> => {
   return {
     type: UserActionTypes.GET.BANK_INFO_SUCCESS,
     payload: ObjectMapper.serializeArray(payload),
@@ -264,7 +309,9 @@ const getBankInfoFailure = (): IFluxStandardAction => ({
   type: UserActionTypes.GET.BANK_INFO_FAILURE,
 });
 
-const setCurrentBankAccountId = (payload: number): IFluxStandardAction<number> => ({
+const setCurrentBankAccountId = (
+  payload: number
+): IFluxStandardAction<number> => ({
   type: UserActionTypes.SET.CURRENT_BANK_ACCOUNT_ID,
   payload,
 });

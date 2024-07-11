@@ -2,5 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true
-  }
+  },
+  "include": ["packages/**/*", "babel.config.js", "metro.config.js"],
+  "exclude": []
 }

@@ -9,9 +9,12 @@ import { Loader } from '@homzhub/common/src/components/atoms/Loader';
 import { PageHeader, IPageHeaderProps, TITLE_HEIGHT } from '@homzhub/mobile/src/components/atoms/PageHeader';
 import { Header, IHeaderProps } from '@homzhub/mobile/src/components/molecules/Header';
 import HandleBack from '@homzhub/mobile/src/navigation/HandleBack';
+import { useSharedValue } from 'react-native-reanimated';
+import { useAnimatedScrollHandler } from 'react-native-reanimated';
 
 const { createAnimatedComponent, setAnimatedValue, interpolateAnimation } = AnimationService;
-const AnimatedKeyboardAwareScrollView = createAnimatedComponent(KeyboardAwareScrollView);
+
+const AnimatedKeyboardAwareScrollView = Animated.createAnimatedComponent(KeyboardAwareScrollView);
 
 interface IProps {
   children: React.ReactNode;
@@ -45,9 +48,14 @@ export const Screen = (props: IProps): React.ReactElement => {
   let opacity;
   let onScroll;
   if (!headerProps?.title && pageHeaderProps?.contentTitle) {
-    const scrollY = setAnimatedValue(0);
-    opacity = interpolateAnimation(scrollY, [10, TITLE_HEIGHT], [0, 1]);
-    onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }]);
+    const scrollY = useSharedValue(0);
+    opacity = interpolateAnimation(scrollY.value, [10, TITLE_HEIGHT], [0, 1]);
+    // onScroll = Animated.event([
+    //   {nativeEvent: {contentOffset: {y: scrollY.value}}},
+    // ]);
+    const onScroll = useAnimatedScrollHandler((event) => {
+      scrollY.value = event.contentOffset.y;
+    });
   }
 
   return (

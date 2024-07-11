@@ -1,37 +1,32 @@
-const path = require('path');
-const getWorkspaces = require('get-yarn-workspaces');
-const { getDefaultConfig } = require('metro-config');
+const path = require("path");
+const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
 
-async function getConfig(appDir) {
-  const workspaces = getWorkspaces(appDir);
+const rootPath = path.resolve(__dirname, "../.."); // Adjust based on your actual root path
 
-  const watchFolders = [
-    path.resolve(appDir, 'node_modules'),
-    ...workspaces.filter((workPath) => !workPath.match(/node_modules/)),
-  ];
+const defaultConfig = getDefaultConfig(__dirname);
 
-  const defaultConfig = await getDefaultConfig();
-
-  return {
-    watchFolders,
-    projectRoot: path.resolve(__dirname, '../../'), // This should point to the root of your monorepo
-    transformer: {
-      babelTransformerPath: require.resolve('react-native-svg-transformer'),
-      getTransformOptions: async () => ({
-        transform: {
-          experimentalImportSupport: false,
-          inlineRequires: true,
-        },
-      }),
+const config = {
+  transformer: {
+    babelTransformerPath: require.resolve("react-native-svg-transformer"),
+    inlineRequires: true,
+  },
+  resolver: {
+    unstable_enableSymlinks: true,
+    assetExts: defaultConfig.resolver.assetExts.filter((ext) => ext !== "svg"),
+    sourceExts: [...defaultConfig.resolver.sourceExts, "svg"],
+    extraNodeModules: {
+      "@homzhub/mobile": path.resolve(rootPath, "packages/mobile"),
+      "@homzhub/common": path.resolve(rootPath, "packages/common"),
+      "@homzhub/web": path.resolve(rootPath, "packages/web"),
     },
-    resolver: {
-      assetExts: defaultConfig.resolver.assetExts.filter((ext) => ext !== 'svg'),
-      sourceExts: [...defaultConfig.resolver.sourceExts, 'svg'],
-      nodeModulesPaths: watchFolders,
-      disableHierarchicalLookup: false,
-    },
-    resetCache: true,
-  };
-}
+  },
+  watchFolders: [
+    path.resolve(rootPath, "node_modules"),
+    path.resolve(rootPath, "packages/common"),
+    path.resolve(rootPath, "packages/mobile"),
+    path.resolve(rootPath, "packages/web"),
+    path.resolve(rootPath, "packages/ffm"),
+  ],
+};
 
-module.exports = (async () => await getConfig(__dirname))();
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

@@ -1,13 +1,16 @@
-import { IUserTokens } from '@homzhub/common/src/services/storage/StorageService';
-import { UserActionTypes, UserPayloadTypes } from '@homzhub/common/src/modules/user/actions';
-import { IAsset } from '@homzhub/common/src/domain/models/Asset';
-import { IBankInfo } from '@homzhub/common/src/domain/models/BankInfo';
-import { ICoinTransaction } from '@homzhub/common/src/domain/models/CoinTransaction';
-import { IUserProfile } from '@homzhub/common/src/domain/models/UserProfile';
-import { IUserPreferences } from '@homzhub/common/src/domain/models/UserPreferences';
-import { IUserSubscription } from '@homzhub/common/src/domain/models/UserSubscription';
-import { IFluxStandardAction } from '@homzhub/common/src/modules/interfaces';
-import { IUserState } from '@homzhub/common/src/modules/user/interface';
+import { IUserTokens } from "@homzhub/common/src/services/storage/StorageService";
+import {
+  UserActionTypes,
+  UserPayloadTypes,
+} from "@homzhub/common/src/modules/user/actions";
+import { IAsset } from "@homzhub/common/src/domain/models/Asset";
+import { IBankInfo } from "@homzhub/common/src/domain/models/BankInfo";
+import { ICoinTransaction } from "@homzhub/common/src/domain/models/CoinTransaction";
+import { IUserProfile } from "@homzhub/common/src/domain/models/UserProfile";
+import { IUserPreferences } from "@homzhub/common/src/domain/models/UserPreferences";
+import { IUserSubscription } from "@homzhub/common/src/domain/models/UserSubscription";
+import { IFluxStandardAction } from "@homzhub/common/src/modules/interfaces";
+import { IUserState } from "@homzhub/common/src/modules/user/interface";
 
 export const initialUserState: IUserState = {
   tokens: null,
@@ -25,7 +28,7 @@ export const initialUserState: IUserState = {
   bankInfo: [],
   currentBankAccountId: -1,
   error: {
-    user: '',
+    user: "",
   },
   loaders: {
     user: false,
@@ -50,80 +53,80 @@ export const userReducer = (
     case UserActionTypes.AUTH.LOGIN:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['user']: true },
-        ['error']: { ...state.error, ['user']: '' },
+        ["loaders"]: { ...state.loaders, ["user"]: true },
+        ["error"]: { ...state.error, ["user"]: "" },
       };
     case UserActionTypes.AUTH.LOGIN_SUCCESS:
       return {
         ...state,
-        ['tokens']: action.payload as IUserTokens,
-        ['loaders']: { ...state.loaders, ['user']: false },
+        ["tokens"]: action.payload as IUserTokens,
+        ["loaders"]: { ...state.loaders, ["user"]: false },
       };
     case UserActionTypes.AUTH.LOGOUT_SUCCESS:
     case UserActionTypes.AUTH.DEACTIVATE_USER_ACCOUNT:
       return {
         ...state,
-        ['tokens']: null,
-        ['userProfile']: null,
-        ['userPreferences']: null,
-        ['loaders']: { ...state.loaders, ['user']: false },
+        ["tokens"]: null,
+        ["userProfile"]: null,
+        ["userPreferences"]: null,
+        ["loaders"]: { ...state.loaders, ["user"]: false },
       };
     case UserActionTypes.AUTH.LOGOUT_FAILURE:
     case UserActionTypes.AUTH.LOGIN_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['user']: false },
-        ['error']: { ...state.error, ['user']: action.error as string },
+        ["loaders"]: { ...state.loaders, ["user"]: false },
+        ["error"]: { ...state.error, ["user"]: action.error as string },
       };
     case UserActionTypes.UPDATE.ONBOARDING:
       return {
         ...state,
-        ['isOnBoardingCompleted']: action.payload as boolean,
+        ["isOnBoardingCompleted"]: action.payload as boolean,
       };
     case UserActionTypes.SET.CHANGE_STACK:
-      return { ...state, ['isChangeStack']: action.payload as boolean };
+      return { ...state, ["isChangeStack"]: action.payload as boolean };
     case UserActionTypes.SET.USER_COUNTRY_CODE:
-      return { ...state, ['userCountryCode']: action.payload as number };
+      return { ...state, ["userCountryCode"]: action.payload as number };
     case UserActionTypes.GET.USER_PROFILE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userProfile']: true },
+        ["loaders"]: { ...state.loaders, ["userProfile"]: true },
       };
     case UserActionTypes.GET.USER_PROFILE_SUCCESS:
       return {
         ...state,
-        ['userProfile']: action.payload as IUserProfile,
-        ['loaders']: {
+        ["userProfile"]: action.payload as IUserProfile,
+        ["loaders"]: {
           ...state.loaders,
-          ['userProfile']: false,
+          ["userProfile"]: false,
         },
       };
     case UserActionTypes.GET.USER_PROFILE_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userProfile']: false },
+        ["loaders"]: { ...state.loaders, ["userProfile"]: false },
       };
     case UserActionTypes.SET.IS_ADD_PROPERTY_FLOW:
-      return { ...state, ['isAddPropertyFlow']: action.payload as boolean };
+      return { ...state, ["isAddPropertyFlow"]: action.payload as boolean };
     case UserActionTypes.UPDATE.USER_PREFERENCES:
     case UserActionTypes.GET.USER_PREFERENCES:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userPreferences']: true },
+        ["loaders"]: { ...state.loaders, ["userPreferences"]: true },
       };
     case UserActionTypes.GET.USER_PREFERENCES_SUCCESS:
       return {
         ...state,
-        ['userPreferences']: action.payload as IUserPreferences,
-        ['loaders']: {
+        ["userPreferences"]: action.payload as IUserPreferences,
+        ["loaders"]: {
           ...state.loaders,
-          ['userPreferences']: false,
+          ["userPreferences"]: false,
         },
       };
     case UserActionTypes.GET.USER_PREFERENCES_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userPreferences']: false },
+        ["loaders"]: { ...state.loaders, ["userPreferences"]: false },
       };
     case UserActionTypes.GET.USER_ASSETS_SUCCESS:
       return {
@@ -133,102 +136,102 @@ export const userReducer = (
     case UserActionTypes.GET.FAVOURITE_PROPERTIES:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['user']: true },
+        ["loaders"]: { ...state.loaders, ["user"]: true },
       };
     case UserActionTypes.GET.FAVOURITE_PROPERTIES_SUCCESS:
       return {
         ...state,
-        ['favouriteProperties']: action.payload as IAsset[],
-        ['loaders']: {
+        ["favouriteProperties"]: action.payload as IAsset[],
+        ["loaders"]: {
           ...state.loaders,
-          ['user']: false,
+          ["user"]: false,
         },
       };
     case UserActionTypes.SET.CLEAR_FAVOURITE_PROPERTIES:
       return {
         ...state,
-        ['favouriteProperties']: [],
+        ["favouriteProperties"]: [],
       };
     case UserActionTypes.GET.USER_SUBSCRIPTIONS:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userSubscriptions']: true },
+        ["loaders"]: { ...state.loaders, ["userSubscriptions"]: true },
       };
     case UserActionTypes.GET.USER_SUBSCRIPTIONS_SUCCESS:
       return {
         ...state,
-        ['userSubscriptions']: action.payload as IUserSubscription,
-        ['loaders']: {
+        ["userSubscriptions"]: action.payload as IUserSubscription,
+        ["loaders"]: {
           ...state.loaders,
-          ['userSubscriptions']: false,
+          ["userSubscriptions"]: false,
         },
       };
     case UserActionTypes.GET.USER_SUBSCRIPTIONS_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userSubscriptions']: false },
+        ["loaders"]: { ...state.loaders, ["userSubscriptions"]: false },
       };
     case UserActionTypes.GET.USER_SERVICES:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userService']: true },
+        ["loaders"]: { ...state.loaders, ["userService"]: true },
       };
     case UserActionTypes.GET.USER_SERVICES_SUCCESS:
       return {
         ...state,
-        ['userServices']: action.payload as IAsset[],
-        ['loaders']: {
+        ["userServices"]: action.payload as IAsset[],
+        ["loaders"]: {
           ...state.loaders,
-          ['userService']: false,
+          ["userService"]: false,
         },
       };
     case UserActionTypes.GET.USER_SERVICES_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userService']: false },
+        ["loaders"]: { ...state.loaders, ["userService"]: false },
       };
     case UserActionTypes.GET.USER_COIN_TRANSACTION:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userTransaction']: true },
+        ["loaders"]: { ...state.loaders, ["userTransaction"]: true },
       };
     case UserActionTypes.GET.USER_COIN_TRANSACTION_SUCCESS:
       return {
         ...state,
-        ['userTransaction']: action.payload as ICoinTransaction[],
-        ['loaders']: {
+        ["userTransaction"]: action.payload as ICoinTransaction[],
+        ["loaders"]: {
           ...state.loaders,
-          ['userTransaction']: false,
+          ["userTransaction"]: false,
         },
       };
     case UserActionTypes.GET.USER_COIN_TRANSACTION_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['userTransaction']: false },
+        ["loaders"]: { ...state.loaders, ["userTransaction"]: false },
       };
     case UserActionTypes.GET.BANK_INFO:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['bankInfo']: true },
+        ["loaders"]: { ...state.loaders, ["bankInfo"]: true },
       };
     case UserActionTypes.GET.BANK_INFO_SUCCESS:
       return {
         ...state,
-        ['bankInfo']: action.payload as IBankInfo[],
-        ['loaders']: {
+        ["bankInfo"]: action.payload as IBankInfo[],
+        ["loaders"]: {
           ...state.loaders,
-          ['bankInfo']: false,
+          ["bankInfo"]: false,
         },
       };
     case UserActionTypes.GET.BANK_INFO_FAILURE:
       return {
         ...state,
-        ['loaders']: { ...state.loaders, ['bankInfo']: false },
+        ["loaders"]: { ...state.loaders, ["bankInfo"]: false },
       };
     case UserActionTypes.SET.CURRENT_BANK_ACCOUNT_ID:
       return {
         ...state,
-        ['currentBankAccountId']: action.payload as number,
+        ["currentBankAccountId"]: action.payload as number,
       };
     default:
       return state;
