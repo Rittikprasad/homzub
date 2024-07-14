@@ -1,11 +1,11 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import moment from 'moment';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import moment from "moment";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
 
 interface IProps {
   isAllowPastDate?: boolean;
@@ -44,14 +44,43 @@ const CalendarHeader = (props: IProps): React.ReactElement => {
     year,
   } = props;
 
-  // DISABLE VALIDATION
-  const isNextDisable =
-    maxDate &&
-    (moment(maxDate).month() === moment().month() ||
-      (!!month && moment(maxDate).month() === month && !!year && moment(maxDate).year() === Number(year)));
-  const isPreviousDisable =
-    (minDate ? moment(minDate).year() === moment().year() : !isAllowPastDate) && isCurrentMonth && !isYearView;
-  // DISABLE VALIDATION
+  const isCurrentYear = year === String(moment().year());
+  const yearView =
+    moment().year() > Number(yearTitle?.split("-")[0]) &&
+    moment().year() < Number(yearTitle?.split("-")[1]);
+
+  const getIsNextDisable = () => {
+    if (maxDate && month && year) {
+      return (
+        moment(maxDate).month() === moment().month() ||
+        (moment(maxDate).month() === month &&
+          moment(maxDate).year() === Number(year))
+      );
+    }
+    return false;
+  };
+
+  const getIsPreviousDisable = () => {
+    if (minDate) {
+      return moment(minDate).year() === moment().year();
+    }
+    return !isAllowPastDate;
+  };
+
+  const isNextDisable = isYearView
+    ? getIsNextDisable()
+    : isMonthView
+    ? getIsNextDisable()
+    : getIsNextDisable();
+
+  const isPreviousDisable = isYearView
+    ? getIsPreviousDisable() && yearView
+    : isMonthView
+    ? getIsPreviousDisable() && isCurrentYear && !isYearView
+    : getIsPreviousDisable() &&
+      (isMonthView ? !isCurrentMonth : isCurrentMonth) &&
+      isCurrentYear &&
+      !isYearView;
 
   return (
     <>
@@ -60,15 +89,29 @@ const CalendarHeader = (props: IProps): React.ReactElement => {
           name={icons.leftArrow}
           onPress={!isPreviousDisable ? onBackPress : FunctionUtils.noop}
           size={22}
-          color={isPreviousDisable ? theme.colors.disabled : theme.colors.primaryColor}
+          color={
+            isPreviousDisable
+              ? theme.colors.disabled
+              : theme.colors.primaryColor
+          }
         />
         {!isYearView && !isMonthView && (
-          <Text type="small" textType="semiBold" onPress={onMonthPress} style={styles.headerTitle}>
+          <Text
+            type="small"
+            textType="semiBold"
+            onPress={onMonthPress}
+            style={styles.headerTitle}
+          >
             {headerTitle}
           </Text>
         )}
         {isMonthView && (
-          <Text type="small" textType="semiBold" onPress={onYearPress} style={styles.headerTitle}>
+          <Text
+            type="small"
+            textType="semiBold"
+            onPress={onYearPress}
+            style={styles.headerTitle}
+          >
             {headerYear}
           </Text>
         )}
@@ -80,7 +123,9 @@ const CalendarHeader = (props: IProps): React.ReactElement => {
         <Icon
           name={icons.rightArrow}
           size={22}
-          color={isNextDisable ? theme.colors.disabled : theme.colors.primaryColor}
+          color={
+            isNextDisable ? theme.colors.disabled : theme.colors.primaryColor
+          }
           onPress={!isNextDisable ? onNextPress : FunctionUtils.noop}
         />
       </View>
@@ -93,8 +138,8 @@ export default CalendarHeader;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    justifyContent: "space-between",
+    flexDirection: "row",
     paddingVertical: 20,
     paddingHorizontal: 24,
   },

@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
-import { Calendar, DateObject } from 'react-native-calendars';
-import { View, FlatList, TouchableOpacity, StyleSheet, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import moment from 'moment';
-import { groupBy } from 'lodash';
-import { DateFormats, DateUtils, MonthNames } from '@homzhub/common/src/utils/DateUtils';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import CalendarHeader from '@homzhub/common/src/components/atoms/CalendarHeader';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
-
-// CONSTANTS START
+import React, { Component } from "react";
+import { Calendar, DateData } from "react-native-calendars";
+import {
+  View,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
+import moment from "moment";
+import { groupBy } from "lodash";
+import {
+  DateFormats,
+  DateUtils,
+  MonthNames,
+} from "@homzhub/common/src/utils/DateUtils";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import CalendarHeader from "@homzhub/common/src/components/atoms/CalendarHeader";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
 
 const INITIAL_YEAR = 1893;
 const MAX_YEAR = Number(DateUtils.getNextYear(16));
-
-// CONSTANTS END
 
 interface ICalendarProps {
   onSelect: (day: string) => void;
@@ -38,58 +45,64 @@ interface ICalendarState {
   yearList: string[];
 }
 
-export class CalendarComponent extends Component<ICalendarProps, ICalendarState> {
-  public constructor(props: ICalendarProps) {
+export class CalendarComponent extends Component<
+  ICalendarProps,
+  ICalendarState
+> {
+  constructor(props: ICalendarProps) {
     super(props);
     const { selectedDate, isCurrentDateEnable } = props;
     this.state = {
       isMonthView: false,
       isYearView: false,
-      selectedDate: isCurrentDateEnable ? DateUtils.getCurrentDate() : selectedDate,
+      selectedDate: isCurrentDateEnable
+        ? DateUtils.getCurrentDate()
+        : selectedDate,
       day: moment().format(DateFormats.DD),
       month: new Date().getMonth(),
       year: moment().format(DateFormats.YYYY),
-      yearTitle: '',
+      yearTitle: "",
       yearList: [],
     };
   }
 
-  public componentDidMount = (): void => {
-    const { selectedDate, isOnlyYearView } = this.props;
+  componentDidMount(): void {
+    const { selectedDate, isOnlyYearView, minDate } = this.props;
     let yearData = this.getYearsData();
     if (isOnlyYearView) {
       yearData = this.getYearsData(Number(selectedDate));
     }
     const title = `${yearData[0]} - ${yearData[yearData.length - 1]}`;
     this.setState({ yearTitle: title, yearList: yearData });
-  };
+  }
 
-  public render(): React.ReactNode {
+  render(): React.ReactNode {
     const { isMonthView, isYearView } = this.state;
     const { isOnlyYearView } = this.props;
     const isYear = isYearView || isOnlyYearView;
     return (
       <View>
         {this.renderHeader()}
-        {isMonthView ? this.renderListView() : isYear ? this.renderListView(true) : this.renderCalendar()}
+        {isMonthView
+          ? this.renderListView()
+          : isYear
+          ? this.renderListView(true)
+          : this.renderCalendar()}
       </View>
     );
   }
 
-  private renderHeader = (): React.ReactElement => {
+  renderHeader = (): React.ReactElement => {
     const { allowPastDates, maxDate, isOnlyYearView, minDate } = this.props;
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     let { month, year } = this.state;
     if (selectedDate) {
-      month = moment(selectedDate).month();
-      year = String(moment(selectedDate).year());
+      month = moment(selectedDate, "MMM DD,YYYY").month();
+      year = String(moment(selectedDate, "MMM DD,YYYY").year());
     }
     const updateMonth = DateUtils.getFullMonthName(month, DateFormats.MMMM);
-
     const isCurrentMonth = month === moment().month();
-
     const title = `${updateMonth} ${year}`;
-
     return (
       <CalendarHeader
         isAllowPastDate={allowPastDates}
@@ -111,15 +124,15 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
     );
   };
 
-  private renderListView = (isYearView?: boolean): React.ReactNode => {
+  renderListView = (isYearView?: boolean): React.ReactNode => {
+    const { selectedDate } = this.state;
+    const year = String(moment(selectedDate, "MMM DD,YYYY").year());
     const { yearList } = this.state;
-
     const listData = isYearView ? yearList : MonthNames;
-
     return (
       <FlatList
         data={listData}
-        renderItem={this.renderItem}
+        renderItem={({ item, index }) => this.renderItem({ item, year, index })}
         contentContainerStyle={styles.listContent}
         keyExtractor={this.renderKeyExtractor}
         numColumns={4}
@@ -127,47 +140,85 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
     );
   };
 
-  private renderKeyExtractor = (item: string, index: number): string => {
+  renderKeyExtractor = (item: string, index: number): string => {
     return `${item}-${index}`;
   };
 
-  private renderItem = ({ item, index }: { item: string; index: number }): React.ReactElement => {
-    const { month, isMonthView, isYearView, year } = this.state;
-    const { isOnlyYearView, selectedDate } = this.props;
-    const onPressItem = (): void => (isMonthView ? this.onSelectMonth(item, index) : this.onSelectYear(item, index));
-    const yearView = isOnlyYearView ? Number(selectedDate) === Number(item) : month === index;
+  renderItem = ({
+    item,
+    year,
+    index,
+  }: {
+    item: string;
+    year: string;
+    index: number;
+  }): React.ReactElement => {
+    const { month, isMonthView, isYearView, selectedDate } = this.state;
+    const { isOnlyYearView } = this.props;
+    const onPressItem = () =>
+      isMonthView
+        ? this.onSelectMonth(item, index)
+        : this.onSelectYear(item, index);
+    const yearView = isOnlyYearView
+      ? Number(selectedDate) === Number(item)
+      : moment(selectedDate, "MMM DD,YYYY").month() === index;
     const isSelected = isYearView ? year === item : yearView;
     const isMobile = PlatformUtils.isMobile();
-
+    let isDisable;
+    if (isYearView) {
+      isDisable = Number(item) < moment().year();
+    }
+    if (isMonthView) {
+      isDisable =
+        moment.monthsShort().indexOf(item) < moment().month() &&
+        Number(year) === moment().year();
+    }
     return (
       <TouchableOpacity
         key={index}
-        style={StyleSheet.flatten([customStyles.renderItemView(isSelected, isMobile)])}
+        style={StyleSheet.flatten([
+          customStyles.renderItemView(isSelected, isMobile),
+        ])}
         onPress={onPressItem}
+        disabled={isDisable}
       >
-        <Label type="large" style={StyleSheet.flatten([customStyles.renderItemTitle(isSelected)])}>
+        <Label
+          type="large"
+          style={StyleSheet.flatten([
+            customStyles.renderItemTitle(isSelected),
+            isDisable && customStyles.disabledItem,
+          ])}
+        >
           {item}
         </Label>
       </TouchableOpacity>
     );
   };
 
-  private renderCalendar = (): React.ReactElement => {
+  renderCalendar = (): React.ReactElement => {
     const { allowPastDates, maxDate, minDate } = this.props;
     const { day, month, year, selectedDate } = this.state;
     const updateMonth = month + 1;
-    const date = selectedDate || DateUtils.getFormattedDate(day, updateMonth, year, 'YYYY-MM-DD').toDateString();
-    const markedDate = !selectedDate ? moment().format('YYYY-MM-DD') : moment(date).format('YYYY-MM-DD');
-
+    const date =
+      selectedDate ||
+      DateUtils.getFormattedDate(day, updateMonth, year, "YYYY-MM-DD");
+    const markedDate = !selectedDate
+      ? moment().format("YYYY-MM-DD")
+      : moment(date, "MMM DD,YYYY").format("YYYY-MM-DD");
     return (
       <>
         <Calendar
           hideArrows
-          // @ts-ignore
-          renderHeader={(): null => null}
-          minDate={minDate ? DateUtils.getDisplayDate(minDate, 'YYYY-MM-DD') : allowPastDates ? undefined : new Date()}
+          renderHeader={() => null}
+          minDate={
+            minDate
+              ? minDate
+              : allowPastDates
+              ? undefined
+              : moment().format("YYYY-MM-DD")
+          }
           maxDate={maxDate}
-          current={date}
+          current={moment(date, "MMM DD,YYYY").format("YYYY-MM-DD")}
           key={date}
           style={styles.calendarStyle}
           onDayPress={this.onDayPress}
@@ -198,13 +249,13 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
     );
   };
 
-  private onSelectMonth = (item: string, index: number): void => {
+  onSelectMonth = (item: string, index: number): void => {
     const { year } = this.state;
     this.setState({ month: index, isMonthView: false, isYearView: false });
     this.getSelectedDate(index, Number(year));
   };
 
-  private onSelectYear = (item: string, index: number): void => {
+  onSelectYear = (item: string, index: number): void => {
     const { month } = this.state;
     const { isOnlyYearView, onSelect } = this.props;
     if (isOnlyYearView) {
@@ -212,56 +263,60 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
       onSelect(item);
     } else {
       this.setState({ year: item, isMonthView: true, isYearView: false });
-      this.getSelectedDate(Number(month), index);
+      this.getSelectedDate(Number(month), Number(item));
     }
   };
 
-  private onDayPress = (day: DateObject): void => {
-    this.setState({ selectedDate: day.dateString });
+  onDayPress = (day: DateData): void => {
+    this.setState({
+      selectedDate: moment(day.dateString, "YYYY-MM-DD").format("MMM DD,YYYY"),
+    });
   };
 
-  private handleSelect = (): void => {
+  handleSelect = (): void => {
     const { onSelect } = this.props;
     const { selectedDate } = this.state;
     onSelect(selectedDate);
   };
 
-  private handleMonthPress = (): void => {
+  handleMonthPress = (): void => {
     const { isMonthView } = this.state;
     this.setState({ isMonthView: !isMonthView, isYearView: false });
   };
 
-  private handleYearPress = (): void => {
+  handleYearPress = (): void => {
     const { isYearView } = this.state;
     const yearData = this.getYearsData();
     const yearTitle = `${yearData[0]} - ${yearData[yearData.length - 1]}`;
-    this.setState({ isYearView: !isYearView, isMonthView: false, yearTitle, yearList: yearData });
+    this.setState({
+      isYearView: !isYearView,
+      isMonthView: false,
+      yearTitle,
+      yearList: yearData,
+    });
   };
 
-  /**
-   * Handle Back Press Functionality
-   * Cases: Day, Month and Year view
-   */
-  private handleBackPress = (): void => {
+  handleBackPress = (): void => {
     const { allowPastDates, isOnlyYearView } = this.props;
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     let { month, year } = this.state;
-
-    // For year view
-    const value = Number(yearTitle.split('-')[0]);
-    // For year view
-
     if (selectedDate) {
-      month = moment(selectedDate).month();
-      year = moment(selectedDate).year().toString();
+      month = moment(selectedDate, "MMM DD,YYYY").month();
+      year = moment(selectedDate, "MMM DD,YYYY").year().toString();
     }
-
-    if (!allowPastDates && month === moment().month() && !isYearView) {
+    const value = Number(yearTitle.split("-")[0]);
+    const isCurrentYear = Number(year) === moment().year();
+    if (
+      !allowPastDates &&
+      month === moment().month() &&
+      !isYearView &&
+      isCurrentYear
+    ) {
       return;
     }
-
     if (isMonthView) {
-      const previousYear = Number(year) > INITIAL_YEAR ? Number(year) - 1 : Number(year);
+      const previousYear =
+        Number(year) > INITIAL_YEAR ? Number(year) - 1 : Number(year);
       this.getSelectedDate(month, previousYear);
       this.setState({ year: previousYear.toString() });
     } else if ((isYearView || isOnlyYearView) && value > INITIAL_YEAR) {
@@ -277,29 +332,21 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
     }
   };
 
-  /**
-   * Handle Next Press Functionality
-   * Cases: Day, Month and Year view
-   */
-  private handleNextPress = (): void => {
+  handleNextPress = (): void => {
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     const { maxDate, isOnlyYearView } = this.props;
-
-    // For year view
-    const value = Number(yearTitle.split('-')[1]);
-    // For year view
-
-    let { month, year } = this.state;
+    const value = Number(yearTitle.split("-")[1]);
     if (maxDate && moment(maxDate).month() === moment().month()) {
       return;
     }
+    let { month, year } = this.state;
     if (selectedDate) {
-      month = moment(selectedDate).month();
-      year = moment(selectedDate).year().toString();
+      month = moment(selectedDate, "MMM DD,YYYY").month();
+      year = moment(selectedDate, "MMM DD,YYYY").year().toString();
     }
-
     if (isMonthView) {
-      const nextYear = Number(year) < MAX_YEAR - 1 ? Number(year) + 1 : Number(year);
+      const nextYear =
+        Number(year) < MAX_YEAR - 1 ? Number(year) + 1 : Number(year);
       this.getSelectedDate(month, nextYear);
       this.setState({ year: nextYear.toString() });
     } else if ((isYearView || isOnlyYearView) && value < MAX_YEAR - 1) {
@@ -315,47 +362,49 @@ export class CalendarComponent extends Component<ICalendarProps, ICalendarState>
     }
   };
 
-  private getSelectedDate = (month: number, year: number): void => {
-    const { selectedDate } = this.props;
-    const isNotSelected = moment(selectedDate).month() !== month || moment(selectedDate).year() !== year;
+  getSelectedDate = (month: number, year: number): void => {
+    const { day, selectedDate } = this.state;
+    let newselectedDate = moment(selectedDate, "MMM DD,YYYY");
+    const isNotSelected =
+      moment(newselectedDate).month() !== month ||
+      moment(newselectedDate).year() !== year;
     if (isNotSelected) {
-      this.setState({ selectedDate: '' });
+      let defaultMonth =
+        year === moment().year() && month < moment().month()
+          ? moment().month()
+          : month;
+      this.setState({
+        selectedDate: `${moment.monthsShort()[month]} ${day},${year}`,
+      });
     } else {
       this.setState({ selectedDate });
     }
   };
 
-  /**
-   * Created Year list for year view
-   * Grouping by INITIAL and MAX year on the gap of 16 years
-   */
-  private getYearsData = (updateYear?: number): string[] => {
+  getYearsData = (updateYear?: number): string[] => {
     const { year, selectedDate } = this.state;
-    const newYear = moment(selectedDate).year();
+    const newYear = moment(selectedDate, "MMM DD,YYYY").year();
     const formattedYear = updateYear || Number(newYear || year);
     const years = [];
     let updatedData: string[] = [];
-
-    // for years list
     for (let i = INITIAL_YEAR; i <= MAX_YEAR; i++) {
       if (i < MAX_YEAR) {
         years.push(i.toString());
       }
     }
-
     while (years.length > 0) {
       const data = years.splice(0, 16);
       const abc = groupBy(data, () => `${data[0]}-${data[data.length - 1]}`);
-
-      // eslint-disable-next-line no-loop-func
       Object.keys(abc).forEach((key) => {
-        const values: string[] = key.split('-');
-        if (Number(values[0]) <= formattedYear && Number(values[1]) >= formattedYear) {
+        const values: string[] = key.split("-");
+        if (
+          Number(values[0]) <= formattedYear &&
+          Number(values[1]) >= formattedYear
+        ) {
           updatedData = abc[key];
         }
       });
     }
-
     return updatedData;
   };
 }
@@ -374,18 +423,24 @@ const styles = StyleSheet.create({
 });
 
 const customStyles = {
-  headerTitle: (isMonthView: boolean): StyleProp<TextStyle> => ({
-    color: isMonthView ? theme.colors.darkTint2 : theme.colors.primaryColor,
-  }),
-  renderItemView: (isSelected: boolean, isMobile: boolean): StyleProp<ViewStyle> => ({
+  renderItemView: (
+    isSelected: boolean,
+    isMobile: boolean
+  ): StyleProp<ViewStyle> => ({
     width: isMobile ? theme.viewport.width * 0.24 : 60,
     marginVertical: 12,
-    alignItems: 'center',
-    backgroundColor: isSelected ? theme.colors.primaryColor : theme.colors.white,
+    alignItems: "center",
+    backgroundColor: isSelected
+      ? theme.colors.primaryColor
+      : theme.colors.white,
     borderRadius: 4,
   }),
-  renderItemTitle: (isSelected: boolean, isDisable?: boolean): StyleProp<TextStyle> => ({
+  renderItemTitle: (isSelected: boolean): StyleProp<TextStyle> => ({
     paddingVertical: 6,
-    color: isSelected ? theme.colors.white : isDisable ? theme.colors.disabled : theme.colors.darkTint2,
+    color: isSelected ? theme.colors.white : theme.colors.darkTint2,
   }),
+  disabledItem: {
+    color: "grey",
+    opacity: 0.5,
+  },
 };

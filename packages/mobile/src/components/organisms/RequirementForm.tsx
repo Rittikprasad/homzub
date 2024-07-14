@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { isEqual } from 'lodash';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { DateUtils } from '@homzhub/common/src/utils/DateUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { SearchRepository } from '@homzhub/common/src/domain/repositories/SearchRepository';
-import { SearchActions } from '@homzhub/common/src/modules/search/actions';
-import { CommonSelectors } from '@homzhub/common/src/modules/common/selectors';
-import { SearchSelector } from '@homzhub/common/src/modules/search/selectors';
-import { SelectionPicker } from '@homzhub/common/src/components/atoms/SelectionPicker';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import { Range } from '@homzhub/common/src/components/molecules/Range';
-import { RoomsFilter } from '@homzhub/common/src/components/molecules/RoomsFilter';
-import { FormCalendar } from '@homzhub/common/src/components/molecules/FormCalendar';
-import LocalityCard from '@homzhub/mobile/src/components/molecules/LocalityCard';
-import AssetTypeFilter from '@homzhub/common/src/components/organisms/AssetTypeFilter';
-import { FilterDetail } from '@homzhub/common/src/domain/models/FilterDetail';
-import { ISearchRequirementPayload } from '@homzhub/common/src/domain/repositories/interfaces';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { isEqual } from "lodash";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { DateUtils } from "@homzhub/common/src/utils/DateUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { SearchRepository } from "@homzhub/common/src/domain/repositories/SearchRepository";
+import { SearchActions } from "@homzhub/common/src/modules/search/actions";
+import { CommonSelectors } from "@homzhub/common/src/modules/common/selectors";
+import { SearchSelector } from "@homzhub/common/src/modules/search/selectors";
+import { SelectionPicker } from "@homzhub/common/src/components/atoms/SelectionPicker";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import { Range } from "@homzhub/common/src/components/molecules/Range";
+import { RoomsFilter } from "@homzhub/common/src/components/molecules/RoomsFilter";
+import { FormCalendar } from "@homzhub/common/src/components/molecules/FormCalendar";
+import LocalityCard from "@homzhub/mobile/src/components/molecules/LocalityCard";
+import AssetTypeFilter from "@homzhub/common/src/components/organisms/AssetTypeFilter";
+import { FilterDetail } from "@homzhub/common/src/domain/models/FilterDetail";
+import { ISearchRequirementPayload } from "@homzhub/common/src/domain/repositories/interfaces";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import moment from "moment";
 
 interface IProps {
   onAddLocation: () => void;
   onSubmit: () => void;
 }
 
-const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElement => {
+const RequirementForm = ({
+  onAddLocation,
+  onSubmit,
+}: IProps): React.ReactElement => {
   const { t } = useTranslation(LocaleConstants.namespacesKey.propertySearch);
   const dispatch = useDispatch();
   const filterData = useSelector(SearchSelector.getFilterDetail);
@@ -40,28 +44,43 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
   const [filterDetails, setFilterDetails] = useState<FilterDetail>();
   // REMOVE END
 
-  const [transactionType, setTransactionType] = useState(filters.asset_transaction_type);
+  const [transactionType, setTransactionType] = useState(
+    filters.asset_transaction_type
+  );
   const [assetGroup, setAssetGroup] = useState(1);
-  const [comment, setComment] = useState('');
-  const [assetType, setAssetType] = useState<number[]>(filters.asset_type ?? []);
+  const [comment, setComment] = useState("");
+  const [assetType, setAssetType] = useState<number[]>(
+    filters.asset_type ?? []
+  );
   const [bedCount, setBedCount] = useState<number[]>(
-    filters.room_count && filters.room_count.length > 0 ? filters.room_count : [-1]
+    filters.room_count && filters.room_count.length > 0
+      ? filters.room_count
+      : [-1]
   );
 
   const [isRangeUpdate, setRangeUpdate] = useState(false);
-  const [price, setPriceRange] = useState({ min: filters.min_price ?? 0, max: filters.max_price ?? 0 });
+  const [price, setPriceRange] = useState({
+    min: filters.min_price ?? 0,
+    max: filters.max_price ?? 0,
+  });
   const [minPrice, setMinPrice] = useState<number>(filters.min_price ?? 0);
   const [maxPrice, setMaxPrice] = useState<number>(filters.max_price ?? 0);
-  const [moveInDate, setMoveInDate] = useState(DateUtils.getDisplayDate(new Date().toISOString(), 'MMM DD, YYYY'));
+  const [moveInDate, setMoveInDate] = useState(
+    DateUtils.getDisplayDate(moment().format("MMM DD,YYYY"), "MMM DD, YYYY")
+  );
 
   const transactionData = [
-    { title: t('rent'), value: 0 },
-    { title: t('buy'), value: 1 },
+    { title: t("rent"), value: 0 },
+    { title: t("buy"), value: 1 },
   ];
 
-  const country = countryData.find((item) => item.currencies[0].currencyCode === filters.currency_code);
+  const country = countryData.find(
+    (item) => item.currencies[0].currencyCode === filters.currency_code
+  );
   // @ts-ignore
-  const currencySymbol = country?.currencies[0].currencySymbol ?? filterData?.currency[0].currency_symbol;
+  const currencySymbol =
+    country?.currencies[0].currencySymbol ??
+    filterData?.currency[0].currency_symbol;
 
   useEffect(() => {
     // TODO: (Shikha) Remove after commercial integration
@@ -98,10 +117,13 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
       min_budget: minPrice,
       max_budget: maxPrice,
       asset_types: assetType,
-      search_txn_type: transactionType === 0 ? 'RENT' : 'BUY',
+      search_txn_type: transactionType === 0 ? "RENT" : "BUY",
       preferred_location: localities,
       bhk: isEqual(bedCount, [-1]) ? [] : bedCount,
-      available_from_date: DateUtils.getUtcFormatted(moveInDate, 'MMM DD, YYYY'),
+      available_from_date: DateUtils.getUtcFormatted(
+        moveInDate,
+        "MMM DD, YYYY"
+      ),
       user_location_latitude: filters.user_location_latitude,
       user_location_longitude: filters.user_location_longitude,
       comments: comment,
@@ -116,22 +138,24 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
 
   const updateFilter = (type: string, value: number | number[]): void => {
     switch (type) {
-      case 'asset_group':
-        dispatch(SearchActions.getFilterDetails({ asset_group: value as number }));
+      case "asset_group":
+        dispatch(
+          SearchActions.getFilterDetails({ asset_group: value as number })
+        );
         setAssetGroup(value as number);
         break;
-      case 'asset_type':
+      case "asset_type":
         setAssetType(value as number[]);
         break;
-      case 'room_count':
+      case "room_count":
         setBedCount(value as number[]);
         break;
-      case 'min_price':
+      case "min_price":
         // alert(value)
         setMinPrice(value as number);
         // setPriceRange({ ...price, min: value as number });
         break;
-      case 'max_price':
+      case "max_price":
         setMaxPrice(value as number);
         // setPriceRange({ ...price, max: value as number });
         break;
@@ -141,11 +165,18 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
   };
 
   const onUpdateDate = (day: string): void => {
-    setMoveInDate(DateUtils.getDisplayDate(day, 'MMM DD, YYYY'));
+    console.log("IN ONUPDATE DATE", day);
+    setMoveInDate(DateUtils.getDisplayDate(day, "MMM DD, YYYY"));
   };
 
   const onUpdateTransaction = (value: number): void => {
-    dispatch(SearchActions.setFilter({ asset_transaction_type: value, max_price: -1, min_price: -1 }));
+    dispatch(
+      SearchActions.setFilter({
+        asset_transaction_type: value,
+        max_price: -1,
+        min_price: -1,
+      })
+    );
     setRangeUpdate(!isRangeUpdate);
     setTransactionType(value);
   };
@@ -156,7 +187,7 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
       {localities.length < 5 && (
         <Button
           type="primary"
-          title={t('common:addLocation')}
+          title={t("common:addLocation")}
           containerStyle={styles.verticalStyle}
           onPress={onAddLocation}
         />
@@ -178,7 +209,7 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
       )}
       <RoomsFilter
         bedCount={bedCount}
-        bedTitle={t('bhk')}
+        bedTitle={t("bhk")}
         isBathRequired={false}
         onSelection={updateFilter}
         containerStyle={styles.roomContainer}
@@ -188,7 +219,7 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
         selectedUnit={filters.currency_code}
         isPriceRange
         range={priceRange}
-        title={t('budget')}
+        title={t("budget")}
         currencySymbol={currencySymbol}
         minChangedValue={price.min}
         maxChangedValue={price.max}
@@ -196,23 +227,23 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
         isRangeUpdate={isRangeUpdate}
       />
       <FormCalendar
-        label={t('moveInDate')}
+        label={t("moveInDate")}
         textSize="small"
         selectedValue={moveInDate}
         bubbleSelectedDate={onUpdateDate}
       />
       <TextArea
         value={comment}
-        placeholder={t('common:typeYourMessage')}
-        label={t('common:comments')}
-        helpText={t('assetMore:optional')}
+        placeholder={t("common:typeYourMessage")}
+        label={t("common:comments")}
+        helpText={t("assetMore:optional")}
         onMessageChange={setComment}
         wordCountLimit={500}
         containerStyle={styles.verticalStyle}
       />
       <Button
         type="primary"
-        title={t('submitDetails')}
+        title={t("submitDetails")}
         disabled={assetType.length < 1 || localities.length < 1}
         containerStyle={styles.saveButton}
         onPress={onSaveDetails}

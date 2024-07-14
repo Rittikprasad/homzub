@@ -60,7 +60,7 @@
     "jetifier": "^2.0.0",
     "json2typescript": "^1.4.1",
     "lodash": "^4.17.15",
-    "moment": "^2.26.0",
+    "moment": "^2.30.1",
     "moment-timezone": "^0.5.31",
     "patch-package": "^8.0.0",
     "react": "18.1.0",
