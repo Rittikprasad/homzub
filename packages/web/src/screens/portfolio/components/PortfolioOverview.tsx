@@ -46,7 +46,7 @@ const getPorfolioMetrics = async (callback: (response: AssetMetrics) => void): P
   try {
     const response: AssetMetrics = await PortfolioRepository.getAssetMetrics();
     callback(response);
-  } catch (e) {
+  } catch (e: any) {
     const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
   }
@@ -55,7 +55,7 @@ const getPorfolioAssetDetails = async (callback: (response: Asset[]) => void): P
   try {
     const response: Asset[] = await PortfolioRepository.getUserAssetDetails('ALL');
     callback(response);
-  } catch (e) {
+  } catch (e: any) {
     const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
   }

@@ -120,7 +120,7 @@ class ChangePassword extends Component<Props, IScreenState> {
     try {
       await UserRepository.updatePassword(updatePayload);
       handlePopupClose();
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

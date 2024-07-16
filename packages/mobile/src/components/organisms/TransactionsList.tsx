@@ -128,8 +128,7 @@ class TransactionsList extends React.PureComponent<Props, IOwnState> {
         getLedgers();
         this.closeBottomSheet();
         AlertHelper.success({ message: t('assetFinancial:deletedSuccessfullyMessage') });
-      } catch (e) {
-        toggleLoading(false);
+      }catch (e: any) {        toggleLoading(false);
         this.closeBottomSheet();
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }

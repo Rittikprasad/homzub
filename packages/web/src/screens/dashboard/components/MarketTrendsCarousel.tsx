@@ -58,8 +58,7 @@ const getMarketTrends = async (callback: (response: MarketTrends) => void): Prom
   try {
     const response = await CommonRepository.getMarketTrends(payload);
     callback(response);
-  } catch (err) {
-    // todo: handle error case
+  }catch (err: any) {    // todo: handle error case
   }
 };
 

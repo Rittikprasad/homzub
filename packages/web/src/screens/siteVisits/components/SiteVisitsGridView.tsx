@@ -187,7 +187,7 @@ const SiteVisitsGridView: React.FC<IProps> = (props: IProps) => {
       //   } else {
       onCloseModal();
       getVisitsData();
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e) });
     }
   };

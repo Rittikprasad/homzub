@@ -220,8 +220,7 @@ class UpdateProfile extends React.PureComponent<IOwnProps, IOwnState> {
       await UserRepository.updateUserProfileByActions(payload);
       AlertHelper.success({ message: t('profileUpdatedSuccessfully') });
       onGoBack();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 }

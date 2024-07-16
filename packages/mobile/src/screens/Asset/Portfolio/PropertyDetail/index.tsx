@@ -366,8 +366,7 @@ export class PropertyDetailScreen extends PureComponent<Props, IDetailState> {
           navigation.goBack();
         }
       );
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       this.setState({ isDeleteProperty: false, isLoading: false });
     }
   };
@@ -593,8 +592,7 @@ export class PropertyDetailScreen extends PureComponent<Props, IDetailState> {
           }
         }
       );
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

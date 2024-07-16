@@ -125,8 +125,7 @@ class ValueAddedServicesView extends React.PureComponent<IProps, IOwnState> {
         await AssetRepository.updateAsset(propertyId, updateAssetPayload);
       }
       handleNextStep();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 }

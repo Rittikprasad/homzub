@@ -32,7 +32,8 @@ import { AssetDetailsImageCarousel } from '@homzhub/common/src/components/molecu
 import EstPortfolioValue from '@homzhub/web/src/components/molecules/EstPortfolioValue';
 import { PropertyAddress } from '@homzhub/common/src/components/molecules/PropertyAddress';
 import { PropertyAmenities } from '@homzhub/common/src/components/molecules/PropertyAmenities';
-import { renderPopUpTypes } from 'screens/propertyDetails/components/PropertyCardDetails';
+import { renderPopUpTypes } from '../propertyDetails/components/PropertyCardDetails';
+// import { renderPopUpTypes } from 'screens/propertyDetails/components/PropertyCardDetails';
 import SiteVisitsActionsPopover, {
   SiteVisitAction,
 } from '@homzhub/web/src/screens/siteVisits/components/SiteVisitsActionsPopover';
@@ -79,7 +80,7 @@ const SavedProperty: FC = () => {
       const response = await OffersRepository.getProspectsInfo();
       setLoading(false);
       return response.id;
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(error.details), statusCode: error.details.statusCode });
       return -1;
@@ -167,7 +168,7 @@ const SavedProperty: FC = () => {
       }
 
       dispatch(UserActions.getFavouriteProperties());
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };

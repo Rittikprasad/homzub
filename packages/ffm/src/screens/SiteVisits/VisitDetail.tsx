@@ -119,8 +119,7 @@ const VisitDetail = (): React.ReactElement => {
       await AssetRepository.updatePropertyVisit(payload);
       AlertHelper.success({ message: t('siteVisits:visitUpdate') });
       dispatch(FFMActions.getVisitDetail(visitId));
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

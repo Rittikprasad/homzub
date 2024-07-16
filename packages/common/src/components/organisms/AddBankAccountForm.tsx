@@ -116,8 +116,7 @@ const AddBankAccountForm = (props: IOwnProps): React.ReactElement => {
       if (setLoading) {
         setLoading(false);
       }
-    } catch (e) {
-      if (setLoading) {
+    }catch (e: any) {      if (setLoading) {
         setLoading(false);
       }
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
@@ -234,8 +233,7 @@ const AddBankAccountForm = (props: IOwnProps): React.ReactElement => {
           setLoading(false);
         }
         if (onSubmit) onSubmit();
-      } catch (e) {
-        if (setLoading) {
+      }catch (e: any) {        if (setLoading) {
           setLoading(false);
         }
         if (onError) {

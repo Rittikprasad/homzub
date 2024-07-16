@@ -96,7 +96,7 @@ const ListedPropertyOffers: FC<Props> = (props: Props) => {
     try {
       const detailFilter = await OffersRepository.getOfferFilters(OfferFilterType.DETAIL);
       setOfferFilters(detailFilter);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };

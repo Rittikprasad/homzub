@@ -30,7 +30,7 @@ import { UserInteraction } from '@homzhub/common/src/domain/models/UserInteracti
 import { Typography } from '@homzhub/common/src/components/atoms/Typography';
 import { TimeSlot } from '@homzhub/common/src/constants/ContactFormData';
 import { Tabs } from '@homzhub/common/src/constants/Tabs';
-import CalendarWeb from 'components/atoms/Calendar/CalendarWeb';
+// import CalendarWeb from 'components/atoms/Calendar/CalendarWeb';
 import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
 
 interface IProps {
@@ -260,8 +260,7 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
   //     try {
   //         await AssetRepository.updatePropertyVisit(payload);
   //         onShowProfile(id);
-  //     } catch (e) {
-  //         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+  //     }catch (e: any) {  //         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
   //     }
   // };
 
@@ -391,7 +390,7 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
             </Typography>
           </View>
           <View style={[styles.containerCalendar, !isDesktop && styles.containerCalendarMobile]}>
-            <CalendarWeb selectedValue={selectedDate} onSelect={onSelectDate} />
+            {/* <CalendarWeb selectedValue={selectedDate} onSelect={onSelectDate} /> */}
           </View>
         </View>
         <View style={styles.slotsContainer}>

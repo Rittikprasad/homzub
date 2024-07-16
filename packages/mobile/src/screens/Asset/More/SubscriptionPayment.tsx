@@ -61,8 +61,7 @@ class SubscriptionPayment extends Component<Props, IScreenState> {
     try {
       await RNIap.initConnection();
       await this.getItems();
-    } catch (err) {
-      this.setState({ loading: false });
+    }catch (err: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: err.message });
     }
   };
@@ -161,8 +160,7 @@ class SubscriptionPayment extends Component<Props, IScreenState> {
         const subscriptions = await RNIap.getSubscriptions(productIds);
         this.setState({ subscriptions, loading: false });
       }
-    } catch (err) {
-      this.setState({ loading: false });
+    }catch (err: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: err.message });
     }
   };
@@ -178,8 +176,7 @@ class SubscriptionPayment extends Component<Props, IScreenState> {
         }
       });
       this.setState({ loading: false });
-    } catch (err) {
-      this.purchaseErrorSubscription = purchaseErrorListener((error: PurchaseError) => {
+    }catch (err: any) {      this.purchaseErrorSubscription = purchaseErrorListener((error: PurchaseError) => {
         if (error.code === IAPErrorCode.E_USER_CANCELLED) {
           AlertHelper.error({ message: t('userCancelled') });
         } else {
@@ -207,8 +204,7 @@ class SubscriptionPayment extends Component<Props, IScreenState> {
         },
       });
       this.setState({ loading: false });
-    } catch (e) {
-      this.setState({ loading: false });
+    }catch (e: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: e.message });
     }
   };

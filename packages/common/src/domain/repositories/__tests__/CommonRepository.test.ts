@@ -51,8 +51,7 @@ describe.skip('CommonRepository', () => {
         try {
           // @ts-ignore
           await CommonRepository[api]();
-        } catch (e) {
-          expect(e).toBeTruthy();
+        }catch (e: any) {          expect(e).toBeTruthy();
         }
       });
     }

@@ -121,8 +121,7 @@ export class SignUpScreen extends Component<Props, IOwnState> {
         userData: formData,
         ...(params && params.onCallback && { onCallback: params.onCallback }),
       });
-    } catch (err) {
-      console.log('🚀 ~ file: SignUpScreen.tsx ~ line 126 ~ SignUpScreen ~ onFormSubmit= ~ err.details', err.details);
+    }catch (err: any) {      console.log('🚀 ~ file: SignUpScreen.tsx ~ line 126 ~ SignUpScreen ~ onFormSubmit= ~ err.details', err.details);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
   };

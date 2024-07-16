@@ -71,8 +71,7 @@ const BankDetails = (): React.ReactElement => {
           }`
         ),
       });
-    } catch (e) {
-      setLocalLoader(false);
+    }catch (e: any) {      setLocalLoader(false);
       setIsDeactivateFlow(false);
       AlertHelper.error({
         message: ErrorUtils.getErrorMessage(e.details),
@@ -215,8 +214,7 @@ const BankDetails = (): React.ReactElement => {
         dispatch(UserActions.setCurrentBankAccountId(-1));
         setLocalLoader(false);
         AlertHelper.success({ message: t('assetFinancial:bankAccountDeletedSuccessfully') });
-      } catch (e) {
-        setLocalLoader(false);
+      }catch (e: any) {        setLocalLoader(false);
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
       }
     };

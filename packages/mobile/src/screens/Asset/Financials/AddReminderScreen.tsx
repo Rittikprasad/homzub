@@ -46,8 +46,7 @@ const AddReminderScreen = (): React.ReactElement => {
       goBack();
       onPressIcon(false);
       AlertHelper.success({ message: t('assetFinancial:reminderDeleteMsg') });
-    } catch (e) {
-      onPressIcon(false);
+    }catch (e: any) {      onPressIcon(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

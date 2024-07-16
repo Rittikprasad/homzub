@@ -85,8 +85,7 @@ class Interceptor implements IApiInterceptor {
         }
 
         return await this.client.request(originalRequest);
-      } catch (e) {
-        StoreProviderService.logoutUser();
+      }catch (e: any) {        StoreProviderService.logoutUser();
         await StorageService.remove(StorageKeys.USER);
         throw e;
       }

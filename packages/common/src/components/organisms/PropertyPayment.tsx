@@ -336,8 +336,7 @@ class PropertyPayment extends Component<Props, IPaymentState> {
       if (isPromoFailed) {
         this.setState({ isPromoFailed: false });
       }
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       if (data?.promo_code) {
         this.setState({ isPromoFailed: true });
       } else {

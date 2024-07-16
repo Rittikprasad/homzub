@@ -160,8 +160,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
       }
 
       await UserService.fetchOtp(otpSentTo, countryCode);
-    } catch (e) {
-      AlertHelper.error({
+    }catch (e: any) {      AlertHelper.error({
         message: e.message,
       });
     }
@@ -189,8 +188,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
       if (type === OtpNavTypes.SignUp) {
         await this.signUp();
       }
-    } catch (e) {
-      this.toggleErrorState(true);
+    }catch (e: any) {      this.toggleErrorState(true);
     }
   };
 
@@ -223,8 +221,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
         handleDynamicLink: this.handleDynamicLink,
       };
       login(loginPayload);
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   };
 
@@ -269,8 +266,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
       AnalyticsService.track(EventType.SignupSuccess, trackData);
       // @ts-ignore
       AnalyticsService.setUser(ObjectMapper.deserialize(User, socialUserData.user));
-    } catch (e) {
-      AnalyticsService.track(EventType.SignupFailure, { ...trackData, error: e.message });
+    }catch (e: any) {      AnalyticsService.track(EventType.SignupFailure, { ...trackData, error: e.message });
       AlertHelper.error({ message: e.message });
     }
   };

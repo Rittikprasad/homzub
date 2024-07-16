@@ -295,8 +295,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
       formProps.setFieldValue('stateName', addressComponents.state);
       formProps.setFieldValue('country', addressComponents.country);
       formProps.setFieldValue('countryIsoCode', addressComponents.countryIsoCode);
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   }, 500);
 
@@ -360,8 +359,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
       if (!isImageError) {
         onFormSubmitSuccess(userProfileForm, response && response.user_id ? undefined : response, isAddressRequired);
       }
-    } catch (e) {
-      updateFormLoadingState(false);
+    }catch (e: any) {      updateFormLoadingState(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -387,8 +385,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
         this.setState({ isImageError: true });
         AlertHelper.error({ message: error[0].message });
       }
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   };
 
@@ -406,8 +403,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
       });
       this.setState({ selectedImage: image });
       formProps.setFieldTouched('firstName');
-    } catch (e) {
-      if (e.code !== 'E_PICKER_CANCELLED') {
+    }catch (e: any) {      if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }
     }

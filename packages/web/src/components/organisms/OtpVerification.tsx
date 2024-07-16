@@ -111,8 +111,7 @@ const OtpVerification: React.FC<Props> = (props: Props) => {
       if (type === OtpNavTypes.SignUp) {
         await signUp();
       }
-    } catch (e) {
-      toggleErrorState(true);
+    }catch (e: any) {      toggleErrorState(true);
     }
   };
 
@@ -140,8 +139,7 @@ const OtpVerification: React.FC<Props> = (props: Props) => {
       };
 
       dispatch(UserActions.login(loginPayload));
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
     }
   };
 
@@ -170,8 +168,7 @@ const OtpVerification: React.FC<Props> = (props: Props) => {
       dispatch(UserActions.loginSuccess(tokens));
       navigateToHomeScreen();
       await StorageService.set<IUserTokens>(StorageKeys.USER, tokens);
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage
       AnalyticsService.track(EventType.SignupFailure, { ...trackData, error: e.message });
     }
   };
@@ -203,8 +200,7 @@ const OtpVerification: React.FC<Props> = (props: Props) => {
   const fetchOtp = async (): Promise<void> => {
     try {
       await UserService.fetchOtp(otpSentTo, phoneCode);
-    } catch (e) {
-      AlertHelper.error({
+    }catch (e: any) {      AlertHelper.error({
         message: e.message,
         statusCode: e.details.statusCode,
       });

@@ -92,7 +92,7 @@ const PropertyVisitList: React.FC<IProps> = (props: IProps) => {
           reportCategories: response,
         };
       });
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -185,7 +185,7 @@ const PropertyVisitList: React.FC<IProps> = (props: IProps) => {
           return { ...state, reviewData: response };
         });
       });
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

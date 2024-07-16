@@ -177,7 +177,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
         await UserRepository.updateUserProfileByActions(payload);
         handlePopupClose();
         updateUserProfile();
-      } catch (e) {
+      } catch (e: any) {
         AlertHelper.error({ message: e.message });
       }
     };
@@ -251,7 +251,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
         const response = await UserRepository.updateUserProfileByActions(payload);
         setResponseFromPassword(response);
         updatePopUp('otpWithEmail');
-      } catch (e) {
+      } catch (e: any) {
         AlertHelper.error({ message: e.message });
       }
     };

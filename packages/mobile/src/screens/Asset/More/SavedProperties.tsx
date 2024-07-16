@@ -187,8 +187,7 @@ export const SavedProperties = (props: NavigationProps): React.ReactElement => {
       }
 
       dispatch(UserActions.getFavouriteProperties());
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
   };

@@ -110,8 +110,7 @@ const Favorite = (props: IProps): React.ReactElement => {
         await LeadRepository.postSaleLeadDetail(payload);
       }
       dispatch(UserActions.getFavouriteProperties());
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
   };

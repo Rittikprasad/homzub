@@ -63,8 +63,7 @@ const Inspection = (): React.ReactElement => {
       try {
         await FFMRepository.updateInspectionReport({ reportId: report.id, status: 'SUBMIT' });
         setSubmission(true);
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };

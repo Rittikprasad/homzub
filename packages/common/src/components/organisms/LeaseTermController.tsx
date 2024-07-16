@@ -266,8 +266,7 @@ class LeaseTermController extends React.PureComponent<IProps, IOwnState> {
         // @ts-ignore
         await AssetRepository.deleteLeaseTerm(currentAssetId, routes[currentIndex].id);
         await this.getAvailableSpaces();
-      } catch (err) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
+      }catch (err: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
         return;
       }
     }
@@ -335,8 +334,7 @@ class LeaseTermController extends React.PureComponent<IProps, IOwnState> {
         );
       }
       this.setState({ loading: false });
-    } catch (err) {
-      this.setState({ loading: false });
+    }catch (err: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };
@@ -378,8 +376,7 @@ class LeaseTermController extends React.PureComponent<IProps, IOwnState> {
           routes: [{ key: '1', title: t('unit', { unitNo: 1 }), initialValues: { ...initialLeaseFormData } }],
         });
       }
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };
 
@@ -388,8 +385,7 @@ class LeaseTermController extends React.PureComponent<IProps, IOwnState> {
     try {
       const response = await RecordAssetRepository.getTenantPreferences(currentAssetId);
       this.setState({ preferences: response });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 
@@ -398,8 +394,7 @@ class LeaseTermController extends React.PureComponent<IProps, IOwnState> {
     try {
       const response = await AssetRepository.getAssetAvailableSpaces(currentAssetId);
       this.setState({ availableSpaces: response });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
   // APIs END

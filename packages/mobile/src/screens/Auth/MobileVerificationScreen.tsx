@@ -112,8 +112,7 @@ export class MobileVerificationScreen extends Component<Props, IVerificationStat
         socialUserData: userData,
         ...(onCallback && { onCallback }),
       });
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
   };
 

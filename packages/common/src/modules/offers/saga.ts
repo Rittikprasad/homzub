@@ -42,8 +42,7 @@ export function* getListingDetail(action: IFluxStandardAction<ICurrentOffer>) {
       }
     }
     yield put(OfferActions.getListingDetailSuccess(response));
-  } catch (e) {
-    yield put(OfferActions.getListingDetailFailure());
+  }catch (e: any) {    yield put(OfferActions.getListingDetailFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -53,8 +52,7 @@ export function* getNegotiations(action: IFluxStandardAction<INegotiation>) {
   try {
     const response = yield call(OffersRepository.getNegotiations, action.payload);
     yield put(OfferActions.getNegotiationsSuccess(response));
-  } catch (e) {
-    yield put(OfferActions.getNegotiationsFailure());
+  }catch (e: any) {    yield put(OfferActions.getNegotiationsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -64,8 +62,7 @@ export function* getNegotiationComments(): VoidGenerator {
     const currentOfferPayload = yield select(OfferSelectors.getOfferPayload);
     const response = yield call(OffersRepository.getNegotiationComments, currentOfferPayload as ICurrentOffer);
     yield put(OfferActions.getNegotiationCommentsSucess(response as Message[]));
-  } catch (e) {
-    yield put(OfferActions.getNegotiationCommentsFailure());
+  }catch (e: any) {    yield put(OfferActions.getNegotiationCommentsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }

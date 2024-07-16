@@ -63,8 +63,7 @@ export function* login(action: IFluxStandardAction<ILoginPayload>) {
     if (callback) {
       callback();
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     trackData = {
       ...trackData,
       error,
@@ -96,8 +95,7 @@ export function* deactivateUserAccount(action: IFluxStandardAction<IAuthCallback
     if (payload?.callback) {
       payload.callback(true);
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.logoutFailure(error));
     if (payload?.callback) {
@@ -123,8 +121,7 @@ export function* logout(action: IFluxStandardAction<IAuthCallback>) {
     if (payload?.callback) {
       payload.callback(true);
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.logoutFailure(error));
     if (payload?.callback) {
@@ -137,8 +134,7 @@ export function* userProfile() {
   try {
     const response = yield call(UserRepository.getUserProfile);
     yield put(UserActions.getUserProfileSuccess(response));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.getUserProfileFailure());
   }
@@ -163,8 +159,7 @@ export function* userPreferences() {
       yield StorageService.set(StorageKeys.USER_SELECTED_LANGUAGE, response.languageCode);
       yield I18nService.changeLanguage(response.languageCode as SupportedLanguages);
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.getUserPreferencesFailure());
   }
@@ -192,8 +187,7 @@ export function* updateUserPreferences(action: IFluxStandardAction<IUpdateUserPr
         miscellaneous: { ...filters.miscellaneous, search_radius_unit: metricUnit },
       } as IFilter)
     );
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.getUserPreferencesFailure());
   }
@@ -203,8 +197,7 @@ export function* getUserAssets() {
   try {
     const response = yield call(AssetRepository.getPropertiesByStatus);
     yield put(UserActions.getAssetsSuccess(response));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.getAssetsFailure());
   }
@@ -214,8 +207,7 @@ export function* getFavouriteProperties() {
   try {
     const response = yield call(UserRepository.getWishlistProperties);
     yield put(UserActions.getFavouritePropertiesSuccess(response));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(UserActions.getFavouritePropertiesFailure());
   }
@@ -225,8 +217,7 @@ export function* getUserSubscriptions() {
   try {
     const response = yield call(UserRepository.getUserSubscription);
     yield put(UserActions.getUserSubscriptionsSuccess(response));
-  } catch (e) {
-    yield put(UserActions.getUserSubscriptionsFailure());
+  }catch (e: any) {    yield put(UserActions.getUserSubscriptionsFailure());
   }
 }
 
@@ -234,8 +225,7 @@ export function* getUserServices() {
   try {
     const response = yield call(ServiceRepository.getUserServices);
     yield put(UserActions.getUserServicesSuccess(response));
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(UserActions.getUserServicesFailure());
   }
 }
@@ -244,8 +234,7 @@ export function* getUserTransaction() {
   try {
     const response = yield call(UserRepository.getCoinTransaction);
     yield put(UserActions.getUserCoinTransactionSuccess(response));
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(UserActions.getUserCoinTransactionFailure());
   }
 }
@@ -254,8 +243,7 @@ export function* getBankInfo(action: IFluxStandardAction<number>) {
   try {
     const response = yield call(UserRepository.getUserBankInfo, action.payload as number);
     yield put(UserActions.getBankInfoSuccess(response));
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(UserActions.getBankInfoFailure());
   }
 }

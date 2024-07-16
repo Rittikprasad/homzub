@@ -41,8 +41,7 @@ describe('ApiClient', () => {
           // @ts-ignore
           // eslint-disable-next-line no-new
           new ApiClient({ baseUrl: url });
-        } catch (e) {
-          expect(e).toBeInstanceOf(Error);
+        }catch (e: any) {          expect(e).toBeInstanceOf(Error);
         }
       });
     });
@@ -245,8 +244,7 @@ describe('ApiClient', () => {
 
       try {
         await apiClient.get(url, params);
-      } catch (e) {
-        // do nothing
+      }catch (e: any) {        // do nothing
       }
 
       expect(ApiResponseHandler).toHaveBeenCalledTimes(1);
@@ -264,8 +262,7 @@ describe('ApiClient', () => {
 
       try {
         await apiClient.get(url, params);
-      } catch (e) {
-        // do nothing
+      }catch (e: any) {        // do nothing
       }
 
       expect(ApiResponseHandler).toHaveBeenCalledTimes(1);
@@ -284,8 +281,7 @@ describe('ApiClient', () => {
 
       try {
         await apiClient.get(url, params);
-      } catch (e) {
-        // do nothing
+      }catch (e: any) {        // do nothing
       }
 
       expect(ApiResponseHandler).toHaveBeenCalledTimes(0);

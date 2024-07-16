@@ -347,8 +347,7 @@ class Settings extends React.PureComponent<IOwnProps, IOwnState> {
       const settingDropDownValues = await UserRepository.getSettingDropDownValues();
 
       this.populateSettingOptions(settingsData, settingDropDownValues);
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     } finally {
       this.setState({ isLoading: false });

@@ -41,8 +41,7 @@ const UploadBoxComponent = (props: IProps): React.ReactElement => {
         throw new Error(I18nService.t('common:duplicateUpload'));
       }
       onCapture(documents);
-    } catch (e) {
-      if (!DocumentPicker.isCancel(e)) {
+    }catch (e: any) {      if (!DocumentPicker.isCancel(e)) {
         AlertHelper.error({ message: e.message });
       }
     }

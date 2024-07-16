@@ -89,8 +89,7 @@ const TicketReview = (props: IProps): React.ReactElement => {
       if (successCallback) {
         successCallback();
       }
-    } catch (e) {
-      setIsReview(false);
+    }catch (e: any) {      setIsReview(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -111,8 +110,7 @@ const TicketReview = (props: IProps): React.ReactElement => {
       if (successCallback) {
         successCallback();
       }
-    } catch (e) {
-      setIsReview(false);
+    }catch (e: any) {      setIsReview(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

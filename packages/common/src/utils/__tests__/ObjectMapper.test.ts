@@ -142,8 +142,7 @@ describe('ObjectMapper', () => {
 
       try {
         ObjectMapper.serialize(instance);
-      } catch (e) {
-        expect(e).toBeTruthy();
+      }catch (e: any) {        expect(e).toBeTruthy();
       }
     });
   });
@@ -223,8 +222,7 @@ describe('ObjectMapper', () => {
 
       try {
         ObjectMapper.deserialize(SimpleClass, object);
-      } catch (e) {
-        expect(e).toBeTruthy();
+      }catch (e: any) {        expect(e).toBeTruthy();
       }
 
       expect.assertions(1);

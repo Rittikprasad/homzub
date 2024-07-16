@@ -150,8 +150,7 @@ const Financials: FC<IProps> = (props: IProps) => {
         setTransactionId(-1);
         getLedgerMetrics();
         AlertHelper.success({ message: t('assetFinancial:deletedSuccessfullyMessage') });
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };

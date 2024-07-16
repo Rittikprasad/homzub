@@ -41,8 +41,7 @@ const UpdateLeaseTerm = (props: Props): React.ReactElement => {
       await AssetRepository.updateLeaseTransaction({ transactionId, data: payload });
       AlertHelper.success({ message: t('property:leaseUpdated') });
       navigation.goBack();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

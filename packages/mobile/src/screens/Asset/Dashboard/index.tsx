@@ -410,8 +410,7 @@ export class Dashboard extends React.PureComponent<Props, IDashboardState> {
     try {
       const { metricsData } = await DashboardRepository.getAssetMetrics('v4');
       this.setState({ metrics: metricsData, isLoading: false });
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
@@ -421,8 +420,7 @@ export class Dashboard extends React.PureComponent<Props, IDashboardState> {
     try {
       const response: Asset[] = await AssetRepository.getPropertiesByStatus(PropertyStatus.PENDING);
       this.setState({ pendingProperties: response });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

@@ -81,7 +81,7 @@ const OtpVerification: React.FC<Props> = (props: Props) => {
   const fetchOtp = async (): Promise<void> => {
     try {
       await UserService.fetchOtp(otpSentTo, phoneCode);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({
         message: e.message,
       });

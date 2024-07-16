@@ -189,8 +189,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
           AlertHelper.error({ message: t('auth:phoneNotExists') });
           return;
         }
-      } catch (err) {
-        console.log('🚀 ~ file: LoginForm.tsx ~ line 193 ~ LoginForm ~ handleSubmit= ~ err', err.details);
+      }catch (err: any) {        console.log('🚀 ~ file: LoginForm.tsx ~ line 193 ~ LoginForm ~ handleSubmit= ~ err', err.details);
         AlertHelper.error({ message: t('common:genericErrorMessage'), statusCode: err.details.statusCode });
         return;
       }

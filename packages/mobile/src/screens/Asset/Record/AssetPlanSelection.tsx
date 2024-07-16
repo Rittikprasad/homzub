@@ -170,8 +170,7 @@ class AssetPlanSelection extends React.PureComponent<Props, IAssetPlanState> {
       const response: AssetAdvertisement = await DashboardRepository.getAdvertisements(requestPayload);
       this.setState({ banners: response });
       this.toggleLoader();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.message) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.message) });
       this.toggleLoader();
     }
   };

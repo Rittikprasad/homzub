@@ -385,7 +385,7 @@ export class PropertyCardDetails extends React.PureComponent<Props, IStateData> 
       if (prospectsData.id) {
         this.setState({ propertyLeaseType: renderPopUpTypes.offer });
       }
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };

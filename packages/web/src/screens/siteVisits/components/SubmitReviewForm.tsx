@@ -52,7 +52,7 @@ const SubmitReviewForm = (props: IProps): React.ReactElement => {
         });
         onClose(true);
         AlertHelper.success({ message: t('property:submitReviewSuccess') });
-      } catch (err) {
+      } catch (err: any) {
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     },
@@ -73,7 +73,7 @@ const SubmitReviewForm = (props: IProps): React.ReactElement => {
         await AssetRepository.updateReview(review.id, payload);
         onClose(true);
         AlertHelper.success({ message: t('property:submitReviewSuccess') });
-      } catch (err) {
+      } catch (err: any) {
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     },

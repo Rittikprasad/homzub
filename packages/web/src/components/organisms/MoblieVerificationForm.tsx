@@ -81,8 +81,7 @@ class MobileVerificationForm extends PureComponent<ILoginFormProps, IFormData> {
         AlertHelper.error({ message: t('auth:phoneNotExists') });
         return;
       }
-    } catch (err) {
-      AlertHelper.error({ message: t('common:genericErrorMessage'), statusCode: err.details.statusCode });
+    }catch (err: any) {      AlertHelper.error({ message: t('common:genericErrorMessage'), statusCode: err.details.statusCode });
       return;
     }
 

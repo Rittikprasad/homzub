@@ -355,8 +355,7 @@ class SiteVisitTab extends PureComponent<Props, IScreenState> {
       } else {
         this.getVisitsData();
       }
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

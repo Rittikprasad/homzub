@@ -797,8 +797,7 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
 
     try {
       await AssetRepository.sendNotification(payload);
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 
@@ -1012,8 +1011,7 @@ export class AssetDescription extends React.PureComponent<Props, IOwnState> {
     if (isLoggedIn) {
       try {
         await AssetRepository.propertyVisit(payload);
-      } catch (e) {
-        const error = ErrorUtils.getErrorMessage(e.details);
+      }catch (e: any) {        const error = ErrorUtils.getErrorMessage(e.details);
         AlertHelper.error({ message: error });
       }
     }

@@ -304,8 +304,7 @@ export class AssetHighlights extends Component<Props, IOwnState> {
       await AssetRepository.updateAsset(propertyId, payload);
       this.resetLoader();
       handleNextStep();
-    } catch (e) {
-      this.resetLoader();
+    }catch (e: any) {      this.resetLoader();
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -323,8 +322,7 @@ export class AssetHighlights extends Component<Props, IOwnState> {
       const response = await RecordAssetRepository.getAmenities();
       this.setState({ assetAmenity: response });
       this.resetLoader();
-    } catch (e) {
-      this.resetLoader();
+    }catch (e: any) {      this.resetLoader();
       const error = ErrorUtils.getErrorMessage(e);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -342,8 +340,7 @@ export class AssetHighlights extends Component<Props, IOwnState> {
         const projectAmenityIds = projectAmenities.map((item) => item.id);
         this.setState({ selectedAmenity: projectAmenityIds });
         this.resetLoader();
-      } catch (e) {
-        this.resetLoader();
+      }catch (e: any) {        this.resetLoader();
         const error = ErrorUtils.getErrorMessage(e);
         AlertHelper.error({ message: error, statusCode: e.details.statusCode });
       }

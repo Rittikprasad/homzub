@@ -61,8 +61,7 @@ const WorkComplete = (props: IProps): React.ReactElement => {
         ];
       });
       dispatch(TicketActions.setAttachment(attachment));
-    } catch (e) {
-      if (e.code !== 'E_PICKER_CANCELLED') {
+    }catch (e: any) {      if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }
     }
@@ -130,8 +129,7 @@ const WorkComplete = (props: IProps): React.ReactElement => {
           ticketId: selectedTicket.ticketId,
         });
       }
-    } catch (e) {
-      setLoader(false);
+    }catch (e: any) {      setLoader(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

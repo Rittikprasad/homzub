@@ -267,8 +267,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
         onUpdateCallback(true);
       }
       await this.getPropertyImagesByPropertyId(propertyId);
-    } catch (e) {
-      if (onUpdateCallback) {
+    }catch (e: any) {      if (onUpdateCallback) {
         onUpdateCallback(false);
       }
     }
@@ -286,8 +285,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
         response[0].isCoverImage = true;
       }
       setSelectedImages(response);
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
     }
   };
 
@@ -316,8 +314,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
       }
       await AssetRepository.markAttachmentAsCoverImage(propertyId, selectedImage.id);
       await this.getPropertyImagesByPropertyId(propertyId);
-    } catch (e) {
-      if (onUpdateCallback) {
+    }catch (e: any) {      if (onUpdateCallback) {
         onUpdateCallback(false);
       }
     }
@@ -341,8 +338,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
       await ImageService.postAttachment({ propertyId, selectedImages, isVideoToggled, videoUrl });
       await AssetRepository.updateAsset(propertyId, updateAssetPayload);
       onPressContinue();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 }

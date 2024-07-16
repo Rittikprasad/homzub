@@ -48,8 +48,7 @@ const onSocialAuthSuccess = async (
 
     AnalyticsService.track(EventType.LoginSuccess, trackData);
     AnalyticsService.setUser(ObjectMapper.deserialize(User, user));
-  } catch (e) {
-    AnalyticsService.track(EventType.LoginFailure, { ...trackData, error: e.message });
+  }catch (e: any) {    AnalyticsService.track(EventType.LoginFailure, { ...trackData, error: e.message });
     AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage
   }
 };
@@ -58,8 +57,7 @@ const fetchSocialMedia = (success: (response: SocialAuthProvider[]) => void): vo
   try {
     const response = CommonRepository.getSocialMedia();
     success(response);
-  } catch (e) {
-    AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage.
+  }catch (e: any) {    AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage.
   }
 };
 

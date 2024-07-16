@@ -70,7 +70,7 @@ const UploadBoxComponent = (props: IProps): React.ReactElement => {
           });
         });
       }
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: e.message });
     }
   };

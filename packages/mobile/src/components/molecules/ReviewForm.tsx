@@ -54,8 +54,7 @@ const ReviewForm = (props: IProps): React.ReactElement => {
           ...(saleListingId && { sale_listing: saleListingId }),
         });
         onClose(true);
-      } catch (err) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+      }catch (err: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     },
     [leaseListingId, saleListingId, onClose]
@@ -74,8 +73,7 @@ const ReviewForm = (props: IProps): React.ReactElement => {
       try {
         await AssetRepository.updateReview(review.id, payload);
         onClose(true);
-      } catch (err) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+      }catch (err: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     },
     [leaseListingId, saleListingId, review, onClose]

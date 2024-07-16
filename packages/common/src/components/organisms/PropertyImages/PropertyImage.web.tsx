@@ -314,8 +314,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
         response[0].isCoverImage = true;
       }
       setSelectedImages(response);
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
     }
   };
 
@@ -353,8 +352,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
       try {
         const urlResponse: IYoutubeResponse[] = await AssetRepository.postAttachmentUpload(payload);
         attachmentIds.push({ attachment: urlResponse[0].id, is_cover_image: false });
-      } catch (e) {
-        AlertHelper.error({ message: t('property:validVideoUrl'), statusCode: e.details.statusCode });
+      }catch (e: any) {        AlertHelper.error({ message: t('property:validVideoUrl'), statusCode: e.details.statusCode });
         return;
       }
     }
@@ -373,8 +371,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
       await AssetRepository.postAttachmentsForProperty(propertyId, attachmentIds);
       await AssetRepository.updateAsset(propertyId, updateAssetPayload);
       onPressContinue();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 }

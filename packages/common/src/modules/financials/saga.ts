@@ -39,8 +39,7 @@ export function* getTransactions(action: IFluxStandardAction<ITransactionParams>
         isReset: action.payload?.offset === 0,
       })
     );
-  } catch (e) {
-    yield put(FinancialActions.getTransactionsFailure());
+  }catch (e: any) {    yield put(FinancialActions.getTransactionsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -49,8 +48,7 @@ export function* getAllDues(): VoidGenerator {
   try {
     const response = yield call(LedgerRepository.getDues);
     yield put(FinancialActions.getDuesSuccess(response as Dues));
-  } catch (e) {
-    yield put(FinancialActions.getDuesFailure());
+  }catch (e: any) {    yield put(FinancialActions.getDuesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -64,8 +62,7 @@ export function* processPayment(action: IFluxStandardAction<IProcessPaymentPaylo
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(FinancialActions.paymentFailure());
@@ -100,8 +97,7 @@ export function* getLedgers(): VoidGenerator {
     };
 
     yield call(FinanceUtils.getGeneralLedgers, params, successCallback, failureCallback);
-  } catch (e) {
-    yield put(FinancialActions.getLedgersFailure());
+  }catch (e: any) {    yield put(FinancialActions.getLedgersFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -119,8 +115,7 @@ export function* getLedgerMetrics() {
       expense: `${LedgerUtils.totalByType(LedgerTypes.debit, ledgerData)}`,
     };
     yield put(FinancialActions.getLedgerMetricsSuccess(metricsData));
-  } catch (err) {
-    yield put(FinancialActions.getLedgerMetricsFailure());
+  }catch (err: any) {    yield put(FinancialActions.getLedgerMetricsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
   }
 }
@@ -129,8 +124,7 @@ export function* getReminderCategories(): VoidGenerator {
   try {
     const response = yield call(LedgerRepository.getReminderCategories);
     yield put(FinancialActions.getReminderCategoriesSuccess(response as Unit[]));
-  } catch (e) {
-    yield put(FinancialActions.getReminderCategoriesFailure());
+  }catch (e: any) {    yield put(FinancialActions.getReminderCategoriesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -139,8 +133,7 @@ export function* getReminderFrequencies(): VoidGenerator {
   try {
     const response = yield call(LedgerRepository.getReminderFrequencies);
     yield put(FinancialActions.getReminderFrequenciesSuccess(response as Unit[]));
-  } catch (e) {
-    yield put(FinancialActions.getReminderFrequenciesFailure());
+  }catch (e: any) {    yield put(FinancialActions.getReminderFrequenciesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -154,8 +147,7 @@ export function* addReminder(action: IFluxStandardAction<IAddReminderPayload>): 
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(FinancialActions.addReminderFailure());
@@ -167,8 +159,7 @@ export function* getReminders(): VoidGenerator {
   try {
     const response = yield call(LedgerRepository.getReminders);
     yield put(FinancialActions.getRemindersSuccess(response as Reminder[]));
-  } catch (e) {
-    yield put(FinancialActions.getRemindersFailure());
+  }catch (e: any) {    yield put(FinancialActions.getRemindersFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -177,8 +168,7 @@ export function* getReminderAssets(): VoidGenerator {
   try {
     const response = yield call(LedgerRepository.getReminderAssets);
     yield put(FinancialActions.getReminderAssetsSuccess(response as Asset[]));
-  } catch (e) {
-    yield put(FinancialActions.getReminderAssetsFailure());
+  }catch (e: any) {    yield put(FinancialActions.getReminderAssetsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -192,8 +182,7 @@ export function* updateReminder(action: IFluxStandardAction<IUpdateReminderPaylo
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(FinancialActions.updateReminderFailure());
@@ -210,8 +199,7 @@ export function* getDueOrderSummary(action: IFluxStandardAction<IOrderSummaryPay
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(FinancialActions.getDueOderSummaryFailure());
@@ -228,8 +216,7 @@ export function* updateDueOrderSummary(action: IFluxStandardAction<IUpdateSummar
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(FinancialActions.updateOderSummaryFailure());
@@ -245,8 +232,7 @@ export function* deleteDue(action: IFluxStandardAction<IOnCallback>): VoidGenera
     yield call(LedgerRepository.deleteDue, dueId as number);
     yield put(FinancialActions.deleteDueSuccess());
     onCallback(true);
-  } catch (e) {
-    onCallback(false);
+  }catch (e: any) {    onCallback(false);
     yield put(FinancialActions.deleteDueFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }

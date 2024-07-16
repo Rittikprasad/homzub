@@ -8,3 +8,4 @@ yarn.lock
 # misc
 .env
 .env.development
+.yarn/cache

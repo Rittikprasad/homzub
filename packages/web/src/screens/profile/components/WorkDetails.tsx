@@ -49,7 +49,7 @@ const WorkDetails: FC<IProps> = (props: IProps) => {
     try {
       await UserRepository.sendOrVerifyEmail(payload);
       AlertHelper.info({ message: t('moreProfile:emailVerificationSetAlert', { email: workEmail }) });
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.statusCode });
     }
   };

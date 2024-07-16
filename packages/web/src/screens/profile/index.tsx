@@ -64,8 +64,7 @@ const Profile: FC<IProps> = (props: IProps) => {
       setVerifyEmailProps({ isModalOpen: true, isApiError: false });
       clearRouterState();
       props.getUserProfile();
-    } catch (e) {
-      setVerifyEmailProps({ isModalOpen: true, isApiError: true });
+    }catch (e: any) {      setVerifyEmailProps({ isModalOpen: true, isApiError: true });
       clearRouterState();
     }
   };

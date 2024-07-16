@@ -149,7 +149,7 @@ const FinancialsTab: React.FC<IProps> = (props: IProps) => {
         setTransactionId(-1);
         dispatch(getLedgerMetrics());
         AlertHelper.success({ message: t('assetFinancial:deletedSuccessfullyMessage') });
-      } catch (e) {
+      } catch (e: any) {
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }

@@ -446,8 +446,7 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
       if (onSubmit) {
         onSubmit();
       }
-    } catch (e) {
-      toggleLoader(false);
+    }catch (e: any) {      toggleLoader(false);
       this.setState({ selectedCategoryId: -1, attachments: [] });
       formActions.setSubmitting(false);
       formActions.resetForm({});

@@ -161,8 +161,7 @@ export class EmergencyContactForm extends React.PureComponent<IProps, IEmergency
           handlePopupClose();
         }
       }
-    } catch (e) {
-      if (PlatformUtils.isWeb() && handlePopupClose) {
+    }catch (e: any) {      if (PlatformUtils.isWeb() && handlePopupClose) {
         handlePopupClose();
       }
       updateFormLoadingState(false);

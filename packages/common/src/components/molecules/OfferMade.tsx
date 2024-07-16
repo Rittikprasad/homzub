@@ -54,8 +54,7 @@ const OfferMade = (props: IProps): React.ReactElement => {
     try {
       const response = await OffersRepository.getCounterOffer(payload);
       setPastOffers(response);
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 
@@ -83,8 +82,7 @@ const OfferMade = (props: IProps): React.ReactElement => {
       if (response) {
         onViewOffer();
       }
-    } catch (e) {
-      AlertHelper.error({ message: t('property:listingNotValid'), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: t('property:listingNotValid'), statusCode: e.details.statusCode });
     }
   };
 

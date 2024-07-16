@@ -73,7 +73,7 @@ const CreateLeasePopover: React.FC<IProps> = (props: IProps) => {
         );
         onClosePopover();
         AlertHelper.success({ message: t('property:leaseUpdated') });
-      } catch (e) {
+      } catch (e: any) {
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }

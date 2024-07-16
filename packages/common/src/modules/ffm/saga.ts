@@ -29,8 +29,7 @@ export function* getOnBoardingData(): VoidGenerator {
   try {
     const response = yield call(FFMRepository.getOnBoarding);
     yield put(FFMActions.getOnBoardingDataSuccess(response as OnBoarding[]));
-  } catch (e) {
-    yield put(FFMActions.getOnBoardingDataFailure());
+  }catch (e: any) {    yield put(FFMActions.getOnBoardingDataFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -39,8 +38,7 @@ export function* getRoles(): VoidGenerator {
   try {
     const response = yield call(FFMRepository.getRoles);
     yield put(FFMActions.getRolesSuccess(response as Unit[]));
-  } catch (e) {
-    yield put(FFMActions.getRolesFailure());
+  }catch (e: any) {    yield put(FFMActions.getRolesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -49,8 +47,7 @@ export function* getVisits(action: IFluxStandardAction<IFFMVisitParam>): VoidGen
   try {
     const response = yield call(FFMRepository.getVisits, action.payload);
     yield put(FFMActions.getVisitsSuccess(response as FFMVisit[]));
-  } catch (e) {
-    yield put(FFMActions.getVisitsFailure());
+  }catch (e: any) {    yield put(FFMActions.getVisitsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -59,8 +56,7 @@ export function* getVisitDetail(action: IFluxStandardAction<number>): VoidGenera
   try {
     const response = yield call(FFMRepository.getVisitDetail, action.payload as number);
     yield put(FFMActions.getVisitDetailSuccess(response as FFMVisit));
-  } catch (e) {
-    yield put(FFMActions.getVisitDetailFailure());
+  }catch (e: any) {    yield put(FFMActions.getVisitDetailFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -68,8 +64,7 @@ export function* getRejectionReason(action: IFluxStandardAction<number>): VoidGe
   try {
     const response = yield call(FFMRepository.getRejectReason, action.payload as number);
     yield put(FFMActions.getRejectionReasonsSuccess(response as Unit[]));
-  } catch (e) {
-    yield put(FFMActions.getRejectionReasonsFailure());
+  }catch (e: any) {    yield put(FFMActions.getRejectionReasonsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -78,8 +73,7 @@ export function* getFeedbackById(action: IFluxStandardAction<IGetFeedbackParam>)
   try {
     const response = yield call(FFMRepository.getFeedbackById, action.payload as IGetFeedbackParam);
     yield put(FFMActions.getFeedbackSuccess(response as Feedback));
-  } catch (e) {
-    yield put(FFMActions.getFeedbackFailure());
+  }catch (e: any) {    yield put(FFMActions.getFeedbackFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -88,8 +82,7 @@ export function* getInspectionReports(action: IFluxStandardAction<string>): Void
   try {
     const response = yield call(FFMRepository.getInspectionReport, action.payload as string);
     yield put(FFMActions.getInspectionReportSuccess(response as InspectionReport));
-  } catch (e) {
-    yield put(FFMActions.getInspectionReportFailure());
+  }catch (e: any) {    yield put(FFMActions.getInspectionReportFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -98,8 +91,7 @@ export function* getReportSpaces(action: IFluxStandardAction<number>): VoidGener
   try {
     const response = yield call(FFMRepository.getReportSpaces, action.payload as number);
     yield put(FFMActions.getReportSpaceSuccess(response as ReportSpace[]));
-  } catch (e) {
-    yield put(FFMActions.getReportSpaceFailure());
+  }catch (e: any) {    yield put(FFMActions.getReportSpaceFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -124,8 +116,7 @@ export function* getSpaceDetail(action: IFluxStandardAction<IGetSpaceDetail>): V
     };
     yield put(FFMActions.setReportSpaceData(formattedData));
     yield put(FFMActions.getSpaceDetailSuccess());
-  } catch (e) {
-    yield put(FFMActions.getSpaceDetailFailure());
+  }catch (e: any) {    yield put(FFMActions.getSpaceDetailFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -134,8 +125,7 @@ export function* getHotProperties(action: IFluxStandardAction<Tabs>): VoidGenera
   try {
     const response = yield call(FFMRepository.getHotProperties, action.payload as Tabs);
     yield put(FFMActions.getHotPropertiesSuccess(response as AssetSearch));
-  } catch (e) {
-    yield put(FFMActions.getHotPropertiesFailure());
+  }catch (e: any) {    yield put(FFMActions.getHotPropertiesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -144,8 +134,7 @@ export function* getTickets(action: IFluxStandardAction<IGetTicket>): VoidGenera
   try {
     const response = yield call(FFMRepository.getTickets, action.payload as IGetTicket);
     yield put(FFMActions.getTicketsSuccess(response as FFMTicket));
-  } catch (e) {
-    yield put(FFMActions.getTicketsFailure());
+  }catch (e: any) {    yield put(FFMActions.getTicketsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -154,8 +143,7 @@ export function* getTicketActions(action: IFluxStandardAction<number>) {
   try {
     const response = yield call(FFMRepository.getTicketActions, action.payload as number);
     yield put(TicketActions.getTicketActionsSuccess(response));
-  } catch (e) {
-    yield put(TicketActions.getTicketActionsFailure());
+  }catch (e: any) {    yield put(TicketActions.getTicketActionsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -186,8 +174,7 @@ export function* getTicketDetails(action: IFluxStandardAction<number>) {
         assignedUserId,
       })
     );
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(TicketActions.getTicketDetailFailure());
   }
 }

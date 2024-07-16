@@ -75,7 +75,7 @@ const Settings: FC<IOwnProps> = (props: IOwnProps) => {
       const settingDropDownValues = await UserRepository.getSettingDropDownValues();
       const filteredData = settingsData.filter((item) => item.visible === true);
       populateSettingOptions(filteredData, settingDropDownValues);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }

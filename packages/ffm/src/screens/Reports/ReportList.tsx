@@ -65,8 +65,7 @@ const ReportList = ({ currentTab }: IProps): React.ReactElement => {
     try {
       await FFMRepository.updateInspectionReport(payload);
       dispatch(FFMActions.getInspectionReport(currentTab.toLocaleUpperCase()));
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

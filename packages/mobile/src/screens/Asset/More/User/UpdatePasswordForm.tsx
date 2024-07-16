@@ -119,8 +119,7 @@ class UpdatePasswordForm extends Component<Props, IScreenState> {
       await UserRepository.updatePassword(updatePayload);
       AlertHelper.success({ message: t('moreProfile:passwordChanged') });
       onGoBack();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

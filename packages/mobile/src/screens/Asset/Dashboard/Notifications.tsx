@@ -294,8 +294,7 @@ export class Notifications extends React.PureComponent<Props, IAssetNotification
         await DashboardRepository.markAllNotificationsRead(latestCreatedAt);
         await this.getAssetNotifications();
         AlertHelper.success({ message: t('assetDashboard:allNotificationsAreRead') });
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };
@@ -336,8 +335,7 @@ export class Notifications extends React.PureComponent<Props, IAssetNotification
           notifications: response,
         });
       }
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 }

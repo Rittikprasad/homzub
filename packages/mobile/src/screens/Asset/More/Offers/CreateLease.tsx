@@ -70,8 +70,7 @@ const CreateLease = (): React.ReactElement => {
         );
         navigate(ScreensKeys.PropertyDetailScreen);
         AlertHelper.success({ message: t('property:leaseUpdated') });
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };

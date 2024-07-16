@@ -91,8 +91,7 @@ const GroupChatInfo = (props: Props): React.ReactElement => {
   useEffect(() => {
     try {
       Promise.all([fetchGroupChatInfo(), fetchMedia()]).then();
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
       setLoading(false);
       setLoadingMore(false);

@@ -9,7 +9,7 @@ import { IState } from '@homzhub/common/src/modules/interfaces';
 import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
 
 export const Settings: FC<SettingsProps> = (props: SettingsProps) => {
-  const { userPreferences } = props;
+  const { userPreferences }: any = props;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(UserSelector.isLoggedIn);
   useEffect(() => {

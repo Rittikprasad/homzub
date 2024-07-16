@@ -93,7 +93,7 @@ const SignUp: FC<IProps> = (props: IProps) => {
         params: { ...compProps },
       });
       // TODO: ONCE THE DATA IS VALIDATED NAVIGATE TO OTP SCREEN
-    } catch (err) {
+    } catch (err: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };

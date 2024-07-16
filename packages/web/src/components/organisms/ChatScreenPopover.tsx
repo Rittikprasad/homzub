@@ -193,8 +193,7 @@ const ChatScreenPopover: React.FC<Props> = (props: Props) => {
         return { ...prevState, attachment: image };
       });
       setAttachment(image.path);
-    } catch (e) {
-      if (e.code !== 'E_PICKER_CANCELLED') {
+    }catch (e: any) {      if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }
     }
@@ -260,8 +259,7 @@ const ChatScreenPopover: React.FC<Props> = (props: Props) => {
         const payload: ICurrentOffer = { ...currentOfferPayload, threadId: currentOfferPayload.threadId ?? '' };
         await OffersRepository.postNegotiationComments(payload, comment);
         getNegotiationComments({ isNew: true });
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };
@@ -283,8 +281,7 @@ const ChatScreenPopover: React.FC<Props> = (props: Props) => {
             isLoading: false,
           };
         });
-      } catch (e) {
-        setCustomState((prevState) => {
+      }catch (e: any) {        setCustomState((prevState) => {
           return { ...prevState, isLoading: false };
         });
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
@@ -322,8 +319,7 @@ const ChatScreenPopover: React.FC<Props> = (props: Props) => {
   //           },
   //         },
   //       });
-  //     } catch (err) {
-  //       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+  //     }catch (err: any) {  //       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
   //       // navigation.goBack(); Close Popover
   //     }
   //   };

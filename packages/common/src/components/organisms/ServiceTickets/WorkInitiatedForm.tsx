@@ -48,8 +48,7 @@ const WorkInitiatedForm = (props: IProps): ReactElement => {
         }
         AlertHelper.success({ message: t('workInitiatedSuccess') });
       }
-    } catch (e) {
-      toggleLoader(false);
+    }catch (e: any) {      toggleLoader(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details.message), statusCode: e.details.statusCode });
     }
   };

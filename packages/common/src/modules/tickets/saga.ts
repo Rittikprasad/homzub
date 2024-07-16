@@ -33,8 +33,7 @@ export function* getUserTickets(action: IFluxStandardAction<IGetTicketParam>) {
   try {
     const response = yield call(TicketRepository.getTickets, action.payload as IGetTicketParam);
     yield put(TicketActions.getTicketsSuccess(response));
-  } catch (e) {
-    yield put(TicketActions.getTicketsFailure());
+  }catch (e: any) {    yield put(TicketActions.getTicketsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -65,8 +64,7 @@ export function* getTicketDetails(action: IFluxStandardAction<number>) {
         assignedUserId,
       })
     );
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(TicketActions.getTicketDetailFailure());
   }
 }
@@ -75,8 +73,7 @@ export function* getInvoiceSummary(action: IFluxStandardAction<IInvoiceSummaryPa
   try {
     const response = yield call(PaymentRepository.getInvoiceSummary, action.payload as IInvoiceSummaryPayload);
     yield put(TicketActions.getInvoiceSummarySuccess(response));
-  } catch (e) {
-    yield put(TicketActions.getInvoiceSummaryFailure());
+  }catch (e: any) {    yield put(TicketActions.getInvoiceSummaryFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -96,8 +93,7 @@ export function* closeTicket(action: IFluxStandardAction<boolean>) {
       yield put(TicketActions.getTicketDetail(currentTicket.ticketId));
     }
     AlertHelper.success({ message: I18nService.t('serviceTickets:closeTicketSuccess') });
-  } catch (e) {
-    yield put(TicketActions.closeTicketFailure());
+  }catch (e: any) {    yield put(TicketActions.closeTicketFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -110,8 +106,7 @@ export function* sendTicketReminder() {
     yield put(TicketActions.handleTicketReminderSent());
     yield put(TicketActions.getTicketDetail(currentTicket.ticketId));
     AlertHelper.success({ message: I18nService.t('assetFinancial:reminderSuccessMsg') });
-  } catch (e) {
-    yield put(TicketActions.handleTicketReminderSent());
+  }catch (e: any) {    yield put(TicketActions.handleTicketReminderSent());
     AlertHelper.error({ message: e.details.message, statusCode: e.details.statusCode });
   }
 }
@@ -124,8 +119,7 @@ export function* reassignTicket(action: IFluxStandardAction<IReassignTicket>) {
     yield put(TicketActions.reassignTicketSuccess());
     AlertHelper.success({ message: I18nService.t('serviceTickets:requestReassignedSuccessfully') });
     onCallback(true);
-  } catch (e) {
-    onCallback(false);
+  }catch (e: any) {    onCallback(false);
     yield put(TicketActions.reassignTicketFailure());
     AlertHelper.error({ message: e.details.message, statusCode: e.details.statusCode });
   }
@@ -139,8 +133,7 @@ export function* requestQuote(action: IFluxStandardAction<IRequestQuote>) {
     yield put(TicketActions.requestQuoteSuccess());
     AlertHelper.success({ message: I18nService.t('serviceTickets:quoteRequestSuccess') });
     onCallback(true);
-  } catch (e) {
-    onCallback(false);
+  }catch (e: any) {    onCallback(false);
     yield put(TicketActions.requestQuoteFailure());
     AlertHelper.error({ message: e.details.message, statusCode: e.details.statusCode });
   }
@@ -179,8 +172,7 @@ export function* getQuoteCategory(action: IFluxStandardAction<IQuoteParam>) {
       };
     });
     yield put(TicketActions.setQuotes(initialGroup));
-  } catch (e) {
-    yield put(TicketActions.requestQuoteFailure());
+  }catch (e: any) {    yield put(TicketActions.requestQuoteFailure());
     AlertHelper.error({ message: e.details.message, statusCode: e.details.statusCode });
   }
 }
@@ -194,8 +186,7 @@ export function* submitQuote(action: IFluxStandardAction<ISubmitQuote>) {
     yield put(TicketActions.setQuotes([]));
     AlertHelper.success({ message: I18nService.t('serviceTickets:quoteSubmission') });
     onCallback(true);
-  } catch (e) {
-    onCallback(false);
+  }catch (e: any) {    onCallback(false);
     yield put(TicketActions.submitQuoteFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
@@ -205,8 +196,7 @@ export function* getTicketActions(action: IFluxStandardAction<number>) {
   try {
     const response = yield call(TicketRepository.getTicketActions, action.payload as number);
     yield put(TicketActions.getTicketActionsSuccess(response));
-  } catch (e) {
-    yield put(TicketActions.getTicketActionsFailure());
+  }catch (e: any) {    yield put(TicketActions.getTicketActionsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -216,8 +206,7 @@ export function* getQuoteRequests(action: IFluxStandardAction<IQuoteParam>) {
   try {
     const res = yield call(TicketRepository.getRequestedQuote, action.payload);
     yield put(TicketActions.getQuoteRequestsSuccess(res));
-  } catch (e) {
-    yield put(TicketActions.getQuoteRequestsFailure());
+  }catch (e: any) {    yield put(TicketActions.getQuoteRequestsFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -230,8 +219,7 @@ export function* quoteApprove(action: IFluxStandardAction<IApproveQuote>) {
     yield put(TicketActions.approveQuoteSuccess());
     AlertHelper.success({ message: I18nService.t('serviceTickets:quoteApproved') });
     onCallback(true);
-  } catch (e) {
-    onCallback(false);
+  }catch (e: any) {    onCallback(false);
     yield put(TicketActions.approveQuoteFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
@@ -246,8 +234,7 @@ export function* requestMoreQuote(action: IFluxStandardAction<IRequestMorePayloa
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(TicketActions.requestMoreQuoteFailure());

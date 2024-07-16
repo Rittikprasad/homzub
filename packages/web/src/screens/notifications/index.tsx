@@ -79,7 +79,7 @@ const Notification: FC = () => {
     try {
       const response: AssetMetrics = await DashboardRepository.getAssetMetrics();
       callback(response);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -112,7 +112,7 @@ const Notification: FC = () => {
       );
       setOffset(offset + response.results.length);
       setLoading(false);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
       setLoading(false);
     }
@@ -132,7 +132,7 @@ const Notification: FC = () => {
         prevState !== notificationsArray ? [...prevState, ...response.results] : [...prevState]
       );
       setOffset(response.results.length);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };

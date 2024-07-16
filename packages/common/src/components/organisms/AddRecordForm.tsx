@@ -464,8 +464,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
         },
       });
       toggleLoading(false);
-    } catch (e) {
-      toggleLoading(false);
+    }catch (e: any) {      toggleLoading(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -493,8 +492,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     try {
       const modes = await LedgerRepository.getOfflinePaymentModes();
       this.setState({ offlinePaymentModes: modes });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 
@@ -654,8 +652,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       if (onSubmitFormSuccess) {
         onSubmitFormSuccess();
       }
-    } catch (e) {
-      toggleLoading(false);
+    }catch (e: any) {      toggleLoading(false);
       formActions.setSubmitting(false);
       formActions.resetForm({});
       AlertHelper.error({ message: e.message });

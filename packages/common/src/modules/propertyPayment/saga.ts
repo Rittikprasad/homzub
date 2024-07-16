@@ -31,8 +31,7 @@ export function* getSocieties(action: IFluxStandardAction<ISocietyParam>): VoidG
   try {
     const response = yield call(PropertyRepository.getSocieties, action.payload as ISocietyParam);
     yield put(PropertyPaymentActions.getSocietiesSuccess(response as Society[]));
-  } catch (e) {
-    yield put(PropertyPaymentActions.getSocietiesFailure());
+  }catch (e: any) {    yield put(PropertyPaymentActions.getSocietiesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -47,8 +46,7 @@ export function* createSociety(action: IFluxStandardAction<ICreateSociety>): Voi
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(PropertyPaymentActions.createSocietyFailure());
@@ -94,8 +92,7 @@ export function* getSocietyDetail(action: IFluxStandardAction<IGetSocietyPayload
         })
       );
     }
-  } catch (e) {
-    yield put(PropertyPaymentActions.getSocietyDetailFailure());
+  }catch (e: any) {    yield put(PropertyPaymentActions.getSocietyDetailFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -115,8 +112,7 @@ export function* updateSociety(action: IFluxStandardAction<IUpdateSociety>): Voi
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(PropertyPaymentActions.updateSocietyFailure());
@@ -129,8 +125,7 @@ export function* addAssetSociety(action: IFluxStandardAction<IAssetSocietyPayloa
     yield call(PropertyRepository.addAssetSociety, action.payload as IAssetSocietyPayload);
     yield put(PropertyPaymentActions.addAssetSocietySuccess());
     yield put(AssetActions.getActiveAssets());
-  } catch (e) {
-    yield put(PropertyPaymentActions.addAssetSocietyFailure());
+  }catch (e: any) {    yield put(PropertyPaymentActions.addAssetSocietyFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -147,8 +142,7 @@ export function* getSocietyCharges(action: IFluxStandardAction<ISocietyDataPaylo
         onCallback(true, data.maintenance.amount);
       }
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(PropertyPaymentActions.getSocietyChargesFailure());
@@ -165,8 +159,7 @@ export function* getUserInvoice(action: IFluxStandardAction<IInvoicePayload>): V
     if (onCallback) {
       onCallback(true);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(PropertyPaymentActions.getUserInvoiceFailure());
@@ -184,8 +177,7 @@ export function* getSocietyReminders(action: IFluxStandardAction<ISocietyDataPay
       const data = response as SocietyReminder;
       onCallback(true, data.reminders.length);
     }
-  } catch (e) {
-    if (onCallback) {
+  }catch (e: any) {    if (onCallback) {
       onCallback(false);
     }
     yield put(PropertyPaymentActions.getSocietyRemindersFailure());

@@ -39,8 +39,7 @@ const KYCDocuments = (props: Props): React.ReactElement => {
         setDocs(data);
         setLoading(false);
       });
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e);
       AlertHelper.error({ message: error });
       setLoading(false);
     }

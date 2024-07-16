@@ -25,8 +25,7 @@ class Permissions {
           return false;
         }
         return false;
-      } catch (e) {
-        return false;
+      }catch (e: any) {        return false;
       }
     } else {
       return false;

@@ -109,8 +109,7 @@ const RequirementForm = ({ onAddLocation, onSubmit }: IProps): React.ReactElemen
     try {
       await SearchRepository.addSearchRequirement(payload);
       onSubmit();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

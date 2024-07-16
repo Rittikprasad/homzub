@@ -45,7 +45,7 @@ const ProfilePhoto: FC<IProps> = (props: IProps) => {
           AlertHelper.error({ message: error[0].message });
         }
         setIsLoading(false);
-      } catch (e) {
+      } catch (e: any) {
         if (e === AttachmentError.UPLOAD_IMAGE_ERROR) {
           AlertHelper.error({ message: t('property:supportedImageFormats'), statusCode: e.details.statusCode });
         }

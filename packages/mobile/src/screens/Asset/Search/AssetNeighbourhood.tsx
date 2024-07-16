@@ -201,8 +201,7 @@ export class AssetNeighbourhood extends React.Component<Props, IOwnState> {
       );
 
       this.setState({ pointsOfInterest, isApiActive: false });
-    } catch (e) {
-      this.setState({ isBottomSheetVisible: false, isApiActive: false });
+    }catch (e: any) {      this.setState({ isBottomSheetVisible: false, isApiActive: false });
       AlertHelper.error({ message: e.message });
     }
   };

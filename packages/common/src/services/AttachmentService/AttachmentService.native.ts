@@ -71,8 +71,7 @@ class AttachmentService {
           .catch((err) => {
             AlertHelper.error({ message: err }); //  TODOS: Lakshit: Require clarity on usage.
           });
-      } catch (err) {
-        AlertHelper.error({ message: err }); // TODOS: Lakshit- Require clarity on usage.
+      }catch (err: any) {        AlertHelper.error({ message: err }); // TODOS: Lakshit- Require clarity on usage.
       }
     }
   };

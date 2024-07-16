@@ -24,7 +24,7 @@ const PlatformPlan: FC = () => {
     try {
       const response: PlatformPlans[] = await ServiceRepository.getPlatformPlans();
       setPlatformPlansData(response);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }

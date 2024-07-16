@@ -200,8 +200,7 @@ class AcceptOffer extends Component<Props, IScreenState> {
       }
 
       AlertHelper.success({ message: t('offers:offerAcceptedSuccess') });
-    } catch (e) {
-      this.onCloseBottomSheet();
+    }catch (e: any) {      this.onCloseBottomSheet();
       this.toggleLoading();
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }

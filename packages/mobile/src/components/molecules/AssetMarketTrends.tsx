@@ -183,8 +183,7 @@ export class AssetMarketTrends extends React.PureComponent<IProps, IMarketTrends
       });
 
       this.setState({ data: reset ? response.results : [...data, ...response.results] });
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
   };
 

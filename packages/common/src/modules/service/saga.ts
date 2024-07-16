@@ -13,8 +13,7 @@ export function* getServiceCities(): VoidGenerator {
   try {
     const response = yield call(ServiceRepository.getServiceCities);
     yield put(ServiceActions.getServiceCitiesSuccess(response as Unit[]));
-  } catch (e) {
-    yield put(ServiceActions.getServiceCitiesFailure());
+  }catch (e: any) {    yield put(ServiceActions.getServiceCitiesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }
@@ -23,8 +22,7 @@ export function* getServiceAssets(): VoidGenerator {
   try {
     const response = yield call(AssetRepository.getValueServicesAssetList);
     yield put(ServiceActions.getServiceAssetsSuccess(response as Asset[]));
-  } catch (e) {
-    yield put(ServiceActions.getServiceCitiesFailure());
+  }catch (e: any) {    yield put(ServiceActions.getServiceCitiesFailure());
     AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
   }
 }

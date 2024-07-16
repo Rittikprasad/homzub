@@ -31,8 +31,7 @@ const UserSubscriptionPlan: FC<IProps> = ({ onApiFailure }: IProps) => {
     try {
       const response: UserSubscription = await UserRepository.getUserSubscription();
       setData(response);
-    } catch (err) {
-      onApiFailure(err.details);
+    }catch (err: any) {      onApiFailure(err.details);
     }
   };
 

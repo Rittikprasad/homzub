@@ -19,8 +19,7 @@ function* getTenancies(action: IFluxStandardAction<IGetTenanciesPayload>) {
     if (payload) {
       payload.onCallback({ status: true });
     }
-  } catch (err) {
-    if (payload) {
+  }catch (err: any) {    if (payload) {
       payload.onCallback({ status: false });
     }
     const error = ErrorUtils.getErrorMessage(err.details);
@@ -39,8 +38,7 @@ function* getProperties(action: IFluxStandardAction<IGetPropertiesPayload>) {
     const response = yield call(PortfolioRepository.getPortfolioAssets);
     yield put(PortfolioActions.getPropertyDetailsSuccess(response));
     onCallback({ status: true });
-  } catch (err) {
-    onCallback({ status: false });
+  }catch (err: any) {    onCallback({ status: false });
     const error = ErrorUtils.getErrorMessage(err.details);
     AlertHelper.error({ message: error, statusCode: err.details.statusCode });
     yield put(PortfolioActions.getPropertyDetailsFailure(error));
@@ -57,8 +55,7 @@ function* getTenantHistory(action: IFluxStandardAction<IGetHistoryParam>) {
     const response = yield call(PortfolioRepository.getTenantHistory, id, data);
     yield put(PortfolioActions.getTenantHistorySuccess(response));
     onCallback({ status: true });
-  } catch (err) {
-    onCallback({ status: false });
+  }catch (err: any) {    onCallback({ status: false });
     const error = ErrorUtils.getErrorMessage(err.details);
     AlertHelper.error({ message: error, statusCode: err.details.statusCode });
     yield put(PortfolioActions.getTenantHistoryFailure(error));

@@ -19,8 +19,7 @@ describe('GooglePlaces API', () => {
     mockAxios.get.mockImplementation(() => Promise.resolve({ data: GoogleError }));
     try {
       await GooglePlacesService.autoComplete('TestLocation');
-    } catch (e) {
-      expect(e).toMatchSnapshot();
+    }catch (e: any) {      expect(e).toMatchSnapshot();
       expect(e).toBeTruthy();
     }
   });

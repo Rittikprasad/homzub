@@ -41,8 +41,7 @@ class Permissions {
         return true;
       }
       return this.requestPermission(permission);
-    } catch (e) {
-      return false;
+    }catch (e: any) {      return false;
     }
   };
 
@@ -50,8 +49,7 @@ class Permissions {
     try {
       const response = await request(permission);
       return response === RESULTS.GRANTED;
-    } catch (e) {
-      return false;
+    }catch (e: any) {      return false;
     }
   };
 }

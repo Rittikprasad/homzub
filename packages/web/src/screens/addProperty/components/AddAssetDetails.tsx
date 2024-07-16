@@ -221,8 +221,7 @@ class AddAssetDetails extends React.PureComponent<Props, IOwnState> {
         AnalyticsService.track(EventType.AddPropertySuccess, { property_address: address });
       }
       onSubmitPress();
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       if (assetId < 1) {
         AnalyticsService.track(EventType.AddPropertyFailure, { property_address: address, error });
       }

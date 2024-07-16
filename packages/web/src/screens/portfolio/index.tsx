@@ -111,7 +111,7 @@ export class Portfolio extends React.PureComponent<Props, ILocalState> {
     const { tenancies: tenanciesLoader, properties: propertiesLoader } = portfolioLoaders;
     const isLoading = whilePortfolioFilters || tenanciesLoader || propertiesLoader;
     const { context } = this;
-    const { setIsMenuLoading } = context;
+    const { setIsMenuLoading }: any = context;
     setIsMenuLoading(isLoading);
     if (isLoading) {
       return <Loader visible={isLoading} />;
@@ -350,7 +350,7 @@ export class Portfolio extends React.PureComponent<Props, ILocalState> {
       });
       const response: AssetFilter = await PortfolioRepository.getAssetFilters();
       this.setState({ filters: response, whilePortfolioFilters: false });
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       this.setState({
         whilePortfolioFilters: false,

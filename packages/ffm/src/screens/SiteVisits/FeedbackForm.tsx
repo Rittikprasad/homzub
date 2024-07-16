@@ -104,8 +104,7 @@ const FeedbackForm = (): React.ReactElement => {
       await FFMRepository.postFeedback({ visitId, data: payload });
       AlertHelper.success({ message: t('siteVisits:feedbackSubmitted') });
       goBack();
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

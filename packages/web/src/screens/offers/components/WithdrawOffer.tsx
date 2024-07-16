@@ -128,7 +128,7 @@ const WithdrawOffer = (props: IPropsWeb): React.ReactElement => {
         await OffersRepository.updateNegotiation(payload);
         onClosePopover();
         AlertHelper.success({ message: t('offers:offerCancellationSucess') });
-      } catch (e) {
+      } catch (e: any) {
         onClosePopover();
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }

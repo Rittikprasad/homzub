@@ -29,8 +29,7 @@ function* getAssetReviews(action: IFluxStandardAction<IGetListingReviews>): Void
   try {
     const response = yield call(AssetRepository.getListingReviewsSummary, action.payload as IGetListingReviews);
     yield put(AssetActions.getAssetReviewsSuccess(response as AssetReview));
-  } catch (err) {
-    yield put(AssetActions.getAssetReviewsFailure(err.message));
+  }catch (err: any) {    yield put(AssetActions.getAssetReviewsFailure(err.message));
   }
 }
 
@@ -56,8 +55,7 @@ function* getAssetDetails(action: IFluxStandardAction<IGetAssetPayload>) {
       yield put(AssetActions.getAssetReviews(reviewParams));
 
       if (onCallback) onCallback({ status: true });
-    } catch (err) {
-      if (onCallback) onCallback({ status: false });
+    }catch (err: any) {      if (onCallback) onCallback({ status: false });
 
       const error = ErrorUtils.getErrorMessage(err.details);
       AlertHelper.error({ message: error, statusCode: err.details.statusCode });
@@ -76,8 +74,7 @@ function* getAssetDocuments(action: IFluxStandardAction<IGetDocumentPayload>): V
       if (onCallback) {
         onCallback({ status: true });
       }
-    } catch (err) {
-      if (onCallback) {
+    }catch (err: any) {      if (onCallback) {
         onCallback({ status: false });
       }
       const error = ErrorUtils.getErrorMessage(err.details);
@@ -91,8 +88,7 @@ function* getAssetVisit(action: IFluxStandardAction<IAssetVisitPayload>): VoidGe
   try {
     const response = yield call(AssetRepository.getPropertyVisit, action.payload as IAssetVisitPayload);
     yield put(AssetActions.getAssetVisitSuccess(response as AssetVisit[]));
-  } catch (err) {
-    const error = ErrorUtils.getErrorMessage(err.details);
+  }catch (err: any) {    const error = ErrorUtils.getErrorMessage(err.details);
     AlertHelper.error({ message: error, statusCode: err.details.statusCode });
     yield put(AssetActions.getAssetVisitFailure(err.message));
   }
@@ -102,8 +98,7 @@ export function* getUserActiveAssets(): VoidGenerator {
   try {
     const response = yield call(AssetRepository.getActiveAssets);
     yield put(AssetActions.getActiveAssetsSuccess(response as Asset[]));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(AssetActions.getActiveAssetsFailure());
   }
@@ -131,8 +126,7 @@ export function* getAssetById(action: IFluxStandardAction<number>) {
     });
 
     yield put(RecordAssetActions.setSelectedImages(ObjectMapper.deserializeArray(AssetGallery, assetImage)));
-  } catch (e) {
-    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+  }catch (e: any) {    AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     yield put(AssetActions.getAssetByIdFailure());
   }
 }
@@ -145,8 +139,7 @@ function* getAssetUsers(action: IFluxStandardAction<IAssetUserPayload>): VoidGen
     if (payload && payload.onCallback) {
       payload.onCallback(true);
     }
-  } catch (err) {
-    const error = ErrorUtils.getErrorMessage(err.details);
+  }catch (err: any) {    const error = ErrorUtils.getErrorMessage(err.details);
     AlertHelper.error({ message: error, statusCode: err.details.statusCode });
     yield put(AssetActions.getAssetUsersFailure());
   }

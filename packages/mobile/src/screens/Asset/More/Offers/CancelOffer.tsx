@@ -130,8 +130,7 @@ const CancelOffer = (): React.ReactElement => {
         setIsLoading(false);
         goBack();
         AlertHelper.success({ message: t('offers:offerCancellationSucess') });
-      } catch (e) {
-        setIsLoading(false);
+      }catch (e: any) {        setIsLoading(false);
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }

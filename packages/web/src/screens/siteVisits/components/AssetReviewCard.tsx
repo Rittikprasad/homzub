@@ -99,7 +99,7 @@ const AssetReviewCard = (props: IProps): React.ReactElement => {
       }
       onCloseModal();
       AlertHelper.info({ message: t('common:responseSubmitSuccess') });
-    } catch (error) {
+    } catch (error: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(error.details) });
       onCancel();
     } finally {
@@ -117,7 +117,7 @@ const AssetReviewCard = (props: IProps): React.ReactElement => {
         reviewComments[0].comment = '';
         review.comments = [];
       }
-    } catch (error) {
+    } catch (error: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(error.details) });
     }
   };

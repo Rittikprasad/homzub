@@ -106,7 +106,7 @@ const Offers: FC<IProps> = (props: IProps) => {
       setOfferRecievedInfoRead(isOfferReceivedInfoRead);
       setOfferMadeInfoRead(isOfferMadeInfoRead);
       getPropertyListData();
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -118,7 +118,7 @@ const Offers: FC<IProps> = (props: IProps) => {
         offerType === OfferType.OFFER_RECEIVED ? OfferFilterType.RECEIVED : OfferFilterType.CREATED
       );
       setOfferFilters(response);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -151,7 +151,7 @@ const Offers: FC<IProps> = (props: IProps) => {
       });
 
       setPropertyListingData(propertyListingDatas);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -193,7 +193,7 @@ const Offers: FC<IProps> = (props: IProps) => {
       });
 
       setPropertyListingData(propertyListingDatas);
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }

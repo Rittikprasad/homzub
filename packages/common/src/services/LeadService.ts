@@ -13,8 +13,7 @@ class LeadService {
         // SALE FLOW
         await LeadRepository.postSaleLeadDetail(payload);
       }
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
   };

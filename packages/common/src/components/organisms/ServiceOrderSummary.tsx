@@ -115,8 +115,7 @@ const ServiceOrderSummary = ({ invoiceId, onSuccess, isLabelRequired = false }: 
       try {
         const response = await LedgerRepository.dueOrderSummaryAction(id, payload);
         return response.order;
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details.message), statusCode: e.details.statusCode });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details.message), statusCode: e.details.statusCode });
         return null;
       }
     }

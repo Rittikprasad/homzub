@@ -221,8 +221,7 @@ class AddPropertyDetails extends React.PureComponent<IProps, IOwnState> {
       await AssetRepository.updateAsset(assetId, payload);
       handleNextStep();
       this.toggleLoader();
-    } catch (e) {
-      this.toggleLoader();
+    }catch (e: any) {      this.toggleLoader();
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -279,8 +278,7 @@ class AddPropertyDetails extends React.PureComponent<IProps, IOwnState> {
           furnishingType: response.furnishingStatus[0].name,
         },
       });
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
     }
   };
 }

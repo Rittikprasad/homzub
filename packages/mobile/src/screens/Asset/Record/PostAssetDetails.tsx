@@ -379,8 +379,7 @@ class PostAssetDetails extends React.PureComponent<Props, IOwnState> {
         return;
       }
       this.goBack();
-    } catch (e) {
-      this.setState({ loading: false });
+    }catch (e: any) {      this.setState({ loading: false });
       const error = ErrorUtils.getErrorMessage(e.details);
       if (assetId < 1) {
         AnalyticsService.track(EventType.AddPropertyFailure, { property_address: address, error });

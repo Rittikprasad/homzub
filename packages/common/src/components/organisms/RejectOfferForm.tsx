@@ -140,8 +140,7 @@ const RejectOfferForm: React.FC<IPropsApp | IPropsWeb> = (props: IPropsApp | IPr
           onClosePopover();
         }
         AlertHelper.success({ message: t('offers:offerRejectedSuccess') });
-      } catch (e) {
-        if (onClosePopover) {
+      }catch (e: any) {        if (onClosePopover) {
           onClosePopover();
         }
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });

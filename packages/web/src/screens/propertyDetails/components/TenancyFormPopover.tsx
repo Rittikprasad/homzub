@@ -65,7 +65,7 @@ const TenancyFormPopover: React.FC<IProps> = (props: IProps) => {
         offerLeft: { sale, lease },
       } = await OffersRepository.getOfferData(param);
       setCount(isRentFlow ? lease : sale);
-    } catch (err) {
+    } catch (err: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };

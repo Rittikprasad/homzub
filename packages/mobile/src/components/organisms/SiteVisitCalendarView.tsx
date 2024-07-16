@@ -341,8 +341,7 @@ class SiteVisitCalendarView extends Component<Props, IScreenState> {
     try {
       await AssetRepository.updatePropertyVisit(payload);
       this.onShowProfile(id);
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

@@ -48,8 +48,7 @@ const AssetReviews = (): React.ReactElement => {
       }).then((response) => {
         setReviewSummary(response);
       });
-    } catch (e) {
-      AlertHelper.error({ message: t('common:genericErrorMessage') });
+    }catch (e: any) {      AlertHelper.error({ message: t('common:genericErrorMessage') });
     }
   }, []);
 

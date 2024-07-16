@@ -65,8 +65,7 @@ const VisitListCard = (): React.ReactElement | null => {
           status__in: `${VisitStatus.APPROVED},${VisitStatus.PENDING}`,
         })
       );
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

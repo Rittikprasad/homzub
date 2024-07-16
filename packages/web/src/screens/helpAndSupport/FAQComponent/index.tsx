@@ -43,7 +43,7 @@ const FAQComponent = (): React.ReactElement => {
     try {
       const response = await GraphQLRepository.getFAQAllQuestions();
       setFAQs(getOrderedCategories(response));
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
@@ -52,7 +52,7 @@ const FAQComponent = (): React.ReactElement => {
     try {
       const response = await GraphQLRepository.getFAQSearchQuestions(searchParam);
       setFAQs(getOrderedCategories(response));
-    } catch (e) {
+    } catch (e: any) {
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }

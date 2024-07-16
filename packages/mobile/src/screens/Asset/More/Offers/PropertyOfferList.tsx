@@ -120,8 +120,7 @@ class PropertyOfferList extends React.PureComponent<Props, IScreenState> {
             this.getPropertyListData();
           }
         );
-      } catch (e) {
-        AlertHelper.error({ message: e.message });
+      }catch (e: any) {        AlertHelper.error({ message: e.message });
         this.setState({ isScreenLoading: false });
       }
     });
@@ -415,8 +414,7 @@ class PropertyOfferList extends React.PureComponent<Props, IScreenState> {
       }
 
       this.setState({ isTabLoading: false, currencies });
-    } catch (e) {
-      this.setState({ isTabLoading: false });
+    }catch (e: any) {      this.setState({ isTabLoading: false });
       AlertHelper.error({ message: e.message });
     }
   };

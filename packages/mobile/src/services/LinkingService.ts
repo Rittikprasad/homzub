@@ -170,8 +170,7 @@ class LinkingService {
   public canOpenURL = async (url: string): Promise<boolean> => {
     try {
       return await Linking.openURL(url);
-    } catch (e) {
-      return false;
+    }catch (e: any) {      return false;
     }
   };
 }

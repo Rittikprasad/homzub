@@ -121,8 +121,7 @@ export class ForgotPassword extends Component<Props, IForgotPasswordState> {
       } else {
         AlertHelper.error({ message: t('auth:emailNotExists') });
       }
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   };
 

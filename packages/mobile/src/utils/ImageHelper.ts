@@ -77,8 +77,7 @@ class ImageHelper {
         if (toggleLoader) {
           toggleLoader(false);
         }
-      } catch (e) {
-        if (onCallback) {
+      }catch (e: any) {        if (onCallback) {
           onCallback(false);
         }
         if (toggleLoader) {
@@ -86,8 +85,7 @@ class ImageHelper {
         }
         AlertHelper.error({ message: e.message });
       }
-    } catch (e) {
-      if (onCallback) {
+    }catch (e: any) {      if (onCallback) {
         onCallback(false);
       }
       if (toggleLoader) {

@@ -60,8 +60,7 @@ const UpdateTicketStatusForm = (props: IProps): ReactElement => {
         }
         AlertHelper.success({ message: t('updateSentSuccess') });
       }
-    } catch (e) {
-      toggleLoader(false);
+    }catch (e: any) {      toggleLoader(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details.message), statusCode: e.details.statusCode });
     }
   };

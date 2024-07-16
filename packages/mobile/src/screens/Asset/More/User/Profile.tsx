@@ -218,8 +218,7 @@ class Profile extends React.PureComponent<IOwnProps, IOwnState> {
     try {
       await UserRepository.sendOrVerifyEmail(payload);
       AlertHelper.info({ message: t('emailVerificationSetAlert', { email }) });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 
@@ -243,8 +242,7 @@ class Profile extends React.PureComponent<IOwnProps, IOwnState> {
       await UserRepository.sendOrVerifyEmail(payload);
       getUserProfile();
       this.setState({ isBottomSheetOpen: true, isEmailVerified: true, isLocalViewLoading: false });
-    } catch (e) {
-      this.setState({ isBottomSheetOpen: true, isEmailVerified: false, isLocalViewLoading: false });
+    }catch (e: any) {      this.setState({ isBottomSheetOpen: true, isEmailVerified: false, isLocalViewLoading: false });
     }
   };
 

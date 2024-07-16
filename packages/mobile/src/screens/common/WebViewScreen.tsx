@@ -28,8 +28,7 @@ export const WebViewScreen = (props: Props): React.ReactElement => {
     }
     try {
       CommonRepository.updateMarketTrends(trendId).then();
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
   }, []);
 

@@ -14,8 +14,7 @@ class UserService {
     };
     try {
       await UserRepository.Otp(requestBody);
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
   };
@@ -29,8 +28,7 @@ class UserService {
     };
     try {
       await UserRepository.Otp(requestBody);
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     }
   };

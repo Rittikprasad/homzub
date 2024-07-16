@@ -264,8 +264,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
       formProps.setFieldValue('stateName', addressComponents.state);
       formProps.setFieldValue('country', addressComponents.country);
       formProps.setFieldValue('countryIsoCode', addressComponents.countryIsoCode);
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   }, 500);
 
@@ -335,8 +334,7 @@ export class UserProfileForm extends React.PureComponent<IProps, IState> {
       } else {
         updatePopUp('otpWithEmail');
       }
-    } catch (e) {
-      AlertHelper.error({ message: e.message });
+    }catch (e: any) {      AlertHelper.error({ message: e.message });
     }
   };
 

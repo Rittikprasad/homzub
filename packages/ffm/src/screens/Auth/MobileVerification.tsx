@@ -45,8 +45,7 @@ const MobileVerification = (): React.ReactElement => {
       }
 
       await UserService.fetchOtp(otpSentTo, countryCode);
-    } catch (e) {
-      AlertHelper.error({
+    }catch (e: any) {      AlertHelper.error({
         message: ErrorUtils.getErrorMessage(e.details),
       });
     }
@@ -61,8 +60,7 @@ const MobileVerification = (): React.ReactElement => {
       if (type === OtpNavTypes.SignUp) {
         await signUp();
       }
-    } catch (e) {
-      setError(true);
+    }catch (e: any) {      setError(true);
     }
   };
   const loginOtp = (otp: string): void => {
@@ -100,8 +98,7 @@ const MobileVerification = (): React.ReactElement => {
         };
         dispatch(UserActions.login(loginPayload));
       }
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

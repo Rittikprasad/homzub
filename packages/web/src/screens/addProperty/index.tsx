@@ -113,11 +113,9 @@ const AddProperty: FC<IProps> = (props: IProps) => {
             selectedImages.concat(ObjectMapper.deserializeArray(AssetGallery, localSelectedImages))
           )
         );
-      } catch (e) {
-        AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage
+      }catch (e: any) {        AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS: Lakshit - Require clarity on usage
       }
-    } catch (e) {
-      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS Lakshit - Require clarity on usage
+    }catch (e: any) {      AlertHelper.error({ message: e.message, statusCode: e.details.statusCode }); // TODOS Lakshit - Require clarity on usage
     }
   };
   const compArray: IComponentMap[] = [

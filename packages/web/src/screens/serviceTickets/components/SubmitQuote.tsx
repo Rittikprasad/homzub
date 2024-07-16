@@ -37,7 +37,7 @@ const SubmitQuote: React.FC<IProps> = (props: IProps) => {
       prevQuotes[tabIndex].data[index].document = file;
       dispatch(TicketActions.setQuoteAttachment([...prevAttachments, file]));
       dispatch(TicketActions.setQuotes(prevQuotes));
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: e.message });
     }
   };

@@ -105,8 +105,7 @@ class ProspectProfile extends Component<Props, IScreenState> {
         });
       }
       this.setState({ loading: false });
-    } catch (e) {
-      this.setState({ loading: false });
+    }catch (e: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   }
@@ -244,8 +243,7 @@ class ProspectProfile extends Component<Props, IScreenState> {
       }
       AlertHelper.success({ message: t('offers:prospectProfileCreateSuccess'), duration: 5000 });
       navigation.navigate(ScreensKeys.SubmitOffer);
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       this.setState({ loading: false });
     }
   };
@@ -258,8 +256,7 @@ class ProspectProfile extends Component<Props, IScreenState> {
       try {
         const res = await UserRepository.workEmailExists(email);
         isExists = res.is_exists;
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
     return !isExists;

@@ -67,8 +67,7 @@ const VisitList = ({ tab, onReschedule, navigateToDetail, navigateToFeedback, st
       await AssetRepository.updatePropertyVisit(payload);
       AlertHelper.success({ message: t('siteVisits:visitUpdate') });
       dispatch(FFMActions.getVisits({ status__in: status }));
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 

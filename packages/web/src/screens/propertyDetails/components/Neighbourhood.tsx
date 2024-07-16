@@ -88,7 +88,7 @@ const Neighbourhood: React.FC<Props> = (props: Props) => {
       } else {
         setPointsOfInterest([]);
       }
-    } catch (e) {
+    } catch (e: any) {
       setIsApiActive(false);
       AlertHelper.error({ message: e.message, statusCode: e.details.statusCode });
     }

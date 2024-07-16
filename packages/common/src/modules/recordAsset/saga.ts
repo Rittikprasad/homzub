@@ -21,8 +21,7 @@ export function* getAssetPlanList(): VoidGenerator {
   try {
     const data = yield call(ServiceRepository.getAssetPlans);
     yield put(RecordAssetActions.getAssetPlanListSuccess(data as AssetPlan[]));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(RecordAssetActions.getAssetPlanListFailure(error));
   }
@@ -32,8 +31,7 @@ export function* getAssetGroups(): VoidGenerator {
   try {
     const data = yield call(AssetRepository.getAssetGroups);
     yield put(RecordAssetActions.getAssetGroupsSuccess(data as AssetGroup[]));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(RecordAssetActions.getAssetGroupsFailure(error));
   }
@@ -48,8 +46,7 @@ export function* getAssetById(): VoidGenerator {
     } else {
       AlertHelper.error({ message: I18nService.t('property:assetIdWarning') });
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
     yield put(RecordAssetActions.getAssetByIdFailure(error));
   }
@@ -59,8 +56,7 @@ export function* getMaintenanceUnits(): VoidGenerator {
   try {
     const data = yield call(CommonRepository.getMaintenanceUnits);
     yield put(RecordAssetActions.getMaintenanceUnitsSuccess(data as Unit[]));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
   }
 }
@@ -82,8 +78,7 @@ export function* getValueAddedServices(action: IFluxStandardAction<IGetServicesB
       ? yield call(RecordAssetRepository.getValueAddedServices)
       : yield call(RecordAssetRepository.getValueAddedServices, assetGroupId, countryId, city, true);
     yield put(RecordAssetActions.getValueAddedServicesSuccess(data as ValueAddedService[]));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error, statusCode: e.details.statusCode });
   }
 }

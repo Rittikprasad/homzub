@@ -529,8 +529,7 @@ export class AssetCard extends Component<Props, IState> {
     try {
       const tenants: TenantInfo[] = await PortfolioRepository.getTenantHistory(id, data);
       this.setState({ listOfTenant: tenants.length });
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
   };
 }

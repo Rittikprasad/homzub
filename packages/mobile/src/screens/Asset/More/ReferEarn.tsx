@@ -43,8 +43,7 @@ const ReferEarn = (): React.ReactElement => {
         { name: t('coinsEarned'), count: res.coins.coinsEarned, colorCode: theme.colors.yellowTint2 },
       ]);
       setLoading(false);
-    } catch (e) {
-      setLoading(false);
+    }catch (e: any) {      setLoading(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   }, []);

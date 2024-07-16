@@ -416,8 +416,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
         AlertHelper.error({ message: t('common:someFilesWereNotUploaded', { size: '5 mb' }) });
       }
       await this.uploadDocument(validDocuments);
-    } catch (e) {
-      if (!DocumentPicker.isCancel(e)) {
+    }catch (e: any) {      if (!DocumentPicker.isCancel(e)) {
         AlertHelper.error({ message: t('pleaseTryAgain') });
       }
     }
@@ -437,8 +436,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       AlertHelper.success({ message: t('assetFinancial:renamedSuccessfullyMessage') });
       this.setState({ isLoading: false });
       this.getDocuments();
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: e.utils });
     }
   };
@@ -473,8 +471,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       this.getDocuments();
       AlertHelper.success({ message: t('assetFinancial:deletedSuccessfullyMessage') });
       this.setState({ isLoading: false });
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -546,8 +543,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       await AssetRepository.createAssetDocument(payload);
       this.setState({ isLoading: false });
       this.getDocuments();
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       const error = ErrorUtils.getErrorMessage(e);
       AlertHelper.error({ message: error });
     }
@@ -596,8 +592,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
         const headerText = `${returnWithComma(unitNumber)}${returnWithComma(blockNumber)}${projectName}`;
         this.setState({ header: headerText, isLoading: false });
       }
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };

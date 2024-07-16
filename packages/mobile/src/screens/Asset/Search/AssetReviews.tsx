@@ -46,8 +46,7 @@ const AssetReviews = (props: Props): React.ReactElement => {
       AssetRepository.getListingReviews(params).then((response) => {
         setReviews(response.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()));
       });
-    } catch (err) {
-      AlertHelper.error({ message: t('common:genericErrorMessage') });
+    }catch (err: any) {      AlertHelper.error({ message: t('common:genericErrorMessage') });
     } finally {
       setLoading(false);
     }

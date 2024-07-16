@@ -144,8 +144,7 @@ export class WorkInfoForm extends React.PureComponent<IProps, IState> {
           handlePopupClose();
         }
       }
-    } catch (e) {
-      if (PlatformUtils.isWeb() && handlePopupClose) {
+    }catch (e: any) {      if (PlatformUtils.isWeb() && handlePopupClose) {
         handlePopupClose();
       }
       updateFormLoadingState(false);

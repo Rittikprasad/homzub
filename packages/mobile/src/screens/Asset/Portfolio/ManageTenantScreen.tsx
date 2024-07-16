@@ -242,8 +242,7 @@ class ManageTenantsScreen extends Component<Props, IScreenState> {
       };
       try {
         await AssetRepository.deleteTenant(param);
-      } catch (err) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+      }catch (err: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     } else {
       this.navigateToTerminate();

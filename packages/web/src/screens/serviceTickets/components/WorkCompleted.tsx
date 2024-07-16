@@ -131,7 +131,7 @@ const WorkCompleted: React.FC<IProps> = (props: IProps): React.ReactElement => {
           ticketId: selectedTicket.ticketId,
         });
       }
-    } catch (e) {
+    } catch (e: any) {
       setLoader(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }

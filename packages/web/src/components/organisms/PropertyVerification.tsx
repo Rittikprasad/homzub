@@ -189,8 +189,7 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
       } else {
         AlertHelper.error({ message: value.helpText });
       }
-    } catch (e) {
-      if (e === AttachmentError.UPLOAD_IMAGE_ERROR) {
+    }catch (e: any) {      if (e === AttachmentError.UPLOAD_IMAGE_ERROR) {
         AlertHelper.error({ message: t('common:fileCorrupt'), statusCode: e.details.statusCode });
       }
     }
@@ -325,8 +324,7 @@ export class PropertyVerification extends React.PureComponent<Props, IPropertyVe
       await ListingService.getExistingDocuments(propertyId, this.updateState);
       await AssetRepository.updateAsset(propertyId, updateAssetPayload);
       updateStep();
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       if (e === AttachmentError.UPLOAD_IMAGE_ERROR) {
         AlertHelper.error({ message: t('common:fileCorrupt'), statusCode: e.details.statusCode });
       }

@@ -81,8 +81,7 @@ const AddPropertyImage = (): React.ReactElement => {
       AlertHelper.success({ message: t('property:imageUploaded') });
       setIsLoading(false);
       goBack();
-    } catch (e) {
-      setIsLoading(false);
+    }catch (e: any) {      setIsLoading(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.detaills) });
     }
   };

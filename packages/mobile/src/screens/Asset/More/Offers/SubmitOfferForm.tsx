@@ -51,8 +51,7 @@ const SubmitOfferForm = (): React.ReactElement => {
         } = await OffersRepository.getOfferData(param);
         setLoading(false);
         setCount(isRentFlow ? lease : sale);
-      } catch (e) {
-        setLoading(false);
+      }catch (e: any) {        setLoading(false);
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     };

@@ -51,13 +51,11 @@ class ImageService {
         });
         setLoading(false);
         onUploadImage(localSelectedImages);
-      } catch (e) {
-        setLoading(false);
+      }catch (e: any) {        setLoading(false);
         AlertHelper.error({ message: e.message });
         onClose();
       }
-    } catch (e) {
-      setLoading(false);
+    }catch (e: any) {      setLoading(false);
       if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }
@@ -100,14 +98,12 @@ class ImageService {
             setLoading(false);
             onUploadImage(localSelectedImages);
           }
-        } catch (e) {
-          setLoading(false);
+        }catch (e: any) {          setLoading(false);
           AlertHelper.error({ message: e.message });
           onClose();
         }
       }
-    } catch (e) {
-      setLoading(false);
+    }catch (e: any) {      setLoading(false);
       if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }

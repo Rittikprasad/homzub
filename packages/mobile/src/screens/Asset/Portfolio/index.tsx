@@ -348,8 +348,7 @@ export class Portfolio extends React.PureComponent<Props, IScreenState> {
     try {
       const response: AssetMetrics = await PortfolioRepository.getAssetMetrics();
       this.setState({ metrics: response });
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
   };
@@ -358,8 +357,7 @@ export class Portfolio extends React.PureComponent<Props, IScreenState> {
     try {
       const response: AssetFilter = await PortfolioRepository.getAssetFilters();
       this.setState({ filters: response.statusDropdown });
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
   };

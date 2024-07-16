@@ -78,8 +78,7 @@ const Signup = (): React.ReactElement => {
         otpSentTo: userData.phone_number,
         userData,
       });
-    } catch (e) {
-      console.log('🚀 ~ file: Signup.tsx ~ line 80 ~ onSubmit ~ e', e);
+    }catch (e: any) {      console.log('🚀 ~ file: Signup.tsx ~ line 80 ~ onSubmit ~ e', e);
       AlertHelper.error({ message: t('auth:phoneAlreadyExists') });
     }
   };

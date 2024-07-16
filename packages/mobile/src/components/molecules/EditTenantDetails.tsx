@@ -101,8 +101,7 @@ export const EditTenantDetails = (props: IProps): React.ReactElement => {
         message: t('common:tenantDetailsAreUpdated'),
       });
       setLoading(false);
-    } catch (err) {
-      setLoading(false);
+    }catch (err: any) {      setLoading(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
     }
 
@@ -121,8 +120,7 @@ export const EditTenantDetails = (props: IProps): React.ReactElement => {
     } else {
       try {
         await AssetRepository.deleteTenant(param);
-      } catch (err) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+      }catch (err: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       }
     }
   };

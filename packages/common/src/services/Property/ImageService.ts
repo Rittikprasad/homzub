@@ -27,8 +27,7 @@ class ImageService {
         try {
           const urlResponse: IYoutubeResponse[] = await AssetRepository.postAttachmentUpload(payload);
           attachmentIds.push({ attachment: urlResponse[0].id, is_cover_image: false });
-        } catch (e) {
-          AlertHelper.error({ message: I18nService.t('property:validVideoUrl'), statusCode: e.details.statusCode });
+        }catch (e: any) {          AlertHelper.error({ message: I18nService.t('property:validVideoUrl'), statusCode: e.details.statusCode });
           return;
         }
       }

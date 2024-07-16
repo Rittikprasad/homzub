@@ -68,7 +68,7 @@ const AcceptOfferPopOver: React.FC<Props> = (props: Props) => {
       await OffersRepository.updateNegotiation(payload);
       AlertHelper.success({ message: t('offers:offerAcceptedSuccess') });
       handleOfferAction(OfferAction.CREATE_LEASE);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       onClosePopover();
     }

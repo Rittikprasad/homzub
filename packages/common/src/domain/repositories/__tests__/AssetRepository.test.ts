@@ -62,8 +62,7 @@ describe.skip('AssetRepository', () => {
       try {
         // @ts-ignore
         await AssetRepository[api.apiName]();
-      } catch (e) {
-        expect(e).toBeTruthy();
+      }catch (e: any) {        expect(e).toBeTruthy();
       }
     });
   });

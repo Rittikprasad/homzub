@@ -17,8 +17,7 @@ export function* getFilterDetails(action: IFluxStandardAction<IFilter>) {
   try {
     const data = yield call(SearchRepository.getFilterDetails, action.payload as IFilter);
     yield put(SearchActions.getFilterDetailsSuccess(data));
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     AlertHelper.error({ message: error });
     yield put(SearchActions.getFilterDetailsFailure(error));
   }
@@ -53,8 +52,7 @@ export function* getPropertiesDetails() {
     if (count === 0) {
       yield call(AnalyticsService.track, EventType.ZeroSearchResult, trackData);
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details, true);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details, true);
     trackData = {
       ...trackData,
       error,
@@ -92,8 +90,7 @@ export function* getPropertiesListViewDetails() {
     if (count === 0) {
       yield call(AnalyticsService.track, EventType.ZeroSearchResult, trackData);
     }
-  } catch (e) {
-    const error = ErrorUtils.getErrorMessage(e.details);
+  }catch (e: any) {    const error = ErrorUtils.getErrorMessage(e.details);
     trackData = {
       ...trackData,
       error,

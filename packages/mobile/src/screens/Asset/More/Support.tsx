@@ -299,8 +299,7 @@ export class Support extends Component<Props, IScreenState> {
         };
       });
       this.setState({ isLoading: false, categories: formattedData });
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -310,8 +309,7 @@ export class Support extends Component<Props, IScreenState> {
     try {
       const response: User = await CommonRepository.getSupportContacts();
       this.setState({ contact: response, isLoading: false });
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -321,8 +319,7 @@ export class Support extends Component<Props, IScreenState> {
     try {
       const response = await CommonRepository.getClientSupport();
       this.setState({ isLoading: false, caseLogs: response });
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
@@ -374,8 +371,7 @@ export class Support extends Component<Props, IScreenState> {
         isLoading: false,
       });
       formActions.resetForm({});
-    } catch (e) {
-      this.setState({ isLoading: false });
+    }catch (e: any) {      this.setState({ isLoading: false });
       formActions.setSubmitting(false);
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }

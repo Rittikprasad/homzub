@@ -339,8 +339,7 @@ class PropertyVisitList extends PureComponent<Props, IScreenState> {
       this.setState({
         reportCategories: response,
       });
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
     }
   };
 }

@@ -239,8 +239,7 @@ class ChatScreen extends Component<Props, IScreenState> {
       const image = response as ImagePickerResponse;
       this.setState({ attachment: image });
       setAttachment(image.path);
-    } catch (e) {
-      if (e.code !== 'E_PICKER_CANCELLED') {
+    }catch (e: any) {      if (e.code !== 'E_PICKER_CANCELLED') {
         AlertHelper.error({ message: e.message });
       }
     }
@@ -310,8 +309,7 @@ class ChatScreen extends Component<Props, IScreenState> {
         const payload: ICurrentOffer = { ...currentOfferPayload, threadId: currentOfferPayload.threadId ?? '' };
         await OffersRepository.postNegotiationComments(payload, comment);
         getNegotiationComments({ isNew: true });
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
   };
@@ -329,8 +327,7 @@ class ChatScreen extends Component<Props, IScreenState> {
           assetName: response.name.split(',')[0],
           isLoading: false,
         });
-      } catch (e) {
-        this.setState({ isLoading: false });
+      }catch (e: any) {        this.setState({ isLoading: false });
         AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details) });
       }
     }
@@ -367,8 +364,7 @@ class ChatScreen extends Component<Props, IScreenState> {
           },
         },
       });
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details) });
       navigation.goBack();
     }
   };

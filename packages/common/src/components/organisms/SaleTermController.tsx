@@ -93,8 +93,7 @@ class SaleTermController extends React.PureComponent<Props, IOwnState> {
           message: t('property:propertyEditMsg'),
         });
       }
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };
 
@@ -258,8 +257,7 @@ class SaleTermController extends React.PureComponent<Props, IOwnState> {
       }
       await onNextStep(TypeOfPlan.SELL, { listing_type: ListingType.SELL, price: parseInt(values.expectedPrice, 10) });
       this.setState({ loading: false });
-    } catch (err) {
-      this.setState({ loading: false });
+    }catch (err: any) {      this.setState({ loading: false });
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
     formActions.setSubmitting(false);

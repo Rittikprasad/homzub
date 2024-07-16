@@ -101,8 +101,7 @@ class ProspectProfileForm extends Component<Props, IScreenState> {
           userType: tenantType.id,
         });
       }
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   }
 
@@ -226,8 +225,7 @@ class ProspectProfileForm extends Component<Props, IScreenState> {
       await OffersRepository.updateProspects(payload);
       changePopUpStatus('OFFER');
       return;
-    } catch (err) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
+    }catch (err: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(err.details), statusCode: err.details.statusCode });
     }
   };
 
@@ -239,8 +237,7 @@ class ProspectProfileForm extends Component<Props, IScreenState> {
       try {
         const res = await UserRepository.workEmailExists(email);
         isExists = res.is_exists;
-      } catch (e) {
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      }catch (e: any) {        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
       }
     }
     return !isExists;

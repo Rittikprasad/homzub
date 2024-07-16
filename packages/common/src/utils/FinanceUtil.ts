@@ -68,8 +68,7 @@ class FinanceUtils {
         country_id: selectedCountry || undefined,
       });
       success(response);
-    } catch (err) {
-      failure(ErrorUtils.getErrorMessage(err.details));
+    }catch (err: any) {      failure(ErrorUtils.getErrorMessage(err.details));
     }
   };
 

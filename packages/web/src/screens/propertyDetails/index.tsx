@@ -26,7 +26,7 @@ export interface IRouteProps {
 type Props = PropertyDetailsProps;
 
 const PropertyDetails = (props: Props): React.ReactElement => {
-  const { assetDetails, getAsset, isAuthenticated } = props;
+  const { assetDetails, getAsset, isAuthenticated }: any = props;
   const history = useHistory<IRouteProps>();
   const { location } = history;
   const {

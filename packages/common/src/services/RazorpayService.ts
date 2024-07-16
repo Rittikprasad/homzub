@@ -19,8 +19,7 @@ class RazorpayService {
       const res = await this.axiosInstance.get(`${input}`);
       const finalResponse = ObjectMapper.deserialize(IfscDetail, res.data);
       StoreProviderService.getStore().dispatch(CommonActions.setIfscDetail(finalResponse));
-    } catch (e) {
-      const error = this.errorValidation(e);
+    }catch (e: any) {      const error = this.errorValidation(e);
       payload.onError(error);
     }
   };

@@ -274,8 +274,7 @@ class ScheduleVisitForm extends Component<Props, IVisitState> {
       const response = await AssetRepository.getVisitLeadType();
       this.setState({ visitors: response, userType: response[0].id });
       setLoading(false);
-    } catch (e) {
-      setLoading(false);
+    }catch (e: any) {      setLoading(false);
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
@@ -297,8 +296,7 @@ class ScheduleVisitForm extends Component<Props, IVisitState> {
       const response = await AssetRepository.getUpcomingVisits(payload);
       this.setState({ upcomingVisits: response });
       setLoading(false);
-    } catch (e) {
-      setLoading(false);
+    }catch (e: any) {      setLoading(false);
       const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
@@ -427,8 +425,7 @@ class ScheduleVisitForm extends Component<Props, IVisitState> {
       }
       setLoading(false);
       onSubmitSuccess();
-    } catch (e) {
-      if (isReschedule && trackData) {
+    }catch (e: any) {      if (isReschedule && trackData) {
         AnalyticsService.track(EventType.VisitRescheduleFailure, trackData);
       } else if (trackData) {
         AnalyticsService.track(EventType.VisitCreatedFailure, trackData);

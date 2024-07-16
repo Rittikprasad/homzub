@@ -247,8 +247,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         formProp.setFieldValue('tenant', -1);
       }
       dispatch(AssetActions.getAssetUsers({ assetId: Number(value) }));
-    } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+    }catch (e: any) {      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
 

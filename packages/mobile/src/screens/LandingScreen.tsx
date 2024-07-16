@@ -104,8 +104,7 @@ class LandingScreen extends React.PureComponent<Props, IOwnState> {
         assetMetrics: { assets },
       } = response;
       this.setState({ assetCount: assets.count });
-    } catch (e) {
-      const error = ErrorUtils.getErrorMessage(e.details);
+    }catch (e: any) {      const error = ErrorUtils.getErrorMessage(e.details);
       AlertHelper.error({ message: error });
     }
   };

@@ -95,7 +95,7 @@ const PropertyDetailsOwner: FC<Props> = (props: Props) => {
         dispatch(OfferActions.setCurrentOfferPayload(offerPayload));
       });
       scrollToTop();
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   }, []);

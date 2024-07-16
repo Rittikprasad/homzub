@@ -85,7 +85,7 @@ const OfferView: FC<IProps> = (props: IProps) => {
       if (prospectsData.id) {
         setPropertyLeaseType(tenancyPopupTypes.offer);
       }
-    } catch (e) {
+    } catch (e: any) {    
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };
@@ -145,7 +145,7 @@ const OfferView: FC<IProps> = (props: IProps) => {
     try {
       const response = await OffersRepository.getCounterOffer(payload);
       setPastOffers(response);
-    } catch (e) {
+    } catch (e: any) {
       AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
     }
   };

@@ -76,8 +76,7 @@ const Dashboard: FC = () => {
       const response: Asset[] = await AssetRepository.getPropertiesByStatus(PropertyStatus.PENDING);
       setIsPendingProperties(false);
       callback(response);
-    } catch (e) {
-      setIsPendingProperties(false);
+    }catch (e: any) {      setIsPendingProperties(false);
     }
   };
 
@@ -87,8 +86,7 @@ const Dashboard: FC = () => {
       const response: AssetMetrics = await DashboardRepository.getAssetMetrics();
       setIsPropertyMeterics(false);
       callback(response);
-    } catch (e) {
-      setIsPropertyMeterics(false);
+    }catch (e: any) {      setIsPropertyMeterics(false);
     }
   };
   const getVacantPropertyDetails = async (callback: (response: Asset[]) => void): Promise<void> => {
@@ -97,8 +95,7 @@ const Dashboard: FC = () => {
       const response: Asset[] = await PortfolioRepository.getUserAssetDetails(Filters.VACANT);
       setIsVacantProperties(false);
       callback(response);
-    } catch (e) {
-      setIsVacantProperties(false);
+    }catch (e: any) {      setIsVacantProperties(false);
     }
   };
 

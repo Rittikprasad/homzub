@@ -40,8 +40,7 @@ describe('UserService', () => {
     const repoSpy = jest.spyOn(UserRepository, 'Otp').mockImplementation(() => Promise.resolve(1));
     try {
       await UserService.verifyOtp('123456', '9000000000', '+01');
-    } catch (e) {
-      expect(e).toBeTruthy();
+    }catch (e: any) {      expect(e).toBeTruthy();
     }
     repoSpy.mockRestore();
   });
