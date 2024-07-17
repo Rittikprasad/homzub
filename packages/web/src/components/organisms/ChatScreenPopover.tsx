@@ -410,7 +410,7 @@ const ChatScreenPopover: React.FC<Props> = (props: Props) => {
     <View>
       <Loader visible={isLoading} />
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           open: isOpen,
           closeOnDocumentClick: false,

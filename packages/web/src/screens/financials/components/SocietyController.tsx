@@ -488,7 +488,7 @@ const SocietyController: React.FC<IProps> = (props: IProps): React.ReactElement 
         onProceed={onProceed}
       />
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           closeOnDocumentClick: false,
           arrow: false,

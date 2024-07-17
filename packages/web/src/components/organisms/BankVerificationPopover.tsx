@@ -67,7 +67,7 @@ const BankVerificationPopover = (props: IPopoverProps): React.ReactElement => {
   };
   return (
     <Popover
-      content={renderPopoverContent}
+      content={renderPopoverContent()}
       popupProps={{
         closeOnDocumentClick: false,
         arrow: false,

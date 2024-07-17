@@ -1,1 +1,1 @@
-export { Mixpanel } from 'mixpanel-browser';
+export type { Mixpanel } from 'mixpanel-browser';

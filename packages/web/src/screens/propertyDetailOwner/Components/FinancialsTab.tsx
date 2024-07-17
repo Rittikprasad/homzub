@@ -158,7 +158,7 @@ const FinancialsTab: React.FC<IProps> = (props: IProps) => {
     <View>
       <Transactions onOpenModal={onOpenModal} isAddRecord onDeleteRecord={onDeleteRecord} />
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           closeOnDocumentClick: false,
           arrow: false,

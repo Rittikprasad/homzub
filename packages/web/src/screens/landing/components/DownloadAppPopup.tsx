@@ -63,7 +63,7 @@ const DownloadAppPopup: React.FC = () => {
   };
   return (
     <Popover
-      content={renderPopOverContent}
+      content={renderPopOverContent()}
       popupProps={{
         open: isOpen,
         onClose: (): void => setIsOpen(false),

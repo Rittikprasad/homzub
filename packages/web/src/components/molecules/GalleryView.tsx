@@ -163,7 +163,7 @@ const GalleryView: FC<IProps> = (props: IProps) => {
         </View>
       )}
       <Popover
-        content={renderPopOverContent}
+        content={renderPopOverContent()}
         popupProps={{
           open: isPopoverVisible,
           onClose: onClosePopover,

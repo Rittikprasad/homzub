@@ -8,10 +8,10 @@ import { EventType } from '@homzhub/common/src/services/Analytics/EventType';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line import/extensions,import/no-unresolved
-// import { Mixpanel } from './index';
+import { Mixpanel } from './index';
 // import Mixpanel from 'react-native-mixpanel';
-// import { Mixpanel } from './index.native';
-import { Mixpanel } from 'mixpanel-react-native';
+// import { Mixpanel } from 'mixpanel-react-native';
+
 
 class AnalyticsService {
   private projectToken: string = ConfigHelper.getMixpanelKey();

@@ -84,7 +84,7 @@ const CrossActionsPopover = (props: IProps): React.ReactElement => {
 
   return (
     <Popover
-      content={renderPopoverContent}
+      content={renderPopoverContent()}
       popupProps={{
         closeOnDocumentClick: false,
         arrow: false,

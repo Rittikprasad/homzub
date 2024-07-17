@@ -149,7 +149,7 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   const onLayoutChange = (e: LayoutChangeEvent): void => {
     setPopoverWidth(e.nativeEvent.layout.width);
   };
-  const popoverContent = (): React.ReactElement<Any> => {
+  const popoverContent = (): React.ReactElement<any> => {
     return (
       <PopupMenuOptions
         options={getAutoCompletionOptions()}
@@ -162,7 +162,7 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   return (
     <Popover
       forwardedRef={popupRef}
-      content={popoverContent}
+      content={popoverContent()}
       popupProps={{
         position: 'bottom left',
         on: [],

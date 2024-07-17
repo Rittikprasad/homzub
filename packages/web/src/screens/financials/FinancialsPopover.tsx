@@ -253,7 +253,7 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
   return (
     <View>
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           closeOnDocumentClick: false,
           arrow: false,

@@ -83,7 +83,7 @@ const ConfirmationPopup: React.FC<Props> = (props: Props) => {
     <View style={styles.container}>
       <Popover
         forwardedRef={popupRef}
-        content={renderPopupCard}
+        content={renderPopupCard()}
         popupProps={{
           position: 'center center',
           on: [],

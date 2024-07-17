@@ -57,7 +57,7 @@ const DuesOrderSummary: React.FC<IProps> = (props: IProps) => {
   return (
     <View style={styles.screenContentContainer}>
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           closeOnDocumentClick: false,
           arrow: false,

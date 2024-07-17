@@ -106,7 +106,7 @@ const CardCarousel: FC<IProps> = (props: IProps) => {
         </MultiCarousel>
       </View>
       <Popover
-        content={renderPopOverContent}
+        content={renderPopOverContent()}
         popupProps={{
           open: showPopover,
           onClose: onClosePopover,

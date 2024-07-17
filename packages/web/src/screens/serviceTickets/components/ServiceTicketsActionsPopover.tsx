@@ -70,7 +70,7 @@ const ServiceTicketsActionsPopover: React.FC<IProps> = (props: IProps) => {
   };
   return (
     <Popover
-      content={renderPopoverContent}
+      content={renderPopoverContent()}
       popupProps={{
         closeOnDocumentClick: false,
         arrow: false,

@@ -127,7 +127,7 @@ const AddBankAccountPopover: React.FC<IProps> = (props: IProps): React.ReactElem
   return (
     <View style={styles.container}>
       <Popover
-        content={renderPopoverContent}
+        content={renderPopoverContent()}
         popupProps={{
           closeOnDocumentClick: false,
           arrow: false,

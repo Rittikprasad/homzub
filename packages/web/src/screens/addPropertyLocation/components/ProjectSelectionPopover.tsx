@@ -90,7 +90,7 @@ const ProjectSelectionPopover: React.FC<IProps> = (props: IProps): React.ReactEl
 
   return (
     <Popover
-      content={renderPopoverContent}
+      content={renderPopoverContent()}
       popupProps={{
         closeOnDocumentClick: false,
         arrow: false,

@@ -84,7 +84,7 @@ const DisplayCautionModal: React.FC<ICautionMessage> = (props: ICautionMessage) 
     <View style={styles.container}>
       <Popover
         forwardedRef={popupRef}
-        content={renderPopupCard}
+        content={renderPopupCard()}
         popupProps={{
           position: 'center center',
           on: [],
