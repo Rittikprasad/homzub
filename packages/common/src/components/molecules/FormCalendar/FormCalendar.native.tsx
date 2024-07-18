@@ -20,7 +20,6 @@ import {
   TextFieldType,
   TextSizeType,
 } from "@homzhub/common/src/components/atoms/Text";
-// import { CalendarComponent } from "@homzhub/mobile/src/components/atoms/CalendarComponent";
 import { CalendarComponent } from "@homzhub/mobile/src/components/atoms/CalendarComponent";
 import { BottomSheet } from "@homzhub/common/src/components/molecules/BottomSheet";
 
@@ -83,6 +82,7 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
       isDisabled = false,
       calendarTitle,
     } = this.props;
+    console.log("this is real ", selectedValue);
     const { isCalendarVisible } = this.state;
     const availableDate = (): string => {
       if (selectedValue) {
@@ -167,7 +167,6 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
   }
 
   private onDateSelected = (day: string): void => {
-    console.log("In onDateSelected", day);
     const { name, formProps, bubbleSelectedDate, isDisabled } = this.props;
     if (isDisabled) {
       return;

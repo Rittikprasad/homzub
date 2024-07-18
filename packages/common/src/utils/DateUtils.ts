@@ -61,7 +61,7 @@ class DateUtils {
   };
 
   public isLeapYear = (year: string): boolean => {
-    return moment(year, "YYYY").isLeapYear();
+    return moment([year]).isLeapYear();
   };
 
   public getFormattedDate = (
@@ -72,13 +72,11 @@ class DateUtils {
   ): Date => {
     const isLeapYear = this.isLeapYear(year);
     const formattedDay = isLeapYear && month === 1 ? day : "28";
-    return moment(`${year}-${month}-${formattedDay}`, "YYYY-MM-DD").format(
-      format
-    );
+    return moment(`${year}-${month}-${formattedDay}`, format).toDate();
   };
 
   public getDisplayDate = (date: string, format: string): string => {
-    return moment(date, "MMM DD,YYYY").format(format);
+    return moment(date).format(format);
   };
 
   public getUtcDisplayDate = (date: string, format: string): string => {

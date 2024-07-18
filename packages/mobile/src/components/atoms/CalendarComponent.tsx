@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Calendar, DateData } from "react-native-calendars";
+import { Calendar, DateObject } from "react-native-calendars";
 import {
   View,
   FlatList,
   TouchableOpacity,
   StyleSheet,
+  StyleProp,
   TextStyle,
   ViewStyle,
 } from "react-native";
@@ -21,8 +22,12 @@ import { Button } from "@homzhub/common/src/components/atoms/Button";
 import CalendarHeader from "@homzhub/common/src/components/atoms/CalendarHeader";
 import { Label } from "@homzhub/common/src/components/atoms/Text";
 
+// CONSTANTS START
+
 const INITIAL_YEAR = 1893;
 const MAX_YEAR = Number(DateUtils.getNextYear(16));
+
+// CONSTANTS END
 
 interface ICalendarProps {
   onSelect: (day: string) => void;
@@ -49,7 +54,7 @@ export class CalendarComponent extends Component<
   ICalendarProps,
   ICalendarState
 > {
-  constructor(props: ICalendarProps) {
+  public constructor(props: ICalendarProps) {
     super(props);
     const { selectedDate, isCurrentDateEnable } = props;
     this.state = {
@@ -66,20 +71,24 @@ export class CalendarComponent extends Component<
     };
   }
 
-  componentDidMount(): void {
-    const { selectedDate, isOnlyYearView, minDate } = this.props;
+  public componentDidMount = (): void => {
+    const { selectedDate, isOnlyYearView } = this.props;
+    console.log("this is state", this.state);
+    console.log("this is props", this.props);
     let yearData = this.getYearsData();
     if (isOnlyYearView) {
       yearData = this.getYearsData(Number(selectedDate));
     }
     const title = `${yearData[0]} - ${yearData[yearData.length - 1]}`;
     this.setState({ yearTitle: title, yearList: yearData });
-  }
+  };
 
-  render(): React.ReactNode {
+  public render(): React.ReactNode {
     const { isMonthView, isYearView } = this.state;
     const { isOnlyYearView } = this.props;
     const isYear = isYearView || isOnlyYearView;
+    console.log("this is state", this.state);
+    console.log("this is props", this.props);
     return (
       <View>
         {this.renderHeader()}
@@ -92,17 +101,23 @@ export class CalendarComponent extends Component<
     );
   }
 
-  renderHeader = (): React.ReactElement => {
+  private renderHeader = (): React.ReactElement => {
     const { allowPastDates, maxDate, isOnlyYearView, minDate } = this.props;
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     let { month, year } = this.state;
     if (selectedDate) {
-      month = moment(selectedDate, "MMM DD,YYYY").month();
-      year = String(moment(selectedDate, "MMM DD,YYYY").year());
+      month = moment(selectedDate).month();
+      year = String(moment(selectedDate).year());
     }
+    console.log("this is month", month);
+    console.log("this is year", year);
     const updateMonth = DateUtils.getFullMonthName(month, DateFormats.MMMM);
+    console.log(updateMonth);
+
     const isCurrentMonth = month === moment().month();
+
     const title = `${updateMonth} ${year}`;
+
     return (
       <CalendarHeader
         isAllowPastDate={allowPastDates}
@@ -124,15 +139,15 @@ export class CalendarComponent extends Component<
     );
   };
 
-  renderListView = (isYearView?: boolean): React.ReactNode => {
-    const { selectedDate } = this.state;
-    const year = String(moment(selectedDate, "MMM DD,YYYY").year());
+  private renderListView = (isYearView?: boolean): React.ReactNode => {
     const { yearList } = this.state;
+
     const listData = isYearView ? yearList : MonthNames;
+
     return (
       <FlatList
         data={listData}
-        renderItem={({ item, index }) => this.renderItem({ item, year, index })}
+        renderItem={this.renderItem}
         contentContainerStyle={styles.listContent}
         keyExtractor={this.renderKeyExtractor}
         numColumns={4}
@@ -140,39 +155,29 @@ export class CalendarComponent extends Component<
     );
   };
 
-  renderKeyExtractor = (item: string, index: number): string => {
+  private renderKeyExtractor = (item: string, index: number): string => {
     return `${item}-${index}`;
   };
 
-  renderItem = ({
+  private renderItem = ({
     item,
-    year,
     index,
   }: {
     item: string;
-    year: string;
     index: number;
   }): React.ReactElement => {
-    const { month, isMonthView, isYearView, selectedDate } = this.state;
-    const { isOnlyYearView } = this.props;
-    const onPressItem = () =>
+    const { month, isMonthView, isYearView, year } = this.state;
+    const { isOnlyYearView, selectedDate } = this.props;
+    const onPressItem = (): void =>
       isMonthView
         ? this.onSelectMonth(item, index)
         : this.onSelectYear(item, index);
     const yearView = isOnlyYearView
       ? Number(selectedDate) === Number(item)
-      : moment(selectedDate, "MMM DD,YYYY").month() === index;
+      : month === index;
     const isSelected = isYearView ? year === item : yearView;
     const isMobile = PlatformUtils.isMobile();
-    let isDisable;
-    if (isYearView) {
-      isDisable = Number(item) < moment().year();
-    }
-    if (isMonthView) {
-      isDisable =
-        moment.monthsShort().indexOf(item) < moment().month() &&
-        Number(year) === moment().year();
-    }
+
     return (
       <TouchableOpacity
         key={index}
@@ -180,14 +185,10 @@ export class CalendarComponent extends Component<
           customStyles.renderItemView(isSelected, isMobile),
         ])}
         onPress={onPressItem}
-        disabled={isDisable}
       >
         <Label
           type="large"
-          style={StyleSheet.flatten([
-            customStyles.renderItemTitle(isSelected),
-            isDisable && customStyles.disabledItem,
-          ])}
+          style={StyleSheet.flatten([customStyles.renderItemTitle(isSelected)])}
         >
           {item}
         </Label>
@@ -195,30 +196,39 @@ export class CalendarComponent extends Component<
     );
   };
 
-  renderCalendar = (): React.ReactElement => {
+  private renderCalendar = (): React.ReactElement => {
     const { allowPastDates, maxDate, minDate } = this.props;
+    console.log(this.props);
     const { day, month, year, selectedDate } = this.state;
     const updateMonth = month + 1;
+    console.log(selectedDate);
     const date =
       selectedDate ||
-      DateUtils.getFormattedDate(day, updateMonth, year, "YYYY-MM-DD");
+      DateUtils.getFormattedDate(
+        day,
+        updateMonth,
+        year,
+        "YYYY-MM-DD"
+      ).toDateString();
     const markedDate = !selectedDate
       ? moment().format("YYYY-MM-DD")
-      : moment(date, "MMM DD,YYYY").format("YYYY-MM-DD");
+      : moment(date).format("YYYY-MM-DD");
+
     return (
       <>
         <Calendar
           hideArrows
-          renderHeader={() => null}
+          // @ts-ignore
+          renderHeader={(): null => null}
           minDate={
             minDate
-              ? minDate
+              ? DateUtils.getDisplayDate(minDate, "YYYY-MM-DD")
               : allowPastDates
               ? undefined
-              : moment().format("YYYY-MM-DD")
+              : new Date()
           }
           maxDate={maxDate}
-          current={moment(date, "MMM DD,YYYY").format("YYYY-MM-DD")}
+          current={date}
           key={date}
           style={styles.calendarStyle}
           onDayPress={this.onDayPress}
@@ -249,13 +259,13 @@ export class CalendarComponent extends Component<
     );
   };
 
-  onSelectMonth = (item: string, index: number): void => {
+  private onSelectMonth = (item: string, index: number): void => {
     const { year } = this.state;
     this.setState({ month: index, isMonthView: false, isYearView: false });
     this.getSelectedDate(index, Number(year));
   };
 
-  onSelectYear = (item: string, index: number): void => {
+  private onSelectYear = (item: string, index: number): void => {
     const { month } = this.state;
     const { isOnlyYearView, onSelect } = this.props;
     if (isOnlyYearView) {
@@ -263,28 +273,27 @@ export class CalendarComponent extends Component<
       onSelect(item);
     } else {
       this.setState({ year: item, isMonthView: true, isYearView: false });
-      this.getSelectedDate(Number(month), Number(item));
+      this.getSelectedDate(Number(month), index);
     }
   };
 
-  onDayPress = (day: DateData): void => {
-    this.setState({
-      selectedDate: moment(day.dateString, "YYYY-MM-DD").format("MMM DD,YYYY"),
-    });
+  private onDayPress = (day: DateObject): void => {
+    console.log("this is on day press", day.dateString);
+    this.setState({ selectedDate: day.dateString });
   };
 
-  handleSelect = (): void => {
+  private handleSelect = (): void => {
     const { onSelect } = this.props;
     const { selectedDate } = this.state;
     onSelect(selectedDate);
   };
 
-  handleMonthPress = (): void => {
+  private handleMonthPress = (): void => {
     const { isMonthView } = this.state;
     this.setState({ isMonthView: !isMonthView, isYearView: false });
   };
 
-  handleYearPress = (): void => {
+  private handleYearPress = (): void => {
     const { isYearView } = this.state;
     const yearData = this.getYearsData();
     const yearTitle = `${yearData[0]} - ${yearData[yearData.length - 1]}`;
@@ -296,24 +305,31 @@ export class CalendarComponent extends Component<
     });
   };
 
-  handleBackPress = (): void => {
+  /**
+   * Handle Back Press Functionality
+   * Cases: Day, Month and Year view
+   */
+  private handleBackPress = (): void => {
     const { allowPastDates, isOnlyYearView } = this.props;
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     let { month, year } = this.state;
-    if (selectedDate) {
-      month = moment(selectedDate, "MMM DD,YYYY").month();
-      year = moment(selectedDate, "MMM DD,YYYY").year().toString();
-    }
+
+    console.log("77777777 this is handlebackpress props", this.props);
+    console.log("77777777 this is handlebackpress state", this.state);
+
+    // For year view
     const value = Number(yearTitle.split("-")[0]);
-    const isCurrentYear = Number(year) === moment().year();
-    if (
-      !allowPastDates &&
-      month === moment().month() &&
-      !isYearView &&
-      isCurrentYear
-    ) {
+    // For year view
+
+    if (selectedDate) {
+      month = moment(selectedDate).month();
+      year = moment(selectedDate).year().toString();
+    }
+
+    if (!allowPastDates && month === moment().month() && !isYearView) {
       return;
     }
+
     if (isMonthView) {
       const previousYear =
         Number(year) > INITIAL_YEAR ? Number(year) - 1 : Number(year);
@@ -332,18 +348,29 @@ export class CalendarComponent extends Component<
     }
   };
 
-  handleNextPress = (): void => {
+  /**
+   * Handle Next Press Functionality
+   * Cases: Day, Month and Year view
+   */
+  private handleNextPress = (): void => {
     const { isMonthView, selectedDate, isYearView, yearTitle } = this.state;
     const { maxDate, isOnlyYearView } = this.props;
+
+    console.log("this is in handle Next Press", this.state);
+    console.log("this is in handle Next Press", this.props);
+    // For year view
     const value = Number(yearTitle.split("-")[1]);
+    // For year view
+
+    let { month, year } = this.state;
     if (maxDate && moment(maxDate).month() === moment().month()) {
       return;
     }
-    let { month, year } = this.state;
     if (selectedDate) {
-      month = moment(selectedDate, "MMM DD,YYYY").month();
-      year = moment(selectedDate, "MMM DD,YYYY").year().toString();
+      month = moment(selectedDate).month();
+      year = moment(selectedDate).year().toString();
     }
+
     if (isMonthView) {
       const nextYear =
         Number(year) < MAX_YEAR - 1 ? Number(year) + 1 : Number(year);
@@ -362,39 +389,50 @@ export class CalendarComponent extends Component<
     }
   };
 
-  getSelectedDate = (month: number, year: number): void => {
-    const { day, selectedDate } = this.state;
-    let newselectedDate = moment(selectedDate, "MMM DD,YYYY");
+  private getSelectedDate = (month: number, year: number): void => {
+    const { selectedDate } = this.props;
+    const currentMoment = moment();
+    const selectedMoment = moment(selectedDate);
     const isNotSelected =
-      moment(newselectedDate).month() !== month ||
-      moment(newselectedDate).year() !== year;
+      selectedMoment.isAfter(currentMoment) ||
+      selectedMoment.month() !== month ||
+      selectedMoment.year() !== year;
     if (isNotSelected) {
-      let defaultMonth =
-        year === moment().year() && month < moment().month()
-          ? moment().month()
-          : month;
-      this.setState({
-        selectedDate: `${moment.monthsShort()[month]} ${day},${year}`,
-      });
+      const firstDayOfNextMonth = moment([year, month]).startOf("month");
+      const formattedDate = firstDayOfNextMonth.format("YYYY-MM-DD");
+      this.setState({ selectedDate: formattedDate });
+    } else if (selectedMoment.isBefore(currentMoment)) {
+      const formattedDate = currentMoment.format("YYYY-MM-DD");
+      this.setState({ selectedDate: formattedDate });
     } else {
-      this.setState({ selectedDate });
+      const formattedDate = selectedMoment.format("YYYY-MM-DD");
+      this.setState({ selectedDate: formattedDate });
     }
   };
 
-  getYearsData = (updateYear?: number): string[] => {
+  /**
+   * Created Year list for year view
+   * Grouping by INITIAL and MAX year on the gap of 16 years
+   */
+  private getYearsData = (updateYear?: number): string[] => {
     const { year, selectedDate } = this.state;
-    const newYear = moment(selectedDate, "MMM DD,YYYY").year();
+    const newYear = moment(selectedDate).year();
     const formattedYear = updateYear || Number(newYear || year);
     const years = [];
     let updatedData: string[] = [];
+
+    // for years list
     for (let i = INITIAL_YEAR; i <= MAX_YEAR; i++) {
       if (i < MAX_YEAR) {
         years.push(i.toString());
       }
     }
+
     while (years.length > 0) {
       const data = years.splice(0, 16);
       const abc = groupBy(data, () => `${data[0]}-${data[data.length - 1]}`);
+
+      // eslint-disable-next-line no-loop-func
       Object.keys(abc).forEach((key) => {
         const values: string[] = key.split("-");
         if (
@@ -405,6 +443,7 @@ export class CalendarComponent extends Component<
         }
       });
     }
+
     return updatedData;
   };
 }
@@ -423,6 +462,9 @@ const styles = StyleSheet.create({
 });
 
 const customStyles = {
+  headerTitle: (isMonthView: boolean): StyleProp<TextStyle> => ({
+    color: isMonthView ? theme.colors.darkTint2 : theme.colors.primaryColor,
+  }),
   renderItemView: (
     isSelected: boolean,
     isMobile: boolean
@@ -435,12 +477,15 @@ const customStyles = {
       : theme.colors.white,
     borderRadius: 4,
   }),
-  renderItemTitle: (isSelected: boolean): StyleProp<TextStyle> => ({
+  renderItemTitle: (
+    isSelected: boolean,
+    isDisable?: boolean
+  ): StyleProp<TextStyle> => ({
     paddingVertical: 6,
-    color: isSelected ? theme.colors.white : theme.colors.darkTint2,
+    color: isSelected
+      ? theme.colors.white
+      : isDisable
+      ? theme.colors.disabled
+      : theme.colors.darkTint2,
   }),
-  disabledItem: {
-    color: "grey",
-    opacity: 0.5,
-  },
 };

@@ -44,43 +44,19 @@ const CalendarHeader = (props: IProps): React.ReactElement => {
     year,
   } = props;
 
-  const isCurrentYear = year === String(moment().year());
-  const yearView =
-    moment().year() > Number(yearTitle?.split("-")[0]) &&
-    moment().year() < Number(yearTitle?.split("-")[1]);
-
-  const getIsNextDisable = () => {
-    if (maxDate && month && year) {
-      return (
-        moment(maxDate).month() === moment().month() ||
-        (moment(maxDate).month() === month &&
-          moment(maxDate).year() === Number(year))
-      );
-    }
-    return false;
-  };
-
-  const getIsPreviousDisable = () => {
-    if (minDate) {
-      return moment(minDate).year() === moment().year();
-    }
-    return !isAllowPastDate;
-  };
-
-  const isNextDisable = isYearView
-    ? getIsNextDisable()
-    : isMonthView
-    ? getIsNextDisable()
-    : getIsNextDisable();
-
-  const isPreviousDisable = isYearView
-    ? getIsPreviousDisable() && yearView
-    : isMonthView
-    ? getIsPreviousDisable() && isCurrentYear && !isYearView
-    : getIsPreviousDisable() &&
-      (isMonthView ? !isCurrentMonth : isCurrentMonth) &&
-      isCurrentYear &&
-      !isYearView;
+  // DISABLE VALIDATION
+  const isNextDisable =
+    maxDate &&
+    (moment(maxDate).month() === moment().month() ||
+      (!!month &&
+        moment(maxDate).month() === month &&
+        !!year &&
+        moment(maxDate).year() === Number(year)));
+  const isPreviousDisable =
+    (minDate ? moment(minDate).year() === moment().year() : !isAllowPastDate) &&
+    isCurrentMonth &&
+    !isYearView;
+  // DISABLE VALIDATION
 
   return (
     <>

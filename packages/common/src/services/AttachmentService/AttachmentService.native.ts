@@ -1,13 +1,14 @@
 import RNFetchBlob from "rn-fetch-blob";
 import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
 import { ConfigHelper } from "@homzhub/common/src/utils/ConfigHelper";
-import { PlatformUtils } from "@homzhub/common/src//utils/PlatformUtils";
-import { AssetRepository } from "@homzhub/common/src//domain/repositories/AssetRepository";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
 import { I18nService } from "@homzhub/common/src/services/Localization/i18nextService";
 import { PermissionsService } from "@homzhub/common/src/services/Permissions/PermissionService";
 import { StoreProviderService } from "@homzhub/common/src/services/StoreProviderService";
 import { DownloadAttachment } from "@homzhub/common/src/domain/models/Attachment";
 import { PERMISSION_TYPE } from "@homzhub/common/src/constants/PermissionTypes";
+
 import {
   AttachmentType,
   AttachmentError,
@@ -21,24 +22,28 @@ class AttachmentService {
     type: AttachmentType
   ): Promise<any> => {
     const token = StoreProviderService.getUserToken();
+    try {
+      console.log("$%$%$%$%$%$ attachment service", formData);
 
-    return await fetch(`${baseUrl}v1/attachments/upload/?category=${type}`, {
-      method: "POST",
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseJson) => {
-        return responseJson;
-      })
-      .catch((e) => {
-        Promise.reject(AttachmentError.UPLOAD_IMAGE_ERROR);
-      });
+      const response = await fetch(
+        `${baseUrl}v1/attachments/upload/?category=${type}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+      console.log(response);
+      const responseJson = await response.json();
+
+      return { data: responseJson, error: null };
+    } catch (e) {
+      console.error("Upload error:", e);
+      return { data: null, error: AttachmentError.UPLOAD_IMAGE_ERROR };
+    }
   };
 
   public downloadAttachment = async (

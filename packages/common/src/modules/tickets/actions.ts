@@ -1,28 +1,43 @@
-import { ObjectMapper } from '@homzhub/common/src/utils/ObjectMapper';
-import { IInvoiceSummary, InvoiceSummary } from '@homzhub/common/src/domain/models/InvoiceSummary';
-import { ITicket, Ticket } from '@homzhub/common/src/domain/models/Ticket';
-import { ITicketAction, TicketAction } from '@homzhub/common/src/domain/models/TicketAction';
-import { IQuoteCategory, QuoteCategory } from '@homzhub/common/src/domain/models/QuoteCategory';
-import { IRequestedQuote, RequestedQuote } from '@homzhub/common/src/domain/models/RequestedQuote';
-import { IFluxStandardAction } from '@homzhub/common/src/modules/interfaces';
+import { ObjectMapper } from "@homzhub/common/src/utils/ObjectMapper";
+import {
+  IInvoiceSummary,
+  InvoiceSummary,
+} from "@homzhub/common/src/domain/models/InvoiceSummary";
+import { ITicket, Ticket } from "@homzhub/common/src/domain/models/Ticket";
+import {
+  ITicketAction,
+  TicketAction,
+} from "@homzhub/common/src/domain/models/TicketAction";
+import {
+  IQuoteCategory,
+  QuoteCategory,
+} from "@homzhub/common/src/domain/models/QuoteCategory";
+import {
+  IRequestedQuote,
+  RequestedQuote,
+} from "@homzhub/common/src/domain/models/RequestedQuote";
+import { IFluxStandardAction } from "@homzhub/common/src/modules/interfaces";
 import {
   IGetTicketParam,
   IInvoiceSummaryPayload,
   IQuoteParam,
   IRequestMorePayload,
-} from '@homzhub/common/src/domain/repositories/interfaces';
+} from "@homzhub/common/src/domain/repositories/interfaces";
 import {
   IApproveQuote,
   ICurrentTicket,
   IReassignTicket,
   IRequestQuote,
   ISubmitQuote,
-} from '@homzhub/common/src/modules/tickets/interface';
-import { IDocumentSource, IImageSource } from '@homzhub/common/src/services/AttachmentService/interfaces';
-import { IFile } from '@homzhub/common/src/constants/AttachmentTypes';
-import { IQuoteGroup } from '@homzhub/common/src/constants/ServiceTickets';
+} from "@homzhub/common/src/modules/tickets/interface";
+import {
+  IDocumentSource,
+  IImageSource,
+} from "@homzhub/common/src/services/AttachmentService/interfaces";
+import { IFile } from "@homzhub/common/src/constants/AttachmentTypes";
+import { IQuoteGroup } from "@homzhub/common/src/constants/ServiceTickets";
 
-const actionTypePrefix = 'Ticket/';
+const actionTypePrefix = "Ticket/";
 export const TicketActionTypes = {
   GET: {
     TICKETS: `${actionTypePrefix}TICKETS`,
@@ -77,7 +92,9 @@ export const TicketActionTypes = {
   CLEAR_STATE: `${actionTypePrefix}CLEAR_STATE`,
 };
 
-const setAttachment = (payload: IImageSource[] | IFile[]): IFluxStandardAction<IImageSource[] | IFile[]> => ({
+const setAttachment = (
+  payload: IImageSource[] | IFile[]
+): IFluxStandardAction<IImageSource[] | IFile[]> => ({
   type: TicketActionTypes.SET.PROOF_ATTACHMENT,
   payload,
 });
@@ -96,12 +113,16 @@ const clearState = (): IFluxStandardAction => ({
   type: TicketActionTypes.CLEAR_STATE,
 });
 
-const getTickets = (payload?: IGetTicketParam): IFluxStandardAction<IGetTicketParam> => ({
+const getTickets = (
+  payload?: IGetTicketParam
+): IFluxStandardAction<IGetTicketParam> => ({
   type: TicketActionTypes.GET.TICKETS,
   payload,
 });
 
-const getTicketsSuccess = (payload: Ticket[]): IFluxStandardAction<ITicket[]> => ({
+const getTicketsSuccess = (
+  payload: Ticket[]
+): IFluxStandardAction<ITicket[]> => ({
   type: TicketActionTypes.GET.TICKETS_SUCCESS,
   payload: ObjectMapper.serializeArray(payload),
 });
@@ -110,7 +131,9 @@ const getTicketsFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.GET.TICKETS_FAILURE,
 });
 
-const setCurrentTicket = (payload: ICurrentTicket): IFluxStandardAction<ICurrentTicket> => ({
+const setCurrentTicket = (
+  payload: ICurrentTicket
+): IFluxStandardAction<ICurrentTicket> => ({
   type: TicketActionTypes.SET.CURRENT_TICKET,
   payload,
 });
@@ -120,7 +143,9 @@ const getTicketDetail = (payload: number): IFluxStandardAction<number> => ({
   payload,
 });
 
-const getTicketDetailSuccess = (payload: Ticket): IFluxStandardAction<ITicket> => ({
+const getTicketDetailSuccess = (
+  payload: Ticket
+): IFluxStandardAction<ITicket> => ({
   type: TicketActionTypes.GET.TICKET_DETAIL_SUCCESS,
   payload: ObjectMapper.serialize(payload),
 });
@@ -129,12 +154,16 @@ const getTicketDetailFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.GET.TICKET_DETAIL_FAILURE,
 });
 
-const getInvoiceSummary = (payload: IInvoiceSummaryPayload): IFluxStandardAction<IInvoiceSummaryPayload> => ({
+const getInvoiceSummary = (
+  payload: IInvoiceSummaryPayload
+): IFluxStandardAction<IInvoiceSummaryPayload> => ({
   type: TicketActionTypes.POST.INVOICE_SUMMARY,
   payload,
 });
 
-const getInvoiceSummarySuccess = (payload: InvoiceSummary): IFluxStandardAction<IInvoiceSummary> => ({
+const getInvoiceSummarySuccess = (
+  payload: InvoiceSummary
+): IFluxStandardAction<IInvoiceSummary> => ({
   type: TicketActionTypes.POST.INVOICE_SUMMARY_SUCCESS,
   payload: ObjectMapper.serialize(payload),
 });
@@ -164,7 +193,9 @@ const handleTicketReminderSent = (): IFluxStandardAction => ({
   type: TicketActionTypes.HANDLE_TICKET_REMINDER_SENT,
 });
 
-const reassignTicket = (payload: IReassignTicket): IFluxStandardAction<IReassignTicket> => ({
+const reassignTicket = (
+  payload: IReassignTicket
+): IFluxStandardAction<IReassignTicket> => ({
   type: TicketActionTypes.POST.REASSIGN_TICKET,
   payload,
 });
@@ -177,7 +208,9 @@ const reassignTicketFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.POST.REASSIGN_TICKET_FAILURE,
 });
 
-const requestQuote = (payload: IRequestQuote): IFluxStandardAction<IRequestQuote> => ({
+const requestQuote = (
+  payload: IRequestQuote
+): IFluxStandardAction<IRequestQuote> => ({
   type: TicketActionTypes.POST.REQUEST_QUOTE,
   payload,
 });
@@ -190,22 +223,30 @@ const requestQuoteFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.POST.REQUEST_QUOTE_FAILURE,
 });
 
-const setQuoteAttachment = (payload: IDocumentSource[] | File[]): IFluxStandardAction<IDocumentSource[] | File[]> => ({
+const setQuoteAttachment = (
+  payload: any
+): IFluxStandardAction<IDocumentSource[] | File[]> => ({
   type: TicketActionTypes.SET.QUOTE_ATTACHMENT,
   payload,
 });
 
-const setQuotes = (payload: IQuoteGroup[]): IFluxStandardAction<IQuoteGroup[]> => ({
+const setQuotes = (
+  payload: IQuoteGroup[]
+): IFluxStandardAction<IQuoteGroup[]> => ({
   type: TicketActionTypes.SET.QUOTE,
   payload,
 });
 
-const getQuoteCategory = (payload: IQuoteParam): IFluxStandardAction<IQuoteParam> => ({
+const getQuoteCategory = (
+  payload: IQuoteParam
+): IFluxStandardAction<IQuoteParam> => ({
   type: TicketActionTypes.GET.QUOTES_CATEGORY,
   payload,
 });
 
-const getQuoteCategorySuccess = (payload: QuoteCategory[]): IFluxStandardAction<IQuoteCategory[]> => ({
+const getQuoteCategorySuccess = (
+  payload: QuoteCategory[]
+): IFluxStandardAction<IQuoteCategory[]> => ({
   type: TicketActionTypes.GET.QUOTES_CATEGORY_SUCCESS,
   payload: ObjectMapper.serializeArray(payload),
 });
@@ -214,7 +255,9 @@ const getQuoteCategoryFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.GET.QUOTES_CATEGORY_FAILURE,
 });
 
-const submitQuote = (payload: ISubmitQuote): IFluxStandardAction<ISubmitQuote> => ({
+const submitQuote = (
+  payload: ISubmitQuote
+): IFluxStandardAction<ISubmitQuote> => ({
   type: TicketActionTypes.POST.SUBMIT_QUOTE,
   payload,
 });
@@ -232,7 +275,9 @@ const getTicketActions = (payload: number): IFluxStandardAction<number> => ({
   payload,
 });
 
-const getTicketActionsSuccess = (payload: TicketAction[]): IFluxStandardAction<ITicketAction[]> => ({
+const getTicketActionsSuccess = (
+  payload: TicketAction[]
+): IFluxStandardAction<ITicketAction[]> => ({
   type: TicketActionTypes.GET.TICKET_ACTIONS_SUCCESS,
   payload: ObjectMapper.serializeArray(payload),
 });
@@ -241,12 +286,16 @@ const getTicketActionsFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.GET.TICKET_ACTIONS_FAILURE,
 });
 
-const getQuoteRequests = (payload: IQuoteParam): IFluxStandardAction<IQuoteParam> => ({
+const getQuoteRequests = (
+  payload: IQuoteParam
+): IFluxStandardAction<IQuoteParam> => ({
   type: TicketActionTypes.GET.QUOTES_REQUEST,
   payload,
 });
 
-const getQuoteRequestsSuccess = (payload: RequestedQuote[]): IFluxStandardAction<IRequestedQuote[]> => ({
+const getQuoteRequestsSuccess = (
+  payload: RequestedQuote[]
+): IFluxStandardAction<IRequestedQuote[]> => ({
   type: TicketActionTypes.GET.QUOTES_REQUEST_SUCCESS,
   payload: ObjectMapper.serializeArray(payload),
 });
@@ -255,7 +304,9 @@ const getQuoteRequestsFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.GET.QUOTES_REQUEST_FAILURE,
 });
 
-const approveQuote = (payload: IApproveQuote): IFluxStandardAction<IApproveQuote> => ({
+const approveQuote = (
+  payload: IApproveQuote
+): IFluxStandardAction<IApproveQuote> => ({
   type: TicketActionTypes.POST.APPROVE_QUOTE,
   payload,
 });
@@ -268,7 +319,9 @@ const approveQuoteFailure = (): IFluxStandardAction => ({
   type: TicketActionTypes.POST.APPROVE_QUOTE_FAILURE,
 });
 
-const requestMoreQuote = (payload: IRequestMorePayload): IFluxStandardAction<IRequestMorePayload> => ({
+const requestMoreQuote = (
+  payload: IRequestMorePayload
+): IFluxStandardAction<IRequestMorePayload> => ({
   type: TicketActionTypes.POST.REQUEST_MORE_QUOTE,
   payload,
 });

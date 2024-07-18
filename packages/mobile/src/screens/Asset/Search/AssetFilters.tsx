@@ -1,34 +1,50 @@
-import React from 'react';
-import { View, StyleSheet, StatusBar, SafeAreaView, ScrollView } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { remove } from 'lodash';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { remove } from "lodash";
 // @ts-ignore
-import Markdown from 'react-native-easy-markdown';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { SearchSelector } from '@homzhub/common/src/modules/search/selectors';
-import { SearchActions } from '@homzhub/common/src/modules/search/actions';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { AdvancedFilters, IAdvancedFilters, IFilterData } from '@homzhub/common/src/constants/AssetAdvancedFilters';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { NavigationScreenProps, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
-import { SearchStackParamList } from '@homzhub/mobile/src/navigation/SearchStack';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Dropdown } from '@homzhub/common/src/components/atoms/Dropdown';
-import { RNSwitch } from '@homzhub/common/src/components/atoms/Switch';
-import { SelectionPicker } from '@homzhub/common/src/components/atoms/SelectionPicker';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { CheckboxGroup, ICheckboxGroupData } from '@homzhub/common/src/components/molecules/CheckboxGroup';
-import { FormCalendar } from '@homzhub/common/src/components/molecules/FormCalendar';
-import { BottomSheet } from '@homzhub/common/src/components/molecules/BottomSheet';
-import { MultipleButtonGroup } from '@homzhub/common/src/components/molecules/MultipleButtonGroup';
-import { FilterDetail } from '@homzhub/common/src/domain/models/FilterDetail';
-import { IFilter } from '@homzhub/common/src/domain/models/Search';
-import { UserPreferences } from '@homzhub/common/src/domain/models/UserPreferences';
-import { FurnishingTypes } from '@homzhub/common/src/constants/Terms';
+import Markdown from "react-native-easy-markdown";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import { SearchSelector } from "@homzhub/common/src/modules/search/selectors";
+import { SearchActions } from "@homzhub/common/src/modules/search/actions";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import {
+  AdvancedFilters,
+  IAdvancedFilters,
+  IFilterData,
+} from "@homzhub/common/src/constants/AssetAdvancedFilters";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import {
+  NavigationScreenProps,
+  ScreensKeys,
+} from "@homzhub/mobile/src/navigation/interfaces";
+import { SearchStackParamList } from "@homzhub/mobile/src/navigation/SearchStack";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Dropdown } from "@homzhub/common/src/components/atoms/Dropdown";
+import { RNSwitch } from "@homzhub/common/src/components/atoms/Switch";
+import { SelectionPicker } from "@homzhub/common/src/components/atoms/SelectionPicker";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import {
+  CheckboxGroup,
+  ICheckboxGroupData,
+} from "@homzhub/common/src/components/molecules/CheckboxGroup";
+import { FormCalendar } from "@homzhub/common/src/components/molecules/FormCalendar";
+import { BottomSheet } from "@homzhub/common/src/components/molecules/BottomSheet";
+import { MultipleButtonGroup } from "@homzhub/common/src/components/molecules/MultipleButtonGroup";
+import { FilterDetail } from "@homzhub/common/src/domain/models/FilterDetail";
+import { IFilter } from "@homzhub/common/src/domain/models/Search";
+import { UserPreferences } from "@homzhub/common/src/domain/models/UserPreferences";
+import { FurnishingTypes } from "@homzhub/common/src/constants/Terms";
 
 interface IStateProps {
   filters: IFilter;
@@ -52,17 +68,27 @@ interface IAssetFiltersState {
   data: IAdvancedFilters;
 }
 
-type libraryProps = WithTranslation & NavigationScreenProps<SearchStackParamList, ScreensKeys.PropertyFilters>;
+type libraryProps = WithTranslation &
+  NavigationScreenProps<SearchStackParamList, ScreensKeys.PropertyFilters>;
 type Props = libraryProps & IStateProps & IDispatchProps;
 
 const ShowInMvpRelease = false;
 
-export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState> {
+export class AssetFilters extends React.PureComponent<
+  Props,
+  IAssetFiltersState
+> {
   /*eslint-disable */
   private FURNISHING = [
-    { title: this.props.t('property:fullyFurnished'), value: FurnishingTypes.FULL },
-    { title: this.props.t('property:semiFurnished'), value: FurnishingTypes.SEMI },
-    { title: this.props.t('property:none'), value: FurnishingTypes.NONE },
+    {
+      title: this.props.t("property:fullyFurnished"),
+      value: FurnishingTypes.FULL,
+    },
+    {
+      title: this.props.t("property:semiFurnished"),
+      value: FurnishingTypes.SEMI,
+    },
+    { title: this.props.t("property:none"), value: FurnishingTypes.NONE },
   ];
 
   /* eslint-enable */
@@ -85,7 +111,11 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     } = this.props;
     return (
       <>
-        <StatusBar translucent backgroundColor={theme.colors.white} barStyle="dark-content" />
+        <StatusBar
+          translucent
+          backgroundColor={theme.colors.white}
+          barStyle="dark-content"
+        />
         <SafeAreaView style={styles.container}>
           {this.renderHeader()}
           <ScrollView style={styles.flexOne}>
@@ -103,7 +133,7 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
               {this.renderPropertyAmenities()}
               <Button
                 type="primary"
-                title={t('showProperties')}
+                title={t("showProperties")}
                 containerStyle={styles.buttonStyle}
                 onPress={this.handleSubmit}
               />
@@ -118,12 +148,22 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const { t } = this.props;
     return (
       <View style={styles.header}>
-        <Icon name={icons.leftArrow} size={18} color={theme.colors.darkTint3} onPress={this.goBack} />
+        <Icon
+          name={icons.leftArrow}
+          size={18}
+          color={theme.colors.darkTint3}
+          onPress={this.goBack}
+        />
         <Text type="small" textType="semiBold">
-          {t('filters')}
+          {t("filters")}
         </Text>
-        <Text type="small" textType="semiBold" style={styles.reset} onPress={this.clearForm}>
-          {t('reset')}
+        <Text
+          type="small"
+          textType="semiBold"
+          style={styles.reset}
+          onPress={this.clearForm}
+        >
+          {t("reset")}
         </Text>
       </View>
     );
@@ -135,8 +175,8 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
       filters: { asset_transaction_type },
     } = this.props;
     const transactionData = [
-      { title: t('rent'), value: 0 },
-      { title: t('buy'), value: 1 },
+      { title: t("rent"), value: 0 },
+      { title: t("buy"), value: 1 },
     ];
     return (
       <SelectionPicker
@@ -157,19 +197,23 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     } = this.state;
     const translatedSearchRadius = this.translateData(searchRadius);
     const onSelectSearchRadius = (value: string | number): void => {
-      this.updateFilter(translatedSearchRadius, value as number, 'search_radius');
+      this.updateFilter(
+        translatedSearchRadius,
+        value as number,
+        "search_radius"
+      );
     };
 
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('searchRadius')}
+          {t("searchRadius")}
         </Text>
         <Dropdown
           data={translatedSearchRadius}
           value={miscellaneous?.search_radius.id || 0}
-          listTitle={t('selectSearchRadius')}
-          placeholder={t('selectRadius')}
+          listTitle={t("selectSearchRadius")}
+          placeholder={t("selectRadius")}
           listHeight={theme.viewport.height / 2}
           onDonePress={onSelectSearchRadius}
           iconSize={16}
@@ -192,19 +236,19 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const translatedDateAdded = this.translateData(dateAdded);
 
     const onSelectDateAdded = (value: string | number): void => {
-      this.updateFilter(translatedDateAdded, value as number, 'date_added');
+      this.updateFilter(translatedDateAdded, value as number, "date_added");
     };
 
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('dateAdded')}
+          {t("dateAdded")}
         </Text>
         <Dropdown
           data={translatedDateAdded}
           value={miscellaneous?.date_added.id || 0}
-          listTitle={t('selectDateAdded')}
-          placeholder={t('selectDateAdded')}
+          listTitle={t("selectDateAdded")}
+          placeholder={t("selectDateAdded")}
           listHeight={theme.viewport.height / 2}
           onDonePress={onSelectDateAdded}
           iconSize={16}
@@ -227,19 +271,19 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const translatedPropertyAge = this.translateData(propertyAge);
 
     const onSelectPropertyAge = (value: string | number): void => {
-      this.updateFilter(translatedPropertyAge, value as number, 'property_age');
+      this.updateFilter(translatedPropertyAge, value as number, "property_age");
     };
 
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('propertyAge')}
+          {t("propertyAge")}
         </Text>
         <Dropdown
           data={translatedPropertyAge}
           value={miscellaneous?.property_age.id || 0}
-          listTitle={t('selectPropertyAge')}
-          placeholder={t('selectPropertyAge')}
+          listTitle={t("selectPropertyAge")}
+          placeholder={t("selectPropertyAge")}
           listHeight={theme.viewport.height / 2}
           onDonePress={onSelectPropertyAge}
           iconSize={16}
@@ -261,19 +305,23 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     } = this.state;
     const translatedRentFreePeriod = this.translateData(rentFreePeriod);
     const onSelectRentFreePeriod = (value: string | number): void => {
-      this.updateFilter(translatedRentFreePeriod, value as number, 'rent_free_period');
+      this.updateFilter(
+        translatedRentFreePeriod,
+        value as number,
+        "rent_free_period"
+      );
     };
 
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('rentFreePeriod')}
+          {t("rentFreePeriod")}
         </Text>
         <Dropdown
           data={translatedRentFreePeriod}
           value={miscellaneous?.rent_free_period.id || 0}
-          listTitle={t('selectRentFreePeriod')}
-          placeholder={t('selectRentFreePeriod')}
+          listTitle={t("selectRentFreePeriod")}
+          placeholder={t("selectRentFreePeriod")}
           listHeight={theme.viewport.height / 2}
           onDonePress={onSelectRentFreePeriod}
           iconSize={16}
@@ -292,16 +340,19 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
       filters,
       filters: { miscellaneous },
     } = this.props;
+    console.log("filters", miscellaneous);
     const updateSelectedDate = (day: string): void => {
-      setFilter({ miscellaneous: { ...filters.miscellaneous, expected_move_in_date: day } });
+      setFilter({
+        miscellaneous: { ...filters.miscellaneous, expected_move_in_date: day },
+      });
     };
     return (
       <FormCalendar
         selectedValue={miscellaneous?.expected_move_in_date}
         name="expected_move_in_date"
-        label={t('expectedMoveInDate')}
-        calendarTitle={t('expectedMoveInDate')}
-        placeHolder={t('selectMoveInDate')}
+        label={t("expectedMoveInDate")}
+        calendarTitle={t("expectedMoveInDate")}
+        placeHolder={t("selectMoveInDate")}
         textType="text"
         textSize="small"
         fontType="semiBold"
@@ -321,11 +372,12 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const { facing } = miscellaneous;
     const { isFacingToggled } = this.state;
     const transformedFacing = this.transformFacingData();
-    const toggleFacing = (): void => this.setState({ isFacingToggled: !isFacingToggled });
+    const toggleFacing = (): void =>
+      this.setState({ isFacingToggled: !isFacingToggled });
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('facing', { totalFacing: facing.length })}
+          {t("facing", { totalFacing: facing.length })}
         </Text>
         <View style={styles.moreRow}>
           <MultipleButtonGroup<string>
@@ -334,8 +386,13 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
             selectedItem={facing}
           />
           {transformedFacing.length > 4 && (
-            <Text type="small" textType="semiBold" style={styles.selectAmenity} onPress={toggleFacing}>
-              {t('common:more')}
+            <Text
+              type="small"
+              textType="semiBold"
+              style={styles.selectAmenity}
+              onPress={toggleFacing}
+            >
+              {t("common:more")}
             </Text>
           )}
         </View>
@@ -343,7 +400,7 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
           <BottomSheet
             isShadowView
             sheetHeight={theme.viewport.height * 0.6}
-            headerTitle={t('selectFacing')}
+            headerTitle={t("selectFacing")}
             visible={isFacingToggled}
             onCloseSheet={toggleFacing}
           >
@@ -378,13 +435,18 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
         setFilter({ miscellaneous: { ...filters.miscellaneous, furnishing } });
       } else {
         const newFurnishing = furnishing.concat(value);
-        setFilter({ miscellaneous: { ...filters.miscellaneous, furnishing: newFurnishing } });
+        setFilter({
+          miscellaneous: {
+            ...filters.miscellaneous,
+            furnishing: newFurnishing,
+          },
+        });
       }
     };
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('furnishing', { totalFurnishing: furnishing.length })}
+          {t("furnishing", { totalFurnishing: furnishing.length })}
         </Text>
         <View style={styles.moreRow}>
           <MultipleButtonGroup<FurnishingTypes>
@@ -407,25 +469,35 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     }
     const { propertyAmenity } = miscellaneous;
     const { isPropertyAmenitiesToggled } = this.state;
-    const toggleAmenities = (): void => this.setState({ isPropertyAmenitiesToggled: !isPropertyAmenitiesToggled });
+    const toggleAmenities = (): void =>
+      this.setState({
+        isPropertyAmenitiesToggled: !isPropertyAmenitiesToggled,
+      });
     return (
       <>
         <Text type="small" textType="semiBold" style={styles.filterHeader}>
-          {t('propertyAmenities', { totalAmenities: propertyAmenity.length })}
+          {t("propertyAmenities", { totalAmenities: propertyAmenity.length })}
         </Text>
         {this.renderPropertyAmenitiesGroupData()}
-        <Text type="small" textType="semiBold" style={styles.selectAmenity} onPress={toggleAmenities}>
-          {propertyAmenity.length > 0 ? t('common:more') : t('common:select')}
+        <Text
+          type="small"
+          textType="semiBold"
+          style={styles.selectAmenity}
+          onPress={toggleAmenities}
+        >
+          {propertyAmenity.length > 0 ? t("common:more") : t("common:select")}
         </Text>
         {isPropertyAmenitiesToggled && (
           <BottomSheet
             isShadowView
             sheetHeight={theme.viewport.height * 0.6}
-            headerTitle={t('selectAmenities')}
+            headerTitle={t("selectAmenities")}
             visible={isPropertyAmenitiesToggled}
             onCloseSheet={toggleAmenities}
           >
-            <ScrollView style={styles.flexOne}>{this.renderAmenitiesData(propertyAmenity)}</ScrollView>
+            <ScrollView style={styles.flexOne}>
+              {this.renderAmenitiesData(propertyAmenity)}
+            </ScrollView>
           </BottomSheet>
         )}
       </>
@@ -445,10 +517,13 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
 
     const { propertyAmenity } = miscellaneous;
 
-    const propertyAmenities = filterDetails?.filters?.additionalFilters?.propertyAmenities ?? [];
+    const propertyAmenities =
+      filterDetails?.filters?.additionalFilters?.propertyAmenities ?? [];
     const findSelectedAmenities = (): { title: string; value: number }[] => {
       const selectedAmenities: { title: string; value: number }[] = [];
-      const filteredArray = propertyAmenities.filter((amenity) => propertyAmenity.includes(amenity.id));
+      const filteredArray = propertyAmenities.filter((amenity) =>
+        propertyAmenity.includes(amenity.id)
+      );
       filteredArray.forEach((obj) => {
         selectedAmenities.push({
           title: obj.name,
@@ -462,7 +537,12 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
       const amenityIndex = propertyAmenity.indexOf(value);
       if (amenityIndex !== -1) {
         const updatedAmenities = propertyAmenity.splice(0, amenityIndex);
-        setFilter({ miscellaneous: { ...filters.miscellaneous, propertyAmenity: updatedAmenities } });
+        setFilter({
+          miscellaneous: {
+            ...filters.miscellaneous,
+            propertyAmenity: updatedAmenities,
+          },
+        });
       }
     };
     if (propertyAmenity.length === 0) {
@@ -478,16 +558,28 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     );
   };
 
-  public renderAmenitiesData = (propertyAmenity: number[]): React.ReactElement => {
+  public renderAmenitiesData = (
+    propertyAmenity: number[]
+  ): React.ReactElement => {
     const { setFilter, filters } = this.props;
     const onSelectedAmenities = (value: number | string): void => {
       const existingAmenity: number[] = propertyAmenity;
       if (existingAmenity.includes(value as number)) {
         remove(existingAmenity, (count: number) => count === value);
-        setFilter({ miscellaneous: { ...filters.miscellaneous, propertyAmenity: existingAmenity } });
+        setFilter({
+          miscellaneous: {
+            ...filters.miscellaneous,
+            propertyAmenity: existingAmenity,
+          },
+        });
       } else {
         const newAmenity = existingAmenity.concat(value as number);
-        setFilter({ miscellaneous: { ...filters.miscellaneous, propertyAmenity: newAmenity } });
+        setFilter({
+          miscellaneous: {
+            ...filters.miscellaneous,
+            propertyAmenity: newAmenity,
+          },
+        });
       }
     };
     return (
@@ -512,14 +604,22 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const { show_verified: showVerified } = miscellaneous;
     const { isShowVerifiedHelperToggled } = this.state;
     const updateVerified = (): void =>
-      setFilter({ miscellaneous: { ...filters.miscellaneous, show_verified: !showVerified } });
-    const toggleHelper = (): void => this.setState({ isShowVerifiedHelperToggled: !isShowVerifiedHelperToggled });
+      setFilter({
+        miscellaneous: {
+          ...filters.miscellaneous,
+          show_verified: !showVerified,
+        },
+      });
+    const toggleHelper = (): void =>
+      this.setState({
+        isShowVerifiedHelperToggled: !isShowVerifiedHelperToggled,
+      });
     return (
       <>
         <View style={styles.toggleButton}>
           <View style={styles.moreRow}>
             <Text type="small" textType="semiBold" style={styles.agentListed}>
-              {t('showVerified')}
+              {t("showVerified")}
             </Text>
             <Icon
               name={icons.tooltip}
@@ -541,10 +641,14 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
           >
             <Markdown
               markdownStyles={{
-                h2: { fontWeight: '600', fontSize: 20, marginVertical: 10 },
-                h4: { fontWeight: '300', fontSize: 24, color: theme.colors.darkTint2 },
-                strong: { fontWeight: '600', fontSize: 16 },
-                text: { fontWeight: 'normal', fontSize: 14 },
+                h2: { fontWeight: "600", fontSize: 20, marginVertical: 10 },
+                h4: {
+                  fontWeight: "300",
+                  fontSize: 24,
+                  color: theme.colors.darkTint2,
+                },
+                strong: { fontWeight: "600", fontSize: 16 },
+                text: { fontWeight: "normal", fontSize: 14 },
               }}
               style={{ margin: theme.layout.screenPadding }}
             >
@@ -569,14 +673,19 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     const { agent_listed: agentListed } = miscellaneous;
     const { isAgentListedHelperToggled } = this.state;
     const updateAgentListed = (): void =>
-      setFilter({ miscellaneous: { ...filters.miscellaneous, agent_listed: !agentListed } });
-    const toggleHelper = (): void => this.setState({ isAgentListedHelperToggled: !isAgentListedHelperToggled });
+      setFilter({
+        miscellaneous: { ...filters.miscellaneous, agent_listed: !agentListed },
+      });
+    const toggleHelper = (): void =>
+      this.setState({
+        isAgentListedHelperToggled: !isAgentListedHelperToggled,
+      });
     return (
       <>
         <View style={styles.toggleButton}>
           <View style={styles.moreRow}>
             <Text type="small" textType="semiBold" style={styles.agentListed}>
-              {t('agentListed')}
+              {t("agentListed")}
             </Text>
             <Icon
               name={icons.tooltip}
@@ -598,10 +707,14 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
           >
             <Markdown
               markdownStyles={{
-                h2: { fontWeight: '600', fontSize: 20, marginVertical: 10 },
-                h4: { fontWeight: '300', fontSize: 24, color: theme.colors.darkTint2 },
-                strong: { fontWeight: '600', fontSize: 16 },
-                text: { fontWeight: 'normal', fontSize: 14 },
+                h2: { fontWeight: "600", fontSize: 20, marginVertical: 10 },
+                h4: {
+                  fontWeight: "300",
+                  fontSize: 24,
+                  color: theme.colors.darkTint2,
+                },
+                strong: { fontWeight: "600", fontSize: 16 },
+                text: { fontWeight: "normal", fontSize: 14 },
               }}
               style={{ margin: theme.layout.screenPadding }}
             >
@@ -631,12 +744,18 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
     return data.map((currentData: IFilterData) => {
       return {
         value: currentData.value,
-        label: t(currentData.label, { metric: userPreference ? userPreference.metricUnit : 'km' }),
+        label: t(currentData.label, {
+          metric: userPreference ? userPreference.metricUnit : "km",
+        }),
       };
     });
   };
 
-  public updateFilter = (data: IFilterData[], value: number, key: string): void => {
+  public updateFilter = (
+    data: IFilterData[],
+    value: number,
+    key: string
+  ): void => {
     const { setFilter, filters } = this.props;
     const selectedData = data.find((item) => item.value === value);
     if (selectedData) {
@@ -686,10 +805,14 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
 
     if (existingFacing.includes(value as string)) {
       remove(existingFacing, (facing: string) => facing === value);
-      setFilter({ miscellaneous: { ...filters.miscellaneous, facing: existingFacing } });
+      setFilter({
+        miscellaneous: { ...filters.miscellaneous, facing: existingFacing },
+      });
     } else {
       const newFacing = existingFacing.concat(value as string);
-      setFilter({ miscellaneous: { ...filters.miscellaneous, facing: newFacing } });
+      setFilter({
+        miscellaneous: { ...filters.miscellaneous, facing: newFacing },
+      });
     }
   };
 
@@ -698,12 +821,16 @@ export class AssetFilters extends React.PureComponent<Props, IAssetFiltersState>
       filterDetails,
       filters: { miscellaneous },
     } = this.props;
-    const propertyAmenitiesData = filterDetails?.filters?.additionalFilters?.propertyAmenities ?? [];
-    return propertyAmenitiesData.map((amenityType: { name: string; id: number }) => ({
-      id: amenityType.id,
-      label: amenityType.name,
-      isSelected: miscellaneous?.propertyAmenity.includes(amenityType.id) || false,
-    }));
+    const propertyAmenitiesData =
+      filterDetails?.filters?.additionalFilters?.propertyAmenities ?? [];
+    return propertyAmenitiesData.map(
+      (amenityType: { name: string; id: number }) => ({
+        id: amenityType.id,
+        label: amenityType.name,
+        isSelected:
+          miscellaneous?.propertyAmenity.includes(amenityType.id) || false,
+      })
+    );
   };
 
   public clearForm = (): void => {
@@ -727,7 +854,13 @@ const mapStateToProps = (state: IState): IStateProps => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
-  const { setFilter, setInitialState, getProperties, setInitialMiscellaneous, setInitialFilters } = SearchActions;
+  const {
+    setFilter,
+    setInitialState,
+    getProperties,
+    setInitialMiscellaneous,
+    setInitialFilters,
+  } = SearchActions;
   return bindActionCreators(
     {
       setFilter,
@@ -761,10 +894,10 @@ const styles = StyleSheet.create({
   },
   header: {
     margin: theme.layout.screenPadding,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   reset: {
     flex: 0,
@@ -783,19 +916,19 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   toggleButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginVertical: 10,
   },
   selectAmenity: {
     color: theme.colors.primaryColor,
   },
   moreRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
   },
   checkboxGroupContainer: {
     margin: theme.layout.screenPadding,

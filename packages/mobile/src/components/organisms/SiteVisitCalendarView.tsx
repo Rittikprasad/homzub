@@ -44,7 +44,7 @@ import { UserInteraction } from "@homzhub/common/src/domain/models/UserInteracti
 import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 import { TimeSlot } from "@homzhub/common/src/constants/ContactFormData";
 import { Tabs } from "@homzhub/common/src/constants/Tabs";
-import moment from "moment";
+
 interface IDispatchProps {
   getAssetVisit: (payload: IAssetVisitPayload) => void;
   setVisitIds: (payload: number[]) => void;
@@ -81,9 +81,9 @@ type Props = IProps & IDispatchProps & IStateProps & WithTranslation;
 
 class SiteVisitCalendarView extends Component<Props, IScreenState> {
   public state = {
-    currentDate: DateUtils.getDisplayDate(
-      moment().format("MMM DD,YYYY"),
-      "MMM DD, YYYY"
+    currentDate: DateUtils.getUtcFormattedDate(
+      new Date().toDateString(),
+      DateFormats.DD_MMMMYYYY
     ),
     timeSlot: [allSlot].concat(TimeSlot),
     isCalendarVisible: false,
@@ -127,6 +127,7 @@ class SiteVisitCalendarView extends Component<Props, IScreenState> {
       DateFormats.DD_MMMMYYYY,
       DateFormats.YYYYMMDD
     );
+    console.log("yooooooooooooo this is another");
     return (
       <>
         <CalendarHeader

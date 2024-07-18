@@ -195,7 +195,7 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
         params: { otpSentTo, countryCode, type },
       },
     } = this.props;
-    console.log("NNNNNNNNNNNNNNNNNNN", otp);
+
     if (type === OtpNavTypes.Login) {
       this.loginOtp(otp ?? "");
       return;
@@ -309,7 +309,6 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
   };
 
   private loginOtp = (otp: string): void => {
-    console.log("NNNNNNNNNNNNNNNNNNN", otp);
     const {
       login,
       route: {
@@ -325,8 +324,6 @@ export class Otp extends React.PureComponent<IProps, IOtpState> {
         otp,
       },
     };
-
-    console.log("NNNNNNNNNNNNNNNNNNN", loginData);
 
     const loginPayload: ILoginPayload = {
       data: loginData,

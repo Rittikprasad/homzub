@@ -65,9 +65,8 @@ const RequirementForm = ({
   });
   const [minPrice, setMinPrice] = useState<number>(filters.min_price ?? 0);
   const [maxPrice, setMaxPrice] = useState<number>(filters.max_price ?? 0);
-  const [moveInDate, setMoveInDate] = useState(
-    DateUtils.getDisplayDate(moment().format("MMM DD,YYYY"), "MMM DD, YYYY")
-  );
+  console.log(new Date().toISOString());
+  const [moveInDate, setMoveInDate] = useState(moment().format("YYYY-MM-DD"));
 
   const transactionData = [
     { title: t("rent"), value: 0 },
@@ -165,8 +164,7 @@ const RequirementForm = ({
   };
 
   const onUpdateDate = (day: string): void => {
-    console.log("IN ONUPDATE DATE", day);
-    setMoveInDate(DateUtils.getDisplayDate(day, "MMM DD, YYYY"));
+    setMoveInDate(day);
   };
 
   const onUpdateTransaction = (value: number): void => {

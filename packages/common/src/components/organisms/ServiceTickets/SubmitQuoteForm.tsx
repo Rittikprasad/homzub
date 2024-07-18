@@ -1,22 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { TabBar, TabView } from 'react-native-tab-view';
-import { useDispatch, useSelector } from 'react-redux';
-import { cloneDeep } from 'lodash';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { TicketActions } from '@homzhub/common/src/modules/tickets/actions';
-import { TicketSelectors } from '@homzhub/common/src/modules/tickets/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Label, Text } from '@homzhub/common/src/components/atoms/Text';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import QuoteBox from '@homzhub/common/src/components/molecules/QuoteBox';
-import { IQuoteData, IQuoteGroup, IQuoteSubmitPayload } from '@homzhub/common/src/domain/repositories/interfaces';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
-import { IInitialQuote, ICollapseSection } from '@homzhub/common/src/constants/ServiceTickets';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { TabBar, TabView } from "react-native-tab-view";
+import { useDispatch, useSelector } from "react-redux";
+import { cloneDeep } from "lodash";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { TicketActions } from "@homzhub/common/src/modules/tickets/actions";
+import { TicketSelectors } from "@homzhub/common/src/modules/tickets/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Label, Text } from "@homzhub/common/src/components/atoms/Text";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import QuoteBox from "@homzhub/common/src/components/molecules/QuoteBox";
+import {
+  IQuoteData,
+  IQuoteGroup,
+  IQuoteSubmitPayload,
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
+import {
+  IInitialQuote,
+  ICollapseSection,
+} from "@homzhub/common/src/constants/ServiceTickets";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IRoute {
   key: string;
@@ -32,7 +39,13 @@ interface IProps {
 }
 
 const SubmitQuoteForm = (props: IProps): React.ReactElement => {
-  const { renderCollapsibleSection, onUploadDoc, setLoader, onSuccess, onUploadWeb } = props;
+  const {
+    renderCollapsibleSection,
+    onUploadDoc,
+    setLoader,
+    onSuccess,
+    onUploadWeb,
+  } = props;
   const { t } = useTranslation(LocaleConstants.namespacesKey.serviceTickets);
   const dispatch = useDispatch();
   const selectedTicket = useSelector(TicketSelectors.getCurrentTicket);
@@ -40,7 +53,12 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
   const quoteCategories = useSelector(TicketSelectors.getQuotesCategory);
   const quotes = useSelector(TicketSelectors.getQuotes);
   const [tabIndex, setTabIndex] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
+
+  console.log("this is in Submit Quote Form", attachments);
+  console.log("this is in Submit Quote Form", quotes.length > 0);
+  console.log("this is in Submit Quote Form", quoteCategories);
+  console.log("this is in Submit Quote Form", selectedTicket);
 
   useEffect(() => {
     if (selectedTicket) {
@@ -54,6 +72,7 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
   }, []);
 
   const onCommentChange = (value: string): void => {
+    console.log("comment");
     setComment(value);
   };
 
@@ -73,6 +92,7 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
   };
 
   const updatePrice = (price: string, index: number): void => {
+    console.log("this is price");
     const prevQuotes = [...quotes];
     prevQuotes[tabIndex].data[index].price = price;
     dispatch(TicketActions.setQuotes(prevQuotes));
@@ -84,39 +104,52 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
     }
   };
 
-  const generatePayload = async (callback: (payload: IQuoteGroup[]) => void): Promise<void> => {
-    console.log('step7')
+  const generatePayload = async (
+    callback: (payload: IQuoteGroup[]) => void
+  ): Promise<void> => {
+    console.log("step7");
     if (selectedTicket && quotes.length > 0) {
-      console.log('step8')
+      console.log("step8");
       setLoader(true);
       const errorData: boolean[] = [];
       const quoteGroupData = quotes.map(async (item) => {
-        console.log('step9')
+        console.log("step9");
         const updatedData: IQuoteData[] = [];
         const formData = new FormData();
         const quote: IInitialQuote[] = item.data;
         const quoteData = quote.map(async (quoteItem) => {
-          console.log(quoteItem.document,'step10')
+          console.log(quoteItem.document, "step10");
           if (quoteItem.document) {
             // @ts-ignore
-            formData.append('files[]', quoteItem.document);
-            console.log(formData,'formdata')
+            formData.append(
+              "files[]",
+              quoteItem.document.uri,
+              quoteItem.document.name
+            );
+            console.log(formData, "formdata");
             // Upload Attachment to S3 and get attachment id
-            const response = await AttachmentService.uploadImage(formData, AttachmentType.TICKET_DOCUMENTS);
-            console.log(response,'tttt')
+            const response = await AttachmentService.uploadImage(
+              formData,
+              AttachmentType.TICKET_DOCUMENTS
+            );
+            console.log(response, "tttt");
             const { data, error } = response;
             if (data && data.length) {
               updatedData.push({
                 quote_number: quoteItem.quoteNumber,
                 price: Number(quoteItem.price),
-                currency: selectedTicket && selectedTicket.currency ? selectedTicket.currency.currencyCode : 'INR',
+                currency:
+                  selectedTicket && selectedTicket.currency
+                    ? selectedTicket.currency.currencyCode
+                    : "INR",
                 attachment: data[0].id,
               });
             }
 
             if (error) {
+              console.log("ERRRRRRR", error);
               setLoader(false);
-              AlertHelper.error({ message: t('common:fileCorrupt') });
+              AlertHelper.error({ message: t("common:fileCorrupt") });
               errorData.push(true);
             }
           }
@@ -137,16 +170,16 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
           setLoader(false);
         }
       });
-      console.log('step12')
+      console.log("step12");
     }
   };
 
   const onSubmit = async (): Promise<void> => {
     if (selectedTicket && quotes.length > 0) {
       setLoader(true);
-      console.log('step1')
+      console.log("step1");
       await generatePayload((data) => {
-        console.log('step2')
+        console.log("step2");
         /* Creating Final payload for submit quote */
         const submitPayload: IQuoteSubmitPayload = {
           param: {
@@ -158,21 +191,30 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
             ...(!!comment && { comment }),
           },
         };
-        console.log('step3')
+        console.log("step3");
 
         setLoader(false);
-        dispatch(TicketActions.submitQuote({ data: submitPayload, onCallback: handleCallback }));
-        console.log('step4')
+        dispatch(
+          TicketActions.submitQuote({
+            data: submitPayload,
+            onCallback: handleCallback,
+          })
+        );
+        console.log("step4");
       });
-      console.log('step5')
+      console.log("step5");
     }
   };
 
-  const renderQuoteBox = (item: IInitialQuote, index: number): React.ReactElement => {
+  const renderQuoteBox = (
+    item: IInitialQuote,
+    index: number
+  ): React.ReactElement => {
     if (onUploadDoc) {
+      console.log("this is item", item);
       return (
         <QuoteBox
-          document={item.document?.name ?? ''}
+          document={item.document?.name ?? ""}
           onSetPrice={(price): void => updatePrice(price, index)}
           onUploadAttachment={(): void => onUploadDoc(index, tabIndex)}
           onRemoveAttachment={(): void => onRemovedDoc(index)}
@@ -182,9 +224,11 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
     if (onUploadWeb) {
       return (
         <QuoteBox
-          document={item.document?.name ?? ''}
+          document={item.document?.name ?? ""}
           onSetPrice={(price): void => updatePrice(price, index)}
-          onUploadAttachmentWeb={(file: File): void => onUploadWeb(file, index, tabIndex)}
+          onUploadAttachmentWeb={(file: File): void =>
+            onUploadWeb(file, index, tabIndex)
+          }
           onRemoveAttachment={(): void => onRemovedDoc(index)}
         />
       );
@@ -192,20 +236,28 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
     return <View />;
   };
 
-  const renderScene = ({ route }: { route: IRoute }): React.ReactElement | null => {
+  const renderScene = ({
+    route,
+  }: {
+    route: IRoute;
+  }): React.ReactElement | null => {
     const quotesData = quotes.filter((item) => item.groupName === route.key)[0];
+    console.log("this is render scene", quotesData);
     if (!quotesData) return null;
 
     return (
       <>
         {quotesData.data.map((item, index) => {
-          return renderCollapsibleSection({ children: renderQuoteBox(item, index), title: t(item.title) });
+          return renderCollapsibleSection({
+            children: renderQuoteBox(item, index),
+            title: t(item.title),
+          });
         })}
         <TextArea
           value={comment}
-          label={t('common:comment')}
-          helpText={t('common:optional')}
-          placeholder={t('common:typeComment')}
+          label={t("common:comment")}
+          helpText={t("common:optional")}
+          placeholder={t("common:typeComment")}
           wordCountLimit={450}
           onMessageChange={onCommentChange}
           containerStyle={styles.commentBox}
@@ -215,26 +267,34 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
   };
 
   const isSubmit = quoteCategories && tabIndex + 1 === quoteCategories?.length;
-  const filterData = quotes[tabIndex]?.data.filter((item) => !item.price || !item.document);
-  const haveQuotesWithoutDoc = quotes[tabIndex]?.data.find((item) => item.price && !item.document);
-  const haveQuotesWithoutAmount = quotes[tabIndex]?.data.find((item) => item.document && !item.price);
-  const isDisabled = Boolean(haveQuotesWithoutDoc) || filterData?.length === quotes[tabIndex]?.data?.length;
+  const filterData = quotes[tabIndex]?.data.filter(
+    (item) => !item.price || !item.document
+  );
+  const haveQuotesWithoutDoc = quotes[tabIndex]?.data.find(
+    (item) => item.price && !item.document
+  );
+  const haveQuotesWithoutAmount = quotes[tabIndex]?.data.find(
+    (item) => item.document && !item.price
+  );
+  const isDisabled =
+    Boolean(haveQuotesWithoutDoc) ||
+    filterData?.length === quotes[tabIndex]?.data?.length;
 
   const onIndexChange = (value: number): void => {
     if (!haveQuotesWithoutDoc && !haveQuotesWithoutAmount) {
       setTabIndex(value);
     } else {
-      AlertHelper.error({ message: t('common:pleaseFillDetails') });
+      AlertHelper.error({ message: t("common:pleaseFillDetails") });
     }
   };
 
   return (
     <View style={styles.container}>
       <Text type="small" textType="semiBold">
-        {t('submitYourQuotes')}
+        {t("submitYourQuotes")}
       </Text>
       <Label type="large" style={styles.description}>
-        {t('submitQuoteDescription')}
+        {t("submitQuoteDescription")}
       </Label>
       <TabView
         renderScene={renderScene}
@@ -266,7 +326,7 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
       <Button
         disabled={isDisabled}
         type="primary"
-        title={!isSubmit ? t('common:next') : t('common:submit')}
+        title={!isSubmit ? t("common:next") : t("common:submit")}
         onPress={isSubmit ? onSubmit : onNext}
       />
     </View>

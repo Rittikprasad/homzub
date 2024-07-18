@@ -1,14 +1,21 @@
-import React from 'react';
-import { Keyboard, NativeSyntheticEvent, StyleSheet, TextInput, TextInputKeyPressEventData, View } from 'react-native';
-import RNOtpVerify from 'react-native-otp-verify';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { ConfigHelper } from '@homzhub/common/src/utils/ConfigHelper';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
+import React from "react";
+import {
+  Keyboard,
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInput,
+  TextInputKeyPressEventData,
+  View,
+} from "react-native";
+import RNOtpVerify from "react-native-otp-verify";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { ConfigHelper } from "@homzhub/common/src/utils/ConfigHelper";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
 
 export enum OtpTypes {
-  PhoneOrEmail = 'PhoneOrEmail',
-  Email = 'Email',
+  PhoneOrEmail = "PhoneOrEmail",
+  Email = "Email",
 }
 
 interface IProps {
@@ -31,7 +38,7 @@ export class OtpInputs extends React.PureComponent<IProps, IState> {
   private OtpTextInput: TextInput[] = [];
 
   public state = {
-    otp: Array(this.OtpLength).fill(''),
+    otp: Array(this.OtpLength).fill(""),
     currentFocus: 0,
     valuesFlushed: true,
   };
@@ -90,10 +97,12 @@ export class OtpInputs extends React.PureComponent<IProps, IState> {
         this.focusNext(index, value);
       };
 
-      const onKeyPress = (event: NativeSyntheticEvent<TextInputKeyPressEventData>): void => {
+      const onKeyPress = (
+        event: NativeSyntheticEvent<TextInputKeyPressEventData>
+      ): void => {
         const { key } = event.nativeEvent;
 
-        if (key === 'Backspace') {
+        if (key === "Backspace") {
           this.focusPrevious(key, index);
           return;
         }
@@ -114,7 +123,10 @@ export class OtpInputs extends React.PureComponent<IProps, IState> {
       }
 
       return (
-        <View key={`${index}-otp`} pointerEvents={currentFocus === index ? 'auto' : 'none'}>
+        <View
+          key={`${index}-otp`}
+          pointerEvents={currentFocus === index ? "auto" : "none"}
+        >
           <TextInput
             key={`${index}-otp`}
             caretHidden
@@ -139,9 +151,9 @@ export class OtpInputs extends React.PureComponent<IProps, IState> {
   private focusPrevious = (key: string, index: number): void => {
     const { error, toggleError } = this.props;
     const { otp }: { otp: string[] } = this.state;
-    otp[index] = '';
+    otp[index] = "";
 
-    if (key === 'Backspace' && index !== 0) {
+    if (key === "Backspace" && index !== 0) {
       this.setState({ otp: [...otp], currentFocus: index - 1 }, () => {
         this.OtpTextInput[index - 1].focus();
         this.OtpTextInput[index].setNativeProps({ style: styles.textInput });
@@ -169,17 +181,21 @@ export class OtpInputs extends React.PureComponent<IProps, IState> {
 
     if (index === this.OtpTextInput.length - 1) {
       this.OtpTextInput[index].blur();
-      bubbleOtp(otp.join(''), otpType);
+      bubbleOtp(otp.join(""), otpType);
     }
     this.setState({ otp: [...otp], currentFocus });
   };
 
   public flushOtpValues = (): void => {
-    this.setState({ otp: Array(this.OtpLength).fill(''), valuesFlushed: false, currentFocus: 0 });
+    this.setState({
+      otp: Array(this.OtpLength).fill(""),
+      valuesFlushed: false,
+      currentFocus: 0,
+    });
   };
 
   private otpHandler = (message: string): void => {
-    const regexLiteral = new RegExp(`\\d{${this.OtpLength}}`, 'g');
+    const regexLiteral = new RegExp(`\\d{${this.OtpLength}}`, "g");
     const otpCode: string[] | null = regexLiteral.exec(message);
     const { bubbleOtp, otpType } = this.props;
 
@@ -205,11 +221,11 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   otpBoxContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   textInput: {
-    textAlign: 'center',
+    textAlign: "center",
     borderWidth: 1,
     borderRadius: 4,
     height: 48,
