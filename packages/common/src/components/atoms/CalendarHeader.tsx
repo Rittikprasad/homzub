@@ -44,18 +44,66 @@ const CalendarHeader = (props: IProps): React.ReactElement => {
     year,
   } = props;
 
-  // DISABLE VALIDATION
-  const isNextDisable =
-    maxDate &&
-    (moment(maxDate).month() === moment().month() ||
-      (!!month &&
-        moment(maxDate).month() === month &&
-        !!year &&
-        moment(maxDate).year() === Number(year)));
-  const isPreviousDisable =
-    (minDate ? moment(minDate).year() === moment().year() : !isAllowPastDate) &&
-    isCurrentMonth &&
-    !isYearView;
+  const isCurrentYear = year === String(moment().year());
+  const yearView =
+    moment().year() > Number(yearTitle?.split("-")[0]) &&
+    moment().year() < Number(yearTitle?.split("-")[1]);
+
+  const getIsPreviousDisable = () => {
+    if (minDate) {
+      return moment(minDate).year() === moment().year();
+    }
+    return !isAllowPastDate;
+  };
+
+  const getIsNextDisable = () => {
+    if (maxDate && month && year) {
+      return (
+        moment(maxDate).month() === moment().month() ||
+        (moment(maxDate).month() === month &&
+          moment(maxDate).year() === Number(year))
+      );
+    }
+    return false;
+  };
+
+  const isPreviousDisable = (() => {
+    if (isMonthView) {
+      return getIsPreviousDisable() && isCurrentYear && !isYearView;
+    }
+    if (!isMonthView && !isYearView) {
+      return (
+        (minDate
+          ? moment(minDate).year() === moment().year()
+          : !isAllowPastDate) &&
+        (isMonthView ? !isCurrentMonth : isCurrentMonth) &&
+        isCurrentYear &&
+        !isYearView
+      );
+    }
+    if (isYearView) {
+      return getIsPreviousDisable() && yearView;
+    }
+  })();
+
+  const isNextDisable = (() => {
+    if (isMonthView) {
+      return getIsNextDisable();
+    }
+    if (!isMonthView && !isYearView) {
+      return (
+        maxDate &&
+        (moment(maxDate).month() === moment().month() ||
+          (!!month &&
+            moment(maxDate).month() === month &&
+            !!year &&
+            moment(maxDate).year() === Number(year)))
+      );
+    }
+    if (isYearView) {
+      return getIsNextDisable();
+    }
+  })();
   // DISABLE VALIDATION
 
   return (

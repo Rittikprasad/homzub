@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { PropertyUtils } from '@homzhub/common/src/utils/PropertyUtils';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Label, Text } from '@homzhub/common/src/components/atoms/Text';
-import { OnFocusCallback } from '@homzhub/common/src/components/atoms/OnFocusCallback';
-import { ShieldGroup } from '@homzhub/mobile/src/components';
-import { PropertyReviewCard } from '@homzhub/common/src/components/molecules/PropertyReviewCard';
-import { Progress } from '@homzhub/common/src/components/atoms/Progress/Progress';
-import { PropertyAmenities } from '@homzhub/common/src/components/molecules/PropertyAmenities';
-import { PropertyAddressCountry } from '@homzhub/common/src/components/molecules/PropertyAddressCountry';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { LastVisitedStep } from '@homzhub/common/src/domain/models/LastVisitedStep';
-import { IActions, TypeOfPlan } from '@homzhub/common/src/domain/models/AssetPlan';
-import { IAmenitiesIcons } from '@homzhub/common/src/domain/models/Search';
-import { ISetAssetPayload } from '@homzhub/common/src/modules/portfolio/interfaces';
+import React, { Component } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { PropertyUtils } from "@homzhub/common/src/utils/PropertyUtils";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Label, Text } from "@homzhub/common/src/components/atoms/Text";
+import { OnFocusCallback } from "@homzhub/common/src/components/atoms/OnFocusCallback";
+import { ShieldGroup } from "@homzhub/mobile/src/components";
+import { PropertyReviewCard } from "@homzhub/common/src/components/molecules/PropertyReviewCard";
+import { Progress } from "@homzhub/common/src/components/atoms/Progress/Progress";
+import { PropertyAmenities } from "@homzhub/common/src/components/molecules/PropertyAmenities";
+import { PropertyAddressCountry } from "@homzhub/common/src/components/molecules/PropertyAddressCountry";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { LastVisitedStep } from "@homzhub/common/src/domain/models/LastVisitedStep";
+import {
+  IActions,
+  TypeOfPlan,
+} from "@homzhub/common/src/domain/models/AssetPlan";
+import { IAmenitiesIcons } from "@homzhub/common/src/domain/models/Search";
+import { ISetAssetPayload } from "@homzhub/common/src/modules/portfolio/interfaces";
 
 const actionButtons: IActions[] = [
-  { id: 1, title: 'Invite Tenant', type: TypeOfPlan.MANAGE },
-  { id: 2, title: 'Rent', type: TypeOfPlan.RENT },
-  { id: 3, title: 'Sell', type: TypeOfPlan.SELL },
+  { id: 1, title: "Invite Tenant", type: TypeOfPlan.MANAGE },
+  { id: 2, title: "Rent", type: TypeOfPlan.RENT },
+  { id: 3, title: "Sell", type: TypeOfPlan.SELL },
 ];
 
 interface IProps {
@@ -56,32 +59,45 @@ export class PendingPropertyListCard extends Component<Props, IState> {
         <OnFocusCallback callback={this.resetIndex} />
         <View style={styles.headingView}>
           <Icon name={icons.warning} size={18} />
-          <Text type="small" textType="semiBold" numberOfLines={1} style={styles.label}>
-            {t('pendingProperties', { total })}
+          <Text
+            type="small"
+            textType="semiBold"
+            numberOfLines={1}
+            style={styles.label}
+          >
+            {t("pendingProperties", { total })}
           </Text>
           {data.length > 1 && (
             <View style={styles.headingContent}>
               <TouchableOpacity
-                style={styles.iconStyle}
+                style={[styles.iconStyle, styles.arrowButton]}
                 disabled={currentPropertyIndex === 0}
                 onPress={this.handlePrevious}
               >
                 <Icon
                   name={icons.leftArrow}
                   size={16}
-                  color={currentPropertyIndex === 0 ? theme.colors.darkTint4 : theme.colors.primaryColor}
+                  color={
+                    currentPropertyIndex === 0
+                      ? theme.colors.darkTint4
+                      : theme.colors.primaryColor
+                  }
                   testID="icnPrevious"
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                style={styles.iconStyle}
+                style={[styles.iconStyle, styles.arrowButton]}
                 disabled={currentPropertyIndex === total - 1}
                 onPress={this.handleNext}
               >
                 <Icon
                   name={icons.rightArrow}
                   size={16}
-                  color={currentPropertyIndex === total - 1 ? theme.colors.darkTint4 : theme.colors.primaryColor}
+                  color={
+                    currentPropertyIndex === total - 1
+                      ? theme.colors.darkTint4
+                      : theme.colors.primaryColor
+                  }
                   testID="icnNext"
                 />
               </TouchableOpacity>
@@ -114,14 +130,17 @@ export class PendingPropertyListCard extends Component<Props, IState> {
       furnishing,
       item.assetGroup.code,
       carpetArea,
-      carpetAreaUnit?.title ?? '',
+      carpetAreaUnit?.title ?? "",
       true
     );
 
     const viewPayload = PropertyUtils.getAssetPayload(listingInfo, id);
 
     return (
-      <TouchableOpacity style={styles.cardContainer} onPress={(): void => onViewProperty(viewPayload)}>
+      <TouchableOpacity
+        style={styles.cardContainer}
+        onPress={(): void => onViewProperty(viewPayload)}
+      >
         <ShieldGroup
           isShieldVisible={false}
           propertyType={name}
@@ -136,14 +155,21 @@ export class PendingPropertyListCard extends Component<Props, IState> {
           containerStyle={styles.addressStyle}
         />
         {amenitiesData.length > 0 && (
-          <PropertyAmenities data={amenitiesData} direction="row" containerStyle={styles.amenitiesContainer} />
+          <PropertyAmenities
+            data={amenitiesData}
+            direction="row"
+            containerStyle={styles.amenitiesContainer}
+          />
         )}
         {this.renderButtonsView(id, lastVisitedStep)}
       </TouchableOpacity>
     );
   };
 
-  private renderButtonsView = (id: number, lastVisitedStep: LastVisitedStep): React.ReactElement => {
+  private renderButtonsView = (
+    id: number,
+    lastVisitedStep: LastVisitedStep
+  ): React.ReactElement => {
     const { t, onPressComplete, onSelectAction } = this.props;
     const { isActionsVisible } = this.state;
     const {
@@ -166,7 +192,7 @@ export class PendingPropertyListCard extends Component<Props, IState> {
             <Progress progress={percentage} />
             <Button
               type="primary"
-              title={t('completeDetails')}
+              title={t("completeDetails")}
               containerStyle={styles.buttonStyle}
               onPress={(): void => onPressComplete(id)}
             />
@@ -175,7 +201,7 @@ export class PendingPropertyListCard extends Component<Props, IState> {
         {isListingRequired && (
           <Button
             type="primary"
-            title={t('common:next')}
+            title={t("common:next")}
             iconSize={24}
             iconColor={theme.colors.blue}
             icon={isActionsVisible ? icons.upArrow : icons.downArrow}
@@ -202,7 +228,7 @@ export class PendingPropertyListCard extends Component<Props, IState> {
         {isVerificationRequired && (
           <Button
             type="primary"
-            title={t('completeVerification')}
+            title={t("completeVerification")}
             containerStyle={styles.buttonStyle}
             onPress={onVerifyProperty}
           />
@@ -210,12 +236,12 @@ export class PendingPropertyListCard extends Component<Props, IState> {
         {isPropertyReady && <PropertyReviewCard />}
         {isCompleteDetailsRequired && (
           <Label type="regular" style={styles.infoText}>
-            {t('completeProperty')}
+            {t("completeProperty")}
           </Label>
         )}
         {isListingRequired && (
           <Label type="regular" style={styles.infoText}>
-            {t('property:vacantPropertyMsg')}
+            {t("property:vacantPropertyMsg")}
           </Label>
         )}
       </>
@@ -251,7 +277,9 @@ export class PendingPropertyListCard extends Component<Props, IState> {
   };
 }
 
-export default withTranslation(LocaleConstants.namespacesKey.assetDashboard)(PendingPropertyListCard);
+export default withTranslation(LocaleConstants.namespacesKey.assetDashboard)(
+  PendingPropertyListCard
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -262,11 +290,11 @@ const styles = StyleSheet.create({
   },
   headingView: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   headingContent: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   label: {
     flex: 1,
@@ -279,8 +307,8 @@ const styles = StyleSheet.create({
     height: 28,
     borderRadius: 4,
     backgroundColor: theme.colors.background,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 6,
   },
   cardContainer: {
@@ -299,8 +327,8 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     flex: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 5,
     marginTop: 18,
     backgroundColor: theme.colors.blueOpacity,
@@ -311,9 +339,12 @@ const styles = StyleSheet.create({
   },
   infoText: {
     color: theme.colors.darkTint7,
-    textAlign: 'center',
+    textAlign: "center",
   },
   addressStyle: {
     marginBottom: 6,
+  },
+  arrowButton: {
+    zIndex: 10,
   },
 });

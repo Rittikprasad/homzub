@@ -1,32 +1,41 @@
-import React, { Component, ReactElement, ReactNode } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { findIndex } from 'lodash';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { IWithMediaQuery, withMediaQuery } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { AssetRepository } from '@homzhub/common/src/domain/repositories/AssetRepository';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Selfie from '@homzhub/common/src/assets/images/selfie.svg';
-import ImageThumbnail from '@homzhub/common/src/components/atoms/ImageThumbnail';
-import { Label, Text } from '@homzhub/common/src/components/atoms/Text';
-import { UploadBox } from '@homzhub/common/src/components/molecules/UploadBox';
-import { TypeOfPlan } from '@homzhub/common/src/domain/models/AssetPlan';
-import { AllowedAttachmentFormats } from '@homzhub/common/src/domain/models/Attachment';
+import React, { Component, ReactElement, ReactNode } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { findIndex } from "lodash";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import {
+  IWithMediaQuery,
+  withMediaQuery,
+} from "@homzhub/common/src/utils/MediaQueryUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Selfie from "@homzhub/common/src/assets/images/selfie.svg";
+import ImageThumbnail from "@homzhub/common/src/components/atoms/ImageThumbnail";
+import { Label, Text } from "@homzhub/common/src/components/atoms/Text";
+import { UploadBox } from "@homzhub/common/src/components/molecules/UploadBox";
+import { TypeOfPlan } from "@homzhub/common/src/domain/models/AssetPlan";
+import { AllowedAttachmentFormats } from "@homzhub/common/src/domain/models/Attachment";
 import {
   ExistingVerificationDocuments,
   VerificationDocumentCategory,
   VerificationDocumentTypes,
-} from '@homzhub/common/src/domain/models/VerificationDocuments';
-import { selfieInstruction } from '@homzhub/common/src/constants/AsssetVerification';
+} from "@homzhub/common/src/domain/models/VerificationDocuments";
+import { selfieInstruction } from "@homzhub/common/src/constants/AsssetVerification";
 
 interface IVerificationProps {
   typeOfPlan: TypeOfPlan;
   existingDocuments: ExistingVerificationDocuments[];
   localDocuments: ExistingVerificationDocuments[];
-  handleUpload: (verificationData: VerificationDocumentTypes, Files?: File[]) => void;
-  deleteDocument: (document: ExistingVerificationDocuments, isLocalDocument?: boolean) => Promise<void>;
+  handleUpload: (
+    verificationData: VerificationDocumentTypes,
+    Files?: File[]
+  ) => void;
+  deleteDocument: (
+    document: ExistingVerificationDocuments,
+    isLocalDocument?: boolean
+  ) => Promise<void>;
   handleTypes?: (types: VerificationDocumentTypes[]) => void;
 }
 
@@ -47,82 +56,121 @@ class VerificationTypes extends Component<IProps, IVerificationState> {
 
   public render(): ReactNode {
     const { verificationTypes } = this.state;
+    console.log("7777777777777777777777777777", verificationTypes);
     const { isMobile } = this.props;
     return (
       <View style={[styles.container, isMobile && styles.mobileUploadBox]}>
-        {verificationTypes.map((verificationType: VerificationDocumentTypes, index: number) => {
-          const data: VerificationDocumentTypes = verificationType;
-          return (
-            <View style={styles.proofChild} key={index}>
-              <Text type="small" textType="semiBold" style={styles.title}>
-                {index + 1}. {data.title}
-              </Text>
-              {verificationType.name === VerificationDocumentCategory.SELFIE_ID_PROOF ? (
-                <>
-                  {PlatformUtils.isWeb() ? (
-                    <View style={styles.webSelfie}>
-                      <Selfie />
-                    </View>
-                  ) : (
-                    <Selfie style={styles.selfie} />
-                  )}
-                  {selfieInstruction.map((instruction, i) => {
-                    return (
-                      <Label type="regular" textType="regular" style={styles.instruction} key={i}>
-                        {instruction}
+        {verificationTypes.map(
+          (verificationType: VerificationDocumentTypes, index: number) => {
+            const data: VerificationDocumentTypes = verificationType;
+            return (
+              <View style={styles.proofChild} key={index}>
+                <Text type="small" textType="semiBold" style={styles.title}>
+                  {index + 1}. {data.title}
+                </Text>
+                {verificationType.name ===
+                VerificationDocumentCategory.SELFIE_ID_PROOF ? (
+                  <>
+                    {PlatformUtils.isWeb() ? (
+                      <View style={styles.webSelfie}>
+                        <Selfie />
+                      </View>
+                    ) : (
+                      <Selfie style={styles.selfie} />
+                    )}
+                    {selfieInstruction.map((instruction, i) => {
+                      return (
+                        <Label
+                          type="regular"
+                          textType="regular"
+                          style={styles.instruction}
+                          key={i}
+                        >
+                          {instruction}
+                        </Label>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {data.description !== "" && (
+                      <Label
+                        type="regular"
+                        textType="regular"
+                        style={styles.subTitle}
+                      >
+                        {data.description}
                       </Label>
-                    );
-                  })}
-                </>
-              ) : (
-                <>
-                  {data.description !== '' && (
-                    <Label type="regular" textType="regular" style={styles.subTitle}>
-                      {data.description}
-                    </Label>
-                  )}
-                </>
-              )}
-              {this.renderImageOrUploadBox(verificationType)}
-            </View>
-          );
-        })}
+                    )}
+                  </>
+                )}
+                {this.renderImageOrUploadBox(verificationType)}
+              </View>
+            );
+          }
+        )}
       </View>
     );
   }
 
-  private renderImageOrUploadBox = (currentData: VerificationDocumentTypes): ReactElement => {
-    const { handleUpload, existingDocuments, localDocuments, deleteDocument, isMobile, isOnlyTablet, t } = this.props;
+  private renderImageOrUploadBox = (
+    currentData: VerificationDocumentTypes
+  ): ReactElement => {
+    const {
+      handleUpload,
+      existingDocuments,
+      localDocuments,
+      deleteDocument,
+      isMobile,
+      isOnlyTablet,
+      t,
+    } = this.props;
     const onPress = (): void => {
       handleUpload(currentData);
     };
     const imageSelection = (files?: File[]): void => {
       if (files) {
+        console.log("88888888888888888", files);
         handleUpload(currentData, files);
       }
     };
     const totalDocuments = existingDocuments.concat(localDocuments);
-    const thumbnailIndex = findIndex(totalDocuments, (document: ExistingVerificationDocuments) => {
-      return currentData.id === document.verificationDocumentType.id;
-    });
+    const thumbnailIndex = findIndex(
+      totalDocuments,
+      (document: ExistingVerificationDocuments) => {
+        return currentData.id === document.verificationDocumentType.id;
+      }
+    );
     const onDropRejection = (): void => {
-      AlertHelper.error({ message: t('unsupportedFormat') });
+      AlertHelper.error({ message: t("unsupportedFormat") });
     };
 
     if (thumbnailIndex !== -1) {
-      const currentDocument: ExistingVerificationDocuments = totalDocuments[thumbnailIndex];
+      const currentDocument: ExistingVerificationDocuments =
+        totalDocuments[thumbnailIndex];
       const thumbnailImage = currentDocument.document.link;
-      const fileType = currentDocument.document.link.split('/')?.pop()?.split('.');
+      const fileType = currentDocument.document.link
+        .split("/")
+        ?.pop()
+        ?.split(".");
       const onDeleteImageThumbnail = (): Promise<void> =>
-        deleteDocument(currentDocument, currentDocument.isLocalDocument || undefined);
+        deleteDocument(
+          currentDocument,
+          currentDocument.isLocalDocument || undefined
+        );
 
       const { mimeType } = currentDocument.document;
-      return mimeType === AllowedAttachmentFormats.AppPdf || !fileType || fileType[1] === 'pdf' ? (
+      return mimeType === AllowedAttachmentFormats.AppPdf ||
+        !fileType ||
+        fileType[1] === "pdf" ? (
         <View style={styles.pdfContainer}>
           <Text type="small" textType="regular" style={styles.pdfName}>
             {currentDocument.document.name || fileType || [0]}
           </Text>
-          <TouchableOpacity style={styles.iconContainer} onPress={onDeleteImageThumbnail}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={onDeleteImageThumbnail}
+          >
             <Icon name={icons.close} size={22} color={theme.colors.shadow} />
           </TouchableOpacity>
         </View>
@@ -139,11 +187,17 @@ class VerificationTypes extends Component<IProps, IVerificationState> {
             onIconPress={onDeleteImageThumbnail}
             imageWrapperStyle={[
               PlatformUtils.isWeb() && !isMobile && styles.imageWrapper,
-              PlatformUtils.isWeb() && !isMobile && currentData.name === 'SELFIE_ID_PROOF' && styles.selfieWrapper,
+              PlatformUtils.isWeb() &&
+                !isMobile &&
+                currentData.name === "SELFIE_ID_PROOF" &&
+                styles.selfieWrapper,
             ]}
             imageContainerStyle={[
               isOnlyTablet && styles.imageContainerTablet,
-              PlatformUtils.isWeb() && !isMobile && currentData.name === 'SELFIE_ID_PROOF' && styles.selfieWrapper,
+              PlatformUtils.isWeb() &&
+                !isMobile &&
+                currentData.name === "SELFIE_ID_PROOF" &&
+                styles.selfieWrapper,
             ]}
           />
         </View>
@@ -174,11 +228,19 @@ class VerificationTypes extends Component<IProps, IVerificationState> {
 
   public getVerificationTypes = async (): Promise<void> => {
     const { typeOfPlan, handleTypes } = this.props;
+    console.log(
+      "this is props in verification types component 77777",
+      this.props
+    );
     try {
-      const response: VerificationDocumentTypes[] = await AssetRepository.getVerificationDocumentTypes();
-      const filteredResponse = response.filter((data: VerificationDocumentTypes) => {
-        return data.category === typeOfPlan || data.category === 'IDENTITY';
-      });
+      const response: VerificationDocumentTypes[] =
+        await AssetRepository.getVerificationDocumentTypes();
+
+      const filteredResponse = response.filter(
+        (data: VerificationDocumentTypes) => {
+          return data.category === typeOfPlan || data.category === "IDENTITY";
+        }
+      );
       if (handleTypes) {
         handleTypes(filteredResponse);
       }
@@ -186,7 +248,10 @@ class VerificationTypes extends Component<IProps, IVerificationState> {
         verificationTypes: filteredResponse,
       });
     } catch (error) {
-      AlertHelper.error({ message: error.message, statusCode: error.details.statusCode });
+      AlertHelper.error({
+        message: error.message,
+        statusCode: error.details.statusCode,
+      });
     }
   };
 }
@@ -208,7 +273,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   mobileUploadBox: {
-    width: PlatformUtils.isWeb() ? '100%' : 'auto',
+    width: PlatformUtils.isWeb() ? "100%" : "auto",
     paddingHorizontal: PlatformUtils.isWeb() ? 8 : 16,
   },
   title: {
@@ -220,12 +285,12 @@ const styles = StyleSheet.create({
   },
   pdfContainer: {
     flex: 0,
-    flexDirection: 'row',
+    flexDirection: "row",
     backgroundColor: theme.colors.white,
     padding: 16,
     borderColor: theme.colors.primaryColor,
     borderWidth: 1,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     marginTop: 10,
     borderRadius: 4,
   },
@@ -233,9 +298,9 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     top: 13,
     right: 10,
     bottom: 0,
@@ -248,7 +313,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   selfie: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginVertical: 12,
   },
   webSelfie: {

@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import DocumentPicker from "react-native-document-picker";
+import DocumentPicker, {
+  DocumentPickerResponse,
+  types,
+} from "react-native-document-picker";
 import ImagePicker from "react-native-image-crop-picker";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
@@ -64,6 +67,9 @@ export class PropertyVerification extends React.PureComponent<
   };
 
   public render(): React.ReactElement {
+    console.log(
+      "thsiis in verificaion 8888888888888877777777777777777777777777777777777777"
+    );
     const { t, typeOfPlan } = this.props;
     const { existingDocuments, localDocuments, isLoading, verificationTypes } =
       this.state;
@@ -73,6 +79,11 @@ export class PropertyVerification extends React.PureComponent<
       (doc: ExistingVerificationDocuments) => doc.verificationDocumentType.name
     );
     const containsAllReqd = uploadedTypes.length === verificationTypes.length;
+    console.log("this is typeOfPlan", typeOfPlan);
+    console.log("this is localDocuments", localDocuments);
+    console.log("this is existingDocuments", existingDocuments);
+    console.log("this is total documents", totalDocuments);
+    console.log("this is uploadedTypes", uploadedTypes);
 
     return (
       <>
@@ -126,7 +137,9 @@ export class PropertyVerification extends React.PureComponent<
   public handleVerificationDocumentUploads = async (
     data: VerificationDocumentTypes
   ): Promise<void> => {
+    console.log("this is data in handleverification", data);
     const verificationDocumentId = data.id;
+    console.log("data.id", data.id);
     const verificationDocumentType = data.name;
     if (
       verificationDocumentType === VerificationDocumentCategory.SELFIE_ID_PROOF
@@ -174,13 +187,15 @@ export class PropertyVerification extends React.PureComponent<
   ): Promise<void> => {
     try {
       const document = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
+        allowMultiSelection: false,
+        type: types.allFiles,
       });
-      if (Object.values(AllowedAttachmentFormats).includes(document.type)) {
+      console.log("this is document in upload document", document);
+      if (Object.values(AllowedAttachmentFormats).includes(document[0].type)) {
         const source = {
-          uri: document.uri,
-          type: document.type,
-          name: document.name,
+          uri: document[0].uri,
+          type: document[0].type,
+          name: document[0].name,
         };
         this.updateLocalDocuments(verificationDocumentId, source, data);
       } else {

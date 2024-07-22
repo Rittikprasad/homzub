@@ -1,42 +1,54 @@
-import React, { ReactElement } from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { Formik, FormikHelpers, FormikProps, FormikValues } from 'formik';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import * as yup from 'yup';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { DateFormats, DateUtils } from '@homzhub/common/src/utils/DateUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { FormUtils } from '@homzhub/common/src/utils/FormUtils';
-import { LedgerUtils } from '@homzhub/common/src/utils/LedgerUtils';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { LedgerRepository } from '@homzhub/common/src/domain/repositories/LedgerRepository';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { IDocumentSource } from '@homzhub/common/src/services/AttachmentService/interfaces';
-import { FinancialActions } from '@homzhub/common/src/modules/financials/actions';
-import { FinancialSelectors } from '@homzhub/common/src/modules/financials/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { SelectionPicker } from '@homzhub/common/src/components/atoms/SelectionPicker';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import { FormButton } from '@homzhub/common/src/components/molecules/FormButton';
-import { FormCalendar } from '@homzhub/common/src/components/molecules/FormCalendar';
-import { FormDropdown, IDropdownOption } from '@homzhub/common/src/components/molecules/FormDropdown';
-import { FormTextInput } from '@homzhub/common/src/components/molecules/FormTextInput';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { Attachment, UploadFileType } from '@homzhub/common/src/domain/models/Attachment';
-import { Currency } from '@homzhub/common/src/domain/models/Currency';
-import { DueItem } from '@homzhub/common/src/domain/models/DueItem';
-import { FormType } from '@homzhub/common/src/domain/models/FinancialTransactions';
-import { LedgerTypes } from '@homzhub/common/src/domain/models/GeneralLedgers';
-import { LedgerCategory } from '@homzhub/common/src/domain/models/LedgerCategory';
-import { Unit } from '@homzhub/common/src/domain/models/Unit';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { IState } from '@homzhub/common/src/modules/interfaces';
+import React, { ReactElement } from "react";
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { Formik, FormikHelpers, FormikProps, FormikValues } from "formik";
+import { withTranslation, WithTranslation } from "react-i18next";
+import * as yup from "yup";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { DateFormats, DateUtils } from "@homzhub/common/src/utils/DateUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { FormUtils } from "@homzhub/common/src/utils/FormUtils";
+import { LedgerUtils } from "@homzhub/common/src/utils/LedgerUtils";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { LedgerRepository } from "@homzhub/common/src/domain/repositories/LedgerRepository";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { IDocumentSource } from "@homzhub/common/src/services/AttachmentService/interfaces";
+import { FinancialActions } from "@homzhub/common/src/modules/financials/actions";
+import { FinancialSelectors } from "@homzhub/common/src/modules/financials/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { SelectionPicker } from "@homzhub/common/src/components/atoms/SelectionPicker";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import { FormButton } from "@homzhub/common/src/components/molecules/FormButton";
+import { FormCalendar } from "@homzhub/common/src/components/molecules/FormCalendar";
+import {
+  FormDropdown,
+  IDropdownOption,
+} from "@homzhub/common/src/components/molecules/FormDropdown";
+import { FormTextInput } from "@homzhub/common/src/components/molecules/FormTextInput";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import {
+  Attachment,
+  UploadFileType,
+} from "@homzhub/common/src/domain/models/Attachment";
+import { Currency } from "@homzhub/common/src/domain/models/Currency";
+import { DueItem } from "@homzhub/common/src/domain/models/DueItem";
+import { FormType } from "@homzhub/common/src/domain/models/FinancialTransactions";
+import { LedgerTypes } from "@homzhub/common/src/domain/models/GeneralLedgers";
+import { LedgerCategory } from "@homzhub/common/src/domain/models/LedgerCategory";
+import { Unit } from "@homzhub/common/src/domain/models/Unit";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { IState } from "@homzhub/common/src/modules/interfaces";
 
 interface IFormData {
   property: number;
@@ -95,7 +107,10 @@ interface IOwnProps extends WithTranslation, IStateToProps, IDispatchProps {
   toggleLoading: (isLoading: boolean) => void;
   defaultCurrency: Currency;
   transactionId: number;
-  renderUploadBoxComponent: (renderAttachements: () => React.ReactNode, uploadProps: IUploadCompProps) => ReactElement;
+  renderUploadBoxComponent: (
+    renderAttachements: () => React.ReactNode,
+    uploadProps: IUploadCompProps
+  ) => ReactElement;
   onPressLink: (link: string) => void;
   assetId?: number;
   containerStyles?: StyleProp<ViewStyle>;
@@ -119,7 +134,8 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
   public constructor(props: IOwnProps) {
     super(props);
     const { isFromDues, currentDue, defaultCurrency } = props;
-    const { currencySymbol, currencyCode } = isFromDues && currentDue ? currentDue?.currency : defaultCurrency;
+    const { currencySymbol, currencyCode } =
+      isFromDues && currentDue ? currentDue?.currency : defaultCurrency;
     this.state = {
       selectedFormType: isFromDues ? FormType.Expense : FormType.Income,
       attachments: [],
@@ -170,21 +186,28 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       isDesktopWeb,
       isFromDues = false,
     } = this.props;
-    const { selectedFormType, formValues, currencyCode, currencySymbol, attachments, offlinePaymentModes } = this.state;
+    const {
+      selectedFormType,
+      formValues,
+      currencyCode,
+      currencySymbol,
+      attachments,
+      offlinePaymentModes,
+    } = this.state;
     const isWeb = PlatformUtils.isWeb();
     const isDesktop = isDesktopWeb || false;
     const isAbsoluteWeb = isWeb && isDesktop;
     const uploadProps = {
       attachments,
       icon: icons.document,
-      header: t('common:uploadDocument'),
-      subHeader: t('common:uploadDocHelperText'),
+      header: t("common:uploadDocument"),
+      subHeader: t("common:uploadDocHelperText"),
       onCapture: this.handleUpload,
       onDelete: this.handleDocumentDelete,
       containerStyle: styles.uploadBox,
     };
     const calendarPropsWeb = {
-      popupProps: { position: 'top center' },
+      popupProps: { position: "top center" },
     };
     return (
       <Formik
@@ -196,15 +219,15 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       >
         {(formProps: FormikProps<FormikValues>): React.ReactNode => {
           const handleNotes = (value: string): void => {
-            formProps.setFieldValue('notes', value);
+            formProps.setFieldValue("notes", value);
           };
 
           return (
             <View style={[containerStyles]}>
               <SelectionPicker
                 data={[
-                  { title: t('income'), value: FormType.Income },
-                  { title: t('expense'), value: FormType.Expense },
+                  { title: t("income"), value: FormType.Income },
+                  { title: t("expense"), value: FormType.Expense },
                 ]}
                 selectedItem={[selectedFormType]}
                 onValueChange={this.onFormTypeChange}
@@ -217,10 +240,10 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                     formProps={formProps}
                     name="property"
                     options={this.loadPropertyNames()}
-                    placeholder={t('selectProperty')}
+                    placeholder={t("selectProperty")}
                     onChange={this.onChangeProperty}
                     isMandatory
-                    label={t('property')}
+                    label={t("property")}
                     listHeight={theme.viewport.height * 0.8}
                     isDisabled={!!assetId || isFromDues}
                   />
@@ -228,8 +251,8 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                     formProps={formProps}
                     inputType="default"
                     name="label"
-                    label={t('details')}
-                    placeholder={t('detailsPlaceholder')}
+                    label={t("details")}
+                    placeholder={t("detailsPlaceholder")}
                     isMandatory
                     editable={!isFromDues}
                   />
@@ -237,15 +260,19 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                     formProps={formProps}
                     inputType="default"
                     name="tellerName"
-                    label={selectedFormType === FormType.Income ? t('receivedFrom') : t('paidTo')}
-                    placeholder={t('tellerPlaceholder')}
+                    label={
+                      selectedFormType === FormType.Income
+                        ? t("receivedFrom")
+                        : t("paidTo")
+                    }
+                    placeholder={t("tellerPlaceholder")}
                   />
                   <FormTextInput
                     formProps={formProps}
                     inputType="number"
                     name="amount"
-                    label={t('amount')}
-                    placeholder={t('amountPlaceholder')}
+                    label={t("amount")}
+                    placeholder={t("amountPlaceholder")}
                     inputPrefixText={currencySymbol}
                     inputGroupSuffixText={currencyCode}
                     isMandatory
@@ -254,9 +281,9 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                   <FormDropdown
                     formProps={formProps}
                     name="category"
-                    label={t('category')}
+                    label={t("category")}
                     options={this.loadCategories()}
-                    placeholder={t('categoryPlaceholder')}
+                    placeholder={t("categoryPlaceholder")}
                     isMandatory
                     onChange={this.onChangeCategory}
                   />
@@ -266,11 +293,13 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                       formProps={formProps}
                       name="date"
                       textType="label"
-                      label={t('addDate')}
-                      calendarTitle={t('addDate')}
-                      placeHolder={t('addDatePlaceholder')}
+                      label={t("addDate")}
+                      calendarTitle={t("addDate")}
+                      placeHolder={t("addDatePlaceholder")}
                       isMandatory
-                      {...(isFromDues && { maxDate: DateUtils.getCurrentDate() })}
+                      {...(isFromDues && {
+                        maxDate: DateUtils.getCurrentDate(),
+                      })}
                     />
                   ) : (
                     <FormCalendar
@@ -278,9 +307,9 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                       formProps={formProps}
                       name="date"
                       textType="label"
-                      label={t('addDate')}
-                      calendarTitle={t('addDate')}
-                      placeHolder={t('addDatePlaceholder')}
+                      label={t("addDate")}
+                      calendarTitle={t("addDate")}
+                      placeHolder={t("addDatePlaceholder")}
                       isMandatory
                       {...calendarPropsWeb}
                     />
@@ -290,9 +319,11 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                       <FormDropdown
                         formProps={formProps}
                         name="paymentModeUsed"
-                        options={LedgerUtils.formattedPaymentModes(offlinePaymentModes)}
-                        placeholder={t('categoryPlaceholder')}
-                        label={t('assetFinancial:modeOfPayment')}
+                        options={LedgerUtils.formattedPaymentModes(
+                          offlinePaymentModes
+                        )}
+                        placeholder={t("categoryPlaceholder")}
+                        label={t("assetFinancial:modeOfPayment")}
                         isMandatory
                         onChange={this.onChangePaymentMode}
                       />
@@ -300,13 +331,13 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                         formProps={formProps}
                         inputType="default"
                         name="fromBank"
-                        label={t('assetFinancial:fromBank')}
+                        label={t("assetFinancial:fromBank")}
                       />
                       <FormTextInput
                         formProps={formProps}
                         inputType="default"
                         name="referenceNum"
-                        label={t('assetFinancial:referenceNumber')}
+                        label={t("assetFinancial:referenceNumber")}
                       />
                     </>
                   )}
@@ -314,19 +345,25 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
                 <View style={[isAbsoluteWeb && styles.formColumn]}>
                   <TextArea
                     value={formProps.values.notes}
-                    placeholder={t('notesPlaceholder')}
-                    label={t('notes')}
+                    placeholder={t("notesPlaceholder")}
+                    label={t("notes")}
                     wordCountLimit={MAX_WORD_COUNT}
-                    containerStyle={[styles.inputStyle, isAbsoluteWeb && styles.inputStyleWeb]}
+                    containerStyle={[
+                      styles.inputStyle,
+                      isAbsoluteWeb && styles.inputStyleWeb,
+                    ]}
                     onMessageChange={handleNotes}
                   />
-                  {renderUploadBoxComponent(this.renderExistingAttachments, uploadProps)}
+                  {renderUploadBoxComponent(
+                    this.renderExistingAttachments,
+                    uploadProps
+                  )}
                   <FormButton
                     // @ts-ignore
                     onPress={formProps.handleSubmit}
                     formProps={formProps}
                     type="primary"
-                    title={t(isEditFlow ? 'submitRecord' : 'addRecord')}
+                    title={t(isEditFlow ? "submitRecord" : "addRecord")}
                     disabled={!formProps.isValid || formProps.isSubmitting}
                   />
                 </View>
@@ -345,14 +382,18 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       <>
         {existingAttachments.map((item, index) => {
           const { id, fileName, link } = item;
-          const extension = fileName.split('.').reverse()[0];
-          const fileType = extension === 'pdf' ? UploadFileType.PDF : UploadFileType.IMAGE;
-          const fileIcon = fileType === UploadFileType.PDF ? icons.doc : icons.imageFile;
+          const extension = fileName.split(".").reverse()[0];
+          const fileType =
+            extension === "pdf" ? UploadFileType.PDF : UploadFileType.IMAGE;
+          const fileIcon =
+            fileType === UploadFileType.PDF ? icons.doc : icons.imageFile;
           const isLastAttachment = index === existingAttachments.length - 1;
 
           const onPressCross = (): void => {
             this.setState((prevState) => ({
-              existingAttachments: prevState.existingAttachments.filter((i) => i.id !== item.id),
+              existingAttachments: prevState.existingAttachments.filter(
+                (i) => i.id !== item.id
+              ),
             }));
           };
 
@@ -362,13 +403,29 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
 
           return (
             <>
-              <TouchableOpacity key={id} style={styles.existingFilesContainer} onPress={onPress}>
+              <TouchableOpacity
+                key={id}
+                style={styles.existingFilesContainer}
+                onPress={onPress}
+              >
                 <View style={styles.iconView}>
-                  <Icon name={fileIcon} size={40} color={theme.colors.lowPriority} style={styles.fileIcon} />
+                  <Icon
+                    name={fileIcon}
+                    size={40}
+                    color={theme.colors.lowPriority}
+                    style={styles.fileIcon}
+                  />
                 </View>
                 <View style={styles.fileContainer}>
-                  <Text type="small" textType="semiBold" style={styles.existingFileName}>
-                    {AttachmentService.getFormattedFileName(fileName, extension)}
+                  <Text
+                    type="small"
+                    textType="semiBold"
+                    style={styles.existingFileName}
+                  >
+                    {AttachmentService.getFormattedFileName(
+                      fileName,
+                      extension
+                    )}
                   </Text>
                   <Icon
                     name={icons.close}
@@ -387,7 +444,9 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
             </>
           );
         })}
-        {attachments.length > 0 && existingAttachments.length > 0 && <Divider containerStyles={styles.divider} />}
+        {attachments.length > 0 && existingAttachments.length > 0 && (
+          <Divider containerStyles={styles.divider} />
+        )}
       </>
     );
   };
@@ -399,7 +458,10 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     }));
   };
 
-  private onChangeProperty = (value: string, formikProps?: FormikProps<FormikValues>): void => {
+  private onChangeProperty = (
+    value: string,
+    formikProps?: FormikProps<FormikValues>
+  ): void => {
     const { properties } = this.props;
     properties.forEach((item) => {
       if (item.id === Number(value)) {
@@ -412,21 +474,27 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     });
     if (formikProps) {
       const { setFieldValue } = formikProps;
-      setFieldValue('property', value);
+      setFieldValue("property", value);
     }
   };
 
-  private onChangeCategory = (value: string, formikProps?: FormikProps<FormikValues>): void => {
+  private onChangeCategory = (
+    value: string,
+    formikProps?: FormikProps<FormikValues>
+  ): void => {
     if (formikProps) {
       const { setFieldValue } = formikProps;
-      setFieldValue('category', value);
+      setFieldValue("category", value);
     }
   };
 
-  private onChangePaymentMode = (value: string, formikProps?: FormikProps<FormikValues>): void => {
+  private onChangePaymentMode = (
+    value: string,
+    formikProps?: FormikProps<FormikValues>
+  ): void => {
     if (formikProps) {
       const { setFieldValue } = formikProps;
-      setFieldValue('paymentModeUsed', value);
+      setFieldValue("paymentModeUsed", value);
     }
   };
 
@@ -434,7 +502,9 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     const { transactionId, toggleLoading } = this.props;
     try {
       toggleLoading(true);
-      const transactionData = await LedgerRepository.getLedgerDetails(transactionId);
+      const transactionData = await LedgerRepository.getLedgerDetails(
+        transactionId
+      );
       const {
         asset,
         label,
@@ -447,7 +517,8 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
         formType,
         currency,
       } = transactionData;
-      const existingAttachments = this.formatExistingAttachments(attachmentDetails);
+      const existingAttachments =
+        this.formatExistingAttachments(attachmentDetails);
       this.setState({
         selectedFormType: formType,
         existingAttachments,
@@ -480,13 +551,17 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
 
   private loadCategories = (): IDropdownOption[] => {
     const { selectedFormType, ledgerCategories } = this.state;
-    const entryType = selectedFormType === FormType.Income ? LedgerTypes.credit : LedgerTypes.debit;
+    const entryType =
+      selectedFormType === FormType.Income
+        ? LedgerTypes.credit
+        : LedgerTypes.debit;
 
-    return LedgerUtils.filterByType<LedgerCategory, LedgerTypes>(entryType, ledgerCategories).map(
-      (category: LedgerCategory) => {
-        return { value: category.id, label: category.name };
-      }
-    );
+    return LedgerUtils.filterByType<LedgerCategory, LedgerTypes>(
+      entryType,
+      ledgerCategories
+    ).map((category: LedgerCategory) => {
+      return { value: category.id, label: category.name };
+    });
   };
 
   private fetchOfflinePaymentModes = async (): Promise<void> => {
@@ -494,7 +569,10 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       const modes = await LedgerRepository.getOfflinePaymentModes();
       this.setState({ offlinePaymentModes: modes });
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
 
@@ -502,12 +580,15 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     const { t } = this.props;
 
     return yup.object().shape({
-      property: yup.number().moreThan(-1, t('propertyError')),
-      label: yup.string().required(t('detailsError')),
+      property: yup.number().moreThan(-1, t("propertyError")),
+      label: yup.string().required(t("detailsError")),
       tellerName: yup.string().optional(),
-      amount: yup.string().required(t('amountError')),
-      category: yup.number().required(t('categoryError')).moreThan(0, t('categoryError')),
-      date: yup.string().required(t('dateError')),
+      amount: yup.string().required(t("amountError")),
+      category: yup
+        .number()
+        .required(t("categoryError"))
+        .moreThan(0, t("categoryError")),
+      date: yup.string().required(t("dateError")),
       notes: yup.string().optional(),
       paymentModeUsed: yup.string(),
       fromBank: yup.string().optional(),
@@ -530,22 +611,22 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       return {
         property: asset?.id ?? -1,
         label: invoiceTitle,
-        tellerName: t('common:homzhub'),
+        tellerName: t("common:homzhub"),
         amount: `${totalPrice}`,
         category: 10,
         date: getDefaultDate(),
-        notes: '',
-        paymentModeUsed: 'CASH',
+        notes: "",
+        paymentModeUsed: "CASH",
       };
     }
     return {
       property: assetId ?? -1,
-      label: '',
-      tellerName: '',
-      amount: '',
+      label: "",
+      tellerName: "",
+      amount: "",
       category: 0,
       date: DateUtils.getCurrentDate(),
-      notes: '',
+      notes: "",
     };
   };
 
@@ -558,8 +639,14 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
   };
 
   private handleUpload = (attachments: IDocumentSource[]): void => {
+    console.log("fuckkkkkkkkkkkkkkkk");
     this.setState((prevState: ILocalState) => {
-      return { attachments: [...(prevState.attachments as IDocumentSource[]), ...attachments] };
+      return {
+        attachments: [
+          ...(prevState.attachments as IDocumentSource[]),
+          ...attachments,
+        ],
+      };
     });
   };
 
@@ -568,17 +655,27 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     if (PlatformUtils.isWeb() && name) {
       const webAttachments = attachments as File[];
       this.setState(() => {
-        return { attachments: webAttachments.filter((file: File) => file.name !== name) };
+        return {
+          attachments: webAttachments.filter(
+            (file: File) => file.name !== name
+          ),
+        };
       });
     } else {
       const mobAttachments = attachments as IDocumentSource[];
       this.setState(() => {
-        return { attachments: mobAttachments.filter((file: IDocumentSource) => file.uri !== uri) };
+        return {
+          attachments: mobAttachments.filter(
+            (file: IDocumentSource) => file.uri !== uri
+          ),
+        };
       });
     }
   };
 
-  private formatExistingAttachments = (attachments: Attachment[]): IFormattedAttachment[] => {
+  private formatExistingAttachments = (
+    attachments: Attachment[]
+  ): IFormattedAttachment[] => {
     return attachments.map((item) => ({
       id: item.id,
       fileName: item.fileName,
@@ -586,11 +683,31 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     }));
   };
 
-  private handleSubmit = async (values: IFormData, formActions: FormikHelpers<IFormData>): Promise<void> => {
-    const { toggleLoading, isEditFlow, transactionId, currentDue, isFromDues } = this.props;
-    const { selectedFormType, attachments, currencyCode, existingAttachments, offlinePaymentModes } = this.state;
-    const { property, label, tellerName, amount, category, notes, date, fromBank, referenceNum, paymentModeUsed } =
-      values;
+  private handleSubmit = async (
+    values: IFormData,
+    formActions: FormikHelpers<IFormData>
+  ): Promise<void> => {
+    const { toggleLoading, isEditFlow, transactionId, currentDue, isFromDues } =
+      this.props;
+    const {
+      selectedFormType,
+      attachments,
+      currencyCode,
+      existingAttachments,
+      offlinePaymentModes,
+    } = this.state;
+    const {
+      property,
+      label,
+      tellerName,
+      amount,
+      category,
+      notes,
+      date,
+      fromBank,
+      referenceNum,
+      paymentModeUsed,
+    } = values;
     const existingAttachmentIds = existingAttachments.map((i) => i.id);
     let uploadedAttachmentIds: Array<number> = [];
 
@@ -602,11 +719,16 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
         const formData = new FormData();
         attachments.forEach((attachment: IDocumentSource | File) => {
           // @ts-ignore
-          formData.append('files[]', attachment);
+          formData.append("files[]", attachment);
         });
-        const response = await AttachmentService.uploadImage(formData, AttachmentType.ASSET_RECORD);
+        const response = await AttachmentService.uploadImage(
+          formData,
+          AttachmentType.ASSET_RECORD
+        );
         const { data } = response;
-        uploadedAttachmentIds = data.map((i: IUploadAttachmentResponse) => i.id);
+        uploadedAttachmentIds = data.map(
+          (i: IUploadAttachmentResponse) => i.id
+        );
       }
 
       let dueFields = {};
@@ -614,10 +736,14 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       formActions.setSubmitting(true);
 
       const tellerInfo =
-        selectedFormType === FormType.Income ? { payer_name: tellerName } : { receiver_name: tellerName };
+        selectedFormType === FormType.Income
+          ? { payer_name: tellerName }
+          : { receiver_name: tellerName };
 
       if (isFromDues) {
-        const modeOfPayment = offlinePaymentModes.filter((mode) => mode.code === paymentModeUsed)[0].id;
+        const modeOfPayment = offlinePaymentModes.filter(
+          (mode) => mode.code === paymentModeUsed
+        )[0].id;
         dueFields = {
           mode_of_payment: modeOfPayment,
           ...(fromBank && { from_bank: fromBank }),
@@ -628,7 +754,10 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
 
       let payload = {
         asset: Number(property),
-        entry_type: selectedFormType === FormType.Income ? LedgerTypes.credit : LedgerTypes.debit,
+        entry_type:
+          selectedFormType === FormType.Income
+            ? LedgerTypes.credit
+            : LedgerTypes.debit,
         label,
         ...(tellerName && tellerInfo),
         amount: Number(amount),
@@ -687,7 +816,7 @@ export default connect(
 
 const styles = StyleSheet.create({
   selectionPicker: {
-    width: '47.5%',
+    width: "47.5%",
   },
   inputStyle: {
     marginTop: 20,
@@ -714,27 +843,27 @@ const styles = StyleSheet.create({
   },
   existingFilesContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     marginVertical: 10,
   },
   iconView: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
   },
   fileContainer: {
     flex: 4,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   existingFileName: {
     color: theme.colors.primaryColor,
   },
   formContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   formColumn: {
-    width: '47.5%',
+    width: "47.5%",
   },
 });

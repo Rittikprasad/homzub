@@ -1,12 +1,12 @@
-import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import DocumentPicker from 'react-native-document-picker';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ArrayUtils } from '@homzhub/common/src/utils/ArrayUtils';
-import { IDocumentSource } from '@homzhub/common/src/services/AttachmentService/interfaces';
-import { I18nService } from '@homzhub/common/src/services/Localization/i18nextService';
-import FileUpload from '@homzhub/common/src/components/atoms/FileUpload';
-import { UploadBox } from '@homzhub/common/src/components/molecules/UploadBox';
+import React from "react";
+import { StyleProp, ViewStyle } from "react-native";
+import DocumentPicker from "react-native-document-picker";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ArrayUtils } from "@homzhub/common/src/utils/ArrayUtils";
+import { IDocumentSource } from "@homzhub/common/src/services/AttachmentService/interfaces";
+import { I18nService } from "@homzhub/common/src/services/Localization/i18nextService";
+import FileUpload from "@homzhub/common/src/components/atoms/FileUpload";
+import { UploadBox } from "@homzhub/common/src/components/molecules/UploadBox";
 
 interface IProps {
   icon: string;
@@ -27,18 +27,23 @@ interface IProps {
 }
 
 const UploadBoxComponent = (props: IProps): React.ReactElement => {
-  const { attachments, onDelete, allowedTypes, onCapture, children, ...rest } = props;
+  const { attachments, onDelete, allowedTypes, onCapture, children, ...rest } =
+    props;
 
   const captureDocument = async (): Promise<void> => {
-    const pickType = allowedTypes || [DocumentPicker.types.images, DocumentPicker.types.pdf];
+    const pickType = allowedTypes || [
+      DocumentPicker.types.images,
+      DocumentPicker.types.pdf,
+    ];
     try {
-      let documents = await DocumentPicker.pickMultiple({
+      let documents = await DocumentPicker.pick({
+        allowMultiSelection: true,
         // @ts-ignore
         type: pickType,
       });
-      if (ArrayUtils.haveDuplicateObjects(attachments, documents, 'uri')) {
+      if (ArrayUtils.haveDuplicateObjects(attachments, documents, "uri")) {
         documents = attachments;
-        throw new Error(I18nService.t('common:duplicateUpload'));
+        throw new Error(I18nService.t("common:duplicateUpload"));
       }
       onCapture(documents);
     } catch (e) {

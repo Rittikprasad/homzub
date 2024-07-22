@@ -101,6 +101,8 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
     }
     const isPlaceholderStyle = selectedValue === "" || !availableDate();
 
+    console.log("available date", availableDate());
+
     return (
       <View style={containerStyle}>
         <TextField type={textSize} textType={fontType} style={labelStyles}>
@@ -135,7 +137,9 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
                 dateStyle,
               ]}
             >
-              {availableDate() || placeHolder}
+              {selectedValue
+                ? moment(availableDate()).format("MMM DD,YYYY") || placeHolder
+                : availableDate() || placeHolder}
             </Text>
           </View>
 

@@ -53,9 +53,20 @@ export const DateFormats = {
   HHMM_AP: "hh:mm A",
   DDMM_YYYY_HH_MM: "DD MMM, YYYY - H:mm ",
   D_MMM_YYYY: "D MMM, YYYY",
+  MM_DD_YYYY: "MM/DD/YYYY",
+  MMM_D_YYYY: "MMM DD, YYYY",
 };
 
 class DateUtils {
+  public findDateFormat = (date: any) => {
+    const formats = Object.values(DateFormats);
+    for (let format of formats) {
+      if (moment(date, format, true).isValid()) {
+        return format;
+      }
+    }
+    return null;
+  };
   public getFullMonthName = (monthIndex: number, format: string): string => {
     return moment().month(monthIndex).format(format);
   };
@@ -76,7 +87,12 @@ class DateUtils {
   };
 
   public getDisplayDate = (date: string, format: string): string => {
-    return moment(date).format(format);
+    const dateFormat = this.findDateFormat(date);
+    if (!dateFormat) {
+      console.error("Invalid date format", date);
+      return null;
+    }
+    return moment(date, dateFormat).format(format);
   };
 
   public getUtcDisplayDate = (date: string, format: string): string => {

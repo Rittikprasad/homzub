@@ -1,46 +1,61 @@
-import React, { PureComponent } from 'react';
-import { FlatList, Share, StyleSheet, View, TouchableOpacity } from 'react-native';
-import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { Formik, FormikProps, FormikValues } from 'formik';
-import * as yup from 'yup';
-import { debounce, isEqual } from 'lodash';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { FormUtils } from '@homzhub/common/src/utils/FormUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { AssetRepository } from '@homzhub/common/src/domain/repositories/AssetRepository';
-import { ICreateDocumentPayload, IDocumentPayload } from '@homzhub/common/src/domain/repositories/interfaces';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { LinkingService } from '@homzhub/mobile/src/services/LinkingService';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { AssetActions } from '@homzhub/common/src/modules/asset/actions';
-import { AssetSelectors } from '@homzhub/common/src/modules/asset/selectors';
-import { AssetDocument } from '@homzhub/common/src/domain/models/AssetDocument';
-import { IGetDocumentPayload } from '@homzhub/common/src/modules/asset/interfaces';
-import { PortfolioSelectors } from '@homzhub/common/src/modules/portfolio/selectors';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { CommonParamList } from '@homzhub/mobile/src/navigation/Common';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { EmptyState } from '@homzhub/common/src/components/atoms/EmptyState';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { BottomSheet } from '@homzhub/common/src/components/molecules/BottomSheet';
-import { FormButton } from '@homzhub/common/src/components/molecules/FormButton';
-import { FormTextInput } from '@homzhub/common/src/components/molecules/FormTextInput';
-import IconSheet from '@homzhub/mobile/src/components/molecules/IconSheet';
-import { SearchBar } from '@homzhub/common/src/components/molecules/SearchBar';
-import { UploadBox } from '@homzhub/common/src/components/molecules/UploadBox';
-import { UserScreen } from '@homzhub/mobile/src/components/HOC/UserScreen';
-import { DocumentCard } from '@homzhub/mobile/src/components';
-import { IUploadAttachmentResponse } from '@homzhub/common/src/components/organisms/AddRecordForm';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { UserProfile } from '@homzhub/common/src/domain/models/UserProfile';
-import { NavigationScreenProps, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
+import React, { PureComponent } from "react";
+import {
+  FlatList,
+  Share,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import DocumentPicker, {
+  DocumentPickerResponse,
+} from "react-native-document-picker";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { WithTranslation, withTranslation } from "react-i18next";
+import { Formik, FormikProps, FormikValues } from "formik";
+import * as yup from "yup";
+import { debounce, isEqual } from "lodash";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { FormUtils } from "@homzhub/common/src/utils/FormUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
+import {
+  ICreateDocumentPayload,
+  IDocumentPayload,
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { LinkingService } from "@homzhub/mobile/src/services/LinkingService";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import { AssetActions } from "@homzhub/common/src/modules/asset/actions";
+import { AssetSelectors } from "@homzhub/common/src/modules/asset/selectors";
+import { AssetDocument } from "@homzhub/common/src/domain/models/AssetDocument";
+import { IGetDocumentPayload } from "@homzhub/common/src/modules/asset/interfaces";
+import { PortfolioSelectors } from "@homzhub/common/src/modules/portfolio/selectors";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { CommonParamList } from "@homzhub/mobile/src/navigation/Common";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { EmptyState } from "@homzhub/common/src/components/atoms/EmptyState";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import { BottomSheet } from "@homzhub/common/src/components/molecules/BottomSheet";
+import { FormButton } from "@homzhub/common/src/components/molecules/FormButton";
+import { FormTextInput } from "@homzhub/common/src/components/molecules/FormTextInput";
+import IconSheet from "@homzhub/mobile/src/components/molecules/IconSheet";
+import { SearchBar } from "@homzhub/common/src/components/molecules/SearchBar";
+import { UploadBox } from "@homzhub/common/src/components/molecules/UploadBox";
+import { UserScreen } from "@homzhub/mobile/src/components/HOC/UserScreen";
+import { DocumentCard } from "@homzhub/mobile/src/components";
+import { IUploadAttachmentResponse } from "@homzhub/common/src/components/organisms/AddRecordForm";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { UserProfile } from "@homzhub/common/src/domain/models/UserProfile";
+import {
+  NavigationScreenProps,
+  ScreensKeys,
+} from "@homzhub/mobile/src/navigation/interfaces";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
+import RNFetchBlob from "rn-fetch-blob";
 
 interface IStateProps {
   currentAssetId: number;
@@ -65,7 +80,10 @@ interface IDocumentState {
   showIconSheet: boolean;
 }
 
-type NavProps = NavigationScreenProps<CommonParamList, ScreensKeys.DocumentScreen>;
+type NavProps = NavigationScreenProps<
+  CommonParamList,
+  ScreensKeys.DocumentScreen
+>;
 type Props = IStateProps & IDispatchProps & WithTranslation & NavProps;
 
 export class Documents extends PureComponent<Props, IDocumentState> {
@@ -89,15 +107,15 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       route: { params },
     } = this.props;
     this.state = {
-      searchValue: '',
+      searchValue: "",
       documents: [],
       isLoading: false,
-      header: params?.screenTitle ?? t('assetPortfolio:portfolio'),
+      header: params?.screenTitle ?? t("assetPortfolio:portfolio"),
       selectedDocumentId: -1,
       showRenameBottomSheet: false,
       showDeleteSheet: false,
       formValues: {
-        fileName: '',
+        fileName: "",
       },
       showIconSheet: false,
     };
@@ -132,7 +150,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     return (
       <UserScreen
         title={header}
-        pageTitle={t('assetMore:documents')}
+        pageTitle={t("assetMore:documents")}
         onBackPress={navigation.goBack}
         loading={isLoading}
       >
@@ -140,14 +158,14 @@ export class Documents extends PureComponent<Props, IDocumentState> {
           {!params.isFromTenancies && (
             <UploadBox
               icon={icons.document}
-              header={t('uploadDocument')}
-              subHeader={t('uploadDocHelperText')}
+              header={t("uploadDocument")}
+              subHeader={t("uploadDocHelperText")}
               containerStyle={styles.uploadBox}
               onPress={this.onCapture}
             />
           )}
           <SearchBar
-            placeholder={t('assetMore:searchByDoc')}
+            placeholder={t("assetMore:searchByDoc")}
             value={searchValue}
             updateValue={this.onSearch}
             testID="searchBar"
@@ -170,7 +188,9 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     return (
       <FlatList
         data={documents}
-        renderItem={({ item }): React.ReactElement => this.renderDocumentCard(item)}
+        renderItem={({ item }): React.ReactElement =>
+          this.renderDocumentCard(item)
+        }
         ItemSeparatorComponent={this.renderSeparatorComponent}
         keyExtractor={this.renderKeyExtractor}
         showsVerticalScrollIndicator={false}
@@ -181,7 +201,8 @@ export class Documents extends PureComponent<Props, IDocumentState> {
 
   private renderRenameBottomSheet = (): React.ReactElement | null => {
     const { t } = this.props;
-    const { showRenameBottomSheet, formValues, selectedDocumentId, isLoading } = this.state;
+    const { showRenameBottomSheet, formValues, selectedDocumentId, isLoading } =
+      this.state;
     if (selectedDocumentId === -1) return null;
 
     const BottomSheetContent = (): React.ReactElement => {
@@ -196,7 +217,8 @@ export class Documents extends PureComponent<Props, IDocumentState> {
             {(formProps: FormikProps<FormikValues>): React.ReactElement => {
               const onPress = (): void => formProps.handleSubmit();
 
-              const onPressCross = (): void => formProps.setFieldValue('fileName', '');
+              const onPressCross = (): void =>
+                formProps.setFieldValue("fileName", "");
 
               const renderCrossMark = (): React.ReactNode => (
                 <Button
@@ -222,10 +244,12 @@ export class Documents extends PureComponent<Props, IDocumentState> {
                   <FormButton
                     type="primary"
                     formProps={formProps}
-                    title={t('common:save')}
+                    title={t("common:save")}
                     onPress={onPress}
                     containerStyle={styles.saveButton}
-                    disabled={formProps.values.fileName.length === 0 || isLoading}
+                    disabled={
+                      formProps.values.fileName.length === 0 || isLoading
+                    }
                   />
                 </>
               );
@@ -238,7 +262,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     return (
       <BottomSheet
         visible={showRenameBottomSheet}
-        headerTitle={t('common:rename')}
+        headerTitle={t("common:rename")}
         onCloseSheet={this.onCloseRenameBottomSheet}
         sheetHeight={theme.viewport.height / 2.7}
       >
@@ -254,21 +278,25 @@ export class Documents extends PureComponent<Props, IDocumentState> {
 
     const renderRightNode = (): React.ReactElement => (
       <TouchableOpacity key={item.id.toString()} onPress={openIconSheet}>
-        <Icon name={icons.verticalDots} color={theme.colors.primaryColor} size={18} />
+        <Icon
+          name={icons.verticalDots}
+          color={theme.colors.primaryColor}
+          size={18}
+        />
       </TouchableOpacity>
     );
 
     const handleOpenDocument = async (): Promise<void> => {
       const result = await LinkingService.canOpenURL(item.attachment.link);
       if (!result) {
-        AlertHelper.error({ message: t('common:genericErrorMessage') });
+        AlertHelper.error({ message: t("common:genericErrorMessage") });
       }
     };
 
     return (
       <DocumentCard
         document={item}
-        userEmail={user?.email ?? ''}
+        userEmail={user?.email ?? ""}
         testID="documentCard"
         showIcons={false}
         leftIcon={icons.doc}
@@ -287,22 +315,22 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     const iconData = [
       {
         icon: getIcon(icons.noteBookOutlined),
-        label: t('common:rename'),
+        label: t("common:rename"),
         onPress: this.onSelectRename,
       },
       {
         icon: getIcon(icons.shareFilled),
-        label: t('common:share'),
+        label: t("common:share"),
         onPress: this.onSelectShare,
       },
       {
         icon: getIcon(icons.download),
-        label: t('common:download'),
+        label: t("common:download"),
         onPress: this.onSelectDownload,
       },
       {
         icon: getIcon(icons.trash),
-        label: t('common:delete'),
+        label: t("common:delete"),
         onPress: this.onPressDelete,
       },
     ];
@@ -313,7 +341,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
         onCloseSheet={this.onCloseIconSheet}
         numOfColumns={4}
         sheetHeight={theme.viewport.height / 3}
-        headerTitle={t('assetMore:documentOptions')}
+        headerTitle={t("assetMore:documentOptions")}
       />
     );
   };
@@ -321,25 +349,31 @@ export class Documents extends PureComponent<Props, IDocumentState> {
   private renderDeleteConfirmation = (): React.ReactElement => {
     const { t } = this.props;
     const { showDeleteSheet, selectedDocumentId, documents } = this.state;
-    const selectedDocument = documents.filter((item) => item.id === selectedDocumentId)[0];
+    const selectedDocument = documents.filter(
+      (item) => item.id === selectedDocumentId
+    )[0];
     return (
       <BottomSheet
         visible={showDeleteSheet}
-        headerTitle={t('property:deleteDocument')}
+        headerTitle={t("property:deleteDocument")}
         sheetHeight={theme.viewport.height / 2.7}
       >
         <View style={styles.deleteContainer}>
-          <Text type="small">{t('property:deleteConfirmation', { name: selectedDocument?.attachment.fileName })}</Text>
+          <Text type="small">
+            {t("property:deleteConfirmation", {
+              name: selectedDocument?.attachment.fileName,
+            })}
+          </Text>
           <View style={styles.buttonContainer}>
             <Button
               type="secondary"
-              title={t('common:cancel')}
+              title={t("common:cancel")}
               containerStyle={[styles.button, styles.buttonView]}
               onPress={this.onCloseDeleteSheet}
             />
             <Button
               type="primary"
-              title={t('common:delete')}
+              title={t("common:delete")}
               containerStyle={[styles.button, styles.deleteButton]}
               onPress={this.onSelectDelete}
             />
@@ -376,12 +410,16 @@ export class Documents extends PureComponent<Props, IDocumentState> {
   private onPressDelete = (): void => {
     const { user, t } = this.props;
     const { selectedDocumentId, documents } = this.state;
-    const selectedDocument = documents.filter((i) => i.id === selectedDocumentId)[0];
-    const isDeleteAllowed = !selectedDocument.isSystemGenerated && selectedDocument.user?.id === user?.id;
+    const selectedDocument = documents.filter(
+      (i) => i.id === selectedDocumentId
+    )[0];
+    const isDeleteAllowed =
+      !selectedDocument.isSystemGenerated &&
+      selectedDocument.user?.id === user?.id;
     if (isDeleteAllowed) {
       this.setState({ showDeleteSheet: true });
     } else {
-      AlertHelper.error({ message: t('property:cannotDeleteSystemDocuments') });
+      AlertHelper.error({ message: t("property:cannotDeleteSystemDocuments") });
     }
   };
 
@@ -393,32 +431,42 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     const { t } = this.props;
 
     try {
-      const documents = await DocumentPicker.pickMultiple({
+      const documents = await DocumentPicker.pick({
+        allowMultiSelection: true,
         type: [DocumentPicker.types.images, DocumentPicker.types.pdf],
       });
 
       /* Check if more than 5 are uploaded */
       if (documents.length > 5) {
-        AlertHelper.error({ message: t('common:maxDocumentUploads', { count: 5 }) });
+        AlertHelper.error({
+          message: t("common:maxDocumentUploads", { count: 5 }),
+        });
         return;
       }
       /* Upload those which are lesser than 5mb only */
-      const validDocuments = documents.filter((document) => document.size <= 5000000);
+      const validDocuments = documents.filter(
+        (document) => document.size <= 5000000
+      );
 
       /* If no file is of size lesser than 5mb, stop uploading */
       if (validDocuments.length === 0) {
-        AlertHelper.error({ message: t('common:docsExceedMaxSize', { size: '5mb' }) });
+        AlertHelper.error({
+          message: t("common:docsExceedMaxSize", { size: "5mb" }),
+        });
         return;
       }
 
       /* If some files are valid, upload only them and reject the rest invalid docs with an error message */
       if (!isEqual(documents, validDocuments)) {
-        AlertHelper.error({ message: t('common:someFilesWereNotUploaded', { size: '5 mb' }) });
+        AlertHelper.error({
+          message: t("common:someFilesWereNotUploaded", { size: "5 mb" }),
+        });
       }
+      console.log("valid documents", validDocuments);
       await this.uploadDocument(validDocuments);
     } catch (e) {
       if (!DocumentPicker.isCancel(e)) {
-        AlertHelper.error({ message: t('pleaseTryAgain') });
+        AlertHelper.error({ message: t("pleaseTryAgain") });
       }
     }
   };
@@ -434,7 +482,9 @@ export class Documents extends PureComponent<Props, IDocumentState> {
         assetDocumentId: selectedDocumentId,
         fileName,
       });
-      AlertHelper.success({ message: t('assetFinancial:renamedSuccessfullyMessage') });
+      AlertHelper.success({
+        message: t("assetFinancial:renamedSuccessfullyMessage"),
+      });
       this.setState({ isLoading: false });
       this.getDocuments();
     } catch (e) {
@@ -446,10 +496,12 @@ export class Documents extends PureComponent<Props, IDocumentState> {
   private onSelectShare = async (): Promise<void> => {
     const { selectedDocumentId, documents } = this.state;
     const { t } = this.props;
-    const currentDocumentLink = documents.filter((i) => i.id === selectedDocumentId)[0].attachment.link;
+    const currentDocumentLink = documents.filter(
+      (i) => i.id === selectedDocumentId
+    )[0].attachment.link;
     try {
       await Share.share({
-        message: `${t('assetMore:shareDoc')} ${currentDocumentLink}`,
+        message: `${t("assetMore:shareDoc")} ${currentDocumentLink}`,
       });
     } catch (error) {
       AlertHelper.error({ message: error });
@@ -458,7 +510,9 @@ export class Documents extends PureComponent<Props, IDocumentState> {
 
   private onSelectDownload = async (): Promise<void> => {
     const { documents, selectedDocumentId } = this.state;
-    const { presignedReferenceKey: key, fileName } = documents.filter((i) => i.id === selectedDocumentId)[0].attachment;
+    const { presignedReferenceKey: key, fileName } = documents.filter(
+      (i) => i.id === selectedDocumentId
+    )[0].attachment;
     this.setState({ isLoading: true });
     await AttachmentService.downloadAttachment(key, fileName);
     this.setState({ isLoading: false });
@@ -469,9 +523,14 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     const { currentAssetId, t } = this.props;
     this.setState({ isLoading: true, showDeleteSheet: false });
     try {
-      await AssetRepository.deleteAssetDocument(currentAssetId, selectedDocumentId);
+      await AssetRepository.deleteAssetDocument(
+        currentAssetId,
+        selectedDocumentId
+      );
       this.getDocuments();
-      AlertHelper.success({ message: t('assetFinancial:deletedSuccessfullyMessage') });
+      AlertHelper.success({
+        message: t("assetFinancial:deletedSuccessfullyMessage"),
+      });
       this.setState({ isLoading: false });
     } catch (e) {
       this.setState({ isLoading: false });
@@ -483,7 +542,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     const { documents, selectedDocumentId } = this.state;
     const currentFileName = documents
       .filter((item) => item.id === selectedDocumentId)[0]
-      .attachment.fileName.split('.')
+      .attachment.fileName.split(".")
       .reverse()
       .slice(1)
       .toString();
@@ -515,29 +574,55 @@ export class Documents extends PureComponent<Props, IDocumentState> {
     });
   };
 
-  private uploadDocument = async (DocumentSource: DocumentPickerResponse[]): Promise<void> => {
+  private uploadDocument = async (
+    DocumentSource: DocumentPickerResponse[]
+  ): Promise<void> => {
     const { currentAssetId, assetData } = this.props;
 
     const formData = new FormData();
-    DocumentSource.forEach((documentSource) => {
-      // @ts-ignore
-      formData.append('files[]', documentSource);
-    });
+    for (let i = 0; i < DocumentSource.length; i++) {
+      formData.append("files[]", {
+        uri: DocumentSource[i].uri,
+        type: DocumentSource[i].type,
+        name: DocumentSource[i].name,
+      });
+    }
 
     const returnDocumentData = (id: number): IDocumentPayload => ({
       attachment: id,
       ...(assetData?.assetStatusInfo?.leaseListingId && {
         lease_listing_id: assetData?.assetStatusInfo.leaseListingId,
       }),
-      ...(assetData?.assetStatusInfo?.saleListingId && { sale_listing_id: assetData?.assetStatusInfo.saleListingId }),
+      ...(assetData?.assetStatusInfo?.saleListingId && {
+        sale_listing_id: assetData?.assetStatusInfo.saleListingId,
+      }),
     });
+
+    // const formData = new FormData();
+    // DocumentSource.forEach((documentSource) => {
+    //   const file = {
+    //     uri: documentSource.uri,
+    //     type: documentSource.type,
+    //     name: documentSource.name,
+    //   };
+    //   formData.append("files[]", file);
+    // });
+
+    // // Log FormData content for debugging
+    // for (let pair of (formData as any)._parts) {
+    //   console.log(pair[0], pair[1]);
+    // }
 
     try {
       this.setState({ isLoading: true });
-      const response = await AttachmentService.uploadImage(formData, AttachmentType.ASSET_DOCUMENT);
-      const { data } = response;
-      const documentData: IDocumentPayload[] = data.map((item: IUploadAttachmentResponse) =>
-        returnDocumentData(item.id)
+      const response = await AttachmentService.uploadImage(
+        formData,
+        AttachmentType.ASSET_DOCUMENT
+      );
+      console.log(response);
+      const { data } = response.json();
+      const documentData: IDocumentPayload[] = data.map(
+        (item: IUploadAttachmentResponse) => returnDocumentData(item.id)
       );
       const payload: ICreateDocumentPayload = {
         propertyId: currentAssetId,
@@ -556,7 +641,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
   private validateForm = (): yup.ObjectSchema => {
     const { t } = this.props;
     return yup.object().shape({
-      fileName: yup.string().required(t('moreProfile:fieldRequiredError')),
+      fileName: yup.string().required(t("moreProfile:fieldRequiredError")),
     });
   };
 
@@ -567,7 +652,9 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       route: { params },
       navigation,
     } = this.props;
-    const assetId = params?.isFromDashboard ? params?.propertyId ?? -1 : currentAssetId;
+    const assetId = params?.isFromDashboard
+      ? params?.propertyId ?? -1
+      : currentAssetId;
     this.setState({ isLoading: true });
     getAssetDocument({ assetId, onCallback: this.getDocumentCallback });
     navigation.setParams({ shouldReload: false });
@@ -583,17 +670,21 @@ export class Documents extends PureComponent<Props, IDocumentState> {
       route: { params },
     } = this.props;
 
-    const returnWithComma = (text: string): string => (text.length > 0 ? `${text}, ` : text);
+    const returnWithComma = (text: string): string =>
+      text.length > 0 ? `${text}, ` : text;
 
     try {
       if (params?.propertyId) {
-        const requiredFields = ['project_name', 'unit_number', 'block_number'];
+        const requiredFields = ["project_name", "unit_number", "block_number"];
         this.setState({ isLoading: true });
-        const { projectName, unitNumber, blockNumber } = await AssetRepository.getRequiredAssetFieldsById(
-          params.propertyId,
-          requiredFields
-        );
-        const headerText = `${returnWithComma(unitNumber)}${returnWithComma(blockNumber)}${projectName}`;
+        const { projectName, unitNumber, blockNumber } =
+          await AssetRepository.getRequiredAssetFieldsById(
+            params.propertyId,
+            requiredFields
+          );
+        const headerText = `${returnWithComma(unitNumber)}${returnWithComma(
+          blockNumber
+        )}${projectName}`;
         this.setState({ header: headerText, isLoading: false });
       }
     } catch (e) {
@@ -617,7 +708,9 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
   return bindActionCreators({ getAssetDocument }, dispatch);
 };
 
-export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Documents));
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(Documents)
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -653,7 +746,7 @@ const styles = StyleSheet.create({
     margin: 16,
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 40,
   },
   button: {
