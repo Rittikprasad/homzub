@@ -123,8 +123,7 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
             // @ts-ignore
             formData.append(
               "files[]",
-              quoteItem.document.uri,
-              quoteItem.document.name
+              quoteItem.document
             );
             console.log(formData, "formdata");
             // Upload Attachment to S3 and get attachment id
@@ -132,7 +131,6 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
               formData,
               AttachmentType.TICKET_DOCUMENTS
             );
-            console.log(response, "tttt");
             const { data, error } = response;
             if (data && data.length) {
               updatedData.push({

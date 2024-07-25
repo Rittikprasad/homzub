@@ -36,7 +36,7 @@ class AttachmentService {
           body: formData,
         }
       );
-      console.log(response);
+      console.log(response,'ghfd');
       const responseJson = await response.json();
 
       return { data: responseJson, error: null };

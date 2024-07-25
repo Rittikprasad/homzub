@@ -61,6 +61,7 @@ class PropertyImages extends React.PureComponent<Props, IPropertyImagesState> {
     const { t, onUploadImage, selectedImages, containerStyle, isButtonVisible = true } = this.props;
     const { isBottomSheetVisible, videoUrl } = this.state;
     const header = selectedImages.length > 0 ? t('property:addMore') : t('property:addPhotos');
+    console.log(onUploadImage,"jdfhjkd")
 
     return (
       <>

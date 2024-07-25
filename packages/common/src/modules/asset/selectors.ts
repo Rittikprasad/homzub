@@ -201,6 +201,7 @@ const getAssetUser = (state: IState): IAssetUser | null => {
 
   if (assetUsers.length <= 0) return null;
   const users = ObjectMapper.deserializeArray(User, assetUsers);
+  console.log(users,'udgtfjhsafhjsfdjghfgfhdgsdhfggfgfgfgfggfgfgffgfgfg')
   const owners = users
     .filter((item) => item.isAssetOwner)
     .map((item) => {

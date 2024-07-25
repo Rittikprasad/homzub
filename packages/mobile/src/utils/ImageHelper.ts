@@ -45,11 +45,14 @@ class ImageHelper {
           type: image.mime,
         });
       });
+      console.log(formData,'555')
 
       try {
         const response = await AttachmentService.uploadImage(formData, AttachmentType.ASSET_IMAGE);
+       
 
-        const { data } = response;
+        const { data } = response.data;
+        console.log(data,'hsf')
         const localSelectedImages: IPropertySelectedImages[] = [];
         images.forEach((image, index: number) => {
           localSelectedImages.push({
@@ -78,6 +81,7 @@ class ImageHelper {
           toggleLoader(false);
         }
       } catch (e) {
+        console.log('set1')
         if (onCallback) {
           onCallback(false);
         }

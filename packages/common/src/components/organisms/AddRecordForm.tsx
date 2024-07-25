@@ -534,6 +534,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
           date: transactionDate,
         },
       });
+      console.log(existingAttachments,'existingAttachments');
       toggleLoading(false);
     } catch (e) {
       toggleLoading(false);
@@ -709,6 +710,8 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
       paymentModeUsed,
     } = values;
     const existingAttachmentIds = existingAttachments.map((i) => i.id);
+    console.log(existingAttachments, 'existingAttachmentsexistingAttachments')
+
     let uploadedAttachmentIds: Array<number> = [];
 
     toggleLoading(true);
@@ -725,7 +728,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
           formData,
           AttachmentType.ASSET_RECORD
         );
-        const { data } = response;
+        const { data } = response.data;
         uploadedAttachmentIds = data.map(
           (i: IUploadAttachmentResponse) => i.id
         );
