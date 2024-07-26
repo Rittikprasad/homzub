@@ -620,7 +620,7 @@ export class Documents extends PureComponent<Props, IDocumentState> {
         AttachmentType.ASSET_DOCUMENT
       );
       console.log(response);
-      const { data } = response.json();
+      const { data } = response.data;
       const documentData: IDocumentPayload[] = data.map(
         (item: IUploadAttachmentResponse) => returnDocumentData(item.id)
       );

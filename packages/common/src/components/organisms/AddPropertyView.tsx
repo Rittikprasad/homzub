@@ -1,34 +1,42 @@
-import React, { Component, ReactElement } from 'react';
-import { LayoutChangeEvent, StyleSheet, View } from 'react-native';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { TabView } from 'react-native-tab-view';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { IWithMediaQuery, withMediaQuery } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { RecordAssetActions } from '@homzhub/common/src/modules/recordAsset/actions';
-import { PortfolioActions } from '@homzhub/common/src/modules/portfolio/actions';
-import { PortfolioSelectors } from '@homzhub/common/src/modules/portfolio/selectors';
-import { RecordAssetSelectors } from '@homzhub/common/src/modules/recordAsset/selectors';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Text } from '@homzhub/common/src/components/atoms/Text';
-import { AddressWithStepIndicator } from '@homzhub/common/src/components/molecules/AddressWithStepIndicator';
-import { AddPropertyDetails } from '@homzhub/common/src/components/organisms/AddPropertyDetails';
-import AssetHighlights from '@homzhub/common/src/components/organisms/AssetHighlights';
-import { PropertyImages } from '@homzhub/common/src/components/organisms/PropertyImages';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { Amenity } from '@homzhub/common/src/domain/models/Amenity';
-import { AssetGallery } from '@homzhub/common/src/domain/models/AssetGallery';
-import { SpaceType } from '@homzhub/common/src/domain/models/AssetGroup';
-import { ILastVisitedStep } from '@homzhub/common/src/domain/models/LastVisitedStep';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { ISetAssetPayload } from '@homzhub/common/src/modules/portfolio/interfaces';
-import { DetailType } from '@homzhub/common/src/domain/repositories/interfaces';
-import { IEditPropertyFlow } from '@homzhub/common/src/modules/recordAsset/interface';
-import { AddPropertyRoutes, AddPropertySteps, IRoutes, Tabs } from '@homzhub/common/src/constants/Tabs';
-import { ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
+import React, { Component, ReactElement } from "react";
+import { LayoutChangeEvent, StyleSheet, View } from "react-native";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { TabView } from "react-native-tab-view";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { isEmpty } from "lodash";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import {
+  IWithMediaQuery,
+  withMediaQuery,
+} from "@homzhub/common/src/utils/MediaQueryUtils";
+import { RecordAssetActions } from "@homzhub/common/src/modules/recordAsset/actions";
+import { PortfolioActions } from "@homzhub/common/src/modules/portfolio/actions";
+import { PortfolioSelectors } from "@homzhub/common/src/modules/portfolio/selectors";
+import { RecordAssetSelectors } from "@homzhub/common/src/modules/recordAsset/selectors";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Text } from "@homzhub/common/src/components/atoms/Text";
+import { AddressWithStepIndicator } from "@homzhub/common/src/components/molecules/AddressWithStepIndicator";
+import { AddPropertyDetails } from "@homzhub/common/src/components/organisms/AddPropertyDetails";
+import AssetHighlights from "@homzhub/common/src/components/organisms/AssetHighlights";
+import { PropertyImages } from "@homzhub/common/src/components/organisms/PropertyImages";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { Amenity } from "@homzhub/common/src/domain/models/Amenity";
+import { AssetGallery } from "@homzhub/common/src/domain/models/AssetGallery";
+import { SpaceType } from "@homzhub/common/src/domain/models/AssetGroup";
+import { ILastVisitedStep } from "@homzhub/common/src/domain/models/LastVisitedStep";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import { ISetAssetPayload } from "@homzhub/common/src/modules/portfolio/interfaces";
+import { DetailType } from "@homzhub/common/src/domain/repositories/interfaces";
+import { IEditPropertyFlow } from "@homzhub/common/src/modules/recordAsset/interface";
+import {
+  AddPropertyRoutes,
+  AddPropertySteps,
+  IRoutes,
+  Tabs,
+} from "@homzhub/common/src/constants/Tabs";
+import { ScreensKeys } from "@homzhub/mobile/src/navigation/interfaces";
 
 interface IScreenState {
   currentIndex: number;
@@ -70,12 +78,17 @@ interface IDispatchProps {
   setSelectedImages: (payload: AssetGallery[]) => void;
 }
 
-type Props = WithTranslation & IStateProps & IDispatchProps & IProps & IWithMediaQuery;
+type Props = WithTranslation &
+  IStateProps &
+  IDispatchProps &
+  IProps &
+  IWithMediaQuery;
 
 class AddPropertyView extends Component<Props, IScreenState> {
   constructor(props: Props) {
     super(props);
-    const { getAssetById, getAssetGroups, previousScreen, screenHeight } = this.props;
+    const { getAssetById, getAssetGroups, previousScreen, screenHeight } =
+      this.props;
     const height = screenHeight as number;
 
     getAssetGroups();
@@ -92,7 +105,10 @@ class AddPropertyView extends Component<Props, IScreenState> {
     };
   }
 
-  public static getDerivedStateFromProps(props: Props, state: IScreenState): IScreenState | null {
+  public static getDerivedStateFromProps(
+    props: Props,
+    state: IScreenState
+  ): IScreenState | null {
     const { assetDetail } = props;
     const { currentIndex, isNextStep } = state;
     if (!isNextStep && assetDetail) {
@@ -163,15 +179,24 @@ class AddPropertyView extends Component<Props, IScreenState> {
           {tabTitle}
         </Text>
         {currentIndex > 0 && (
-          <Text type="small" textType="semiBold" style={styles.skip} onPress={this.handleSkip}>
-            {t('skip')}
+          <Text
+            type="small"
+            textType="semiBold"
+            style={styles.skip}
+            onPress={this.handleSkip}
+          >
+            {t("skip")}
           </Text>
         )}
       </View>
     );
   };
 
-  private renderScene = ({ route }: { route: IRoutes }): ReactElement | null => {
+  private renderScene = ({
+    route,
+  }: {
+    route: IRoutes;
+  }): ReactElement | null => {
     const {
       spaceTypes,
       assetDetail,
@@ -184,6 +209,7 @@ class AddPropertyView extends Component<Props, IScreenState> {
       editPropertyFlowDetails: { isEditPropertyFlow },
       isMobile,
     } = this.props;
+    console.log("this is property images");
 
     if (!lastVisitedStep) return null;
 
@@ -223,7 +249,11 @@ class AddPropertyView extends Component<Props, IScreenState> {
               lastVisitedStep={lastVisitedStep}
               onUploadImage={onUploadImage}
               setSelectedImages={setSelectedImages}
-              containerStyle={isMobile && PlatformUtils.isWeb() ? styles.flexOne : styles.propertyImagesContainer}
+              containerStyle={
+                isMobile && PlatformUtils.isWeb()
+                  ? styles.flexOne
+                  : styles.propertyImagesContainer
+              }
             />
           </View>
         );
@@ -266,7 +296,10 @@ class AddPropertyView extends Component<Props, IScreenState> {
 
     const value = index - currentIndex;
     const notCompletedStep = assetCreation.stepList.findIndex((item) => !item);
-    if (index < currentIndex || (index > currentIndex && index !== notCompletedStep)) {
+    if (
+      index < currentIndex ||
+      (index > currentIndex && index !== notCompletedStep)
+    ) {
       this.setState({ currentIndex: currentIndex + value, isNextStep: true });
       if (PlatformUtils.isMobile() && scrollToTop) {
         scrollToTop();
@@ -346,7 +379,11 @@ class AddPropertyView extends Component<Props, IScreenState> {
       setCurrentAsset({
         asset_id: id,
         listing_id: leaseTerm?.id ?? saleTerm?.id ?? 0,
-        assetType: leaseTerm ? DetailType.LEASE_LISTING : saleTerm ? DetailType.SALE_LISTING : DetailType.ASSET,
+        assetType: leaseTerm
+          ? DetailType.LEASE_LISTING
+          : saleTerm
+          ? DetailType.SALE_LISTING
+          : DetailType.ASSET,
       });
     }
   };
@@ -378,21 +415,37 @@ const mapStateToProps = (state: IState): IStateProps => {
 };
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
-  const { getAssetById, resetState, getAssetGroups, setEditPropertyFlow, setSelectedImages } = RecordAssetActions;
+  const {
+    getAssetById,
+    resetState,
+    getAssetGroups,
+    setEditPropertyFlow,
+    setSelectedImages,
+  } = RecordAssetActions;
   const { setCurrentAsset } = PortfolioActions;
   return bindActionCreators(
-    { getAssetById, resetState, getAssetGroups, setEditPropertyFlow, setCurrentAsset, setSelectedImages },
+    {
+      getAssetById,
+      resetState,
+      getAssetGroups,
+      setEditPropertyFlow,
+      setCurrentAsset,
+      setSelectedImages,
+    },
     dispatch
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withMediaQuery<Props>(AddPropertyView)));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(withMediaQuery<Props>(AddPropertyView)));
 
 const styles = StyleSheet.create({
   tabHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     marginHorizontal: 16,
   },
   title: {

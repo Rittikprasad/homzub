@@ -1,22 +1,26 @@
-import React, { FC, useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import { useHistory } from 'react-router-dom';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { TFunction } from 'i18next';
-import { useTranslation } from 'react-i18next';
-import ReactTooltip from 'react-tooltip';
-import { NavigationService } from '@homzhub/web/src/services/NavigationService';
-import { RouteNames } from '@homzhub/web/src/router/RouteNames';
-import { UserActions } from '@homzhub/common/src/modules/user/actions';
-import Icon from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import GetAppPopup from '@homzhub/web/src/components/molecules/GetAppPopup';
-import { Hoverable } from '@homzhub/web/src/components/hoc/Hoverable';
-import { IAuthCallback } from '@homzhub/common/src/modules/user/interface';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { IMenuItemList, MenuItemList, sideMenuItems } from '@homzhub/common/src/constants/DashBoard';
+import React, { FC, useState, useEffect } from "react";
+import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { useHistory } from "react-router-dom";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
+import ReactTooltip from "react-tooltip";
+import { NavigationService } from "@homzhub/web/src/services/NavigationService";
+import { RouteNames } from "@homzhub/web/src/router/RouteNames";
+import { UserActions } from "@homzhub/common/src/modules/user/actions";
+import Icon from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import GetAppPopup from "@homzhub/web/src/components/molecules/GetAppPopup";
+import { Hoverable } from "@homzhub/web/src/components/hoc/Hoverable";
+import { IAuthCallback } from "@homzhub/common/src/modules/user/interface";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import {
+  IMenuItemList,
+  MenuItemList,
+  sideMenuItems,
+} from "@homzhub/common/src/constants/DashBoard";
 
 interface IFormProps {
   onItemClick: (ItemId: number) => void;
@@ -48,7 +52,10 @@ const SideMenu: FC<Props> = (props: Props) => {
   useEffect(() => {
     for (let index = 0; index < MenuItemList.length; index++) {
       if (MenuItemList[index].url === pathname) {
-        setSelectedItem({ id: MenuItemList[index].id, url: MenuItemList[index].url });
+        setSelectedItem({
+          id: MenuItemList[index].id,
+          url: MenuItemList[index].url,
+        });
       }
     }
   }, [pathname]);
@@ -75,23 +82,34 @@ const SideMenu: FC<Props> = (props: Props) => {
       logout({
         callback: (status: boolean): void => {
           if (status) {
-            NavigationService.navigate(history, { path: RouteNames.publicRoutes.APP_BASE });
+            NavigationService.navigate(history, {
+              path: RouteNames.publicRoutes.APP_BASE,
+            });
           }
         },
       });
-    } else if (item.name === sideMenuItems.bankDetails || item.name === sideMenuItems.referAndEarn) {
+    } else if (
+      item.name === sideMenuItems.bankDetails ||
+      item.name === sideMenuItems.referAndEarn
+    ) {
       onOpenModal();
     } else {
       NavigationService.navigate(history, { path: MenuItemList[id - 1].url });
     }
   };
-  const isSelectedItem = (id: number): boolean => selectedItem.id === id && selectedItem.url === pathname;
+  const isSelectedItem = (id: number): boolean =>
+    selectedItem.id === id && selectedItem.url === pathname;
   return (
     <View style={styles.menu}>
       {MenuItemList.map((item, index) => {
         return renderMenuItem(item, t, isSelectedItem(item.id), onItemPress);
       })}
-      <GetAppPopup popupRef={popupRefGetApp} onOpenModal={onOpenModal} onCloseModal={onCloseModal} />
+      <Text>hello</Text>
+      <GetAppPopup
+        popupRef={popupRefGetApp}
+        onOpenModal={onOpenModal}
+        onCloseModal={onCloseModal}
+      />
     </View>
   );
 };
@@ -105,7 +123,11 @@ const renderMenuItem = (
   const { menuItem, hoveredItem, activeBar, iconStyle } = styles;
   const iconColor = (isActiveColor: boolean): string => {
     const { error, blue, darkTint4 } = theme.colors;
-    return item.name === sideMenuItems.logout ? error : isActiveColor ? blue : darkTint4;
+    return item.name === sideMenuItems.logout
+      ? error
+      : isActiveColor
+      ? blue
+      : darkTint4;
   };
   let setTooltipTimeout: number;
   const TOOLTIP_TIMEOUT = 2000;
@@ -132,8 +154,19 @@ const renderMenuItem = (
           style={[menuItem, (isHovered || isActive) && hoveredItem]}
         >
           <View style={[activeBar, isActive && { opacity: 100 }]} />
-          <Icon name={item.icon} color={iconColor(isHovered || isActive)} size={24} style={iconStyle} />
-          <ReactTooltip id={item.name} afterShow={hideTooltip} place="right" effect="solid" resizeHide={isHovered}>
+          <Icon
+            name={item.icon}
+            color={iconColor(isHovered || isActive)}
+            size={24}
+            style={iconStyle}
+          />
+          <ReactTooltip
+            id={item.name}
+            afterShow={hideTooltip}
+            place="right"
+            effect="solid"
+            resizeHide={isHovered}
+          >
             <Text style={styles.hoverText}>{t(`${item.name}`)}</Text>
           </ReactTooltip>
         </TouchableOpacity>
@@ -145,8 +178,8 @@ const renderMenuItem = (
 const styles = StyleSheet.create({
   menu: {
     width: 60,
-    flexDirection: 'column',
-    alignSelf: 'flex-start',
+    flexDirection: "column",
+    alignSelf: "flex-start",
     paddingVertical: theme.layout.screenPadding,
     marginRight: 24,
     borderRadius: 4,
@@ -154,9 +187,9 @@ const styles = StyleSheet.create({
     zIndex: 1200,
   },
   menuItem: {
-    position: 'relative',
-    flexDirection: 'row',
-    width: '100%',
+    position: "relative",
+    flexDirection: "row",
+    width: "100%",
     height: 40,
     backgroundColor: theme.colors.white,
   },
@@ -171,8 +204,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primaryColor,
   },
   iconStyle: {
-    alignSelf: 'center',
-    marginHorizontal: 'auto',
+    alignSelf: "center",
+    marginHorizontal: "auto",
   },
   hoverText: {
     color: theme.colors.white,

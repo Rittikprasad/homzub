@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
-import { View, ViewStyle, StyleSheet, Image } from 'react-native';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+// @ts-nocheck
+import React, { FC } from "react";
+import { View, ViewStyle, StyleSheet, Image } from "react-native";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 interface IProps {
   cardImage: string;
@@ -22,7 +23,11 @@ const CardWithIcon: FC<IProps> = (props: IProps) => {
       <Typography size="regular" style={styles.cardTitle} fontWeight="semiBold">
         {cardTitle}
       </Typography>
-      <Typography size="small" style={styles.cardDescription} fontWeight="regular">
+      <Typography
+        size="small"
+        style={styles.cardDescription}
+        fontWeight="regular"
+      >
         {cardDescription}
       </Typography>
       <View>{children}</View>

@@ -1,36 +1,36 @@
-import React, { FC, useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { RouteComponentProps } from 'react-router';
-import { useDown, useUp } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { NavigationService } from '@homzhub/web/src/services/NavigationService';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { RouteNames } from '@homzhub/web/src/router/RouteNames';
-import { CommonSelectors } from '@homzhub/common/src/modules/common/selectors';
-import { UserActions } from '@homzhub/common/src/modules/user/actions';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Loader } from '@homzhub/common/src/components/atoms/Loader';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { LoginForm } from '@homzhub/common/src/components/organisms/LoginForm';
-import { OtpNavTypes } from '@homzhub/web/src/components/organisms/OtpVerification';
-import PhoneCodePrefix from '@homzhub/web/src/components/molecules/PhoneCodePrefix';
-import UserValidationScreensTemplate from '@homzhub/web/src/components/hoc/UserValidationScreensTemplate';
-import { SocialMediaGateway } from '@homzhub/web/src/components/organisms/SocialMediaGateway';
-import { GetToKnowUsCarousel } from '@homzhub/web/src/components/organisms/GetToKnowUsCarousel';
-import { IWebProps } from '@homzhub/common/src/components/molecules/FormTextInput';
-import { IState } from '@homzhub/common/src/modules/interfaces';
+import React, { FC, useState, useEffect } from "react";
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { RouteComponentProps } from "react-router";
+import { useDown, useUp } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { NavigationService } from "@homzhub/web/src/services/NavigationService";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { RouteNames } from "@homzhub/web/src/router/RouteNames";
+import { CommonSelectors } from "@homzhub/common/src/modules/common/selectors";
+import { UserActions } from "@homzhub/common/src/modules/user/actions";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Loader } from "@homzhub/common/src/components/atoms/Loader";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { LoginForm } from "@homzhub/common/src/components/organisms/LoginForm";
+import { OtpNavTypes } from "@homzhub/web/src/components/organisms/OtpVerification";
+import PhoneCodePrefix from "@homzhub/web/src/components/molecules/PhoneCodePrefix";
+import UserValidationScreensTemplate from "@homzhub/web/src/components/hoc/UserValidationScreensTemplate";
+import { SocialMediaGateway } from "@homzhub/web/src/components/organisms/SocialMediaGateway";
+import { GetToKnowUsCarousel } from "@homzhub/web/src/components/organisms/GetToKnowUsCarousel";
+import { IWebProps } from "@homzhub/common/src/components/molecules/FormTextInput";
+import { IState } from "@homzhub/common/src/modules/interfaces";
 import {
   IEmailLoginPayload,
   ILoginFormData,
   ILoginPayload,
   LoginTypes,
-} from '@homzhub/common/src/domain/repositories/interfaces';
-import { ICommonState } from '@homzhub/common/src/modules/common/interfaces';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
-import { StoreProviderService } from '@homzhub/common/src/services/StoreProviderService';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { ICommonState } from "@homzhub/common/src/modules/common/interfaces";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
+import { StoreProviderService } from "@homzhub/common/src/services/StoreProviderService";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IFormData {
   email: string;
@@ -38,7 +38,7 @@ interface IFormData {
 }
 
 interface IStateProps {
-  commonLoaders: ICommonState['loaders'];
+  commonLoaders: ICommonState["loaders"];
 }
 
 interface IDispatchProps {
@@ -78,7 +78,9 @@ const Login: FC<IProps> = (props: IProps) => {
         window.scrollTo(0, 0);
       }
     }, 100);
-    NavigationService.navigate(props.history, { path: RouteNames.protectedRoutes.DASHBOARD });
+    NavigationService.navigate(props.history, {
+      path: RouteNames.protectedRoutes.DASHBOARD,
+    });
   };
 
   const handleSubmitEmailLogin = (values: IFormData): void => {
@@ -116,16 +118,20 @@ const Login: FC<IProps> = (props: IProps) => {
       phoneCode: phone_code,
       otpSentTo: phone_number,
       type: OtpNavTypes.Login,
-      buttonTitle: t('common:login'),
+      buttonTitle: t("common:login"),
       navigationPath: RouteNames.publicRoutes.LOGIN,
     };
+    console.log(compProps, "this is compProps");
+    console.log(props.history, "this is props.history");
     NavigationService.navigate(props.history, {
       path: RouteNames.publicRoutes.OTP_VERIFICATION,
       params: { ...compProps },
     });
   };
   const navigateToScreen = (): void => {
-    NavigationService.navigate(history, { path: RouteNames.publicRoutes.SIGNUP });
+    NavigationService.navigate(history, {
+      path: RouteNames.publicRoutes.SIGNUP,
+    });
   };
   const handleWebView = (params: IWebProps): React.ReactElement => {
     return <PhoneCodePrefix {...params} />;
@@ -136,9 +142,16 @@ const Login: FC<IProps> = (props: IProps) => {
   return (
     <View style={styles.container}>
       <UserValidationScreensTemplate
-        title={t('login')}
-        subTitle={isEmailLogin ? t('auth:loginToAccessHomzhubEmail') : t('auth:loginToAccessHomzhubPhone')}
-        containerStyle={[styles.containerStyle, isTablet && styles.containerStyleTablet]}
+        title={t("login")}
+        subTitle={
+          isEmailLogin
+            ? t("auth:loginToAccessHomzhubEmail")
+            : t("auth:loginToAccessHomzhubPhone")
+        }
+        containerStyle={[
+          styles.containerStyle,
+          isTablet && styles.containerStyleTablet,
+        ]}
         hasBackButton={isEmailLogin}
         backButtonPressed={backToLoginWithPhone}
       >
@@ -163,17 +176,26 @@ const Login: FC<IProps> = (props: IProps) => {
           )}
           <View style={styles.newUser}>
             <Typography variant="label" size="large">
-              {t('auth:newOnPlatform')}
+              {t("auth:newOnPlatform")}
             </Typography>
             <TouchableOpacity onPress={navigateToScreen}>
-              <Typography variant="label" size="large" fontWeight="semiBold" style={styles.createAccount}>
-                {t('auth:createAccount')}
+              <Typography
+                variant="label"
+                size="large"
+                fontWeight="semiBold"
+                style={styles.createAccount}
+              >
+                {t("auth:createAccount")}
               </Typography>
             </TouchableOpacity>
           </View>
         </View>
         {isEmailLogin ? (
-          <SocialMediaGateway isFromLogin containerStyle={styles.socialMediaContainer} history={history} />
+          <SocialMediaGateway
+            isFromLogin
+            containerStyle={styles.socialMediaContainer}
+            history={history}
+          />
         ) : (
           <SocialMediaGateway
             onEmailLogin={handleEmailLogin}
@@ -200,31 +222,34 @@ interface IFormStyles {
   socialMediaContainer: ViewStyle;
 }
 
-const formStyles = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyles<IFormStyles> =>
+const formStyles = (
+  isMobile: boolean,
+  isDesktop: boolean
+): StyleSheet.NamedStyles<IFormStyles> =>
   StyleSheet.create<IFormStyles>({
     container: {
       flex: 1,
-      flexDirection: 'row',
-      minHeight: '100vh',
+      flexDirection: "row",
+      minHeight: "100vh",
     },
     containerStyle: {
       backgroundColor: theme.colors.white,
-      width: '45%',
+      width: "45%",
     },
     containerStyleTablet: {
-      width: '100%',
+      width: "100%",
     },
     socialMediaContainer: {
       marginTop: 36,
-      alignSelf: 'center',
-      width: isMobile ? '100%' : '50%',
+      alignSelf: "center",
+      width: isMobile ? "100%" : "50%",
     },
     loginForm: {
-      width: isMobile ? '90%' : '55%',
-      marginHorizontal: 'auto',
+      width: isMobile ? "90%" : "55%",
+      marginHorizontal: "auto",
     },
     logo: {
-      width: '100%',
+      width: "100%",
       left: 0,
     },
     backButton: {
@@ -232,10 +257,10 @@ const formStyles = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyl
       marginBottom: 25,
       marginTop: 50,
       borderWidth: 0,
-      width: 'fit-content',
+      width: "fit-content",
     },
     newUser: {
-      flexDirection: 'row',
+      flexDirection: "row",
       top: 30,
     },
     createAccount: {
@@ -259,4 +284,7 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
   );
 };
 
-export default connect<IStateProps, IDispatchProps, {}, IState>(mapStateToProps, mapDispatchToProps)(Login);
+export default connect<IStateProps, IDispatchProps, {}, IState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

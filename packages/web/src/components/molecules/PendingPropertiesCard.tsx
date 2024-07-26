@@ -1,27 +1,35 @@
-import React, { FC, useState } from 'react';
-import { StyleSheet, View, LayoutChangeEvent, TouchableOpacity } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { PropertyUtils } from '@homzhub/common/src/utils/PropertyUtils';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { Progress } from '@homzhub/common/src/components/atoms/Progress/Progress';
-import { ITypographyProps, Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { AmenitiesShieldIconGroup } from '@homzhub/common/src/components/molecules/AmenitiesShieldIconGroup';
-import PopupMenuOptions from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import { PropertyAddressCountry } from '@homzhub/common/src/components/molecules/PropertyAddressCountry';
-import { PropertyAmenities } from '@homzhub/common/src/components/molecules/PropertyAmenities';
-import { PropertyReviewCard } from '@homzhub/common/src/components/molecules/PropertyReviewCard';
-import { NextPrevBtn } from '@homzhub/web/src/components';
-import { Asset, Data } from '@homzhub/common/src/domain/models/Asset';
-import { TypeOfPlan } from '@homzhub/common/src/domain/models/AssetPlan';
-import { IAmenitiesIcons } from '@homzhub/common/src/domain/models/Search';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+import React, { FC, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  LayoutChangeEvent,
+  TouchableOpacity,
+} from "react-native";
+import { useTranslation } from "react-i18next";
+import { PropertyUtils } from "@homzhub/common/src/utils/PropertyUtils";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { Progress } from "@homzhub/common/src/components/atoms/Progress/Progress";
+import {
+  ITypographyProps,
+  Typography,
+} from "@homzhub/common/src/components/atoms/Typography";
+import { AmenitiesShieldIconGroup } from "@homzhub/common/src/components/molecules/AmenitiesShieldIconGroup";
+import PopupMenuOptions from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import { PropertyAddressCountry } from "@homzhub/common/src/components/molecules/PropertyAddressCountry";
+import { PropertyAmenities } from "@homzhub/common/src/components/molecules/PropertyAmenities";
+import { PropertyReviewCard } from "@homzhub/common/src/components/molecules/PropertyReviewCard";
+import { NextPrevBtn } from "@homzhub/web/src/components";
+import { Asset, Data } from "@homzhub/common/src/domain/models/Asset";
+import { TypeOfPlan } from "@homzhub/common/src/domain/models/AssetPlan";
+import { IAmenitiesIcons } from "@homzhub/common/src/domain/models/Search";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IProps {
   data: Asset[];
@@ -38,9 +46,14 @@ export interface IActions {
 }
 
 const actionButtons: IActions[] = [
-  { id: 1, title: 'Invite Tenant', label: 'Invite Tenant', type: TypeOfPlan.MANAGE },
-  { id: 2, title: 'Rent', label: 'Rent', type: TypeOfPlan.RENT },
-  { id: 3, title: 'Sell', label: 'Sell', type: TypeOfPlan.SELL },
+  {
+    id: 1,
+    title: "Invite Tenant",
+    label: "Invite Tenant",
+    type: TypeOfPlan.MANAGE,
+  },
+  { id: 2, title: "Rent", label: "Rent", type: TypeOfPlan.RENT },
+  { id: 3, title: "Sell", label: "Sell", type: TypeOfPlan.SELL },
 ];
 
 export const PendingPropertiesCard: FC<IProps> = ({
@@ -74,15 +87,15 @@ export const PendingPropertiesCard: FC<IProps> = ({
     lastVisitedStep,
   } = data[currentAssetIndex];
   const primaryAddress = projectName;
-  const subAddress = address ?? `${unitNumber ?? ''} ${blockNumber ?? ''}`;
+  const subAddress = address ?? `${unitNumber ?? ""} ${blockNumber ?? ""}`;
   const countryIconUrl = country?.flag;
-  const propertyType = assetType?.name ?? '-';
+  const propertyType = assetType?.name ?? "-";
   const amenitiesData: IAmenitiesIcons[] = PropertyUtils.getAmenities(
     spaces ?? ([] as Data[]),
     furnishing,
     assetGroup.code,
     carpetArea,
-    carpetAreaUnit?.title ?? '',
+    carpetAreaUnit?.title ?? "",
     true
   );
   const {
@@ -94,14 +107,14 @@ export const PendingPropertiesCard: FC<IProps> = ({
     isCompleteDetailsRequired,
   } = lastVisitedStep;
   const addressTextStyle: ITypographyProps = {
-    size: 'small',
-    fontWeight: 'semiBold',
-    variant: 'text',
+    size: "small",
+    fontWeight: "semiBold",
+    variant: "text",
   };
   const subAddressTextStyle: ITypographyProps = {
-    size: 'regular',
-    fontWeight: 'regular',
-    variant: 'label',
+    size: "regular",
+    fontWeight: "regular",
+    variant: "label",
   };
   const updateCurrentAssetIndex = (updateIndexBy: number): void => {
     const nextIndex = currentAssetIndex + updateIndexBy;
@@ -155,20 +168,41 @@ export const PendingPropertiesCard: FC<IProps> = ({
   return (
     <View style={[styles.container, isMobile && styles.containerMobile]}>
       <View style={styles.headerInfo}>
-        <Icon name={icons.warning} color={theme.colors.darkTint3} size={16} style={styles.cardIcon} />
-        <Typography variant="text" size="small" fontWeight="semiBold" style={[styles.title, styles.textColor1]}>
-          {t('pendingProperties', { total })}
+        <Icon
+          name={icons.warning}
+          color={theme.colors.darkTint3}
+          size={16}
+          style={styles.cardIcon}
+        />
+        <Typography
+          variant="text"
+          size="small"
+          fontWeight="semiBold"
+          style={[styles.title, styles.textColor1]}
+        >
+          {t("pendingProperties", { total })}
         </Typography>
-        {data.length > 1 && <NextPrevBtn onBtnClick={updateCurrentAssetIndex} />}
+        {data.length > 1 && (
+          <NextPrevBtn onBtnClick={updateCurrentAssetIndex} />
+        )}
       </View>
       <TouchableOpacity onPress={onPressProperty}>
         <View style={styles.mainBody}>
           <View style={styles.propertyDetails}>
             <View style={styles.propertyRating}>
-              <Typography variant="label" size="regular" fontWeight="regular" style={styles.propertyType}>
+              <Typography
+                variant="label"
+                size="regular"
+                fontWeight="regular"
+                style={styles.propertyType}
+              >
                 {propertyType}
               </Typography>
-              <AmenitiesShieldIconGroup onBadgePress={FunctionUtils.noop} iconSize={21} badgesInfo={badgeInfo} />
+              <AmenitiesShieldIconGroup
+                onBadgePress={FunctionUtils.noop}
+                iconSize={21}
+                badgesInfo={badgeInfo}
+              />
             </View>
             <PropertyAddressCountry
               primaryAddress={primaryAddress}
@@ -196,12 +230,15 @@ export const PendingPropertiesCard: FC<IProps> = ({
 
             <Button
               type="primary"
-              title={t('completeDetails')}
-              containerStyle={[styles.buttonStyle, isMobile && styles.buttonStyleMobile]}
+              title={t("completeDetails")}
+              containerStyle={[
+                styles.buttonStyle,
+                isMobile && styles.buttonStyleMobile,
+              ]}
               onPress={(): void => onPressComplete(id)}
             />
             <Label type="regular" style={styles.infoText}>
-              {t('completeProperty')}
+              {t("completeProperty")}
             </Label>
           </>
         )}
@@ -210,17 +247,17 @@ export const PendingPropertiesCard: FC<IProps> = ({
             <Popover
               content={renderPopOverContent()}
               popupProps={{
-                position: 'bottom left',
+                position: "bottom left",
                 arrow: false,
                 contentStyle: { width },
                 closeOnDocumentClick: true,
                 children: undefined,
-                on: 'click',
+                on: "click",
               }}
             >
               <Button
                 type="primary"
-                title={t('takeActions')}
+                title={t("takeActions")}
                 iconSize={24}
                 iconColor={theme.colors.blue}
                 icon={isActionsVisible ? icons.upArrow : icons.downArrow}
@@ -235,14 +272,19 @@ export const PendingPropertiesCard: FC<IProps> = ({
         {isVerificationRequired && (
           <Button
             type="primary"
-            title={t('completeVerification')}
-            containerStyle={[styles.buttonStyle, isMobile && styles.buttonStyleMobile]}
+            title={t("completeVerification")}
+            containerStyle={[
+              styles.buttonStyle,
+              isMobile && styles.buttonStyleMobile,
+            ]}
             onPress={onVerifyProperty}
           />
         )}
         {isPropertyReady && (
           <View style={styles.propertyReadyContainer}>
-            <PropertyReviewCard containerStyle={!isMobile && styles.propertyReviewCard} />
+            <PropertyReviewCard
+              containerStyle={!isMobile && styles.propertyReviewCard}
+            />
           </View>
         )}
       </>
@@ -264,9 +306,9 @@ const styles = StyleSheet.create({
     flex: undefined,
   },
   headerInfo: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.background,
     paddingHorizontal: 20,
@@ -278,25 +320,25 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   mainBody: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 16,
     marginHorizontal: 20,
     marginBottom: 0,
   },
   propertyDetails: {
     flex: 1,
-    width: '100%',
+    width: "100%",
   },
   propertyType: {
     flex: 1,
     color: theme.colors.primaryColor,
   },
   propertyRating: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   propertyNameContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   propertyReadyContainer: {
     marginHorizontal: 20,
@@ -318,11 +360,11 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   actionMsg: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginBottom: 8,
   },
   actionBtn: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   cardIcon: {
     marginRight: 8,
@@ -345,7 +387,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     marginHorizontal: 20,
     marginTop: 24,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   buttonStyleMobile: {
     marginTop: 8,
@@ -357,10 +399,10 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.greenLightOpacity,
     marginBottom: 12,
     marginHorizontal: 20,
-    marginTop: 'auto',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    marginTop: "auto",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   actionButtonTitle: {
     color: theme.colors.blue,
@@ -369,24 +411,24 @@ const styles = StyleSheet.create({
   },
   infoText: {
     color: theme.colors.darkTint7,
-    textAlign: 'center',
+    textAlign: "center",
   },
 
   propertyReviewCard: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   progress: {
     marginHorizontal: 16,
   },
   takeActionContainer: {
-    marginTop: 'auto',
+    marginTop: "auto",
   },
   itemStyleMobile: {
     width: 550,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   popupMenu: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

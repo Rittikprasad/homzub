@@ -29,8 +29,15 @@ class AnalyticsService {
       this.mixPanelInstance.identify(user.email);
     }
     const name = user.fullName || `${user.firstName} ${user.lastName}`;
-    this.mixPanelInstance.getPeople().set({ $email: user.email, $name: name });
-    callback();
+    if (PlatformUtils.isWeb()) {
+      this.mixPanelInstance.people.set({ $email: user.email, $name: name });
+      callback();
+    } else {
+      this.mixPanelInstance
+        .getPeople()
+        .set({ $email: user.email, $name: name });
+      callback();
+    }
   };
 
   public track = (eventName: EventType, data?: EventDataType): void => {

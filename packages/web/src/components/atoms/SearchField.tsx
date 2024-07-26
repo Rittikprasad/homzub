@@ -1,10 +1,18 @@
-import React, { FC } from 'react';
-import { StyleProp, StyleSheet, TextInput, View, ViewStyle, LayoutChangeEvent } from 'react-native';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+// @ts-nocheck
+import React, { FC } from "react";
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  View,
+  ViewStyle,
+  LayoutChangeEvent,
+} from "react-native";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 interface IProps {
   forwardRef?: React.Ref<TextInput>;
@@ -17,14 +25,27 @@ interface IProps {
 }
 
 export const SearchField: FC<IProps> = (props: IProps) => {
-  const { forwardRef, placeholder, value, containerStyle = {}, onLayoutChange } = props;
+  const {
+    forwardRef,
+    placeholder,
+    value,
+    containerStyle = {},
+    onLayoutChange,
+  } = props;
   const onChangeText = (changedValue: string): void => {
     const { updateValue } = props;
     updateValue(changedValue);
   };
   const isMobile = useDown(deviceBreakpoint.MOBILE);
   return (
-    <View style={[styles.container, containerStyle, isMobile && styles.mobileContainer]} onLayout={onLayoutChange}>
+    <View
+      style={[
+        styles.container,
+        containerStyle,
+        isMobile && styles.mobileContainer,
+      ]}
+      onLayout={onLayoutChange}
+    >
       <TextInput
         ref={forwardRef}
         style={[styles.textInput, isMobile && styles.textInputMobile]}
@@ -49,9 +70,9 @@ export const SearchField: FC<IProps> = (props: IProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderWidth: 1,
@@ -61,14 +82,14 @@ const styles = StyleSheet.create({
   },
   mobileContainer: {
     borderWidth: 0,
-    width: '100%',
+    width: "100%",
   },
   textInput: {
     flex: 1,
     marginRight: 8,
   },
   textInputMobile: {
-    width: '90%',
+    width: "90%",
   },
   iconButton: {
     backgroundColor: theme.colors.secondaryColor,

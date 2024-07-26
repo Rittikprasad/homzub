@@ -1,47 +1,50 @@
-import React, { FC, useEffect, useState, useRef, ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useHistory } from 'react-router';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { DateFormats, DateUtils } from '@homzhub/common/src/utils/DateUtils';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { PropertyUtils } from '@homzhub/common/src/utils/PropertyUtils';
-import { OffersRepository } from '@homzhub/common/src/domain/repositories/OffersRepository';
-import { LeadRepository } from '@homzhub/common/src/domain/repositories/LeadRepository';
-import { IBookVisitProps, ILeadPayload } from '@homzhub/common/src/domain/repositories/interfaces';
-import { NavigationService } from '@homzhub/web/src/services/NavigationService';
-import { RouteNames } from '@homzhub/web/src/router/RouteNames';
-import { AssetActions } from '@homzhub/common/src/modules/asset/actions';
-import { SearchActions } from '@homzhub/common/src/modules/search/actions';
-import { UserActions } from '@homzhub/common/src/modules/user/actions';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { SearchSelector } from '@homzhub/common/src/modules/search/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { EmptyState } from '@homzhub/common/src/components/atoms/EmptyState';
-import { ImagePlaceholder } from '@homzhub/common/src/components/atoms/ImagePlaceholder';
-import { Loader } from '@homzhub/common/src/components/atoms/Loader';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
-import { PricePerUnit } from '@homzhub/common/src/components/atoms/PricePerUnit';
-import { AssetDetailsImageCarousel } from '@homzhub/common/src/components/molecules/AssetDetailsImageCarousel';
-import EstPortfolioValue from '@homzhub/web/src/components/molecules/EstPortfolioValue';
-import { PropertyAddress } from '@homzhub/common/src/components/molecules/PropertyAddress';
-import { PropertyAmenities } from '@homzhub/common/src/components/molecules/PropertyAmenities';
-import { renderPopUpTypes } from 'screens/propertyDetails/components/PropertyCardDetails';
+import React, { FC, useEffect, useState, useRef, ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useHistory } from "react-router";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { DateFormats, DateUtils } from "@homzhub/common/src/utils/DateUtils";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { PropertyUtils } from "@homzhub/common/src/utils/PropertyUtils";
+import { OffersRepository } from "@homzhub/common/src/domain/repositories/OffersRepository";
+import { LeadRepository } from "@homzhub/common/src/domain/repositories/LeadRepository";
+import {
+  IBookVisitProps,
+  ILeadPayload,
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { NavigationService } from "@homzhub/web/src/services/NavigationService";
+import { RouteNames } from "@homzhub/web/src/router/RouteNames";
+import { AssetActions } from "@homzhub/common/src/modules/asset/actions";
+import { SearchActions } from "@homzhub/common/src/modules/search/actions";
+import { UserActions } from "@homzhub/common/src/modules/user/actions";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { SearchSelector } from "@homzhub/common/src/modules/search/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { EmptyState } from "@homzhub/common/src/components/atoms/EmptyState";
+import { ImagePlaceholder } from "@homzhub/common/src/components/atoms/ImagePlaceholder";
+import { Loader } from "@homzhub/common/src/components/atoms/Loader";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
+import { PricePerUnit } from "@homzhub/common/src/components/atoms/PricePerUnit";
+import { AssetDetailsImageCarousel } from "@homzhub/common/src/components/molecules/AssetDetailsImageCarousel";
+import EstPortfolioValue from "@homzhub/web/src/components/molecules/EstPortfolioValue";
+import { PropertyAddress } from "@homzhub/common/src/components/molecules/PropertyAddress";
+import { PropertyAmenities } from "@homzhub/common/src/components/molecules/PropertyAmenities";
+import { renderPopUpTypes } from "@homzhub/web/src/screens/propertyDetails/components/PropertyCardDetails";
 import SiteVisitsActionsPopover, {
   SiteVisitAction,
-} from '@homzhub/web/src/screens/siteVisits/components/SiteVisitsActionsPopover';
-import TenancyFormPopover from '@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { Attachment } from '@homzhub/common/src/domain/models/Attachment';
-import { IAmenitiesIcons } from '@homzhub/common/src/domain/models/Search';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { IState } from '@homzhub/common/src/modules/interfaces';
+} from "@homzhub/web/src/screens/siteVisits/components/SiteVisitsActionsPopover";
+import TenancyFormPopover from "@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { Attachment } from "@homzhub/common/src/domain/models/Attachment";
+import { IAmenitiesIcons } from "@homzhub/common/src/domain/models/Search";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { IState } from "@homzhub/common/src/modules/interfaces";
 
 // TODO -- saved property metrics integration :Shagun
 const SavedProperty: FC = () => {
@@ -49,7 +52,9 @@ const SavedProperty: FC = () => {
 
   // Redux
   const filters = useSelector(SearchSelector.getFilters);
-  const wishListedAssets: Asset[] = useSelector(UserSelector.getFavouriteProperties);
+  const wishListedAssets: Asset[] = useSelector(
+    UserSelector.getFavouriteProperties
+  );
   const dispatch = useDispatch();
 
   // Local States
@@ -81,23 +86,39 @@ const SavedProperty: FC = () => {
       return response.id;
     } catch (error) {
       setLoading(false);
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(error.details), statusCode: error.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(error.details),
+        statusCode: error.details.statusCode,
+      });
       return -1;
     }
   };
 
-  const userProfile = useSelector((state: IState) => UserSelector.getUserProfile(state));
+  const userProfile = useSelector((state: IState) =>
+    UserSelector.getUserProfile(state)
+  );
 
   const navigateToOffer = (asset: Asset): void => {
     const { leaseNegotiation, saleNegotiation } = asset;
-    const hasCreatedOffer = Boolean(leaseNegotiation) || Boolean(saleNegotiation);
+    const hasCreatedOffer =
+      Boolean(leaseNegotiation) || Boolean(saleNegotiation);
 
     if (hasCreatedOffer) {
       navigateToOffersMadeScreen();
       return;
     }
-    dispatch(SearchActions.setFilter({ asset_transaction_type: asset.leaseTerm ? 0 : 1 }));
-    dispatch(AssetActions.getAsset({ propertyTermId: asset.leaseTerm ? asset.leaseTerm.id : asset.saleTerm?.id ?? 0 }));
+    dispatch(
+      SearchActions.setFilter({
+        asset_transaction_type: asset.leaseTerm ? 0 : 1,
+      })
+    );
+    dispatch(
+      AssetActions.getAsset({
+        propertyTermId: asset.leaseTerm
+          ? asset.leaseTerm.id
+          : asset.saleTerm?.id ?? 0,
+      })
+    );
     getProspectProfile().then((hasProspect: number): void => {
       // API Error case
       if (hasProspect === -1) return;
@@ -125,10 +146,17 @@ const SavedProperty: FC = () => {
     });
   };
 
-  const navigateToProperty = (listingId: number, transaction: number, projectName: string): void => {
+  const navigateToProperty = (
+    listingId: number,
+    transaction: number,
+    projectName: string
+  ): void => {
     dispatch(SearchActions.setFilter({ asset_transaction_type: transaction }));
     NavigationService.navigate(history, {
-      path: RouteNames.publicRoutes.PROPERTY_DETAIL.replace(':propertyName', `${projectName}`),
+      path: RouteNames.publicRoutes.PROPERTY_DETAIL.replace(
+        ":propertyName",
+        `${projectName}`
+      ),
       params: { listingId, assetTransactionType: transaction },
     });
   };
@@ -145,13 +173,15 @@ const SavedProperty: FC = () => {
     return 0;
   };
 
-  const removeFromWishList = async (propertyTermId: number | undefined): Promise<void> => {
+  const removeFromWishList = async (
+    propertyTermId: number | undefined
+  ): Promise<void> => {
     const { asset_transaction_type } = filters;
     if (!propertyTermId) return;
     const payload: ILeadPayload = {
       propertyTermId,
       data: {
-        lead_type: 'WISHLIST',
+        lead_type: "WISHLIST",
         is_wishlisted: false,
         user_search: null,
       },
@@ -168,18 +198,22 @@ const SavedProperty: FC = () => {
 
       dispatch(UserActions.getFavouriteProperties());
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
 
   const renderButtonGroup = (asset: Asset): ReactElement => {
     const { nextVisit, isActive, leaseNegotiation, saleNegotiation } = asset;
-    const hasCreatedOffer = Boolean(leaseNegotiation) || Boolean(saleNegotiation);
+    const hasCreatedOffer =
+      Boolean(leaseNegotiation) || Boolean(saleNegotiation);
     const onScheduleVisitPress = (): void => {
       if (isActive) {
         onOpenModalVisits(); // Open Modal
       } else {
-        AlertHelper.error({ message: t('property:inValidVisit') });
+        AlertHelper.error({ message: t("property:inValidVisit") });
       }
     };
 
@@ -187,19 +221,30 @@ const SavedProperty: FC = () => {
       if (isActive) {
         navigateToOffer(asset);
       } else {
-        AlertHelper.error({ message: t('property:inValidVisit') });
+        AlertHelper.error({ message: t("property:inValidVisit") });
       }
     };
 
     return (
-      <View style={[nextVisit ? styles.nextVisitContainer : styles.buttonGroup, styles.screenPadding]}>
+      <View
+        style={[
+          nextVisit ? styles.nextVisitContainer : styles.buttonGroup,
+          styles.screenPadding,
+        ]}
+      >
         <Button
           textType="label"
           textSize="large"
           fontType="semiBold"
-          titleStyle={[styles.buttonTextStyle, hasCreatedOffer && styles.seeOfferButton]}
-          containerStyle={[styles.commonButtonStyle, hasCreatedOffer && styles.seeOfferButtonStyle]}
-          title={t(hasCreatedOffer ? 'seeOfferText' : 'makeAnOfferText')}
+          titleStyle={[
+            styles.buttonTextStyle,
+            hasCreatedOffer && styles.seeOfferButton,
+          ]}
+          containerStyle={[
+            styles.commonButtonStyle,
+            hasCreatedOffer && styles.seeOfferButtonStyle,
+          ]}
+          title={t(hasCreatedOffer ? "seeOfferText" : "makeAnOfferText")}
           type="secondary"
           onPress={onPressMakeAnOffer}
         />
@@ -210,7 +255,7 @@ const SavedProperty: FC = () => {
             fontType="semiBold"
             titleStyle={styles.buttonTextStyle}
             containerStyle={styles.commonButtonStyle}
-            title={t('assetDescription:BookVisit')}
+            title={t("assetDescription:BookVisit")}
             type="primary"
             onPress={onScheduleVisitPress}
           />
@@ -218,7 +263,10 @@ const SavedProperty: FC = () => {
           <View style={styles.nextVisitText}>
             <Label type="small">Site Visit On</Label>
             <Label type="large" textType="semiBold">
-              {DateUtils.getDateFromISO(nextVisit.visitDate, DateFormats.DDMMMYYYY_H)}
+              {DateUtils.getDateFromISO(
+                nextVisit.visitDate,
+                DateFormats.DDMMMYYYY_H
+              )}
             </Label>
           </View>
         )}
@@ -287,7 +335,9 @@ const SavedProperty: FC = () => {
     }
   };
 
-  const [propertyLeaseType, setPropertyLeaseType] = useState(renderPopUpTypes.tenancy);
+  const [propertyLeaseType, setPropertyLeaseType] = useState(
+    renderPopUpTypes.tenancy
+  );
   const changePopUpStatus = (datum: string): void => {
     setPropertyLeaseType(datum as renderPopUpTypes);
   };
@@ -326,7 +376,7 @@ const SavedProperty: FC = () => {
               furnishing,
               code,
               carpetArea,
-              carpetAreaUnit?.title ?? ''
+              carpetAreaUnit?.title ?? ""
             );
             const listingId = leaseTerm ? leaseTerm.id : saleTerm?.id ?? 0;
             const transaction = leaseTerm ? 0 : 1;
@@ -336,23 +386,35 @@ const SavedProperty: FC = () => {
             };
             return (
               <View style={styles.cardView} key={index}>
-                {renderImages(asset.attachments, asset.leaseTerm?.id, asset.saleTerm?.id)}
+                {renderImages(
+                  asset.attachments,
+                  asset.leaseTerm?.id,
+                  asset.saleTerm?.id
+                )}
                 <TouchableOpacity
                   style={styles.screenPadding}
-                  onPress={(): void => navigateToProperty(listingId, transaction, projectName)}
+                  onPress={(): void =>
+                    navigateToProperty(listingId, transaction, projectName)
+                  }
                 >
                   <View style={styles.propertyAddress}>
                     <PropertyAddress
                       isIcon
                       primaryAddress={projectName}
-                      subAddress={address || `${blockNumber ?? ''} ${unitNumber ?? ''}`}
+                      subAddress={
+                        address || `${blockNumber ?? ""} ${unitNumber ?? ""}`
+                      }
                     />
                   </View>
                   <View style={styles.amenities}>
                     <PricePerUnit
                       price={getPrice(asset)}
                       currency={currencies[0]}
-                      unit={transactionType === 0 ? t('common:abbreviatedMonthText') : ''}
+                      unit={
+                        transactionType === 0
+                          ? t("common:abbreviatedMonthText")
+                          : ""
+                      }
                     />
                     <PropertyAmenities data={amenitiesData} direction="row" />
                   </View>
@@ -379,8 +441,12 @@ const SavedProperty: FC = () => {
           })
         ) : (
           <EmptyState
-            title={t('savedPropertiesEmptyText')}
-            buttonProps={{ type: 'secondary', title: t('common:searchProperties'), onPress: FunctionUtils.noop }}
+            title={t("savedPropertiesEmptyText")}
+            buttonProps={{
+              type: "secondary",
+              title: t("common:searchProperties"),
+              onPress: FunctionUtils.noop,
+            }}
             containerStyle={styles.emptyContainer}
           />
         )}
@@ -392,8 +458,8 @@ export default SavedProperty;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between',
-    width: '93%',
+    justifyContent: "space-between",
+    width: "93%",
   },
   overviewContainer: {
     backgroundColor: theme.colors.white,
@@ -405,9 +471,9 @@ const styles = StyleSheet.create({
   },
   propertiesContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
     marginVertical: 24,
   },
   cardView: {
@@ -417,7 +483,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     backgroundColor: theme.colors.white,
     borderRadius: 4,
-    width: '32%',
+    width: "32%",
   },
   propertyAddress: {
     height: 105,
@@ -427,29 +493,29 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.disabled,
   },
   crossStyle: {
-    position: 'absolute',
+    position: "absolute",
     top: 13,
     right: 22,
   },
   imageContainer: {
-    position: 'relative',
+    position: "relative",
     marginBottom: 12,
     paddingHorizontal: 10,
   },
   amenities: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginTop: 16,
   },
   buttonGroup: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   nextVisitContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   nextVisitText: {
     marginLeft: 30,
@@ -474,7 +540,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   emptyContainer: {
-    paddingVertical: '50%',
+    paddingVertical: "50%",
   },
   seeOfferButton: {
     color: theme.colors.green,

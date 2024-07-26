@@ -1,17 +1,24 @@
-import React, { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { TouchableOpacity } from 'react-native';
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
-import { TicketActions } from '@homzhub/common/src/modules/tickets/actions';
-import { TicketSelectors } from '@homzhub/common/src/modules/tickets/selectors';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import ServiceTicketList from '@homzhub/common/src/components/organisms/ServiceTicketList';
-import { UserScreen } from '@homzhub/mobile/src/components/HOC/UserScreen';
-import { ICommonNavProps, ScreensKeys } from '@homzhub/mobile/src/navigation/interfaces';
-import { IGetTicketParam } from '@homzhub/common/src/domain/repositories/interfaces';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { TouchableOpacity } from "react-native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import { TicketActions } from "@homzhub/common/src/modules/tickets/actions";
+import { TicketSelectors } from "@homzhub/common/src/modules/tickets/selectors";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import ServiceTicketList from "@homzhub/common/src/components/organisms/ServiceTicketList";
+import { UserScreen } from "@homzhub/mobile/src/components/HOC/UserScreen";
+import {
+  ICommonNavProps,
+  ScreensKeys,
+} from "@homzhub/mobile/src/navigation/interfaces";
+import { IGetTicketParam } from "@homzhub/common/src/domain/repositories/interfaces";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 const ServiceTicket = (): React.ReactElement => {
   const { navigate, goBack } = useNavigation();
@@ -55,9 +62,11 @@ const ServiceTicket = (): React.ReactElement => {
   // HANDLERS
 
   const getTitle = (): string => {
-    if (!param) return t('assetMore:more');
+    if (!param) return t("assetMore:more");
 
-    return param && param.isFromDashboard ? t('assetDashboard:dashboard') : param.screenTitle ?? '';
+    return param && param.isFromDashboard
+      ? t("assetDashboard:dashboard")
+      : param.screenTitle ?? "";
   };
 
   const renderRightNode = (): React.ReactElement => {
@@ -67,11 +76,12 @@ const ServiceTicket = (): React.ReactElement => {
       </TouchableOpacity>
     );
   };
+  console.log("entering service tickets $$$$$$$$$$$");
 
   return (
     <UserScreen
       title={getTitle()}
-      pageTitle={t('serviceTickets')}
+      pageTitle={t("serviceTickets")}
       rightNode={param?.isFromPortfolio ? renderRightNode() : undefined}
       onBackPress={handleGoBack}
       loading={isLoading}

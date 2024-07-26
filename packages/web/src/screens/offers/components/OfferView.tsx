@@ -1,34 +1,34 @@
-import React, { FC, useEffect, useState, createRef } from 'react';
-import { View } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useOnly } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { OfferUtils } from '@homzhub/common/src/utils/OfferUtils';
-import { OffersRepository } from '@homzhub/common/src/domain/repositories/OffersRepository';
-import { OfferActions } from '@homzhub/common/src/modules/offers/actions';
-import { OfferSelectors } from '@homzhub/common/src/modules/offers/selectors';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { EmptyState } from '@homzhub/common/src/components/atoms/EmptyState';
-import ConfirmationPopup from '@homzhub/web/src/components/molecules/ConfirmationPopup';
-import OfferCard from '@homzhub/common/src/components/organisms/OfferCard';
-import ChatScreenPopover from '@homzhub/web/src/components/organisms/ChatScreenPopover';
-import TenancyFormPopover from '@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover';
-import { OffersCard } from '@homzhub/web/src/screens/offers/components/OffersCard';
-import OfferActionsPopover from '@homzhub/web/src/screens/offers/components/OfferActionsPopover';
-import { renderPopUpTypes as tenancyPopupTypes } from '@homzhub/web/src/screens/propertyDetails/components/PropertyCardDetails';
-import { Offer, OfferAction } from '@homzhub/common/src/domain/models/Offer';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { OfferSort } from '@homzhub/common/src/constants/Offers';
+import React, { FC, useEffect, useState, createRef } from "react";
+import { View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useOnly } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { OfferUtils } from "@homzhub/common/src/utils/OfferUtils";
+import { OffersRepository } from "@homzhub/common/src/domain/repositories/OffersRepository";
+import { OfferActions } from "@homzhub/common/src/modules/offers/actions";
+import { OfferSelectors } from "@homzhub/common/src/modules/offers/selectors";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { EmptyState } from "@homzhub/common/src/components/atoms/EmptyState";
+import ConfirmationPopup from "@homzhub/web/src/components/molecules/ConfirmationPopup";
+import OfferCard from "@homzhub/common/src/components/organisms/OfferCard";
+import ChatScreenPopover from "@homzhub/web/src/components/organisms/ChatScreenPopover";
+import TenancyFormPopover from "@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover";
+import { OffersCard } from "@homzhub/web/src/screens/offers/components/OffersCard";
+import OfferActionsPopover from "@homzhub/web/src/screens/offers/components/OfferActionsPopover";
+import { renderPopUpTypes as tenancyPopupTypes } from "@homzhub/web/src/screens/propertyDetails/components/PropertyCardDetails";
+import { Offer, OfferAction } from "@homzhub/common/src/domain/models/Offer";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { OfferSort } from "@homzhub/common/src/constants/Offers";
 import {
   ICounterParam,
   INegotiationParam,
   ListingType,
   NegotiationType,
-} from '@homzhub/common/src/domain/repositories/interfaces';
+} from "@homzhub/common/src/domain/repositories/interfaces";
 
 interface IFilters {
   filter_by: string;
@@ -48,14 +48,19 @@ const OfferView: FC<IProps> = (props: IProps) => {
   const compareData = useSelector(OfferSelectors.getOfferCompareData);
   const isMobile = useOnly(deviceBreakpoint.MOBILE);
   const [offers, setOffers] = useState<Offer[]>([]);
-  const [offerActionType, setOfferActionType] = useState<OfferAction | null>(null);
+  const [offerActionType, setOfferActionType] = useState<OfferAction | null>(
+    null
+  );
   const popupRef = createRef<PopupActions>();
   const popupRefCounter = createRef<PopupActions>();
   const [pastOffers, setPastOffers] = useState<Offer[]>([]);
-  const { selectedFilters = { filter_by: '', sort_by: OfferSort.NEWEST } } = props;
+  const { selectedFilters = { filter_by: "", sort_by: OfferSort.NEWEST } } =
+    props;
   const [close, setClose] = useState(false);
   const userData = useSelector(UserSelector.getUserProfile);
-  const [propertyLeaseType, setPropertyLeaseType] = useState<string>(tenancyPopupTypes.tenancy);
+  const [propertyLeaseType, setPropertyLeaseType] = useState<string>(
+    tenancyPopupTypes.tenancy
+  );
 
   useEffect(() => {
     getData(selectedFilters?.filter_by);
@@ -86,7 +91,10 @@ const OfferView: FC<IProps> = (props: IProps) => {
         setPropertyLeaseType(tenancyPopupTypes.offer);
       }
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
 
@@ -95,7 +103,7 @@ const OfferView: FC<IProps> = (props: IProps) => {
   }, []);
 
   if (!(offers.length > 0 && listingDetail)) {
-    return <EmptyState title={t('noOfferFound')} />;
+    return <EmptyState title={t("noOfferFound")} />;
   }
 
   const { saleTerm, leaseTerm } = listingDetail;
@@ -146,7 +154,10 @@ const OfferView: FC<IProps> = (props: IProps) => {
       const response = await OffersRepository.getCounterOffer(payload);
       setPastOffers(response);
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
   const changePopUpStatus = (tenancyPopoverType: string): void => {
@@ -154,8 +165,8 @@ const OfferView: FC<IProps> = (props: IProps) => {
   };
 
   const popupDetails = {
-    title: t('offers:offerSucessHeader'),
-    subTitle: t('offers:offerSucessSubHeader'),
+    title: t("offers:offerSucessHeader"),
+    subTitle: t("offers:offerSucessSubHeader"),
   };
 
   const refreshOffersData = (): void => {
@@ -198,8 +209,12 @@ const OfferView: FC<IProps> = (props: IProps) => {
             asset={listingDetail}
             isDetailView
             onPressMessages={(): void => onPressMessageIcon(offer.threadId)}
-            onPressAction={(action: OfferAction): void => onPressAction(action, offer)}
-            onViewReasonWeb={(action: OfferAction): void => onViewReasonWeb(action, offer)}
+            onPressAction={(action: OfferAction): void =>
+              onPressAction(action, offer)
+            }
+            onViewReasonWeb={(action: OfferAction): void =>
+              onViewReasonWeb(action, offer)
+            }
             onCreateLease={(): void => onCreateLease(offer)}
             pastOffer={pastOffers}
             onMoreInfo={handlePastOffer}
@@ -214,8 +229,12 @@ const OfferView: FC<IProps> = (props: IProps) => {
             asset={listingDetail}
             isDetailView
             onPressMessages={(): void => onPressMessageIcon(offer.threadId)}
-            onPressAction={(action: OfferAction): void => onPressAction(action, offer)}
-            onViewReasonWeb={(action: OfferAction): void => onViewReasonWeb(action, offer)}
+            onPressAction={(action: OfferAction): void =>
+              onPressAction(action, offer)
+            }
+            onViewReasonWeb={(action: OfferAction): void =>
+              onViewReasonWeb(action, offer)
+            }
             onCreateLease={(): void => onCreateLease(offer)}
             pastOffer={pastOffers}
             onMoreInfo={handlePastOffer}
@@ -240,12 +259,12 @@ const OfferView: FC<IProps> = (props: IProps) => {
         handleOfferAction={handleOfferAction}
         onCloseModal={onCloseModal}
       />
-      <ChatScreenPopover
+      {/* <ChatScreenPopover
         isFromOffers
         popupRef={popupRefChatScreen}
         onOpenModal={onOpenChatModal}
         onCloseModal={onCloseChatModal}
-      />
+      /> */}
     </View>
   );
 };

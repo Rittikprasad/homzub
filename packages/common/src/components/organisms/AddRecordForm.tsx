@@ -209,6 +209,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
     const calendarPropsWeb = {
       popupProps: { position: "top center" },
     };
+    console.log("this is render in AddRecordForm");
     return (
       <Formik
         innerRef={this.formRef}
@@ -639,7 +640,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
   };
 
   private handleUpload = (attachments: IDocumentSource[]): void => {
-    console.log("fuckkkkkkkkkkkkkkkk");
+    console.log("fuckkkkkkkkkkkkkkkk", attachments);
     this.setState((prevState: ILocalState) => {
       return {
         attachments: [
@@ -725,7 +726,7 @@ export class AddRecordForm extends React.PureComponent<IOwnProps, ILocalState> {
           formData,
           AttachmentType.ASSET_RECORD
         );
-        const { data } = response;
+        const { data } = response.data;
         uploadedAttachmentIds = data.map(
           (i: IUploadAttachmentResponse) => i.id
         );

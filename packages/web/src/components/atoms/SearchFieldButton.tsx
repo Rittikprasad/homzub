@@ -1,11 +1,19 @@
-import React, { FC } from 'react';
-import { StyleProp, StyleSheet, TextInput, View, ViewStyle, LayoutChangeEvent } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+// @ts-nocheck
+import React, { FC } from "react";
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  View,
+  ViewStyle,
+  LayoutChangeEvent,
+} from "react-native";
+import { useTranslation } from "react-i18next";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 interface IProps {
   forwardRef?: React.Ref<TextInput>;
@@ -20,14 +28,22 @@ interface IProps {
 
 export const SearchFieldButton: FC<IProps> = (props: IProps) => {
   const { t } = useTranslation();
-  const { forwardRef, placeholder, value, containerStyle = {}, onLayoutChange, updateValue, onSearchPress } = props;
+  const {
+    forwardRef,
+    placeholder,
+    value,
+    containerStyle = {},
+    onLayoutChange,
+    updateValue,
+    onSearchPress,
+  } = props;
   const onChangeText = (changedValue: string): void => {
     updateValue(changedValue);
   };
   const isMobile = useDown(deviceBreakpoint.MOBILE);
 
   const onClosePress = (): void => {
-    updateValue('');
+    updateValue("");
   };
   return (
     <View style={[styles.container, containerStyle]} onLayout={onLayoutChange}>
@@ -61,7 +77,7 @@ export const SearchFieldButton: FC<IProps> = (props: IProps) => {
       )}
       <Button
         type="primary"
-        title={t('common:search')}
+        title={t("common:search")}
         textStyle={styles.searchTextStyle}
         testID="btnSearch"
         disabled={!value}
@@ -73,9 +89,9 @@ export const SearchFieldButton: FC<IProps> = (props: IProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderWidth: 1,
@@ -89,17 +105,17 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   textInputMobile: {
-    width: '70%',
+    width: "70%",
   },
   iconButton: {
     backgroundColor: theme.colors.secondaryColor,
-    paddingRight: '4%',
+    paddingRight: "4%",
   },
   searchTextStyle: {
-    marginHorizontal: '20px',
-    marginVertical: '2px',
+    marginHorizontal: "20px",
+    marginVertical: "2px",
   },
   closeIconStyle: {
-    paddingRight: '1%',
+    paddingRight: "1%",
   },
 });

@@ -1,23 +1,25 @@
-import React, { useState, useRef } from 'react';
-import { View, StyleSheet, LayoutChangeEvent } from 'react-native';
-import { PopupActions, PopupProps } from 'reactjs-popup/dist/types';
+import React, { useState, useRef } from "react";
+import { View, StyleSheet, LayoutChangeEvent } from "react-native";
+import { PopupActions, PopupProps } from "reactjs-popup/dist/types";
 
-import { theme } from '@homzhub/common/src/styles/theme';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import PopupMenuOptions, { IPopupOptions } from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import { FilterDetail } from '@homzhub/common/src/domain/models/FilterDetail';
-import { IFilter } from '@homzhub/common/src/domain/models/Search';
+import { theme } from "@homzhub/common/src/styles/theme";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import PopupMenuOptions, {
+  IPopupOptions,
+} from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import { FilterDetail } from "@homzhub/common/src/domain/models/FilterDetail";
+import { IFilter } from "@homzhub/common/src/domain/models/Search";
 
 const defaultDropDownProps = (width: number): PopupProps => ({
-  position: 'bottom left',
+  position: "bottom left",
   arrow: false,
   contentStyle: {
     width,
   },
   children: undefined,
-  on: 'click',
+  on: "click",
   closeOnDocumentClick: true,
 });
 
@@ -29,7 +31,7 @@ interface IProps {
 
 export const SortByFilter = (props: IProps): React.ReactElement | null => {
   const { filterData, onSelectSort } = props;
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [width, setWidth] = useState(0);
   const popupRef = useRef<PopupActions>(null);
   if (!filterData) {
@@ -50,14 +52,27 @@ export const SortByFilter = (props: IProps): React.ReactElement | null => {
   };
 
   const popupContent = (): React.ReactElement | null => {
-    return <PopupMenuOptions options={sortDropDownData} onMenuOptionPress={selectSort} labelType="regular" />;
+    return (
+      <PopupMenuOptions
+        options={sortDropDownData}
+        onMenuOptionPress={selectSort}
+        labelType="regular"
+      />
+    );
   };
 
   return (
     <View>
-      <Popover forwardedRef={popupRef} content={popupContent()} popupProps={defaultDropDownProps(width)}>
+      <Popover
+        forwardedRef={popupRef}
+        content={popupContent()}
+        popupProps={defaultDropDownProps(width)}
+      >
         <View onLayout={onLayout}>
           <Button
+            onPress={() => {
+              popupRef.current?.toggle();
+            }}
             type="primary"
             title={title || filterData?.filters.sortBy[0].title}
             containerStyle={styles.filterButton}
@@ -75,22 +90,22 @@ export const SortByFilter = (props: IProps): React.ReactElement | null => {
 
 const styles = StyleSheet.create({
   filterButton: {
-    width: 'auto',
+    width: "auto",
     height: 28,
     backgroundColor: theme.colors.lightGrayishBlue,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   filterButtonTitle: {
-    alignItems: 'center',
-    textAlign: 'center',
+    alignItems: "center",
+    textAlign: "center",
     marginVertical: 3,
     marginHorizontal: 6,
     color: theme.colors.blue,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
     flexShrink: 1,
   },
   icon: {
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 });

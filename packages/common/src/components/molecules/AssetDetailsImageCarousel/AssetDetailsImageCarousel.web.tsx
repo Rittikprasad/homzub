@@ -1,14 +1,17 @@
-import React, { FC, useState, createRef, useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import Carousel, { ButtonGroupProps, CarouselProps } from 'react-multi-carousel';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Image } from '@homzhub/common/src/components/atoms/Image';
-import { ImageVideoPagination } from '@homzhub/common/src/components/atoms/ImageVideoPagination';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import MultiCarousel from '@homzhub/web/src/components/molecules/MultiCarousel';
-import { NextPrevBtn } from '@homzhub/web/src/components/molecules/NextPrevBtn';
-import { Attachment } from '@homzhub/common/src/domain/models/Attachment';
+import React, { FC, useState, createRef, useEffect } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import Carousel, {
+  ButtonGroupProps,
+  CarouselProps,
+} from "react-multi-carousel";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Image } from "@homzhub/common/src/components/atoms/Image";
+import { ImageVideoPagination } from "@homzhub/common/src/components/atoms/ImageVideoPagination";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import MultiCarousel from "@homzhub/web/src/components/molecules/MultiCarousel";
+import { NextPrevBtn } from "@homzhub/web/src/components/molecules/NextPrevBtn";
+import { Attachment } from "@homzhub/common/src/domain/models/Attachment";
 
 interface IProps {
   data: Attachment[];
@@ -41,9 +44,9 @@ export const AssetDetailsImageCarousel: FC<IProps> = (props: IProps) => {
     setShowPopover(false);
   };
   const popOverContentStyle = {
-    width: '100%',
-    height: '260px',
-    alignItems: 'center',
+    width: "100%",
+    height: "260px",
+    alignItems: "center",
   };
   const popOverOverlayStyle = {
     background: theme.colors.lightOpacity,
@@ -84,7 +87,12 @@ export const AssetDetailsImageCarousel: FC<IProps> = (props: IProps) => {
         <>
           {!isAssetOwner && (
             <View>
-              <Icon name={icons.heartOutline} size={20} style={styles.favouriteIcon} color={theme.colors.white} />
+              <Icon
+                name={icons.heartOutline}
+                size={20}
+                style={styles.favouriteIcon}
+                color={theme.colors.white}
+              />
             </View>
           )}
 
@@ -148,7 +156,7 @@ export const AssetDetailsImageCarousel: FC<IProps> = (props: IProps) => {
           <ImageVideoPagination
             totalSlides={data.length}
             currentSlide={active}
-            type={currentSlide?.mediaType ?? 'IMAGE'}
+            type={currentSlide?.mediaType ?? "IMAGE"}
           />
         </View>
       )}
@@ -164,7 +172,14 @@ interface ICarouselButtons {
 }
 type Props = ICarouselButtons & ButtonGroupProps;
 const CarouselButtons = (props: Props): React.ReactElement => {
-  const { next, previous, data, activeSlide, favouriteIcon = true, isAssetOwner } = props;
+  const {
+    next,
+    previous,
+    data,
+    activeSlide,
+    favouriteIcon = true,
+    isAssetOwner,
+  } = props;
   const [currentImage, setCurrentImage] = useState(0);
   useEffect(() => {
     activeSlide(currentImage);
@@ -205,7 +220,12 @@ const CarouselButtons = (props: Props): React.ReactElement => {
         onBtnClick={updateCarouselIndex}
       />
       {favouriteIcon && !isAssetOwner && (
-        <Icon name={icons.heartOutline} size={20} style={styles.favouriteIcon} color={theme.colors.white} />
+        <Icon
+          name={icons.heartOutline}
+          size={20}
+          style={styles.favouriteIcon}
+          color={theme.colors.white}
+        />
       )}
     </>
   );
@@ -213,31 +233,31 @@ const CarouselButtons = (props: Props): React.ReactElement => {
 
 const styles = StyleSheet.create({
   cardImageCrousel: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   container: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   image: {
     flex: 1,
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignSelf: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 4,
-    width: '100%',
+    width: "100%",
     height: 210,
   },
   imagePopup: {
-    justifyContent: 'center',
+    justifyContent: "center",
     borderRadius: 4,
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   leftRightButtons: {
     borderWidth: 0,
-    position: 'absolute',
-    width: 'fitContent',
+    position: "absolute",
+    width: "fitContent",
     backgroundColor: theme.colors.transparent,
     top: 100,
   },
@@ -245,15 +265,15 @@ const styles = StyleSheet.create({
     left: 0,
   },
   rightButton: {
-    left: '94%',
+    left: "94%",
   },
   favouriteIcon: {
-    position: 'absolute',
+    position: "absolute",
     top: 20,
     right: 20,
   },
   propertyHighlightLabelContainer: {
-    position: 'absolute',
+    position: "absolute",
     left: 20,
     bottom: 20,
     borderRadius: 2,
@@ -266,12 +286,12 @@ const styles = StyleSheet.create({
   },
   fullimage: {
     height: 260,
-    width: '100%',
-    resizeMode: 'contain',
+    width: "100%",
+    resizeMode: "contain",
   },
   pagination: {
-    position: 'absolute',
+    position: "absolute",
     top: 175,
-    marginHorizontal: '20',
+    marginHorizontal: "20",
   },
 });

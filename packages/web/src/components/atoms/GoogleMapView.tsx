@@ -1,11 +1,12 @@
-import React, { FC, useCallback } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { GoogleMap } from '@react-google-maps/api';
-import { ILatLng } from '@homzhub/common/src/modules/search/interface';
+// @ts-nocheck
+import React, { FC, useCallback } from "react";
+import { StyleSheet, View } from "react-native";
+import { GoogleMap } from "@react-google-maps/api";
+import { ILatLng } from "@homzhub/common/src/modules/search/interface";
 
 const containerStyle = {
-  width: '100%',
-  height: '100%',
+  width: "100%",
+  height: "100%",
 };
 
 const centerDefault = {

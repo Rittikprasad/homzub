@@ -1,14 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { IDropdownOption } from '@homzhub/common/src/components/molecules/FormDropdown';
-import PopupMenuOptions from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import { AssetFilter } from '@homzhub/common/src/domain/models/AssetFilter';
+import React, { useState, useRef } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { useTranslation } from "react-i18next";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { IDropdownOption } from "@homzhub/common/src/components/molecules/FormDropdown";
+import PopupMenuOptions from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import { AssetFilter } from "@homzhub/common/src/domain/models/AssetFilter";
 
 // TODO: Integration of rest of the filter buttons and optimization: Shagun
 
@@ -20,15 +20,15 @@ interface IPortfolioFilterProps {
 type IProps = IPortfolioFilterProps;
 const PortfolioFilter: React.FC<IProps> = (props: IProps) => {
   const { t } = useTranslation();
-  const status = t('helpAndSupport:status');
+  const status = t("helpAndSupport:status");
   const [selectedOption, setSelectedOption] = useState(status);
   const { filterData, getStatus } = props;
   const popupRef = useRef<PopupActions>(null);
   const popupProps = {
-    position: 'bottom left' as 'bottom left',
-    on: 'click' as 'click',
+    position: "bottom left" as "bottom left",
+    on: "click" as "click",
     arrow: false,
-    contentStyle: { marginTop: '4px' },
+    contentStyle: { marginTop: "4px" },
     closeOnDocumentClick: true,
     children: undefined,
   };
@@ -49,12 +49,26 @@ const PortfolioFilter: React.FC<IProps> = (props: IProps) => {
       <View>
         <Popover
           forwardedRef={popupRef}
-          content={<PopupMenuOptions options={filterData.statusDropdown} onMenuOptionPress={selectedFilter} />}
+          content={
+            <PopupMenuOptions
+              options={filterData.statusDropdown}
+              onMenuOptionPress={selectedFilter}
+            />
+          }
           popupProps={popupProps}
         >
-          <TouchableOpacity activeOpacity={1}>
+          <TouchableOpacity
+            onPress={() => {
+              popupRef.current?.toggle();
+            }}
+            activeOpacity={1}
+          >
             <View style={styles.filterContainer}>
-              <Typography size="small" fontWeight="semiBold" style={styles.filterText}>
+              <Typography
+                size="small"
+                fontWeight="semiBold"
+                style={styles.filterText}
+              >
                 {selectedOption}
               </Typography>
               <Icon name={icons.downArrow} size={18} style={styles.icon} />
@@ -68,16 +82,16 @@ const PortfolioFilter: React.FC<IProps> = (props: IProps) => {
 
 const styles = StyleSheet.create({
   filterSection: {
-    marginVertical: '2%',
-    flexDirection: 'row',
+    marginVertical: "2%",
+    flexDirection: "row",
   },
   filterContainer: {
     backgroundColor: theme.colors.white,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginEnd: 12,
     borderRadius: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   filterText: {
     marginHorizontal: 12,

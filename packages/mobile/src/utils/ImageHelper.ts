@@ -1,13 +1,15 @@
-import ImagePicker, { Image as ImagePickerResponse } from 'react-native-image-crop-picker';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ObjectMapper } from '@homzhub/common/src/utils/ObjectMapper';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { StoreProviderService } from '@homzhub/common/src/services/StoreProviderService';
-import { RecordAssetActions } from '@homzhub/common/src/modules/recordAsset/actions';
-import { AssetGallery } from '@homzhub/common/src/domain/models/AssetGallery';
-import { IPropertySelectedImages } from '@homzhub/common/src/domain/models/VerificationDocuments';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
+import ImagePicker, {
+  Image as ImagePickerResponse,
+} from "react-native-image-crop-picker";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ObjectMapper } from "@homzhub/common/src/utils/ObjectMapper";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { StoreProviderService } from "@homzhub/common/src/services/StoreProviderService";
+import { RecordAssetActions } from "@homzhub/common/src/modules/recordAsset/actions";
+import { AssetGallery } from "@homzhub/common/src/domain/models/AssetGallery";
+import { IPropertySelectedImages } from "@homzhub/common/src/domain/models/VerificationDocuments";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
 
 interface IUploadImage {
   assetId: number;
@@ -21,6 +23,7 @@ class ImageHelper {
     const { assetId, selectedImages, toggleLoader, onCallback } = props;
 
     const store = StoreProviderService.getStore();
+    console.log("this is image helper");
 
     if (toggleLoader) {
       toggleLoader(true);
@@ -34,32 +37,38 @@ class ImageHelper {
         compressImageMaxHeight: 400,
         compressImageQuality: PlatformUtils.isAndroid() ? 1 : 0.8,
         includeBase64: true,
-        mediaType: 'photo',
+        mediaType: "photo",
       });
+      console.log(images, "this is images");
       const formData = new FormData();
       images.forEach((image) => {
-        formData.append('files[]', {
+        formData.append("files[]", {
           // @ts-ignore
-          name: PlatformUtils.isIOS() ? image.filename : image.path.substring(image.path.lastIndexOf('/') + 1),
+          name: PlatformUtils.isIOS()
+            ? image.filename
+            : image.path.substring(image.path.lastIndexOf("/") + 1),
           uri: image.path,
           type: image.mime,
         });
       });
 
       try {
-        const response = await AttachmentService.uploadImage(formData, AttachmentType.ASSET_IMAGE);
+        const response = await AttachmentService.uploadImage(
+          formData,
+          AttachmentType.ASSET_IMAGE
+        );
 
-        const { data } = response;
+        const { data } = response.data;
         const localSelectedImages: IPropertySelectedImages[] = [];
         images.forEach((image, index: number) => {
           localSelectedImages.push({
             id: null,
-            description: '',
+            description: "",
             is_cover_image: false,
             asset: assetId,
             attachment: data[index].id,
             link: data[index].link,
-            file_name: 'localImage',
+            file_name: "localImage",
             isLocalImage: true,
           });
         });
@@ -68,7 +77,9 @@ class ImageHelper {
         }
         store.dispatch(
           RecordAssetActions.setSelectedImages(
-            selectedImages.concat(ObjectMapper.deserializeArray(AssetGallery, localSelectedImages))
+            selectedImages.concat(
+              ObjectMapper.deserializeArray(AssetGallery, localSelectedImages)
+            )
           )
         );
         if (onCallback) {
@@ -93,7 +104,7 @@ class ImageHelper {
       if (toggleLoader) {
         toggleLoader(false);
       }
-      if (e.code !== 'E_PICKER_CANCELLED') {
+      if (e.code !== "E_PICKER_CANCELLED") {
         AlertHelper.error({ message: e.message });
       }
     }

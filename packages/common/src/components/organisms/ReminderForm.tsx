@@ -1,44 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import * as yup from 'yup';
-import { Formik, FormikProps, FormikValues } from 'formik';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { DateUtils } from '@homzhub/common/src/utils/DateUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { FormUtils } from '@homzhub/common/src/utils/FormUtils';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { AssetRepository } from '@homzhub/common/src/domain/repositories/AssetRepository';
-import { LedgerRepository } from '@homzhub/common/src/domain/repositories/LedgerRepository';
-import { AssetActions } from '@homzhub/common/src/modules/asset/actions';
-import { FinancialActions } from '@homzhub/common/src/modules/financials/actions';
-import { PropertyPaymentActions } from '@homzhub/common/src/modules/propertyPayment/actions';
-import { UserActions } from '@homzhub/common/src/modules/user/actions';
-import { AssetSelectors } from '@homzhub/common/src/modules/asset/selectors';
-import { FinancialSelectors } from '@homzhub/common/src/modules/financials/selectors';
-import { PropertyPaymentSelector } from '@homzhub/common/src/modules/propertyPayment/selectors';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import { FormButton } from '@homzhub/common/src/components/molecules/FormButton';
-import { FormCalendar } from '@homzhub/common/src/components/molecules/FormCalendar';
-import { FormDropdown, IDropdownOption } from '@homzhub/common/src/components/molecules/FormDropdown';
-import { TransactionField } from '@homzhub/common/src/components/molecules/TransactionField';
-import { FormTextInput } from '@homzhub/common/src/components/molecules/FormTextInput';
-import ChipField from '@homzhub/common/src/components/molecules/ChipField';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { OnGoingTransaction } from '@homzhub/common/src/domain/models/OnGoingTransaction';
-import { IReminderPayload } from '@homzhub/common/src/domain/repositories/interfaces';
+import React, { useEffect, useState } from "react";
+import * as yup from "yup";
+import { Formik, FormikProps, FormikValues } from "formik";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { DateUtils } from "@homzhub/common/src/utils/DateUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { FormUtils } from "@homzhub/common/src/utils/FormUtils";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { AssetRepository } from "@homzhub/common/src/domain/repositories/AssetRepository";
+import { LedgerRepository } from "@homzhub/common/src/domain/repositories/LedgerRepository";
+import { AssetActions } from "@homzhub/common/src/modules/asset/actions";
+import { FinancialActions } from "@homzhub/common/src/modules/financials/actions";
+import { PropertyPaymentActions } from "@homzhub/common/src/modules/propertyPayment/actions";
+import { UserActions } from "@homzhub/common/src/modules/user/actions";
+import { AssetSelectors } from "@homzhub/common/src/modules/asset/selectors";
+import { FinancialSelectors } from "@homzhub/common/src/modules/financials/selectors";
+import { PropertyPaymentSelector } from "@homzhub/common/src/modules/propertyPayment/selectors";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import { FormButton } from "@homzhub/common/src/components/molecules/FormButton";
+import { FormCalendar } from "@homzhub/common/src/components/molecules/FormCalendar";
+import {
+  FormDropdown,
+  IDropdownOption,
+} from "@homzhub/common/src/components/molecules/FormDropdown";
+import { TransactionField } from "@homzhub/common/src/components/molecules/TransactionField";
+import { FormTextInput } from "@homzhub/common/src/components/molecules/FormTextInput";
+import ChipField from "@homzhub/common/src/components/molecules/ChipField";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { OnGoingTransaction } from "@homzhub/common/src/domain/models/OnGoingTransaction";
+import { IReminderPayload } from "@homzhub/common/src/domain/repositories/interfaces";
 import {
   IAddReminderPayload,
   IReminderFormData,
   IUpdateReminderPayload,
-} from '@homzhub/common/src/modules/financials/interfaces';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+} from "@homzhub/common/src/modules/financials/interfaces";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IOwnProp {
   onSubmit: (isEdit: boolean) => void;
@@ -71,7 +74,9 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
   const assets = useSelector(FinancialSelectors.getReminderAssets);
   const categories = useSelector(FinancialSelectors.getCategoriesDropdown);
   const frequencies = useSelector(FinancialSelectors.getFrequenciesDropdown);
-  const selectedReminderId = useSelector(FinancialSelectors.getCurrentReminderId);
+  const selectedReminderId = useSelector(
+    FinancialSelectors.getCurrentReminderId
+  );
   const societyCharges = useSelector(PropertyPaymentSelector.getSocietyCharges);
   const reminderFormData = useSelector(FinancialSelectors.getReminderFormData);
   const userData = useSelector(UserSelector.getUserProfile);
@@ -82,11 +87,11 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
 
   const [unitList, setUnitList] = useState<OnGoingTransaction[]>([]);
   const [userEmails, setUserEmails] = useState<string[]>([]);
-  const [notes, setNotes] = useState<string>('');
-  const [emailError, setEmailErrorText] = useState<string>('');
+  const [notes, setNotes] = useState<string>("");
+  const [emailError, setEmailErrorText] = useState<string>("");
   const [isEmailError, setEmailError] = useState(false);
   const [canEdit, setCanEdit] = useState(true);
-  const [currency, setCurrency] = useState('');
+  const [currency, setCurrency] = useState("");
   const [formDetail, setFormDetail] = useState<IReminderPayload>();
 
   useEffect(() => {
@@ -103,7 +108,10 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
 
   useEffect(() => {
     if (reminderFormData.property && reminderFormData.property > 0) {
-      onChangeProperty(reminderFormData.property.toString(), reminderFormData.category).then();
+      onChangeProperty(
+        reminderFormData.property.toString(),
+        reminderFormData.category
+      ).then();
     }
   }, [reminderFormData.property]);
 
@@ -111,7 +119,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
     if (userEmails.length > 0) {
       userEmails.forEach((item) => {
         if (!emails.includes(item.toLowerCase())) {
-          setEmailErrorText('property:userNotAssociated');
+          setEmailErrorText("property:userNotAssociated");
           setEmailError(true);
         }
       });
@@ -131,15 +139,16 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
   const getDueState = (): void => {
     if (selectedDue) {
       const date =
-        DateUtils.getDateDifference(selectedDue.dueDate, 'days') > 0
+        DateUtils.getDateDifference(selectedDue.dueDate, "days") > 0
           ? DateUtils.getNextDate(1)
-          : DateUtils.getDisplayDate(selectedDue.dueDate, 'YYYY-MM-DD');
+          : DateUtils.getDisplayDate(selectedDue.dueDate, "YYYY-MM-DD");
 
       dispatch(
         FinancialActions.setReminderFormData({
           ...reminderFormData,
           title: selectedDue.invoiceTitle,
-          category: selectedDue.paymentTransaction.paymentType.code === 'RENT' ? 1 : 2,
+          category:
+            selectedDue.paymentTransaction.paymentType.code === "RENT" ? 1 : 2,
           date,
           ...(selectedDue.asset && { property: selectedDue.asset.id }),
         })
@@ -161,7 +170,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
             title: res.title,
             category: res.reminderCategory.id,
             frequency: res.reminderFrequency.id,
-            date: DateUtils.getDisplayDate(res.startDate, 'YYYY-MM-DD'),
+            date: DateUtils.getDisplayDate(res.startDate, "YYYY-MM-DD"),
             ...(res.asset && { property: res.asset.id }),
             ...(res.leaseTransaction && { leaseUnit: res.leaseTransaction.id }),
             ...(res.amount && { rent: res.amount.toString() }),
@@ -186,7 +195,10 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         if (setLoading) {
           setLoading(false);
         }
-        AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+        AlertHelper.error({
+          message: ErrorUtils.getErrorMessage(e.details),
+          statusCode: e.details.statusCode,
+        });
       });
   };
 
@@ -196,7 +208,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       const data = isRented ? assets.filter((item) => item.isRented) : assets;
 
       if (isRented && data.length < 1) {
-        AlertHelper.error({ message: t('property:noOccupiedProperty') });
+        AlertHelper.error({ message: t("property:noOccupiedProperty") });
         return [];
       }
       return data.map((property: Asset) => {
@@ -231,11 +243,12 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       dispatch(
         PropertyPaymentActions.getSocietyCharges({
           id: Number(value),
-          onCallback: (status, data): void => onCallback(status, data, formProp),
+          onCallback: (status, data): void =>
+            onCallback(status, data, formProp),
         })
       );
       if (formProp) {
-        formProp.setFieldValue('paidBy', -1);
+        formProp.setFieldValue("paidBy", -1);
       }
       return;
     }
@@ -243,20 +256,28 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       const list = await AssetRepository.getOnGoingTransaction(Number(value));
       setUnitList(list);
       if (formProp) {
-        formProp.setFieldValue('owner', -1);
-        formProp.setFieldValue('tenant', -1);
+        formProp.setFieldValue("owner", -1);
+        formProp.setFieldValue("tenant", -1);
       }
       dispatch(AssetActions.getAssetUsers({ assetId: Number(value) }));
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
 
-  const onChangeUnit = (value: string, formProps?: FormikProps<FormikValues>): void => {
+  const onChangeUnit = (
+    value: string,
+    formProps?: FormikProps<FormikValues>
+  ): void => {
     if (formProps) {
       const { values, setFieldValue } = formProps;
-      const lease = unitList.filter((item) => item.leaseTransaction.id === Number(value))[0].leaseTransaction;
-      setFieldValue('rent', lease.rent.toString());
+      const lease = unitList.filter(
+        (item) => item.leaseTransaction.id === Number(value)
+      )[0].leaseTransaction;
+      setFieldValue("rent", lease.rent.toString());
       setCurrency(lease.currency.currencyCode);
       dispatch(
         AssetActions.getAssetUsers({
@@ -268,12 +289,15 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
     }
   };
 
-  const onChangeCategory = (value: string, formProps?: FormikProps<FormikValues>): void => {
+  const onChangeCategory = (
+    value: string,
+    formProps?: FormikProps<FormikValues>
+  ): void => {
     if (formProps) {
-      formProps.setFieldValue('leaseUnit', -1);
+      formProps.setFieldValue("leaseUnit", -1);
       setUserEmails([]);
       if (Number(value) === 1) {
-        formProps.setFieldValue('frequency', 1);
+        formProps.setFieldValue("frequency", 1);
       }
     }
 
@@ -282,9 +306,13 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
     }
   };
 
-  const onCallback = (status: boolean, data?: number, formProps?: FormikProps<FormikValues>): void => {
+  const onCallback = (
+    status: boolean,
+    data?: number,
+    formProps?: FormikProps<FormikValues>
+  ): void => {
     if (status && formProps && data !== undefined) {
-      formProps.setFieldValue('maintenanceAmount', data.toString());
+      formProps.setFieldValue("maintenanceAmount", data.toString());
     }
   };
 
@@ -294,7 +322,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         if (emails.includes(item.toLowerCase()) && !userEmails.includes(item)) {
           setUserEmails([...userEmails, item]);
         } else {
-          setEmailErrorText('property:userNotAssociated');
+          setEmailErrorText("property:userNotAssociated");
           setEmailError(true);
         }
       });
@@ -305,7 +333,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
 
   const onSetEmailError = (value: boolean): void => {
     if (!value && !!emailError) {
-      setEmailErrorText('');
+      setEmailErrorText("");
     }
     setEmailError(value);
   };
@@ -316,27 +344,27 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       category: yup.number().required(),
       frequency: yup.number().required(),
       date: yup.string().required(),
-      property: yup.number().when('category', {
+      property: yup.number().when("category", {
         is: 1,
         then: yup.number().required(),
       }),
-      leaseUnit: yup.number().when('category', {
+      leaseUnit: yup.number().when("category", {
         is: 1,
         then: yup.number().required(),
       }),
-      tenant: yup.number().when('category', {
+      tenant: yup.number().when("category", {
         is: 1,
         then: yup.number().required(),
       }),
-      owner: yup.number().when('category', {
+      owner: yup.number().when("category", {
         is: 1,
         then: yup.number().required(),
       }),
-      bankAccount: yup.number().when('category', {
+      bankAccount: yup.number().when("category", {
         is: 1,
         then: yup.number().required(),
       }),
-      rent: yup.string().when('category', {
+      rent: yup.string().when("category", {
         is: 1,
         then: yup.string().required(),
       }),
@@ -345,18 +373,42 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
 
   const getButtonVisibility = (formProps: FormikProps<any>): boolean => {
     const {
-      values: { category, title, frequency, bankAccount, owner, tenant, maintenanceAmount, property, paidBy },
+      values: {
+        category,
+        title,
+        frequency,
+        bankAccount,
+        owner,
+        tenant,
+        maintenanceAmount,
+        property,
+        paidBy,
+      },
     } = formProps;
-    const check = !!title && Number(category) > 0 && Number(frequency) > 0 && !emailError && !isEmailError;
-    const selectedAsset = assets.filter((item) => item.id === Number(property))[0];
-    const user = societyCharges?.users.find((item) => item.id === userData.id && !item.isAssetOwner);
+    const check =
+      !!title &&
+      Number(category) > 0 &&
+      Number(frequency) > 0 &&
+      !emailError &&
+      !isEmailError;
+    const selectedAsset = assets.filter(
+      (item) => item.id === Number(property)
+    )[0];
+    const user = societyCharges?.users.find(
+      (item) => item.id === userData.id && !item.isAssetOwner
+    );
 
     if (category === 1) {
       return check && bankAccount > 0 && owner > 0 && tenant > 0 && canEdit;
     }
 
     if (category === 3) {
-      return check && Number(maintenanceAmount) > 0 && !!selectedAsset?.society && (!!user?.id || Number(paidBy) > 0);
+      return (
+        check &&
+        Number(maintenanceAmount) > 0 &&
+        !!selectedAsset?.society &&
+        (!!user?.id || Number(paidBy) > 0)
+      );
     }
 
     return check;
@@ -364,7 +416,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
 
   const handleUnitCallback = (status: boolean): void => {
     if (status && assetUsers && assetUsers.tenants.length < 1) {
-      AlertHelper.error({ message: t('property:yetToAcceptInvite') });
+      AlertHelper.error({ message: t("property:yetToAcceptInvite") });
     }
   };
 
@@ -386,7 +438,9 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
     const isRent = category === 1;
     const isMaintenance = category === 3;
     const selectedAsset = assets.find((item) => item.id === Number(property));
-    const user = societyCharges?.users.find((item) => item.id === userData.id && !item.isAssetOwner);
+    const user = societyCharges?.users.find(
+      (item) => item.id === userData.id && !item.isAssetOwner
+    );
     const reminderPayload: IReminderPayload = {
       title,
       reminder_category: category,
@@ -394,17 +448,23 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       start_date: new Date(date).toISOString(),
       emails: userEmails,
       ...(property && property > 0 && { asset: property }),
-      ...(isRent && leaseUnit && leaseUnit > 0 && { lease_transaction: leaseUnit }),
+      ...(isRent &&
+        leaseUnit &&
+        leaseUnit > 0 && { lease_transaction: leaseUnit }),
       ...(!!notes && { description: notes }),
       ...(isRent && { payer_user: tenant }),
       ...(isRent && { receiver_user: owner }),
       ...(isRent && { user_bank_info: bankAccount }),
       ...(isRent && { amount: Number(rent) }),
       ...(isRent && { currency }),
-      ...(isMaintenance && selectedAsset && { society: selectedAsset.society?.id }),
+      ...(isMaintenance &&
+        selectedAsset && { society: selectedAsset.society?.id }),
       ...(isMaintenance && { amount: Number(maintenanceAmount) }),
       ...(isMaintenance && { payer_user: user?.id ?? paidBy }),
-      ...(isMaintenance && societyCharges && { currency: societyCharges.maintenance.currency.currencyCode }),
+      ...(isMaintenance &&
+        societyCharges && {
+          currency: societyCharges.maintenance.currency.currencyCode,
+        }),
       is_confirmed: true,
     };
 
@@ -427,16 +487,24 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         onCallback: handleReminderCallback,
       };
       if (isEdit) {
-        dispatch(FinancialActions.updateReminder(finalPayload as IUpdateReminderPayload));
+        dispatch(
+          FinancialActions.updateReminder(
+            finalPayload as IUpdateReminderPayload
+          )
+        );
       } else {
-        dispatch(FinancialActions.addReminder(finalPayload as IAddReminderPayload));
+        dispatch(
+          FinancialActions.addReminder(finalPayload as IAddReminderPayload)
+        );
       }
     }
   };
 
   const handleReminderCallback = (status: boolean): void => {
     if (status) {
-      AlertHelper.success({ message: t(isEdit ? 'reminderUpdateMsg' : 'reminderSuccessMsg') });
+      AlertHelper.success({
+        message: t(isEdit ? "reminderUpdateMsg" : "reminderSuccessMsg"),
+      });
       onSubmit(isEdit);
     } else if (onError) {
       onError(false);
@@ -448,23 +516,27 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
       <TouchableOpacity
         style={styles.rightNode}
         disabled={!onAddAccount}
-        onPress={onAddAccount ? (): void => onAddAccount(ownerId) : FunctionUtils.noop}
+        onPress={
+          onAddAccount ? (): void => onAddAccount(ownerId) : FunctionUtils.noop
+        }
       >
         <Icon name={icons.plus} color={theme.colors.primaryColor} size={20} />
         <Label textType="semiBold" style={styles.rightText}>
-          {t('addNew')}
+          {t("addNew")}
         </Label>
       </TouchableOpacity>
     );
   };
 
-  const renderRentFields = (formProps: FormikProps<FormikValues>): React.ReactElement => {
+  const renderRentFields = (
+    formProps: FormikProps<FormikValues>
+  ): React.ReactElement => {
     return (
       <>
         <FormDropdown
           name="leaseUnit"
-          label={t('leaseUnit')}
-          placeholder={t('selectLeaseUnit')}
+          label={t("leaseUnit")}
+          placeholder={t("selectLeaseUnit")}
           options={getUnitList()}
           formProps={formProps}
           onChange={onChangeUnit}
@@ -473,8 +545,8 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         />
         <FormDropdown
           name="owner"
-          label={t('property:owner')}
-          placeholder={t('property:selectOwner')}
+          label={t("property:owner")}
+          placeholder={t("property:selectOwner")}
           options={assetUsers?.owners ?? []}
           formProps={formProps}
           isDisabled={Number(formProps.values.leaseUnit) < 1 || !canEdit}
@@ -484,65 +556,78 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
         />
         <FormDropdown
           name="tenant"
-          label={t('property:tenant')}
-          placeholder={t('property:selectTenant')}
+          label={t("property:tenant")}
+          placeholder={t("property:selectTenant")}
           options={assetUsers?.tenants ?? []}
           formProps={formProps}
-          isDisabled={Number(formProps.values.leaseUnit) < 1 || !canEdit || !assetUsers?.tenants.length}
+          isDisabled={
+            Number(formProps.values.leaseUnit) < 1 ||
+            !canEdit ||
+            !assetUsers?.tenants.length
+          }
           dropdownContainerStyle={styles.field}
           listHeight={300}
         />
         <FormTextInput
           name="rent"
           inputType="decimal"
-          label={t('property:rent')}
+          label={t("property:rent")}
           formProps={formProps}
-          placeholder={t('property:enterRentAmount')}
+          placeholder={t("property:enterRentAmount")}
           editable={canEdit}
         />
         <TransactionField
           name="bankAccount"
-          label={t('bankAccount')}
-          placeholder={t('selectAccount')}
+          label={t("bankAccount")}
+          placeholder={t("selectAccount")}
           rightNode={renderRightNode(formProps.values.owner)}
           formProps={formProps}
           isDisabled={!canEdit || bankInfo.length < 1}
-          options={bankInfo.filter((item) => item.isActive).map((item) => item.bankDetail)}
+          options={bankInfo
+            .filter((item) => item.isActive)
+            .map((item) => item.bankDetail)}
         />
       </>
     );
   };
 
-  const renderMaintenanceFields = (formProps: FormikProps<FormikValues>): React.ReactElement => {
-    const selectedAsset = assets.find((item) => item.id === Number(formProps.values.property));
-    const isAddNew = !selectedAsset?.society && Number(formProps.values.property) > 0;
-    const user = societyCharges?.users.find((item) => item.id === userData.id && !item.isAssetOwner);
+  const renderMaintenanceFields = (
+    formProps: FormikProps<FormikValues>
+  ): React.ReactElement => {
+    const selectedAsset = assets.find(
+      (item) => item.id === Number(formProps.values.property)
+    );
+    const isAddNew =
+      !selectedAsset?.society && Number(formProps.values.property) > 0;
+    const user = societyCharges?.users.find(
+      (item) => item.id === userData.id && !item.isAssetOwner
+    );
     return (
       <>
         <FormTextInput
           formProps={formProps}
-          label={t('propertyPayment:society')}
+          label={t("propertyPayment:society")}
           inputType="default"
           name="society"
-          placeholder={t('propertyPayment:addSocietyLabel')}
+          placeholder={t("propertyPayment:addSocietyLabel")}
           value={selectedAsset?.society?.name}
           editable={false}
-          optionalText={isAddNew ? t('common:addNew') : undefined}
+          optionalText={isAddNew ? t("common:addNew") : undefined}
           onPressOptional={onAddSociety}
           optionalStyle={styles.rightText}
         />
         <FormTextInput
           formProps={formProps}
-          label={t('property:maintenanceAmount')}
-          placeholder={t('property:maintenanceAmount')}
+          label={t("property:maintenanceAmount")}
+          placeholder={t("property:maintenanceAmount")}
           inputType="number"
           name="maintenanceAmount"
           editable={canEdit}
         />
         <FormDropdown
           name="paidBy"
-          label={t('propertyPayment:paidBy')}
-          placeholder={t('property:selectPayee')}
+          label={t("propertyPayment:paidBy")}
+          placeholder={t("property:selectPayee")}
           options={societyCharges?.userDropdownData ?? []}
           formProps={formProps}
           dropdownContainerStyle={styles.field}
@@ -570,14 +655,14 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
               formProps={formProps}
               inputType="default"
               name="title"
-              label={t('serviceTickets:title')}
-              placeholder={t('reminderTitle')}
+              label={t("serviceTickets:title")}
+              placeholder={t("reminderTitle")}
               editable={canEdit}
             />
             <FormDropdown
               name="category"
-              label={t('category')}
-              placeholder={t('common:selectYourCountry')}
+              label={t("category")}
+              placeholder={t("common:selectYourCountry")}
               options={categories}
               onChange={onChangeCategory}
               formProps={formProps}
@@ -587,28 +672,34 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
             />
             <FormDropdown
               name="property"
-              label={t('property')}
-              placeholder={t('offers:selectProperty')}
+              label={t("property")}
+              placeholder={t("offers:selectProperty")}
               options={getPropertyList(isRented)}
               formProps={formProps}
-              onChange={(value, formProp): Promise<void> => onChangeProperty(value, category, formProp)}
-              isDisabled={getPropertyList(isRented).length < 1 || isEdit || !canEdit}
+              onChange={(value, formProp): Promise<void> =>
+                onChangeProperty(value, category, formProp)
+              }
+              isDisabled={
+                getPropertyList(isRented).length < 1 || isEdit || !canEdit
+              }
               dropdownContainerStyle={styles.field}
             />
-            {Number(formProps.values.category) === 1 && renderRentFields(formProps)}
-            {Number(formProps.values.category) === 3 && renderMaintenanceFields(formProps)}
+            {Number(formProps.values.category) === 1 &&
+              renderRentFields(formProps)}
+            {Number(formProps.values.category) === 3 &&
+              renderMaintenanceFields(formProps)}
             <FormCalendar
               formProps={formProps}
               name="date"
               textType="label"
               minDate={formProps.values.date}
-              label={t('reminderDate')}
+              label={t("reminderDate")}
               isCurrentDateEnable={false}
               isDisabled={!canEdit}
             />
             <FormDropdown
               name="frequency"
-              label={t('frequency')}
+              label={t("frequency")}
               listHeight={400}
               options={frequencies}
               formProps={formProps}
@@ -625,9 +716,9 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
             />
             <TextArea
               value={notes}
-              placeholder={t('notesPlaceholder')}
-              label={t('notes')}
-              helpText={t('common:optional')}
+              placeholder={t("notesPlaceholder")}
+              label={t("notes")}
+              helpText={t("common:optional")}
               onMessageChange={setNotes}
               isDisabled={!canEdit}
             />
@@ -638,7 +729,7 @@ const ReminderForm = (props: IOwnProp): React.ReactElement => {
               formProps={formProps}
               type="primary"
               disabled={!getButtonVisibility(formProps) || (isEdit && !canEdit)}
-              title={isEdit ? t('common:updateNow') : t('common:addNow')}
+              title={isEdit ? t("common:updateNow") : t("common:addNow")}
               containerStyle={styles.button}
             />
           </>
@@ -662,8 +753,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   rightNode: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   rightText: {
     color: theme.colors.primaryColor,

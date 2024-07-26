@@ -1,37 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { groupBy } from 'lodash';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { DateFormats, DateUtils } from '@homzhub/common/src/utils/DateUtils';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { useOnly } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { StringUtils } from '@homzhub/common/src/utils/StringUtils';
-import { AssetActions } from '@homzhub/common/src/modules/asset/actions';
-import { AssetSelectors } from '@homzhub/common/src/modules/asset/selectors';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Badge } from '@homzhub/common/src/components/atoms/Badge';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { EmptyState } from '@homzhub/common/src/components/atoms/EmptyState';
-import { Avatar } from '@homzhub/common/src/components/molecules/Avatar';
-import { Loader } from '@homzhub/common/src/components/atoms/Loader';
-import { AddressWithVisitDetail } from '@homzhub/common/src/components/molecules/AddressWithVisitDetail';
+import React, { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { groupBy } from "lodash";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { DateFormats, DateUtils } from "@homzhub/common/src/utils/DateUtils";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { useOnly } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { StringUtils } from "@homzhub/common/src/utils/StringUtils";
+import { AssetActions } from "@homzhub/common/src/modules/asset/actions";
+import { AssetSelectors } from "@homzhub/common/src/modules/asset/selectors";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Badge } from "@homzhub/common/src/components/atoms/Badge";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { EmptyState } from "@homzhub/common/src/components/atoms/EmptyState";
+import { Avatar } from "@homzhub/common/src/components/molecules/Avatar";
+import { Loader } from "@homzhub/common/src/components/atoms/Loader";
+import { AddressWithVisitDetail } from "@homzhub/common/src/components/molecules/AddressWithVisitDetail";
 // import EventWithProfile from '@homzhub/mobile/src/components/molecules/EventWithProfile';
-import { AssetVisit, ISlotItem, IVisitByKey } from '@homzhub/common/src/domain/models/AssetVisit';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { IAssetVisitPayload, IBookVisitProps, VisitStatus } from '@homzhub/common/src/domain/repositories/interfaces';
-import { ILabelColor } from '@homzhub/common/src/domain/models/LabelColor';
-import { UserRepository } from '@homzhub/common/src/domain/repositories/UserRepository';
-import { UserInteraction } from '@homzhub/common/src/domain/models/UserInteraction';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { TimeSlot } from '@homzhub/common/src/constants/ContactFormData';
-import { Tabs } from '@homzhub/common/src/constants/Tabs';
-import CalendarWeb from 'components/atoms/Calendar/CalendarWeb';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+import {
+  AssetVisit,
+  ISlotItem,
+  IVisitByKey,
+} from "@homzhub/common/src/domain/models/AssetVisit";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import {
+  IAssetVisitPayload,
+  IBookVisitProps,
+  VisitStatus,
+} from "@homzhub/common/src/domain/repositories/interfaces";
+import { ILabelColor } from "@homzhub/common/src/domain/models/LabelColor";
+import { UserRepository } from "@homzhub/common/src/domain/repositories/UserRepository";
+import { UserInteraction } from "@homzhub/common/src/domain/models/UserInteraction";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { TimeSlot } from "@homzhub/common/src/constants/ContactFormData";
+import { Tabs } from "@homzhub/common/src/constants/Tabs";
+import CalendarWeb from "@homzhub/web/src/components/atoms/Calendar/CalendarWeb";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 interface IProps {
   onReschedule: (param: IBookVisitProps, isNew?: boolean) => void;
@@ -53,11 +61,14 @@ interface ICustomState {
 type Props = IProps;
 
 const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
-  const allSlot = { id: 0, from: 0, to: 0, icon: '', formatted: 'All' };
+  const allSlot = { id: 0, from: 0, to: 0, icon: "", formatted: "All" };
 
   const [customState, setCustomState] = useState<ICustomState>({
     selectedDate: new Date(),
-    transformedDate: DateUtils.getUtcFormattedDate(new Date().toDateString(), DateFormats.DD_MMMMYYYY),
+    transformedDate: DateUtils.getUtcFormattedDate(
+      new Date().toDateString(),
+      DateFormats.DD_MMMMYYYY
+    ),
     timeSlot: [allSlot].concat(TimeSlot),
     isCalendarVisible: false,
     isProfileVisible: false,
@@ -69,9 +80,14 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
   const { getAssetVisit, setVisitIds } = AssetActions;
   const { t } = useTranslation();
-  const visits = useSelector((state: IState) => AssetSelectors.getVisitsByAsset(state));
-  const isLoading = useSelector((state: IState) => AssetSelectors.getVisitLoadingState(state));
+  const visits = useSelector((state: IState) =>
+    AssetSelectors.getVisitsByAsset(state)
+  );
+  const isLoading = useSelector((state: IState) =>
+    AssetSelectors.getVisitLoadingState(state)
+  );
   const { selectedDate, transformedDate, selectedSlot, timeSlot } = customState;
+  console.log("this is selectedDate 8888888888888888888", selectedDate);
 
   useEffect(() => {
     getVisitsData();
@@ -89,12 +105,20 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
                 key={index}
                 type="secondary"
                 icon={slot.icon}
-                iconColor={isSelected ? theme.colors.white : theme.colors.darkTint4}
+                iconColor={
+                  isSelected ? theme.colors.white : theme.colors.darkTint4
+                }
                 iconSize={16}
                 title={slot.formatted}
                 onPress={onSelectSlot}
-                titleStyle={[styles.slotTitle, isSelected && styles.selectedTitle]}
-                containerStyle={[styles.slotButton, isSelected && styles.selectedSlot]}
+                titleStyle={[
+                  styles.slotTitle,
+                  isSelected && styles.selectedTitle,
+                ]}
+                containerStyle={[
+                  styles.slotButton,
+                  isSelected && styles.selectedSlot,
+                ]}
               />
             </View>
           );
@@ -129,9 +153,15 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
             const badge = getBadgesData(status);
             return (
               <>
-                {badge && <Badge title={badge.label} badgeColor={badge.color as string} badgeStyle={styles.badge} />}
+                {badge && (
+                  <Badge
+                    title={badge.label}
+                    badgeColor={badge.color as string}
+                    badgeStyle={styles.badge}
+                  />
+                )}
                 {assetVisit.map((item) => {
-                  const designation = item.role.replace('_', ' ');
+                  const designation = item.role.replace("_", " ");
                   return (
                     <>
                       <Avatar
@@ -141,10 +171,14 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
                         designation={StringUtils.toTitleCase(designation)}
                         date={item.updatedAt ?? item.createdAt}
                         image={item.user.profilePicture}
-                        onPressRightIcon={(): void => onShowProfile(item.user.id)}
+                        onPressRightIcon={(): void =>
+                          onShowProfile(item.user.id)
+                        }
                         containerStyle={styles.avatar}
                       />
-                      {results.length - 1 !== index && <Divider containerStyles={styles.dividerStyle} />}
+                      {results.length - 1 !== index && (
+                        <Divider containerStyles={styles.dividerStyle} />
+                      )}
                     </>
                   );
                 })}
@@ -186,7 +220,10 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
       return {
         ...state,
         selectedDate: argDate,
-        transformedDate: DateUtils.getDisplayDate(argFormattedDate, DateFormats.DD_MMMMYYYY),
+        transformedDate: DateUtils.getDisplayDate(
+          argFormattedDate,
+          DateFormats.DD_MMMMYYYY
+        ),
         isCalendarVisible: false,
         selectedSlot: 0,
       };
@@ -195,7 +232,7 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
 
   const handleInvalidVisit = (): void => {
     onCloseProfile();
-    AlertHelper.error({ message: t('property:inValidVisit') });
+    AlertHelper.error({ message: t("property:inValidVisit") });
   };
 
   // const showConfirmation = (param: IVisitActionParam): void => { TODO: User Profile Story
@@ -266,8 +303,15 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
   // };
 
   const getBadgesData = (status: string): ILabelColor | null => {
-    const date = DateUtils.getUtcFormatted(transformedDate, DateFormats.DD_MMMMYYYY, DateFormats.YYYYMMDD);
-    const todayDate = DateUtils.getDisplayDate(new Date().toDateString(), DateFormats.YYYYMMDD);
+    const date = DateUtils.getUtcFormatted(
+      transformedDate,
+      DateFormats.DD_MMMMYYYY,
+      DateFormats.YYYYMMDD
+    );
+    const todayDate = DateUtils.getDisplayDate(
+      new Date().toDateString(),
+      DateFormats.YYYYMMDD
+    );
     switch (status) {
       case VisitStatus.ACCEPTED:
         if (date > todayDate) {
@@ -324,13 +368,21 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
 
   const setCalendarVisitPayload = (): IAssetVisitPayload => {
     const { selectedAssetId, setVisitPayload } = props;
-    const date = DateUtils.getUtcFormatted(transformedDate, DateFormats.DD_MMMYYYY, DateFormats.YYYYMMDD);
-    let start_datetime = '';
+    const date = DateUtils.getUtcFormatted(
+      transformedDate,
+      DateFormats.DD_MMMYYYY,
+      DateFormats.YYYYMMDD
+    );
+    let start_datetime = "";
     if (selectedSlot > 0) {
       timeSlot.forEach((item) => {
         if (item.id === selectedSlot) {
           const formattedDate = DateUtils.getISOFormattedDate(date, item.from);
-          start_datetime = DateUtils.getUtcFormatted(formattedDate, DateFormats.YYYYMMDD_HM, DateFormats.ISO24Format);
+          start_datetime = DateUtils.getUtcFormatted(
+            formattedDate,
+            DateFormats.YYYYMMDD_HM,
+            DateFormats.ISO24Format
+          );
         }
       });
     }
@@ -361,7 +413,8 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
     });
     const { leaseListing, saleListing, isValidVisit } = results[0];
     const param = {
-      ...(leaseListing && leaseListing > 0 && { lease_listing_id: leaseListing }),
+      ...(leaseListing &&
+        leaseListing > 0 && { lease_listing_id: leaseListing }),
       ...(saleListing && saleListing > 0 && { sale_listing_id: saleListing }),
     };
     if (!isValidVisit) {
@@ -387,25 +440,38 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
         <View style={styles.calendarParentContainer}>
           <View style={styles.calendarTitle}>
             <Typography size="small" variant="text" fontWeight="bold">
-              {t('common:selectDate')}
+              {t("common:selectDate")}
             </Typography>
           </View>
-          <View style={[styles.containerCalendar, !isDesktop && styles.containerCalendarMobile]}>
+          <View
+            style={[
+              styles.containerCalendar,
+              !isDesktop && styles.containerCalendarMobile,
+            ]}
+          >
             <CalendarWeb selectedValue={selectedDate} onSelect={onSelectDate} />
           </View>
         </View>
         <View style={styles.slotsContainer}>
           <View style={styles.slotsTitle}>
             <Typography size="small" variant="text" fontWeight="bold">
-              {t('common:selectTimings')}
+              {t("common:selectTimings")}
             </Typography>
           </View>
           {renderTimeSlot()}
         </View>
       </View>
-      <View style={[styles.subContainerVisits, isDesktop && styles.subContainerVisitsWeb]}>
+      <View
+        style={[
+          styles.subContainerVisits,
+          isDesktop && styles.subContainerVisitsWeb,
+        ]}
+      >
         {visits.length > 0 ? (
-          <ScrollView style={styles.visitView} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            style={styles.visitView}
+            showsVerticalScrollIndicator={false}
+          >
             {visits.map((visitItem: IVisitByKey[]) => {
               return visitItem.map((visit) => {
                 return renderVisits(visit);
@@ -413,7 +479,7 @@ const SiteVisitsCalendarView: React.FC<Props> = (props: Props) => {
             })}
           </ScrollView>
         ) : (
-          <EmptyState icon={icons.schedule} title={t('property:noVisits')} />
+          <EmptyState icon={icons.schedule} title={t("property:noVisits")} />
         )}
       </View>
       {/* {!isEmpty(userDetail) && ( // TODO: Lakshit:  User Profile Story
@@ -444,23 +510,23 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   containerWeb: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   subContainerCalendar: {
     borderWidth: 1,
     borderColor: theme.colors.divider,
   },
   subContainerCalendarWeb: {
-    width: '40%',
+    width: "40%",
   },
   subContainerCalendarTab: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   subContainerVisits: {
-    width: '100%',
+    width: "100%",
   },
   subContainerVisitsWeb: {
-    width: '60%',
+    width: "60%",
   },
   calendarParentContainer: {
     marginTop: 16,
@@ -486,14 +552,14 @@ const styles = StyleSheet.create({
   slotsGrid: {
     marginVertical: 16,
     marginHorizontal: 16,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
   },
   slotsScroll: {
-    overflow: 'scroll',
-    flexWrap: 'nowrap',
+    overflow: "scroll",
+    flexWrap: "nowrap",
   },
   slotItem: {
     marginVertical: 5,
@@ -511,7 +577,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     paddingHorizontal: 12,
     marginHorizontal: 10,
-    flexDirection: 'row-reverse',
+    flexDirection: "row-reverse",
   },
   selectedSlot: {
     backgroundColor: theme.colors.blue,
@@ -543,7 +609,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   badge: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     paddingVertical: 4,
     paddingHorizontal: 14,
   },

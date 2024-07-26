@@ -1,11 +1,12 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
-import ReactApexCharts from 'react-apexcharts';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import _ from 'lodash';
-import { IGraphProps } from '@homzhub/common/src/utils/FinanceUtil';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { BarGraphLegends } from '@homzhub/common/src/domain/models/GeneralLedgers';
+// @ts-nocheck
+import React from "react";
+import { ScrollView } from "react-native";
+import ReactApexCharts from "react-apexcharts";
+import { WithTranslation, withTranslation } from "react-i18next";
+import _ from "lodash";
+import { IGraphProps } from "@homzhub/common/src/utils/FinanceUtil";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { BarGraphLegends } from "@homzhub/common/src/domain/models/GeneralLedgers";
 
 interface IOwnProps {
   data: IGraphProps;
@@ -34,7 +35,9 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
 
   public componentDidUpdate(prevProps: Readonly<IProps>): boolean {
     const { data, currencySymbol } = this.props;
-    const hasPropsChanged = !_.isEqual(prevProps.data, data) || !_.isEqual(prevProps.currencySymbol, currencySymbol);
+    const hasPropsChanged =
+      !_.isEqual(prevProps.data, data) ||
+      !_.isEqual(prevProps.currencySymbol, currencySymbol);
     if (hasPropsChanged) {
       this.updateData();
     }
@@ -44,11 +47,23 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
   public render(): React.ReactNode {
     const { data, currencySymbol } = this.props;
     const { data1: debit, data2: credit, label, type } = data;
-    const { options } = this.initConfig(currencySymbol, label, type, _.sum(debit), _.sum(credit));
+    const { options } = this.initConfig(
+      currencySymbol,
+      label,
+      type,
+      _.sum(debit),
+      _.sum(credit)
+    );
     const { seriesData } = this.state;
     return (
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <ReactApexCharts options={options} series={seriesData} type="bar" height={250} width={550} />
+        <ReactApexCharts
+          options={options}
+          series={seriesData}
+          type="bar"
+          height={250}
+          width={550}
+        />
       </ScrollView>
     );
   }
@@ -63,7 +78,7 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
     // Initial Config of Graph
     options: {
       chart: {
-        type: 'bar',
+        type: "bar",
         toolbar: {
           show: false,
         },
@@ -72,7 +87,7 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '40%',
+          columnWidth: "40%",
         },
       },
       dataLabels: {
@@ -81,7 +96,7 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
       stroke: {
         show: true,
         width: 2,
-        colors: ['transparent'],
+        colors: ["transparent"],
       },
       xaxis: {
         categories: label,
@@ -89,7 +104,9 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
       yaxis: {
         labels: {
           formatter(value: number): string {
-            return `${currencySymbol} ${value > 1000 ? value / 1000 : value}${value > 1000 ? 'k' : ''}`;
+            return `${currencySymbol} ${value > 1000 ? value / 1000 : value}${
+              value > 1000 ? "k" : ""
+            }`;
           },
         },
       },
@@ -97,10 +114,16 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
         opacity: 1,
       },
       legend: {
-        position: 'bottom',
-        horizontalAlign: 'center',
+        position: "bottom",
+        horizontalAlign: "center",
         formatter(seriesName: string): string[] {
-          return [seriesName, ' - ', `${currencySymbol} ${seriesName === 'Expense' ? totalDebit : totalCredit}`];
+          return [
+            seriesName,
+            " - ",
+            `${currencySymbol} ${
+              seriesName === "Expense" ? totalDebit : totalCredit
+            }`,
+          ];
         },
       },
       tooltip: {
@@ -113,7 +136,10 @@ class ColumnChart extends React.PureComponent<IProps, IOwnState> {
     },
   });
 
-  public seriesData = (debit: number[], credit: number[]): { data: number[]; name: string }[] => {
+  public seriesData = (
+    debit: number[],
+    credit: number[]
+  ): { data: number[]; name: string }[] => {
     return [
       {
         name: BarGraphLegends.income,

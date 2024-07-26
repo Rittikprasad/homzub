@@ -1,33 +1,49 @@
-import React from 'react';
-import { View, StyleSheet, StatusBar, PickerItemProps, ScrollView } from 'react-native';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { PopupActions, PopupPosition, PopupProps } from 'reactjs-popup/dist/types';
-import { History } from 'history';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { IWithMediaQuery, withMediaQuery } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { RouteNames } from '@homzhub/web/src/router/RouteNames';
-import { initialSearchState } from '@homzhub/common/src/modules/search/reducer';
-import { CommonSelectors } from '@homzhub/common/src/modules/common/selectors';
-import { SearchSelector } from '@homzhub/common/src/modules/search/selectors';
-import { SearchActions } from '@homzhub/common/src/modules/search/actions';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Loader } from '@homzhub/common/src/components/atoms/Loader';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { SelectionPicker } from '@homzhub/common/src/components/atoms/SelectionPicker';
-import { Range } from '@homzhub/common/src/components/molecules/Range';
-import { RoomsFilter } from '@homzhub/common/src/components/molecules/RoomsFilter';
-import AssetTypeFilter from '@homzhub/common/src/components/organisms/AssetTypeFilter';
-import MoreFilters from '@homzhub/web/src/screens/searchProperty/components/MoreFilter';
-import { Country } from '@homzhub/common/src/domain/models/Country';
-import { FilterDetail } from '@homzhub/common/src/domain/models/FilterDetail';
-import { IFilter, ITransactionRange } from '@homzhub/common/src/domain/models/Search';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { IState } from '@homzhub/common/src/modules/interfaces';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  PickerItemProps,
+  ScrollView,
+} from "react-native";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { withTranslation, WithTranslation } from "react-i18next";
+import {
+  PopupActions,
+  PopupPosition,
+  PopupProps,
+} from "reactjs-popup/dist/types";
+import { History } from "history";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import {
+  IWithMediaQuery,
+  withMediaQuery,
+} from "@homzhub/common/src/utils/MediaQueryUtils";
+import { RouteNames } from "@homzhub/web/src/router/RouteNames";
+import { initialSearchState } from "@homzhub/common/src/modules/search/reducer";
+import { CommonSelectors } from "@homzhub/common/src/modules/common/selectors";
+import { SearchSelector } from "@homzhub/common/src/modules/search/selectors";
+import { SearchActions } from "@homzhub/common/src/modules/search/actions";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Loader } from "@homzhub/common/src/components/atoms/Loader";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { SelectionPicker } from "@homzhub/common/src/components/atoms/SelectionPicker";
+import { Range } from "@homzhub/common/src/components/molecules/Range";
+import { RoomsFilter } from "@homzhub/common/src/components/molecules/RoomsFilter";
+import AssetTypeFilter from "@homzhub/common/src/components/organisms/AssetTypeFilter";
+import MoreFilters from "@homzhub/web/src/screens/searchProperty/components/MoreFilter";
+import { Country } from "@homzhub/common/src/domain/models/Country";
+import { FilterDetail } from "@homzhub/common/src/domain/models/FilterDetail";
+import {
+  IFilter,
+  ITransactionRange,
+} from "@homzhub/common/src/domain/models/Search";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { IState } from "@homzhub/common/src/modules/interfaces";
 
 interface IStateProps {
   filterData: FilterDetail | null;
@@ -49,7 +65,11 @@ interface IComponentProps {
   history: History;
 }
 
-type Props = IStateProps & IDispatchProps & WithTranslation & IWithMediaQuery & IComponentProps;
+type Props = IStateProps &
+  IDispatchProps &
+  WithTranslation &
+  IWithMediaQuery &
+  IComponentProps;
 
 interface ILandingState {
   isSearchBarFocused: boolean;
@@ -72,24 +92,29 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
     const { getFilterDetails, filters, history, setFilter } = this.props;
     const { asset_transaction_type, min_price, max_price } = filters;
 
-    if (history.action === 'POP') {
-      const setFilters = { ...initialSearchState.filter, ...initialSearchState.filter.miscellaneous };
+    if (history.action === "POP") {
+      const setFilters = {
+        ...initialSearchState.filter,
+        ...initialSearchState.filter.miscellaneous,
+      };
 
       delete setFilters.miscellaneous;
 
-      const searchParams = new URLSearchParams(history.location.search.substring(1));
+      const searchParams = new URLSearchParams(
+        history.location.search.substring(1)
+      );
 
       let payload = {};
       Object.keys(setFilters).forEach((key) => {
         if (searchParams.get(key)) {
           let value;
-          if (typeof key === 'number') value = Number(searchParams.get(key));
-          if (Array.isArray(key)) value = searchParams.get(key)?.split(',');
+          if (typeof key === "number") value = Number(searchParams.get(key));
+          if (Array.isArray(key)) value = searchParams.get(key)?.split(",");
           else value = searchParams.get(key);
           payload = { ...payload, [key]: value };
           setFilter({
             ...payload,
-            currency_code: 'INR',
+            currency_code: "INR",
           });
         }
       });
@@ -105,11 +130,20 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
 
   public componentDidUpdate = (prevProps: Props): void => {
     const {
-      filters: { asset_group, max_price, min_price, search_latitude, asset_transaction_type },
+      filters: {
+        asset_group,
+        max_price,
+        min_price,
+        search_latitude,
+        asset_transaction_type,
+      },
       getFilterDetails,
     } = this.props;
 
-    if (prevProps.filters.asset_group !== asset_group || prevProps.filters.search_latitude !== search_latitude) {
+    if (
+      prevProps.filters.asset_group !== asset_group ||
+      prevProps.filters.search_latitude !== search_latitude
+    ) {
       getFilterDetails({ asset_group });
     }
 
@@ -127,9 +161,15 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
     return (
       <>
         <View style={styles.statusBar}>
-          <StatusBar translucent backgroundColor={theme.colors.background} barStyle="dark-content" />
+          <StatusBar
+            translucent
+            backgroundColor={theme.colors.background}
+            barStyle="dark-content"
+          />
         </View>
-        <View style={styles.screen}>{!isSearchBarFocused && filterData && this.renderContent(filterData)}</View>
+        <View style={styles.screen}>
+          {!isSearchBarFocused && filterData && this.renderContent(filterData)}
+        </View>
         <Loader visible={isLoading} />
       </>
     );
@@ -141,7 +181,13 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       t,
       currencyData,
       priceRange,
-      filters: { currency_code, room_count, bath_count, asset_group, asset_type },
+      filters: {
+        currency_code,
+        room_count,
+        bath_count,
+        asset_group,
+        asset_type,
+      },
       countryList,
       isMobile,
       isTablet,
@@ -152,12 +198,15 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       currency,
       filters: { transactionType },
     } = filterData;
-    let currencySymbol = '';
+    let currencySymbol = "";
 
     // TODO: Handle Multiple currency
-    const country = countryList.find((item) => item.currencies[0].currencyCode === currency_code);
+    const country = countryList.find(
+      (item) => item.currencies[0].currencyCode === currency_code
+    );
 
-    currencySymbol = country?.currencies[0].currencySymbol ?? currency[0].currencySymbol;
+    currencySymbol =
+      country?.currencies[0].currencySymbol ?? currency[0].currencySymbol;
 
     const assetTransaction = transactionType.map((item, index) => {
       return { title: item.title, value: index };
@@ -171,14 +220,14 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       height: number,
       mobile: boolean | undefined,
       width = 400,
-      position = 'bottom center' as PopupPosition
+      position = "bottom center" as PopupPosition
     ): PopupProps => ({
       position,
       arrow: false,
       contentStyle: {
         minWidth: 10,
         marginTop: 20,
-        width: mobile ? '90%' : width,
+        width: mobile ? "90%" : width,
         height,
       },
       closeOnDocumentClick: true,
@@ -195,14 +244,14 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       contentStyle: {
         minWidth: 10,
         marginTop: isTablet ? 20 : 12,
-        width: mobile ? '90%' : width,
+        width: mobile ? "90%" : width,
         height,
         marginRight: mobile ? 10 : undefined,
-        marginLeft: '5%',
+        marginLeft: "5%",
       },
       closeOnDocumentClick: false,
       children: undefined,
-      className: 'moreFilter',
+      className: "moreFilter",
     });
 
     const mobileDefaultDropDownProps = (height: number): PopupProps => ({
@@ -210,14 +259,14 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       contentStyle: {
         minWidth: 10,
         marginTop: 12,
-        width: '91%',
+        width: "91%",
         height,
         marginRight: 10,
         marginLeft: 15,
       },
       closeOnDocumentClick: true,
       children: undefined,
-      className: 'moreFilter',
+      className: "moreFilter",
     });
 
     const assetFilterButtons = [
@@ -226,14 +275,22 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
         label: t(`${assetTransaction[selectedLookingType].title}`),
         content: (
           <View style={styles.selectionPickerContainer}>
-            <Typography size="small" variant="text" fontWeight="semiBold" style={styles.filterLabels}>
-              {t('lookingFor')}
+            <Typography
+              size="small"
+              variant="text"
+              fontWeight="semiBold"
+              style={styles.filterLabels}
+            >
+              {t("lookingFor")}
             </Typography>
             <SelectionPicker
               data={assetTransaction}
               selectedItem={[selectedLookingType]}
               onValueChange={this.onChangeFlow}
-              containerStyles={[styles.propertyTypeFilterButtons, isMobile && styles.propertyFilterButtonMobile]}
+              containerStyles={[
+                styles.propertyTypeFilterButtons,
+                isMobile && styles.propertyFilterButtonMobile,
+              ]}
             />
           </View>
         ),
@@ -243,9 +300,14 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
       },
       {
         id: 2,
-        label: t('propertyType'),
+        label: t("propertyType"),
         content: (
-          <View style={[styles.propertyTypes, isMobile && styles.propertyTypesMobile]}>
+          <View
+            style={[
+              styles.propertyTypes,
+              isMobile && styles.propertyTypesMobile,
+            ]}
+          >
             <AssetTypeFilter
               filterData={filterData}
               asset_group={asset_group ?? 0}
@@ -254,13 +316,20 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
             />
           </View>
         ),
-        popupProps: isMobile ? mobileDefaultDropDownProps(330) : defaultDropDownProps(304, isMobile, 405),
+        popupProps: isMobile
+          ? mobileDefaultDropDownProps(330)
+          : defaultDropDownProps(304, isMobile, 405),
       },
       {
         id: 3,
-        label: t('rooms'),
+        label: t("rooms"),
         content: (
-          <View style={[styles.roomsAndBaths, isMobile && styles.roomsAndBathsMobile]}>
+          <View
+            style={[
+              styles.roomsAndBaths,
+              isMobile && styles.roomsAndBathsMobile,
+            ]}
+          >
             <RoomsFilter
               bedCount={room_count ?? []}
               bathroomCount={[bath_count ?? 0]}
@@ -269,11 +338,13 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
             />
           </View>
         ),
-        popupProps: isMobile ? mobileDefaultDropDownProps(225) : defaultDropDownProps(225, isMobile),
+        popupProps: isMobile
+          ? mobileDefaultDropDownProps(225)
+          : defaultDropDownProps(225, isMobile),
       },
       {
         id: 4,
-        label: t('priceRange'),
+        label: t("priceRange"),
         content: (
           <Range
             dropdownData={currencyData}
@@ -284,22 +355,36 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
             range={priceRange}
             minChangedValue={minPriceRange}
             maxChangedValue={maxPriceRange}
-            containerStyle={[styles.priceRange, isMobile && styles.priceRangeMobile]}
+            containerStyle={[
+              styles.priceRange,
+              isMobile && styles.priceRangeMobile,
+            ]}
             sliderLength={isMobile ? 250 : undefined}
           />
         ),
-        popupProps: isMobile ? mobileDefaultDropDownProps(180) : defaultDropDownProps(180, isMobile),
+        popupProps: isMobile
+          ? mobileDefaultDropDownProps(180)
+          : defaultDropDownProps(180, isMobile),
       },
       {
         id: 5,
-        label: t('assetMore:more'),
+        label: t("assetMore:more"),
         content: <MoreFilters closePopover={closePopover} history={history} />,
-        popupProps: moreFilterDefaultDropDownProps(isMobile, isTablet, '90%', 536),
+        popupProps: moreFilterDefaultDropDownProps(
+          isMobile,
+          isTablet,
+          "90%",
+          536
+        ),
       },
     ];
 
     return (
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filtersContainer}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.filtersContainer}
+      >
         {assetFilterButtons.map((filter) => {
           return (
             <Popover
@@ -309,6 +394,9 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
               forwardedRef={this.popupRef}
             >
               <Button
+                onPress={() => {
+                  this.popupRef.current?.toggle();
+                }}
                 type="secondary"
                 title={filter.label}
                 containerStyle={styles.filterButtons}
@@ -327,7 +415,11 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
 
   private onChangeFlow = (value: number): void => {
     const { setFilter, getProperties, history } = this.props;
-    const filterValues = { asset_transaction_type: value, min_price: -1, max_price: -1 };
+    const filterValues = {
+      asset_transaction_type: value,
+      min_price: -1,
+      max_price: -1,
+    };
 
     const searchParams = new URLSearchParams(history.location.search);
 
@@ -337,7 +429,9 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
     }
     const updatedSearchParams = searchParams.toString();
 
-    history.push(`${RouteNames.protectedRoutes.SEARCH_PROPERTY}?${updatedSearchParams}`);
+    history.push(
+      `${RouteNames.protectedRoutes.SEARCH_PROPERTY}?${updatedSearchParams}`
+    );
     setFilter(filterValues);
 
     getProperties();
@@ -351,7 +445,9 @@ class AssetFilters extends React.PureComponent<Props, ILandingState> {
     searchParams.set(type, value.toString());
     const updatedSearchParams = searchParams.toString();
 
-    history.push(`${RouteNames.protectedRoutes.SEARCH_PROPERTY}?${updatedSearchParams}`);
+    history.push(
+      `${RouteNames.protectedRoutes.SEARCH_PROPERTY}?${updatedSearchParams}`
+    );
 
     setFilter({ [type]: value });
     getProperties();
@@ -370,7 +466,8 @@ export const mapStateToProps = (state: IState): IStateProps => {
 };
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => {
-  const { getFilterDetails, setFilter, getProperties, setInitialState } = SearchActions;
+  const { getFilterDetails, setFilter, getProperties, setInitialState } =
+    SearchActions;
   return bindActionCreators(
     {
       getFilterDetails,
@@ -391,7 +488,7 @@ export default connect(
 
 const styles = StyleSheet.create({
   filtersContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   propertyTypeFilterButtons: {
     width: 340,
@@ -399,7 +496,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   propertyFilterButtonMobile: {
-    width: '84%',
+    width: "84%",
   },
   screen: {
     flex: 1,
@@ -467,13 +564,13 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   roomsAndBathsMobile: {
-    width: '96%',
+    width: "96%",
     padding: 10,
   },
   filterButtons: {
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 31,
-    alignItems: 'center',
+    alignItems: "center",
     marginRight: 16,
     backgroundColor: theme.colors.lightGrayishBlue,
     borderWidth: 0,
@@ -492,10 +589,10 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   propertyTypesMobile: {
-    width: '90%',
+    width: "90%",
     padding: 0,
-    marginRight: '5%',
-    marginLeft: '5%',
+    marginRight: "5%",
+    marginLeft: "5%",
   },
 
   selectionPickerContainer: {

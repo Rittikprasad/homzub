@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { ButtonGroupProps, CarouselProps } from 'react-multi-carousel';
-import { cloneDeep } from 'lodash';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { Hoverable } from '@homzhub/web/src/components/hoc/Hoverable';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import DragAndDrop from '@homzhub/web/src/components/molecules/DragAndDrop';
-import MultiCarousel from '@homzhub/web/src/components/molecules/MultiCarousel';
-import { NextPrevBtn } from '@homzhub/web/src/components/molecules/NextPrevBtn';
-import OverviewCard from '@homzhub/web/src/components/molecules//OverviewCard';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+import React, { useState, useEffect, useRef } from "react";
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import { useTranslation } from "react-i18next";
+import { ButtonGroupProps, CarouselProps } from "react-multi-carousel";
+import { cloneDeep } from "lodash";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { Hoverable } from "@homzhub/web/src/components/hoc/Hoverable";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import DragAndDrop from "@homzhub/web/src/components/molecules/DragAndDrop";
+import MultiCarousel from "@homzhub/web/src/components/molecules/MultiCarousel";
+import { NextPrevBtn } from "@homzhub/web/src/components/molecules/NextPrevBtn";
+import OverviewCard from "@homzhub/web/src/components/molecules//OverviewCard";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 export interface IOverviewCarousalData {
   icon?: string;
@@ -50,11 +50,13 @@ const OverviewCarousel: React.FC<IProps> = ({
   onMetricsClicked,
   carouselTitle,
   isVisible,
-  isActive = '',
+  isActive = "",
   isCarousel = true,
   isIcon,
 }: IProps) => {
-  const [detailsOptions, setDetailsOptions] = useState<IOverviewCarousalData[]>([]);
+  const [detailsOptions, setDetailsOptions] = useState<IOverviewCarousalData[]>(
+    []
+  );
   const [selectedCard, setSelectedCard] = useState(isActive);
   const updateOptions = (updatedOptions: IOverviewCarousalData[]): void => {
     setDetailsOptions(cloneDeep(updatedOptions));
@@ -95,7 +97,12 @@ const OverviewCarousel: React.FC<IProps> = ({
           {detailsOptions.map((item: IOverviewCarousalData) => {
             const onCardPress = (): void => onSelection(item.label);
             return (
-              <Card key={item.label} data={item} onCardSelect={onCardPress} isActive={selectedCard === item.label} />
+              <Card
+                key={item.label}
+                data={item}
+                onCardSelect={onCardPress}
+                isActive={selectedCard === item.label}
+              />
             );
           })}
         </MultiCarousel>
@@ -132,15 +139,15 @@ const overviewCarousalStyle = (
       paddingHorizontal: 20,
       paddingTop: 16,
       paddingBottom: 8,
-      flexDirection: isMobile ? 'column' : 'row',
-      justifyContent: 'space-between',
+      flexDirection: isMobile ? "column" : "row",
+      justifyContent: "space-between",
       borderRadius: 4,
       backgroundColor: theme.colors.white,
     },
     carouselContainer: {
-      width: isCarousel ? (isMobile ? '100%' : '55%') : undefined,
+      width: isCarousel ? (isMobile ? "100%" : "55%") : undefined,
       marginTop: isMobile ? (!isCarousel ? 12 : 24) : undefined,
-      flexDirection: 'column-reverse',
+      flexDirection: "column-reverse",
     },
   });
 
@@ -152,14 +159,22 @@ interface ICardProps {
   isIcon?: boolean;
 }
 
-const Card = ({ isActive, onCardSelect, data, isIcon }: ICardProps): React.ReactElement => {
+const Card = ({
+  isActive,
+  onCardSelect,
+  data,
+  isIcon,
+}: ICardProps): React.ReactElement => {
   return (
     <Hoverable>
       {(isHovered: boolean): React.ReactNode => (
         <TouchableOpacity
           activeOpacity={100}
           onPress={onCardSelect}
-          style={[propertyDetailsControlStyle.overViewCard, !isIcon && propertyDetailsControlStyle.OverviewCardIcon]}
+          style={[
+            propertyDetailsControlStyle.overViewCard,
+            !isIcon && propertyDetailsControlStyle.OverviewCardIcon,
+          ]}
         >
           <OverviewCard
             icon={data?.icon ? data?.icon : icons.portfolioFilled}
@@ -187,7 +202,8 @@ const CarouselControlsGrp = ({
 }: ICarouselControlsGrp & ButtonGroupProps): React.ReactElement => {
   const { t } = useTranslation();
   const detailsOptions = getPropertyDetailsOptions(options);
-  const [settingsOptions, setSettingsOptions] = useState<IDragOption[]>(detailsOptions);
+  const [settingsOptions, setSettingsOptions] =
+    useState<IDragOption[]>(detailsOptions);
   const styles = propertyDetailsControlStyle;
   const popupRef = useRef<PopupActions>(null);
   const updateCarouselIndex = (updateIndexBy: number): void => {
@@ -213,14 +229,25 @@ const CarouselControlsGrp = ({
   };
   return (
     <View style={styles.container}>
-      <Typography variant="text" size="small" fontWeight="regular" style={styles.heading}>
-        {carouselTitle || t('assetPortfolio:propertyDetails')}
+      <Typography
+        variant="text"
+        size="small"
+        fontWeight="regular"
+        style={styles.heading}
+      >
+        {carouselTitle || t("assetPortfolio:propertyDetails")}
       </Typography>
       <Popover
-        content={<DragAndDrop options={settingsOptions} onSavePress={updateOptionsList} modalClose={onSheetClose} />}
+        content={
+          <DragAndDrop
+            options={settingsOptions}
+            onSavePress={updateOptionsList}
+            modalClose={onSheetClose}
+          />
+        }
         forwardedRef={popupRef}
         popupProps={{
-          on: 'click',
+          on: "click",
           closeOnDocumentClick: false,
           arrow: false,
           children: undefined,
@@ -232,6 +259,9 @@ const CarouselControlsGrp = ({
         <>
           {isVisible && (
             <Button
+              onPress={() => {
+                popupRef.current?.toggle();
+              }}
               icon={icons.gearFilled}
               iconSize={16}
               iconColor={theme.colors.blue}
@@ -252,7 +282,9 @@ interface ICarouselControlsGrp {
   isVisible?: boolean;
 }
 
-const getPropertyDetailsOptions = (data: IOverviewCarousalData[]): IDragOption[] => {
+const getPropertyDetailsOptions = (
+  data: IOverviewCarousalData[]
+): IDragOption[] => {
   const settingsOptions: IDragOption[] = [];
   data.forEach((option): void => {
     settingsOptions.push({
@@ -271,8 +303,8 @@ const getPropertyDetailsOptions = (data: IOverviewCarousalData[]): IDragOption[]
 // region style
 const propertyDetailsControlStyle = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginHorizontal: 8,
     marginBottom: 8,
   },
@@ -282,24 +314,24 @@ const propertyDetailsControlStyle = StyleSheet.create({
   },
   settings: {
     marginHorizontal: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: 32,
-    height: 24,
-    border: 'none',
+    height: 32,
+    borderWidth: 0,
     marginLeft: 8,
     backgroundColor: theme.colors.lightGrayishBlue,
   },
   selectionCard: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   overViewCard: {
     padding: 0,
     margin: 0,
   },
   OverviewCardIcon: {
-    minWidth: '45%',
+    minWidth: "45%",
   },
 });
 const CarouselResponsive = {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { FileRejection, useDropzone } from 'react-dropzone';
-import { UploadBtn } from '@homzhub/common/src/components/molecules/UploadBox/UploadBtn';
-import { VerificationDocumentCategory } from '@homzhub/common/src/domain/models/VerificationDocuments';
+import React from "react";
+import { StyleProp, ViewStyle } from "react-native";
+import { FileRejection, useDropzone } from "react-dropzone";
+import { UploadBtn } from "@homzhub/common/src/components/molecules/UploadBox/UploadBtn";
+import { VerificationDocumentCategory } from "@homzhub/common/src/domain/models/VerificationDocuments";
 
 interface IUploadProps {
   icon: string;
@@ -21,9 +21,15 @@ interface IUploadProps {
 }
 
 export const UploadBox: React.FC<IUploadProps> = (props: IUploadProps) => {
-  const { webOnDropAccepted, webOnDropRejected, multipleUpload, VerificationDocumentType } = props;
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: '.jpg,.jpeg,.png,.pdf',
+  const {
+    webOnDropAccepted,
+    webOnDropRejected,
+    multipleUpload,
+    VerificationDocumentType,
+  } = props;
+  console.log("this is props in UploadBox", props);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: ".jpg,.jpeg,.png,.pdf",
     onDropAccepted: webOnDropAccepted,
     onDropRejected: webOnDropRejected,
     multiple: multipleUpload,
@@ -31,8 +37,16 @@ export const UploadBox: React.FC<IUploadProps> = (props: IUploadProps) => {
 
   return (
     <div {...getRootProps()}>
-      {VerificationDocumentType !== VerificationDocumentCategory.SELFIE_ID_PROOF && <input {...getInputProps()} />}
+      <input {...getInputProps()} />
+
       <UploadBtn {...props} />
     </div>
+    // <div {...getRootProps()}>
+    //   {VerificationDocumentType !==
+    //     VerificationDocumentCategory.SELFIE_ID_PROOF && (
+    //     <div {...getInputProps()}>open</div>
+    //   )}
+    //   {/* <UploadBtn {...props} /> */}
+    // </div>
   );
 };

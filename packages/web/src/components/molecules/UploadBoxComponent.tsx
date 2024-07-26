@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import FileUpload from '@homzhub/common/src/components/atoms/FileUpload';
-import { UploadBox } from '@homzhub/common/src/components/molecules/UploadBox';
-import { IDocumentSource } from '@homzhub/common/src/services/AttachmentService/interfaces';
+import React from "react";
+import { StyleProp, ViewStyle } from "react-native";
+import { useTranslation } from "react-i18next";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import FileUpload from "@homzhub/common/src/components/atoms/FileUpload";
+import { UploadBox } from "@homzhub/common/src/components/molecules/UploadBox";
+import { IDocumentSource } from "@homzhub/common/src/services/AttachmentService/interfaces";
 
 interface IProps {
   icon: string;
@@ -26,7 +26,14 @@ interface IProps {
 }
 
 const UploadBoxComponent = (props: IProps): React.ReactElement => {
-  const { attachments, onDelete, onCapture, children, onDropAccepted, ...rest } = props;
+  const {
+    attachments,
+    onDelete,
+    onCapture,
+    children,
+    onDropAccepted,
+    ...rest
+  } = props;
   const { t } = useTranslation();
 
   const captureDocument = (files: File[]): void => {
@@ -60,7 +67,9 @@ const UploadBoxComponent = (props: IProps): React.ReactElement => {
         promise.then(() => {
           Promise.all(promises).then((res) => {
             const fileData: File[] = res.map((item: any) => item.file);
-            const customFiles: IDocumentSource[] = res.map((item: any) => item.customFile);
+            const customFiles: IDocumentSource[] = res.map(
+              (item: any) => item.customFile
+            );
             if (onDropAccepted) {
               onDropAccepted(fileData);
             }
@@ -76,12 +85,18 @@ const UploadBoxComponent = (props: IProps): React.ReactElement => {
   };
 
   const onDropRejection = (): void => {
-    AlertHelper.error({ message: t('unsupportedFormat') });
+    AlertHelper.error({ message: t("unsupportedFormat") });
   };
+
+  console.log("this is rest in UploadBoxComponent", rest);
 
   return (
     <>
-      <UploadBox {...rest} webOnDropAccepted={captureDocument} webOnDropRejected={onDropRejection} />
+      <UploadBox
+        {...rest}
+        webOnDropAccepted={captureDocument}
+        webOnDropRejected={onDropRejection}
+      />
       {children}
       <FileUpload attachments={attachments} onDelete={onDelete} />
     </>

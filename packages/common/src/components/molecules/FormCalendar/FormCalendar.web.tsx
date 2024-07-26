@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */ // TODO - remove this once all cases are resolved
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleProp,
   StyleSheet,
@@ -10,20 +10,26 @@ import {
   View,
   ViewStyle,
   LayoutChangeEvent,
-} from 'react-native';
-import { FormikProps } from 'formik';
-import moment from 'moment';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { PopupProps, PopupActions } from 'reactjs-popup/dist/types';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { FontWeightType, Label, Text, TextFieldType, TextSizeType } from '@homzhub/common/src/components/atoms/Text';
-import '@homzhub/common/src/components/molecules/FormCalendar/webCalendar.scss';
+} from "react-native";
+import { FormikProps } from "formik";
+import moment from "moment";
+import { withTranslation, WithTranslation } from "react-i18next";
+import { PopupProps, PopupActions } from "reactjs-popup/dist/types";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import {
+  FontWeightType,
+  Label,
+  Text,
+  TextFieldType,
+  TextSizeType,
+} from "@homzhub/common/src/components/atoms/Text";
+import "@homzhub/common/src/components/molecules/FormCalendar/webCalendar.scss";
 
 interface IFormCalendarProps extends WithTranslation {
   name: string;
@@ -77,8 +83,8 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
       textType,
       iconColor,
       isMandatory = false,
-      textSize = 'regular',
-      fontType = 'regular',
+      textSize = "regular",
+      fontType = "regular",
       placeHolderStyle = {},
       dateStyle = {},
       dateContainerStyle = {},
@@ -89,37 +95,44 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
       popupProps,
     } = this.props;
     const { width, date } = this.state;
-    const { position } = { ...popupProps, position: popupProps?.position || 'bottom left' };
+    const { position } = {
+      ...popupProps,
+      position: popupProps?.position || "bottom left",
+    };
     const availableDate = (): string => {
       if (selectedValue) {
         return selectedValue;
       }
-      return formProps?.values[name] === moment().format('YYYY-MM-DD') ? 'Today' : formProps?.values[name];
+      return formProps?.values[name] === moment().format("YYYY-MM-DD")
+        ? "Today"
+        : formProps?.values[name];
     };
 
-    const defaultDropDownProps = (width_dropdown: string | number): PopupProps => ({
+    const defaultDropDownProps = (
+      width_dropdown: string | number
+    ): PopupProps => ({
       position,
-      on: 'click',
+      on: "click",
       arrow: false,
-      contentStyle: { minWidth: width_dropdown, marginTop: '4px' },
+      contentStyle: { minWidth: width_dropdown, marginTop: "4px" },
       closeOnDocumentClick: true,
       children: undefined,
     });
 
     const labelStyles = { ...theme.form.formLabel };
     let TextField = Text;
-    if (textType === 'label') {
+    if (textType === "label") {
       TextField = Label;
     }
     const onLayout = (e: LayoutChangeEvent): void => {
       this.setState({ width: e.nativeEvent.layout.width });
     };
 
-    const isPlaceholderStyle = selectedValue === '' || !availableDate();
+    const isPlaceholderStyle = selectedValue === "" || !availableDate();
     return (
       <View style={containerStyle}>
         <TextField type={textSize} textType={fontType} style={labelStyles}>
-          {label || t('common:availableFrom')}
+          {label || t("common:availableFrom")}
           {isMandatory && <RNText style={styles.asterix}> *</RNText>}
         </TextField>
         {!PlatformUtils.isMobile() && (
@@ -132,20 +145,37 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
               <TouchableOpacity
                 testID="toCalenderInput"
                 style={[styles.dateView, dateContainerStyle]}
-                onPress={this.onCalendarOpen}
+                // onPress={this.onCalendarOpen}
+                onPress={() => {
+                  this.popupRef.current?.toggle();
+                }}
               >
                 <View style={styles.dateLeft}>
-                  {!isYearView && <Icon name={icons.calendar} color={iconColor || theme.colors.darkTint5} size={18} />}
+                  {!isYearView && (
+                    <Icon
+                      name={icons.calendar}
+                      color={iconColor || theme.colors.darkTint5}
+                      size={18}
+                    />
+                  )}
                   <Text
                     type="small"
                     textType="regular"
-                    style={[styles.dateText, isPlaceholderStyle && placeHolderStyle, dateStyle]}
+                    style={[
+                      styles.dateText,
+                      isPlaceholderStyle && placeHolderStyle,
+                      dateStyle,
+                    ]}
                   >
                     {availableDate() || placeHolder}
                   </Text>
                 </View>
 
-                <Icon name={icons.downArrowFilled} color={theme.colors.darkTint7} size={16} />
+                <Icon
+                  name={icons.downArrowFilled}
+                  color={theme.colors.darkTint7}
+                  size={16}
+                />
               </TouchableOpacity>
             </View>
           </Popover>
@@ -162,7 +192,7 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
         value={date}
         calendarType="ISO 8601"
         className="react-calender-web"
-        defaultView={isYearView ? 'decade' : 'month'}
+        defaultView={isYearView ? "decade" : "month"}
         minDate={new Date()}
         onChange={(datum: Date | Date[]): void => this.onChangeDate(datum)}
         onClickYear={isYearView ? this.onChangeDate : FunctionUtils.noop}
@@ -211,7 +241,7 @@ class FormCalendar extends Component<IFormCalendarProps, IFormCalendarState> {
       return year;
     }
 
-    return [year, month, day].join('-');
+    return [year, month, day].join("-");
   };
 }
 
@@ -219,16 +249,16 @@ const styles = StyleSheet.create({
   dateView: {
     borderWidth: 1,
     borderColor: theme.colors.disabled,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 13,
     paddingHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    justifyContent: "space-between",
     borderRadius: 4,
   },
   dateLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   dateText: {
     marginLeft: 16,
@@ -237,7 +267,7 @@ const styles = StyleSheet.create({
   asterix: {
     color: theme.colors.error,
     fontSize: 12,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 const HOC = withTranslation()(FormCalendar);

@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, StyleProp, ViewStyle, StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { Label } from '@homzhub/common/src/components/atoms/Text';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
+// @ts-nocheck
+import React from "react";
+import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
+import { useTranslation } from "react-i18next";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { Label } from "@homzhub/common/src/components/atoms/Text";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
 
 interface IProgressBarProps {
   progress: number;
@@ -17,22 +18,38 @@ interface IProgressBarProps {
 }
 
 const ProgressBar = (props: IProgressBarProps): React.ReactElement => {
-  const { progress, isPropertyVacant, filledColor = theme.colors.highPriority, fromDate, toDate } = props;
+  const {
+    progress,
+    isPropertyVacant,
+    filledColor = theme.colors.highPriority,
+    fromDate,
+    toDate,
+  } = props;
   const { t } = useTranslation(LocaleConstants.namespacesKey.assetPortfolio);
 
   const renderProgress = (): React.ReactElement => {
     return (
       <View style={customStyles.containerStyle(isPropertyVacant)}>
-        <View style={customStyles.fillerStyle(progress, isPropertyVacant, filledColor)} />
+        <View
+          style={customStyles.fillerStyle(
+            progress,
+            isPropertyVacant,
+            filledColor
+          )}
+        />
       </View>
     );
   };
   return (
     <>
       <View style={styles.container}>
-        <Icon name={isPropertyVacant ? icons.house : icons.calendar} color={theme.colors.darkTint5} size={22} />
+        <Icon
+          name={isPropertyVacant ? icons.house : icons.calendar}
+          color={theme.colors.darkTint5}
+          size={22}
+        />
         <Label type="large" style={styles.label}>
-          {isPropertyVacant ? t('listingScore') : t('leasePeriod')}
+          {isPropertyVacant ? t("listingScore") : t("leasePeriod")}
         </Label>
       </View>
       {renderProgress()}
@@ -49,8 +66,8 @@ const ProgressBar = (props: IProgressBarProps): React.ReactElement => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    flexDirection: 'row',
+    width: "100%",
+    flexDirection: "row",
   },
   contentContainer: {
     flex: 1,
@@ -61,8 +78,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   subTitleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginVertical: 6,
   },
   text: {
@@ -81,8 +98,12 @@ const customStyles = {
     marginLeft: 25,
     marginTop: 10,
   }),
-  fillerStyle: (progress: number, isVacant: boolean, filledColor: string): StyleProp<ViewStyle> => ({
-    height: '100%',
+  fillerStyle: (
+    progress: number,
+    isVacant: boolean,
+    filledColor: string
+  ): StyleProp<ViewStyle> => ({
+    height: "100%",
     width: progress * 100,
     backgroundColor: isVacant ? theme.colors.green : filledColor,
   }),

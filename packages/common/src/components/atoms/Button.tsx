@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   GestureResponderEvent,
   ImageStyle,
@@ -8,12 +8,18 @@ import {
   TextStyle,
   TouchableOpacity,
   ViewStyle,
-} from 'react-native';
-import { theme } from '@homzhub/common/src/styles/theme';
-import Icon from '@homzhub/common/src/assets/icon';
-import { FontWeightType, Label, Text, TextFieldType, TextSizeType } from '@homzhub/common/src/components/atoms/Text';
+} from "react-native";
+import { theme } from "@homzhub/common/src/styles/theme";
+import Icon from "@homzhub/common/src/assets/icon";
+import {
+  FontWeightType,
+  Label,
+  Text,
+  TextFieldType,
+  TextSizeType,
+} from "@homzhub/common/src/components/atoms/Text";
 
-export type ButtonType = 'primary' | 'secondary' | 'secondaryOutline' | 'text';
+export type ButtonType = "primary" | "secondary" | "secondaryOutline" | "text";
 
 export interface IButtonProps {
   type: ButtonType;
@@ -36,7 +42,7 @@ export interface IButtonProps {
   maxLength?: number;
   textStyle?: TextStyle;
   numOfLines?: number;
-  ellipsizeMode?: TextProps['ellipsizeMode'];
+  ellipsizeMode?: TextProps["ellipsizeMode"];
 }
 
 export class Button extends React.PureComponent<IButtonProps> {
@@ -63,7 +69,14 @@ export class Button extends React.PureComponent<IButtonProps> {
         testID={testID}
       >
         {title && this.getTextField()}
-        {!!icon && <Icon name={icon} size={iconSize} color={iconColor} style={iconStyle} />}
+        {!!icon && (
+          <Icon
+            name={icon}
+            size={iconSize}
+            color={iconColor}
+            style={iconStyle}
+          />
+        )}
         {node && node}
         {children && children}
       </TouchableOpacity>
@@ -74,16 +87,16 @@ export class Button extends React.PureComponent<IButtonProps> {
     const {
       textType,
       title,
-      textSize = 'small',
-      fontType = 'semiBold',
+      textSize = "small",
+      fontType = "semiBold",
       maxLength,
       textStyle,
       numOfLines,
-      ellipsizeMode = 'tail',
+      ellipsizeMode = "tail",
     } = this.props;
     let TextField = Text;
 
-    if (textType === 'label') {
+    if (textType === "label") {
       TextField = Label;
     }
 
@@ -108,15 +121,15 @@ export class Button extends React.PureComponent<IButtonProps> {
       themedStyle = styles.disabled;
     }
 
-    if (type === 'secondary' && !disabled) {
+    if (type === "secondary" && !disabled) {
       themedStyle = styles.secondary;
     }
 
-    if (type === 'secondaryOutline' && !disabled) {
+    if (type === "secondaryOutline" && !disabled) {
       themedStyle = styles.secondaryOutline;
     }
 
-    if (type === 'text') {
+    if (type === "text") {
       themedStyle = styles.textButton;
     }
 
@@ -126,13 +139,13 @@ export class Button extends React.PureComponent<IButtonProps> {
   private getTextStyle = (): TextStyle => {
     const { type, disabled = false, titleStyle = {} } = this.props;
     let themedStyle = {};
-    if (type === 'secondary' && !disabled) {
+    if (type === "secondary" && !disabled) {
       themedStyle = { color: theme.colors.active };
     }
-    if (type === 'text' && !disabled) {
+    if (type === "text" && !disabled) {
       themedStyle = { color: theme.colors.darkTint2 };
     }
-    if (type === 'text' && disabled) {
+    if (type === "text" && disabled) {
       themedStyle = { color: theme.colors.darkTint8 };
     }
 
@@ -146,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   textStyle: {
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.colors.white,
     marginVertical: 12,
     marginHorizontal: 18,

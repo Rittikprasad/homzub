@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   StyleProp,
@@ -8,12 +8,18 @@ import {
   ImageStyle,
   TouchableOpacity,
   TextStyle,
-} from 'react-native';
-import Icon, { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { FontWeightType, Label, TextSizeType } from '@homzhub/common/src/components/atoms/Text';
-import { IPopupOptions } from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import DropDownWeb from '@homzhub/web/src/components/molecules/Dropdown';
+} from "react-native";
+import Icon, { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import {
+  FontWeightType,
+  Label,
+  TextSizeType,
+} from "@homzhub/common/src/components/atoms/Text";
+import { IPopupOptions } from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import DropDownWeb from "@homzhub/web/src/components/molecules/Dropdown";
+import { ref } from "yup";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
 
 export interface IProps {
   data: PickerItemProps[];
@@ -53,17 +59,17 @@ export const Dropdown = (props: IProps): React.ReactElement => {
     data,
     iconStyle,
     disable = false,
-    placeholder = '',
+    placeholder = "",
     onDonePress,
     parentContainerStyle = {},
     image,
-    fontSize = 'large',
+    fontSize = "large",
     showImage = false,
     isOutline = false,
   } = props;
   let {
     icon = icons.downArrowFilled,
-    fontWeight = 'regular',
+    fontWeight = "regular",
     textStyle = {},
     containerStyle = {},
     iconSize = 16,
@@ -71,10 +77,13 @@ export const Dropdown = (props: IProps): React.ReactElement => {
   } = props;
 
   const valueChange = (changedValue: IPopupOptions): void => {
-    const selectedValue = !changedValue.value || changedValue.value === placeholder ? '' : changedValue.value;
+    const selectedValue =
+      !changedValue.value || changedValue.value === placeholder
+        ? ""
+        : changedValue.value;
     // @ts-ignore
     let isValid = false;
-    if (typeof selectedValue === 'string') {
+    if (typeof selectedValue === "string") {
       isValid = selectedValue.length > 0;
     } else {
       isValid = selectedValue > -1;
@@ -102,21 +111,33 @@ export const Dropdown = (props: IProps): React.ReactElement => {
       },
     ]);
     icon = icons.downArrow;
-    fontWeight = 'semiBold';
+    fontWeight = "semiBold";
     textStyle = StyleSheet.flatten([textStyle, { color: theme.colors.active }]);
     iconSize = 20;
     iconColor = theme.colors.active;
   }
 
+  console.log(dropdownVisible, "77777777777777");
+
   // @ts-ignore
   const RenderFlagSvg = (): React.ReactElement => image;
 
-  const DropDownView = (): React.ReactElement => {
+  const DropDownView = (ref): React.ReactElement => {
     return (
-      <TouchableOpacity onPress={openDropdown} style={[styles.container, containerStyle]}>
+      <TouchableOpacity
+        onPress={() => {
+          PlatformUtils.isWeb() && ref.current?.toggle();
+          openDropdown();
+        }}
+        style={[styles.container, containerStyle]}
+      >
         {showImage && !!image ? (
-          image === 'globe' ? (
-            <Icon name={icons.earthFilled} size={22} color={theme.colors.active} />
+          image === "globe" ? (
+            <Icon
+              name={icons.earthFilled}
+              size={22}
+              color={theme.colors.active}
+            />
           ) : (
             <RenderFlagSvg />
           )
@@ -133,23 +154,37 @@ export const Dropdown = (props: IProps): React.ReactElement => {
           </View>
         )}
 
-        <Icon name={icon} size={iconSize} color={iconColor} style={[styles.iconStyle, iconStyle]} />
+        <Icon
+          name={icon}
+          size={iconSize}
+          color={iconColor}
+          style={[styles.iconStyle, iconStyle]}
+        />
       </TouchableOpacity>
     );
   };
 
   return (
-    <View pointerEvents={disable ? 'none' : 'auto'} style={[disabledStyles, parentContainerStyle]}>
-      <DropDownWeb data={data} valueChange={valueChange} dropdownVisible={dropdownVisible} content={DropDownView()} />
+    <View
+      pointerEvents={disable ? "none" : "auto"}
+      style={[disabledStyles, parentContainerStyle]}
+    >
+      <DropDownWeb
+        data={data}
+        valueChange={valueChange}
+        dropdownVisible={dropdownVisible}
+        setDropdownVisible={setDropdownVisible}
+        content={PlatformUtils.isWeb() ? DropDownView : DropDownView()}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 6,
     borderWidth: 1,

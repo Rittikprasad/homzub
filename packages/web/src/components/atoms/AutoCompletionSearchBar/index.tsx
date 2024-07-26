@@ -1,22 +1,30 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, TextInput, LayoutChangeEvent } from 'react-native';
-import { useHistory } from 'react-router-dom';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { includes } from 'lodash';
-import { getDataFromPlaceID } from '@homzhub/web/src/utils/MapsUtils';
-import { GeolocationService } from '@homzhub/common/src/services/Geolocation/GeolocationService';
-import { GooglePlacesService } from '@homzhub/common/src/services/GooglePlaces/GooglePlacesService';
-import { RouteNames } from '@homzhub/web/src/router/RouteNames';
-import { SearchSelector } from '@homzhub/common/src/modules/search/selectors';
-import { SearchField } from '@homzhub/web/src/components/atoms/SearchField';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import PopupMenuOptions, { IPopupOptions } from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import { AddPropertyStack } from '@homzhub/web/src/screens/addProperty';
-import { GeolocationError, GeolocationResponse } from '@homzhub/common/src/services/Geolocation/interfaces';
-import { ILatLng, IProjectDetails } from '@homzhub/common/src/modules/search/interface';
-import { Any } from 'json2typescript';
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import { StyleSheet, TextInput, LayoutChangeEvent } from "react-native";
+import { useHistory } from "react-router-dom";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { includes } from "lodash";
+import { getDataFromPlaceID } from "@homzhub/web/src/utils/MapsUtils";
+import { GeolocationService } from "@homzhub/common/src/services/Geolocation/GeolocationService";
+import { GooglePlacesService } from "@homzhub/common/src/services/GooglePlaces/GooglePlacesService";
+import { RouteNames } from "@homzhub/web/src/router/RouteNames";
+import { SearchSelector } from "@homzhub/common/src/modules/search/selectors";
+import { SearchField } from "@homzhub/web/src/components/atoms/SearchField";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import PopupMenuOptions, {
+  IPopupOptions,
+} from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import { AddPropertyStack } from "@homzhub/web/src/screens/addProperty";
+import {
+  GeolocationError,
+  GeolocationResponse,
+} from "@homzhub/common/src/services/Geolocation/interfaces";
+import {
+  ILatLng,
+  IProjectDetails,
+} from "@homzhub/common/src/modules/search/interface";
+import { Any } from "json2typescript";
 
 export interface IAddressComponent {
   long_name: string;
@@ -34,7 +42,11 @@ interface ISearchBarProps {
   setUpdatedLatLng?: (latLng: ILatLng) => void;
   hasScriptLoaded?: boolean;
   navigateAddProperty?: (screen: AddPropertyStack) => void;
-  onSuggestionPress?: (place: IAddressComponent[], address: string, latLng: ILatLng) => void;
+  onSuggestionPress?: (
+    place: IAddressComponent[],
+    address: string,
+    latLng: ILatLng
+  ) => void;
   setProjectDetails?: (projectDetails: IProjectDetails) => void;
 }
 type IProps = ISearchBarProps;
@@ -44,15 +56,27 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   // const { setInitialFilters, setInitialState } = props;
   const history = useHistory();
   const address = useSelector(SearchSelector.getSearchAddress);
-  const [searchText, setSearchText] = useState('');
-  const { setUpdatedLatLng, hasScriptLoaded, navigateAddProperty, onSuggestionPress, setProjectDetails } = props;
+  const [searchText, setSearchText] = useState("");
+  const {
+    setUpdatedLatLng,
+    hasScriptLoaded,
+    navigateAddProperty,
+    onSuggestionPress,
+    setProjectDetails,
+  } = props;
   const { t } = useTranslation();
-  const [popOverWidth, setPopoverWidth] = useState<string | number>('100%');
+  const [popOverWidth, setPopoverWidth] = useState<string | number>("100%");
   const popupRef = useRef<PopupActions>(null);
   const searchInputRef = useRef<TextInput>(null);
-  const [suggestions, setSuggestions] = useState<google.maps.places.QueryAutocompletePrediction[]>([]);
+  const [suggestions, setSuggestions] = useState<
+    google.maps.places.QueryAutocompletePrediction[]
+  >([]);
   const updateSearchValue = (value: string): void => setSearchText(value);
-  const popupOptionStyle = { marginTop: '4px', alignItems: 'stretch', width: popOverWidth };
+  const popupOptionStyle = {
+    marginTop: "4px",
+    alignItems: "stretch",
+    width: popOverWidth,
+  };
   const getAutocompleteSuggestions = (query: string): void => {
     if (hasScriptLoaded) {
       const service = new google.maps.places.AutocompleteService();
@@ -67,7 +91,13 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   useEffect(() => {
     if (searchText.length > 0) {
       getAutocompleteSuggestions(searchText);
-      if (popupRef && popupRef.current && searchInputRef && searchInputRef.current && suggestions.length > 0) {
+      if (
+        popupRef &&
+        popupRef.current &&
+        searchInputRef &&
+        searchInputRef.current &&
+        suggestions.length > 0
+      ) {
         popupRef.current.open();
       }
     } else if (popupRef && popupRef.current) {
@@ -81,23 +111,32 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   const handleSuggestionSelection = (selectedOption: IPopupOptions): void => {
     setSearchText(selectedOption.label);
     if (selectedOption && selectedOption.value) {
-      getDataFromPlaceID((selectedOption?.value as string) ?? '', (result) => {
+      getDataFromPlaceID((selectedOption?.value as string) ?? "", (result) => {
         if (setUpdatedLatLng && setProjectDetails) {
-          setProjectDetails({ projectName: selectedOption.label.split(',')[0] });
+          setProjectDetails({
+            projectName: selectedOption.label.split(",")[0],
+          });
           const lat = result.geometry.location.lat();
           const lng = result.geometry.location.lng();
           setUpdatedLatLng({ lat, lng } as ILatLng);
         }
         if (onSuggestionPress) {
-          onSuggestionPress(result.address_components, result.formatted_address, {
-            lat: result.geometry.location.lat(),
-            lng: result.geometry.location.lng(),
-          } as ILatLng);
+          onSuggestionPress(
+            result.address_components,
+            result.formatted_address,
+            {
+              lat: result.geometry.location.lat(),
+              lng: result.geometry.location.lng(),
+            } as ILatLng
+          );
         }
         if (
           navigateAddProperty &&
           includes(
-            [RouteNames.protectedRoutes.ADD_PROPERTY, RouteNames.protectedRoutes.PORTFOLIO_ADD_PROPERTY],
+            [
+              RouteNames.protectedRoutes.ADD_PROPERTY,
+              RouteNames.protectedRoutes.PORTFOLIO_ADD_PROPERTY,
+            ],
             history.location.pathname
           )
         ) {
@@ -105,7 +144,7 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
         }
       });
     }
-    updateSearchValue('');
+    updateSearchValue("");
     if (popupRef && popupRef.current) {
       popupRef.current.close();
     }
@@ -127,7 +166,10 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
   const onFetchSuccess = (response: GeolocationResponse): void => {
     const { latitude, longitude } = response.coords;
 
-    GooglePlacesService.getLocationData({ lat: latitude, lng: longitude } as ILatLng).then((result) => {
+    GooglePlacesService.getLocationData({
+      lat: latitude,
+      lng: longitude,
+    } as ILatLng).then((result) => {
       setSearchText(result.formatted_address);
 
       if (onSuggestionPress) {
@@ -164,7 +206,7 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
       forwardedRef={popupRef}
       content={popoverContent}
       popupProps={{
-        position: 'bottom left',
+        position: "bottom left",
         on: [],
         arrow: false,
         contentStyle: popupOptionStyle,
@@ -175,7 +217,7 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
     >
       <SearchField
         forwardRef={searchInputRef}
-        placeholder={t('property:searchProject')}
+        placeholder={t("property:searchProject")}
         value={searchText}
         updateValue={updateSearchValue}
         containerStyle={[styles.searchBar]}
@@ -187,8 +229,8 @@ const AutoCompletionSearchBar: FC<IProps> = (props: IProps) => {
 
 const styles = StyleSheet.create({
   searchBar: {
-    alignSelf: 'stretch',
-    width: '100%',
+    alignSelf: "stretch",
+    width: "100%",
   },
 });
 // TODO - To resolve state persistent bug

@@ -1,28 +1,31 @@
-import React, { FC, useState, createRef, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useTranslation } from 'react-i18next';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { useOnly } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { OffersRepository } from '@homzhub/common/src/domain/repositories/OffersRepository';
-import { OfferActions } from '@homzhub/common/src/modules/offers/actions';
-import { UserSelector } from '@homzhub/common/src/modules/user/selectors';
-import { theme } from '@homzhub/common/src/styles/theme';
-import ConfirmationPopup from '@homzhub/web/src/components/molecules/ConfirmationPopup';
-import OfferCard from '@homzhub/common/src/components/organisms/OfferCard';
-import ChatScreenPopover from '@homzhub/web/src/components/organisms/ChatScreenPopover';
-import TenancyFormPopover from '@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover';
-import { OffersCard } from '@homzhub/web/src/screens/offers/components/OffersCard';
-import OfferActionsPopover from '@homzhub/web/src/screens/offers/components/OfferActionsPopover';
-import PropertyOfferDetails from '@homzhub/web/src/screens/offers/components/PropertyOfferDetails';
-import { renderPopUpTypes as tenancyPopupTypes } from '@homzhub/web/src/screens/propertyDetails/components/PropertyCardDetails';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { Offer, OfferAction } from '@homzhub/common/src/domain/models/Offer';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
-import { IOfferCompare } from '@homzhub/common/src/modules/offers/interfaces';
-import { ICounterParam, ListingType } from '@homzhub/common/src/domain/repositories/interfaces';
+import React, { FC, useState, createRef, useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useTranslation } from "react-i18next";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { useOnly } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { OffersRepository } from "@homzhub/common/src/domain/repositories/OffersRepository";
+import { OfferActions } from "@homzhub/common/src/modules/offers/actions";
+import { UserSelector } from "@homzhub/common/src/modules/user/selectors";
+import { theme } from "@homzhub/common/src/styles/theme";
+import ConfirmationPopup from "@homzhub/web/src/components/molecules/ConfirmationPopup";
+import OfferCard from "@homzhub/common/src/components/organisms/OfferCard";
+import ChatScreenPopover from "@homzhub/web/src/components/organisms/ChatScreenPopover";
+import TenancyFormPopover from "@homzhub/web/src/screens/propertyDetails/components/TenancyFormPopover";
+import { OffersCard } from "@homzhub/web/src/screens/offers/components/OffersCard";
+import OfferActionsPopover from "@homzhub/web/src/screens/offers/components/OfferActionsPopover";
+import PropertyOfferDetails from "@homzhub/web/src/screens/offers/components/PropertyOfferDetails";
+import { renderPopUpTypes as tenancyPopupTypes } from "@homzhub/web/src/screens/propertyDetails/components/PropertyCardDetails";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { Offer, OfferAction } from "@homzhub/common/src/domain/models/Offer";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
+import { IOfferCompare } from "@homzhub/common/src/modules/offers/interfaces";
+import {
+  ICounterParam,
+  ListingType,
+} from "@homzhub/common/src/domain/repositories/interfaces";
 
 interface IProps {
   property: Asset;
@@ -44,10 +47,14 @@ const OffersMade: FC<IProps> = (props: IProps) => {
   const isMobile = useOnly(deviceBreakpoint.MOBILE);
   const popupRef = createRef<PopupActions>();
   const popupRefCounter = createRef<PopupActions>();
-  const [offerActionType, setOfferActionType] = useState<OfferAction | null>(null);
+  const [offerActionType, setOfferActionType] = useState<OfferAction | null>(
+    null
+  );
   const [currentOffer, setCurrentOffer] = useState<Offer>(new Offer());
   const userData = useSelector(UserSelector.getUserProfile);
-  const [propertyLeaseType, setPropertyLeaseType] = useState<string>(tenancyPopupTypes.tenancy);
+  const [propertyLeaseType, setPropertyLeaseType] = useState<string>(
+    tenancyPopupTypes.tenancy
+  );
 
   const getProspectProfile = async (): Promise<void> => {
     try {
@@ -56,7 +63,10 @@ const OffersMade: FC<IProps> = (props: IProps) => {
         setPropertyLeaseType(tenancyPopupTypes.offer);
       }
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
 
@@ -93,7 +103,10 @@ const OffersMade: FC<IProps> = (props: IProps) => {
       const response = await OffersRepository.getCounterOffer(payload);
       setPastOffers(response);
     } catch (e) {
-      AlertHelper.error({ message: ErrorUtils.getErrorMessage(e.details), statusCode: e.details.statusCode });
+      AlertHelper.error({
+        message: ErrorUtils.getErrorMessage(e.details),
+        statusCode: e.details.statusCode,
+      });
     }
   };
   const onViewReasonWeb = (action: OfferAction, offers: Offer): void => {
@@ -120,7 +133,9 @@ const OffersMade: FC<IProps> = (props: IProps) => {
     if (offer) {
       dispatch(
         OfferActions.setCurrentOfferPayload({
-          type: leaseTerm ? ListingType.LEASE_LISTING : ListingType.SALE_LISTING,
+          type: leaseTerm
+            ? ListingType.LEASE_LISTING
+            : ListingType.SALE_LISTING,
           listingId: leaseTerm ? leaseTerm.id : saleTerm?.id ?? 0,
           threadId: offer.threadId,
         })
@@ -134,8 +149,8 @@ const OffersMade: FC<IProps> = (props: IProps) => {
   };
 
   const popupDetails = {
-    title: t('offers:offerSucessHeader'),
-    subTitle: t('offers:offerSucessSubHeader'),
+    title: t("offers:offerSucessHeader"),
+    subTitle: t("offers:offerSucessSubHeader"),
   };
 
   const onCreateLease = (argOffer: Offer): void => {
@@ -163,7 +178,11 @@ const OffersMade: FC<IProps> = (props: IProps) => {
   return (
     <View>
       <View style={styles.background}>
-        <PropertyOfferDetails property={property} isExpanded containerStyles={styles.innerContainer} />
+        <PropertyOfferDetails
+          property={property}
+          isExpanded
+          containerStyles={styles.innerContainer}
+        />
       </View>
 
       {!isMobile && offer && (
@@ -176,8 +195,12 @@ const OffersMade: FC<IProps> = (props: IProps) => {
           isOfferDashboard
           pastOffer={pastOffers}
           onMoreInfo={handlePastOffer}
-          onPressAction={(action: OfferAction): void => onPressAction(action, offer)}
-          onViewReasonWeb={(action: OfferAction): void => onViewReasonWeb(action, offer)}
+          onPressAction={(action: OfferAction): void =>
+            onPressAction(action, offer)
+          }
+          onViewReasonWeb={(action: OfferAction): void =>
+            onViewReasonWeb(action, offer)
+          }
           onCreateLease={(): void => onCreateLease(offer)}
         />
       )}
@@ -191,8 +214,12 @@ const OffersMade: FC<IProps> = (props: IProps) => {
           isOfferDashboard
           pastOffer={pastOffers}
           onMoreInfo={handlePastOffer}
-          onPressAction={(action: OfferAction): void => onPressAction(action, offer)}
-          onViewReasonWeb={(action: OfferAction): void => onViewReasonWeb(action, offer)}
+          onPressAction={(action: OfferAction): void =>
+            onPressAction(action, offer)
+          }
+          onViewReasonWeb={(action: OfferAction): void =>
+            onViewReasonWeb(action, offer)
+          }
           onCreateLease={(): void => onCreateLease(offer)}
         />
       )}
@@ -215,12 +242,12 @@ const OffersMade: FC<IProps> = (props: IProps) => {
         handleOfferAction={handleOfferAction}
         onCloseModal={onCloseModal}
       />
-      <ChatScreenPopover
+      {/* <ChatScreenPopover
         isFromOffers
         popupRef={popupRefChatScreen}
         onOpenModal={onOpenChatModal}
         onCloseModal={onCloseChatModal}
-      />
+      /> */}
     </View>
   );
 };
@@ -230,7 +257,7 @@ const styles = StyleSheet.create({
     top: 12,
     left: 12,
     paddingBottom: 12,
-    width: '93%',
+    width: "93%",
   },
   heading: {
     marginTop: 25,

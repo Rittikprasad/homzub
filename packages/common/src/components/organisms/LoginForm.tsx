@@ -233,7 +233,7 @@ class LoginForm extends PureComponent<Props, IFormData> {
       phone_code: values.phoneCode,
       phone_number: values.phone,
     };
-
+    console.log(loginFormData, "this is loginFormData");
     onLoginSuccess(loginFormData);
     formActions.setSubmitting(false);
   };

@@ -1,37 +1,41 @@
-import React, { ReactElement, useRef, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { FunctionUtils } from '@homzhub/common/src/utils/FunctionUtils';
-import { useOnly } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { NavigationService } from '@homzhub/web/src/services/NavigationService';
-import { FinancialActions } from '@homzhub/common/src/modules/financials/actions';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { Loader } from '@homzhub/common/src/components/atoms/Loader';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { UploadBoxComponent } from '@homzhub/web/src/components/molecules/UploadBoxComponent';
-import AddBankAccountPopover from '@homzhub/web/src/components/organisms/AddBankAccountPopover';
-import AddRecordForm, { IUploadCompProps } from '@homzhub/common/src/components/organisms/AddRecordForm';
-import ReminderForm from '@homzhub/common/src/components/organisms/ReminderForm';
-import PropertyList from '@homzhub/web/src/screens/financials/components/PropertyList';
-import PropertyServices from '@homzhub/web/src/screens/financials/components/PropertyServices';
-import SocietyController from '@homzhub/web/src/screens/financials/components/SocietyController';
-import SocietyOrderSummary from '@homzhub/web/src/screens/financials/components/SocietyOrderSummary';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { Currency } from '@homzhub/common/src/domain/models/Currency';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+import React, { ReactElement, useRef, useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { FunctionUtils } from "@homzhub/common/src/utils/FunctionUtils";
+import { useOnly } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { NavigationService } from "@homzhub/web/src/services/NavigationService";
+import { FinancialActions } from "@homzhub/common/src/modules/financials/actions";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { Loader } from "@homzhub/common/src/components/atoms/Loader";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { UploadBoxComponent } from "@homzhub/web/src/components/molecules/UploadBoxComponent";
+import AddBankAccountPopover from "@homzhub/web/src/components/organisms/AddBankAccountPopover";
+import AddRecordForm, {
+  IUploadCompProps,
+} from "@homzhub/common/src/components/organisms/AddRecordForm";
+import ReminderForm from "@homzhub/common/src/components/organisms/ReminderForm";
+import PropertyList from "@homzhub/web/src/screens/financials/components/PropertyList";
+import PropertyServices from "@homzhub/web/src/screens/financials/components/PropertyServices";
+import SocietyController from "@homzhub/web/src/screens/financials/components/SocietyController";
+import SocietyOrderSummary from "@homzhub/web/src/screens/financials/components/SocietyOrderSummary";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { Currency } from "@homzhub/common/src/domain/models/Currency";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
 interface IProps {
   popupRef: React.RefObject<PopupActions>;
   onCloseModal: () => void;
   financialsActionType: FinancialsActions | null;
-  setFinancialsActionType: React.Dispatch<React.SetStateAction<FinancialsActions | null>>;
+  setFinancialsActionType: React.Dispatch<
+    React.SetStateAction<FinancialsActions | null>
+  >;
   handleFinancialsAction?: (value: FinancialsActions) => void;
   currency: Currency;
   assets: Asset[];
@@ -44,13 +48,13 @@ interface IProps {
 }
 
 export enum FinancialsActions {
-  AddReminder = 'Add Reminder',
-  AddRecord = 'Add Record',
-  EditReminder = 'Edit Reminder',
-  PropertyPayment_SelectProperties = 'Property Payment Select Properties',
-  PropertyPayment_PropertyServices = 'Property Payment Property Services',
-  PropertyPayment_SocietyController = 'Property Payment Society Controller',
-  PropertyPayment_PayNow = 'Property Payment Pay Now',
+  AddReminder = "Add Reminder",
+  AddRecord = "Add Record",
+  EditReminder = "Edit Reminder",
+  PropertyPayment_SelectProperties = "Property Payment Select Properties",
+  PropertyPayment_PropertyServices = "Property Payment Property Services",
+  PropertyPayment_SocietyController = "Property Payment Society Controller",
+  PropertyPayment_PayNow = "Property Payment Pay Now",
 }
 
 export interface INavProps {
@@ -61,9 +65,11 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
   const { t } = useTranslation();
   // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-  const [propsPropertyServices, setPropsPropertyServices] = useState<INavProps>({
-    isFromSummary: false,
-  });
+  const [propsPropertyServices, setPropsPropertyServices] = useState<INavProps>(
+    {
+      isFromSummary: false,
+    }
+  );
   const [ownerId, setOwnerId] = useState(0);
   const [clearForm, setClearForm] = useState(0);
   const dispatch = useDispatch();
@@ -101,7 +107,12 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
     renderAttachements: () => React.ReactNode,
     uploadProps: IUploadCompProps
   ): ReactElement => {
-    return <UploadBoxComponent {...uploadProps}>{renderAttachements()}</UploadBoxComponent>;
+    console.log("this is uploadProps in FinancialsPopover", uploadProps);
+    return (
+      <UploadBoxComponent {...uploadProps}>
+        {renderAttachements()}
+      </UploadBoxComponent>
+    );
   };
 
   const onSubmitFormSuccess = (): void => {
@@ -113,7 +124,11 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
     }
     getGeneralLedgers(true);
     AlertHelper.success({
-      message: t(isEditRecord ? 'assetFinancial:editedSuccessfullyMessage' : 'assetFinancial:addedSuccessfullyMessage'),
+      message: t(
+        isEditRecord
+          ? "assetFinancial:editedSuccessfullyMessage"
+          : "assetFinancial:addedSuccessfullyMessage"
+      ),
     });
   };
 
@@ -146,7 +161,11 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
     switch (financialsActionType) {
       case FinancialsActions.AddReminder:
         return (
-          <ReminderForm onSubmit={onSubmitReminder} onAddSociety={FunctionUtils.noop} onAddAccount={onAddBankAccount} />
+          <ReminderForm
+            onSubmit={onSubmitReminder}
+            onAddSociety={FunctionUtils.noop}
+            onAddAccount={onAddBankAccount}
+          />
         );
       case FinancialsActions.EditReminder:
         return (
@@ -176,11 +195,22 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
           />
         );
       case FinancialsActions.PropertyPayment_SelectProperties:
-        return <PropertyList setFinancialsActionType={setFinancialsActionType} />;
+        return (
+          <PropertyList setFinancialsActionType={setFinancialsActionType} />
+        );
       case FinancialsActions.PropertyPayment_PropertyServices:
-        return <PropertyServices setFinancialsActionType={setFinancialsActionType} {...propsPropertyServices} />;
+        return (
+          <PropertyServices
+            setFinancialsActionType={setFinancialsActionType}
+            {...propsPropertyServices}
+          />
+        );
       case FinancialsActions.PropertyPayment_SocietyController:
-        return <SocietyController setFinancialsActionType={setFinancialsActionType} />;
+        return (
+          <SocietyController
+            setFinancialsActionType={setFinancialsActionType}
+          />
+        );
       case FinancialsActions.PropertyPayment_PayNow:
         return (
           <SocietyOrderSummary
@@ -195,40 +225,42 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
 
   const financialsPopoverTypes = {
     [FinancialsActions.AddReminder.toString()]: {
-      title: t('assetFinancial:addReminder'),
+      title: t("assetFinancial:addReminder"),
       styles: {
-        height: '500px',
-        width: isDesktop ? '480px' : isTablet ? '480px' : '90%',
+        height: "500px",
+        width: isDesktop ? "480px" : isTablet ? "480px" : "90%",
       },
     },
     [FinancialsActions.EditReminder.toString()]: {
-      title: t('assetFinancial:editReminder'),
+      title: t("assetFinancial:editReminder"),
       styles: {
-        height: '500px',
-        width: isDesktop ? '480px' : isTablet ? '480px' : '90%',
+        height: "500px",
+        width: isDesktop ? "480px" : isTablet ? "480px" : "90%",
       },
     },
     [FinancialsActions.AddRecord.toString()]: {
-      title: t('assetFinancial:addRecords'),
+      title: t("assetFinancial:addRecords"),
       styles: {
-        height: '480px',
-        width: isDesktop ? '75%' : isTablet ? '60%' : '90%',
+        height: "480px",
+        width: isDesktop ? "75%" : isTablet ? "60%" : "90%",
       },
     },
     [FinancialsActions.PropertyPayment_SelectProperties.toString()]: {
-      title: t('propertyPayment:propertyPayment'),
+      title: t("propertyPayment:propertyPayment"),
     },
     [FinancialsActions.PropertyPayment_PropertyServices.toString()]: {
-      title: t('propertyPayment:propertyPayment'),
+      title: t("propertyPayment:propertyPayment"),
     },
     [FinancialsActions.PropertyPayment_SocietyController.toString()]: {
-      title: t('propertyPayment:propertyPayment'),
+      title: t("propertyPayment:propertyPayment"),
     },
     [FinancialsActions.PropertyPayment_PayNow.toString()]: {
-      title: t('property:orderSummary'),
+      title: t("property:orderSummary"),
     },
   };
-  const financialPopoverType = financialsActionType && financialsPopoverTypes[financialsActionType?.toString()];
+  const financialPopoverType =
+    financialsActionType &&
+    financialsPopoverTypes[financialsActionType?.toString()];
   const renderPopoverContent = (): React.ReactNode => {
     return (
       <View>
@@ -258,22 +290,26 @@ const FinancialsPopover: React.FC<IProps> = (props: IProps) => {
           closeOnDocumentClick: false,
           arrow: false,
           contentStyle: {
-            maxHeight: '100%',
+            maxHeight: "100%",
             borderRadius: 8,
             height: 600,
-            width: isDesktop ? '480px' : isTablet ? '480px' : '90%',
-            overflow: 'auto',
+            width: isDesktop ? "480px" : isTablet ? "480px" : "90%",
+            overflow: "auto",
             ...financialPopoverType?.styles,
           },
           children: undefined,
           modal: true,
-          position: 'center center',
+          position: "center center",
           onClose: onCloseModal,
         }}
         forwardedRef={popupRef}
       />
       <Loader visible={isLoading} />
-      <AddBankAccountPopover popupRef={popupRefBank} onCloseModal={onCloseBankModal} id={ownerId} />
+      <AddBankAccountPopover
+        popupRef={popupRefBank}
+        onCloseModal={onCloseBankModal}
+        id={ownerId}
+      />
     </View>
   );
 };
@@ -282,9 +318,9 @@ export default FinancialsPopover;
 
 const styles = StyleSheet.create({
   modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 12,
     paddingTop: 20,
   },
@@ -296,9 +332,9 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     zIndex: 1,
-    position: 'absolute',
+    position: "absolute",
     right: 12,
-    cursor: 'pointer',
+    cursor: "pointer",
     color: theme.colors.darkTint7,
   },
   addFormContainer: {

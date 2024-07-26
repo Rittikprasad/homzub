@@ -1,38 +1,44 @@
-import React, { ReactElement } from 'react';
-import * as yup from 'yup';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { Formik, FormikHelpers, FormikProps, FormikValues } from 'formik';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { View, StyleSheet } from 'react-native';
-import { AlertHelper } from '@homzhub/common/src/utils/AlertHelper';
-import { ErrorUtils } from '@homzhub/common/src/utils/ErrorUtils';
-import { FormUtils } from '@homzhub/common/src/utils/FormUtils';
-import { PlatformUtils } from '@homzhub/common/src/utils/PlatformUtils';
-import { AnalyticsService } from '@homzhub/common/src/services/Analytics/AnalyticsService';
-import { TicketRepository } from '@homzhub/common/src/domain/repositories/TicketRepository';
-import { AttachmentService } from '@homzhub/common/src/services/AttachmentService';
-import { IDocumentSource } from '@homzhub/common/src/services/AttachmentService/interfaces';
-import { AssetActions } from '@homzhub/common/src/modules/asset/actions';
-import { TicketActions } from '@homzhub/common/src/modules/tickets/actions';
-import { AssetSelectors } from '@homzhub/common/src/modules/asset/selectors';
-import { icons } from '@homzhub/common/src/assets/icon';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { EmptyState } from '@homzhub/common/src/components/atoms/EmptyState';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import { FormTextInput } from '@homzhub/common/src/components/molecules/FormTextInput';
-import { FormButton } from '@homzhub/common/src/components/molecules/FormButton';
-import { FormDropdown, IDropdownOption } from '@homzhub/common/src/components/molecules/FormDropdown';
-import { IUploadAttachmentResponse, IUploadCompProps } from '@homzhub/common/src/components/organisms/AddRecordForm';
-import { Asset } from '@homzhub/common/src/domain/models/Asset';
-import { TicketCategory } from '@homzhub/common/src/domain/models/TicketCategory';
-import { Unit } from '@homzhub/common/src/domain/models/Unit';
-import { IState } from '@homzhub/common/src/modules/interfaces';
-import { AttachmentType } from '@homzhub/common/src/constants/AttachmentTypes';
-import { EventType } from '@homzhub/common/src/services/Analytics/EventType';
-import { IAddServiceEvent } from '@homzhub/common/src/services/Analytics/interfaces';
-import { ICurrentTicket } from '@homzhub/common/src/modules/tickets/interface';
-import { IAssetState } from '@homzhub/common/src/modules/asset/interfaces';
+import React, { ReactElement } from "react";
+import * as yup from "yup";
+import { WithTranslation, withTranslation } from "react-i18next";
+import { Formik, FormikHelpers, FormikProps, FormikValues } from "formik";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { View, StyleSheet } from "react-native";
+import { AlertHelper } from "@homzhub/common/src/utils/AlertHelper";
+import { ErrorUtils } from "@homzhub/common/src/utils/ErrorUtils";
+import { FormUtils } from "@homzhub/common/src/utils/FormUtils";
+import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
+import { AnalyticsService } from "@homzhub/common/src/services/Analytics/AnalyticsService";
+import { TicketRepository } from "@homzhub/common/src/domain/repositories/TicketRepository";
+import { AttachmentService } from "@homzhub/common/src/services/AttachmentService";
+import { IDocumentSource } from "@homzhub/common/src/services/AttachmentService/interfaces";
+import { AssetActions } from "@homzhub/common/src/modules/asset/actions";
+import { TicketActions } from "@homzhub/common/src/modules/tickets/actions";
+import { AssetSelectors } from "@homzhub/common/src/modules/asset/selectors";
+import { icons } from "@homzhub/common/src/assets/icon";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { EmptyState } from "@homzhub/common/src/components/atoms/EmptyState";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import { FormTextInput } from "@homzhub/common/src/components/molecules/FormTextInput";
+import { FormButton } from "@homzhub/common/src/components/molecules/FormButton";
+import {
+  FormDropdown,
+  IDropdownOption,
+} from "@homzhub/common/src/components/molecules/FormDropdown";
+import {
+  IUploadAttachmentResponse,
+  IUploadCompProps,
+} from "@homzhub/common/src/components/organisms/AddRecordForm";
+import { Asset } from "@homzhub/common/src/domain/models/Asset";
+import { TicketCategory } from "@homzhub/common/src/domain/models/TicketCategory";
+import { Unit } from "@homzhub/common/src/domain/models/Unit";
+import { IState } from "@homzhub/common/src/modules/interfaces";
+import { AttachmentType } from "@homzhub/common/src/constants/AttachmentTypes";
+import { EventType } from "@homzhub/common/src/services/Analytics/EventType";
+import { IAddServiceEvent } from "@homzhub/common/src/services/Analytics/interfaces";
+import { ICurrentTicket } from "@homzhub/common/src/modules/tickets/interface";
+import { IAssetState } from "@homzhub/common/src/modules/asset/interfaces";
 
 interface IFormValues {
   property: number;
@@ -54,7 +60,7 @@ interface IScreeState {
 
 interface IStateToProps {
   properties: Asset[];
-  loaders: IAssetState['loaders'];
+  loaders: IAssetState["loaders"];
 }
 
 interface IDispatchToProps {
@@ -83,11 +89,11 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     this.state = {
       serviceForm: {
         property: propertyId ?? -1,
-        title: '',
+        title: "",
         category: -1,
-        subCategory: '',
-        issueDescription: '',
-        otherCategory: '',
+        subCategory: "",
+        issueDescription: "",
+        otherCategory: "",
       },
       attachments: [],
       categories: [],
@@ -103,12 +109,17 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
     getActiveAssets();
     const ticketCategories = await TicketRepository.getTicketCategories();
-    const dropDownCategories = ticketCategories.map((category: TicketCategory) => {
-      const { name, id } = category;
-      return { value: id, label: name };
-    });
+    const dropDownCategories = ticketCategories.map(
+      (category: TicketCategory) => {
+        const { name, id } = category;
+        return { value: id, label: name };
+      }
+    );
 
-    this.setState({ categories: dropDownCategories, categoryWithSubCategory: ticketCategories });
+    this.setState({
+      categories: dropDownCategories,
+      categoryWithSubCategory: ticketCategories,
+    });
 
     const subCategories = this.getSubCategories();
     if (subCategories) {
@@ -116,7 +127,10 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     }
   }
 
-  public componentDidUpdate = (prevProps: Props, prevState: IScreeState): void => {
+  public componentDidUpdate = (
+    prevProps: Props,
+    prevState: IScreeState
+  ): void => {
     const { clearCount: newVal } = this.props;
     const { clearCount: oldVal } = prevProps;
     const { selectedCategoryId: newCategoryId } = this.state;
@@ -138,15 +152,21 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
   public render(): React.ReactElement {
     const { t, propertyId, properties, renderUploadBoxComponent } = this.props;
-    const { serviceForm, attachments, categories, subCategories, selectedCategoryId } = this.state;
+    const {
+      serviceForm,
+      attachments,
+      categories,
+      subCategories,
+      selectedCategoryId,
+    } = this.state;
 
     const isPropertiesPresent = properties && properties.length > 0;
 
     const uploadPropsWeb: IUploadCompProps = {
       attachments,
       icon: icons.document,
-      header: t('common:uploadDocument'),
-      subHeader: t('common:uploadDocHelperText'),
+      header: t("common:uploadDocument"),
+      subHeader: t("common:uploadDocHelperText"),
       onDelete: this.handleDocumentDelete,
       containerStyle: styles.uploadBox,
       onDropAccepted: this.onUploadAccept,
@@ -156,8 +176,8 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     const uploadPropsApp: IUploadCompProps = {
       attachments,
       icon: icons.document,
-      header: t('common:uploadDocument'),
-      subHeader: t('common:uploadDocHelperText'),
+      header: t("common:uploadDocument"),
+      subHeader: t("common:uploadDocHelperText"),
       onDelete: this.handleDocumentDelete,
       containerStyle: styles.uploadBox,
       onCapture: this.handleUpload,
@@ -179,19 +199,23 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
                 const { values, setFieldValue } = formProps;
 
                 const onMessageChange = (description: string): void => {
-                  setFieldValue('issueDescription', description);
+                  setFieldValue("issueDescription", description);
                 };
-                const isSubmitDisabled = !FormUtils.isValuesTouched(values, ['issueDescription', 'otherCategory']);
+                const isSubmitDisabled = !FormUtils.isValuesTouched(values, [
+                  "issueDescription",
+                  "otherCategory",
+                ]);
 
                 const subCategorySelectedValue = values.subCategory;
                 let isOtherSelected = false;
 
                 const selectedSubCategory = subCategories.find(
-                  (subCategory: IDropdownOption) => subCategory.value === subCategorySelectedValue
+                  (subCategory: IDropdownOption) =>
+                    subCategory.value === subCategorySelectedValue
                 );
 
                 if (selectedSubCategory) {
-                  isOtherSelected = selectedSubCategory.label === 'Others';
+                  isOtherSelected = selectedSubCategory.label === "Others";
                 }
 
                 return (
@@ -203,17 +227,19 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
                       options={this.getProperties()}
                       name="property"
                       formProps={formProps}
-                      label={t('assetFinancial:property')}
-                      placeholder={t('assetFinancial:selectProperty')}
+                      label={t("assetFinancial:property")}
+                      placeholder={t("assetFinancial:selectProperty")}
                       isMandatory
                       isDisabled={propertyId ? propertyId >= 0 : false}
-                      onChange={(value: string): void => setFieldValue('property', value)}
+                      onChange={(value: string): void =>
+                        setFieldValue("property", value)
+                      }
                     />
                     <FormTextInput
-                      label={t('serviceTickets:title')}
+                      label={t("serviceTickets:title")}
                       formProps={formProps}
                       name="title"
-                      placeholder={t('serviceTickets:exampleTitle')}
+                      placeholder={t("serviceTickets:exampleTitle")}
                       inputType="default"
                       isMandatory
                       maxLength={100}
@@ -222,11 +248,11 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
                       textType="label"
                       textSize="regular"
                       fontType="regular"
-                      label={t('assetFinancial:category')}
+                      label={t("assetFinancial:category")}
                       options={categories}
                       name="category"
                       formProps={formProps}
-                      placeholder={t('serviceTickets:selectCategory')}
+                      placeholder={t("serviceTickets:selectCategory")}
                       isMandatory
                       onChange={this.setSelectedCategory}
                     />
@@ -237,29 +263,31 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
                         fontType="regular"
                         options={subCategories}
                         name="subCategory"
-                        label={t('serviceTickets:subCategory')}
+                        label={t("serviceTickets:subCategory")}
                         formProps={formProps}
-                        placeholder={t('serviceTickets:selectSubCategory')}
+                        placeholder={t("serviceTickets:selectSubCategory")}
                         isMandatory
-                        onChange={(value: string): void => setFieldValue('subCategory', value)}
+                        onChange={(value: string): void =>
+                          setFieldValue("subCategory", value)
+                        }
                       />
                     )}
                     {isOtherSelected && (
                       <FormTextInput
-                        label={t('serviceTickets:otherCategory')}
+                        label={t("serviceTickets:otherCategory")}
                         formProps={formProps}
                         name="otherCategory"
-                        placeholder={t('serviceTickets:enterOtherCategory')}
+                        placeholder={t("serviceTickets:enterOtherCategory")}
                         inputType="default"
                       />
                     )}
                     <TextArea
-                      label={t('serviceTickets:description')}
-                      placeholder={t('serviceTickets:typeIssue')}
+                      label={t("serviceTickets:description")}
+                      placeholder={t("serviceTickets:typeIssue")}
                       value={values.issueDescription}
                       onMessageChange={onMessageChange}
                       wordCountLimit={200}
-                      helpText={t('common:optional')}
+                      helpText={t("common:optional")}
                       containerStyle={styles.description}
                       labelType="regular"
                     />
@@ -268,7 +296,7 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
                       onPress={(): void => formProps.handleSubmit()}
                       formProps={formProps}
                       type="primary"
-                      title={t('common:submit')}
+                      title={t("common:submit")}
                       disabled={isSubmitDisabled}
                     />
                   </>
@@ -288,11 +316,11 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
     return (
       <EmptyState
-        title={t('serviceTickets:noPropertyAdded')}
+        title={t("serviceTickets:noPropertyAdded")}
         containerStyle={styles.emptyState}
         buttonProps={{
-          title: t('property:addProperty'),
-          type: 'secondary',
+          title: t("property:addProperty"),
+          type: "secondary",
           onPress: onAddProperty,
         }}
       />
@@ -301,14 +329,19 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
   private onUploadAccept = (attachments: File[]): void => {
     this.setState((prevState: IScreeState) => {
-      return { attachments: [...(prevState.attachments as File[]), ...attachments] };
+      return {
+        attachments: [...(prevState.attachments as File[]), ...attachments],
+      };
     });
   };
 
-  private setSelectedCategory = (value: string, props?: FormikProps<FormikValues>): void => {
+  private setSelectedCategory = (
+    value: string,
+    props?: FormikProps<FormikValues>
+  ): void => {
     if (props) {
       const { setFieldValue } = props;
-      setFieldValue('subCategory', '');
+      setFieldValue("subCategory", "");
     }
     this.setState({ selectedCategoryId: Number(value) });
   };
@@ -335,7 +368,12 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
   private handleUpload = (attachments: IDocumentSource[]): void => {
     this.setState((prevState: IScreeState) => {
-      return { attachments: [...(prevState.attachments as IDocumentSource[]), ...attachments] };
+      return {
+        attachments: [
+          ...(prevState.attachments as IDocumentSource[]),
+          ...attachments,
+        ],
+      };
     });
   };
 
@@ -343,10 +381,18 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     this.setState((prevState: IScreeState) => {
       if (PlatformUtils.isWeb() && name) {
         const webAttachments = prevState.attachments as File[];
-        return { attachments: webAttachments.filter((file: File) => file.name !== name) };
+        return {
+          attachments: webAttachments.filter(
+            (file: File) => file.name !== name
+          ),
+        };
       }
       const mobAttachments = prevState.attachments as IDocumentSource[];
-      return { attachments: mobAttachments.filter((file: IDocumentSource) => file.uri !== uri) };
+      return {
+        attachments: mobAttachments.filter(
+          (file: IDocumentSource) => file.uri !== uri
+        ),
+      };
     });
   };
 
@@ -363,30 +409,35 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     const { subCategories } = this.state;
 
     return yup.object().shape({
-      property: yup.number().moreThan(-1, t('serviceTickets:propertyError')),
-      title: yup.string().required(t('serviceTickets:titleError')),
-      category: yup.number().required(t('serviceTickets:categoryError')),
-      subCategory: yup.string().required(t('serviceTickets:subCategoryError')),
+      property: yup.number().moreThan(-1, t("serviceTickets:propertyError")),
+      title: yup.string().required(t("serviceTickets:titleError")),
+      category: yup.number().required(t("serviceTickets:categoryError")),
+      subCategory: yup.string().required(t("serviceTickets:subCategoryError")),
       issueDescription: yup.string().optional(),
-      otherCategory: yup.string().when('subCategory', {
+      otherCategory: yup.string().when("subCategory", {
         is: (value): boolean => {
           const selectedSubCategory = subCategories.find(
-            (subCategory: IDropdownOption) => String(subCategory.value) === value
+            (subCategory: IDropdownOption) =>
+              String(subCategory.value) === value
           );
           if (selectedSubCategory) {
-            return selectedSubCategory.label === 'Others';
+            return selectedSubCategory.label === "Others";
           }
           return false;
         },
-        then: yup.string().required(t('serviceTickets:otherCategoryError')),
+        then: yup.string().required(t("serviceTickets:otherCategoryError")),
         otherwise: yup.string().optional(),
       }),
     });
   };
 
-  private handleSubmit = async (values: IFormValues, formActions: FormikHelpers<IFormValues>): Promise<void> => {
+  private handleSubmit = async (
+    values: IFormValues,
+    formActions: FormikHelpers<IFormValues>
+  ): Promise<void> => {
     const { properties, setCurrentTicket, onSubmit, toggleLoader } = this.props;
-    const { property, subCategory, title, issueDescription, otherCategory } = values;
+    const { property, subCategory, title, issueDescription, otherCategory } =
+      values;
     const { attachments } = this.state;
 
     let attachmentIds: Array<number> = [];
@@ -396,12 +447,19 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
     if (attachments.length > 0) {
       /* Make an API call for uploading the document and extract the doc Id */
       const formData = new FormData();
+      console.log(
+        "this is attachments    LLLLLLLLLLLGGGGGGGGGGGGGGGGGGGGGGGGGGG",
+        attachments
+      );
       attachments.forEach((attachment: IDocumentSource | File) => {
         // @ts-ignore
-        formData.append('files[]', attachment);
+        formData.append("files[]", attachment);
       });
-      const response = await AttachmentService.uploadImage(formData, AttachmentType.TICKET_DOCUMENTS);
-      const { data } = response;
+      const response = await AttachmentService.uploadImage(
+        formData,
+        AttachmentType.TICKET_DOCUMENTS
+      );
+      const { data } = response.data;
       if (data.length > 0) {
         attachmentIds = data.map((i: IUploadAttachmentResponse) => i.id);
       }
@@ -409,7 +467,9 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
 
     try {
       formActions.setSubmitting(true);
-      const otherField = otherCategory ? { others_field_description: otherCategory } : {};
+      const otherField = otherCategory
+        ? { others_field_description: otherCategory }
+        : {};
 
       const payload = {
         ticket_category: Number(subCategory),
@@ -422,11 +482,22 @@ class AddServiceTicketForm extends React.PureComponent<Props, IScreeState> {
       const response = await TicketRepository.postTicket(payload);
       setCurrentTicket({
         ticketId: response.id,
-        propertyName: this.getProperties().find((item) => Number(item.value) === Number(property))?.label,
+        propertyName: this.getProperties().find(
+          (item) => Number(item.value) === Number(property)
+        )?.label,
       });
-      const selectedProperty = properties.find((asset: Asset) => asset.id === property);
+      const selectedProperty = properties.find(
+        (asset: Asset) => asset.id === property
+      );
       if (selectedProperty) {
-        const { city, countryName, assetGroup, assetType, projectName, address } = selectedProperty;
+        const {
+          city,
+          countryName,
+          assetGroup,
+          assetType,
+          projectName,
+          address,
+        } = selectedProperty;
 
         AnalyticsService.track(EventType.NewServiceTicket, {
           property_location: address,
@@ -468,7 +539,10 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToProps => {
   return bindActionCreators({ getActiveAssets, setCurrentTicket }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(React.memo(AddServiceTicketForm)));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(React.memo(AddServiceTicketForm)));
 
 const styles = StyleSheet.create({
   container: {
@@ -484,8 +558,8 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   emptyState: {
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: "center",
+    alignContent: "center",
     marginTop: theme.viewport.height * 0.2,
     marginHorizontal: 29,
   },

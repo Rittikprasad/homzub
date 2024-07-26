@@ -1,22 +1,27 @@
-import React, { FC, useRef, useState } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { PopupActions } from 'reactjs-popup/dist/types';
-import { Formik, FormikHelpers, FormikProps } from 'formik';
-import { theme } from '@homzhub/common/src/styles/theme';
-import { useDown } from '@homzhub/common/src/utils/MediaQueryUtils';
-import { LocaleConstants } from '@homzhub/common/src/services/Localization/constants';
-import { Divider } from '@homzhub/common/src/components/atoms/Divider';
-import { TextArea } from '@homzhub/common/src/components/atoms/TextArea';
-import Popover from '@homzhub/web/src/components/atoms/Popover';
-import { Button } from '@homzhub/common/src/components/atoms/Button';
-import { Typography } from '@homzhub/common/src/components/atoms/Typography';
-import { FormTextInput } from '@homzhub/common/src/components/molecules/FormTextInput';
-import PopupMenuOptions from '@homzhub/web/src/components/molecules/PopupMenuOptions';
-import { DateSelector } from '@homzhub/web/src/components/molecules/DateSelector';
-import { deviceBreakpoint } from '@homzhub/common/src/constants/DeviceBreakpoints';
+import React, { FC, useRef, useState } from "react";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import { useTranslation } from "react-i18next";
+import { PopupActions } from "reactjs-popup/dist/types";
+import { Formik, FormikHelpers, FormikProps } from "formik";
+import { theme } from "@homzhub/common/src/styles/theme";
+import { useDown } from "@homzhub/common/src/utils/MediaQueryUtils";
+import { LocaleConstants } from "@homzhub/common/src/services/Localization/constants";
+import { Divider } from "@homzhub/common/src/components/atoms/Divider";
+import { TextArea } from "@homzhub/common/src/components/atoms/TextArea";
+import Popover from "@homzhub/web/src/components/atoms/Popover";
+import { Button } from "@homzhub/common/src/components/atoms/Button";
+import { Typography } from "@homzhub/common/src/components/atoms/Typography";
+import { FormTextInput } from "@homzhub/common/src/components/molecules/FormTextInput";
+import PopupMenuOptions from "@homzhub/web/src/components/molecules/PopupMenuOptions";
+import { DateSelector } from "@homzhub/web/src/components/molecules/DateSelector";
+import { deviceBreakpoint } from "@homzhub/common/src/constants/DeviceBreakpoints";
 
-const properties = [{ label: 'rajat1' }, { label: 'rajat2' }, { label: 'rajat3' }, { label: 'rajat4' }];
+const properties = [
+  { label: "rajat1" },
+  { label: "rajat2" },
+  { label: "rajat3" },
+  { label: "rajat4" },
+];
 interface IFormData {
   details: string;
   personName: string;
@@ -32,30 +37,33 @@ const RecordForm: FC = () => {
   const isMobile = useDown(deviceBreakpoint.MOBILE);
   const formStyles = formStyle(isMobile, isDesktop);
   const actionButtons = [
-    { key: 1, name: 'Income', isActive: isActiveIncome },
-    { key: 2, name: 'Expense', isActive: !isActiveIncome },
+    { key: 1, name: "Income", isActive: isActiveIncome },
+    { key: 2, name: "Expense", isActive: !isActiveIncome },
   ];
   const formData = {
-    details: '',
-    personName: '',
+    details: "",
+    personName: "",
     amount: 0,
-    property: [''],
-    category: [''],
+    property: [""],
+    category: [""],
   };
-  const handleSubmit = (values: IFormData, formActions: FormikHelpers<IFormData>): void => {
+  const handleSubmit = (
+    values: IFormData,
+    formActions: FormikHelpers<IFormData>
+  ): void => {
     formActions.setSubmitting(true);
   };
   const handleChangeColor = (text: string): void => {
-    if (text === 'Income') {
+    if (text === "Income") {
       setIsActiveIncome(true);
     }
-    if (text === 'Expense') {
+    if (text === "Expense") {
       setIsActiveIncome(false);
     }
   };
 
   const popupRef = useRef<PopupActions>(null);
-  const popupOptionStyle = { marginTop: '4px', width: 200 };
+  const popupOptionStyle = { marginTop: "4px", width: 200 };
   const closePopup = (): void => {
     if (popupRef && popupRef.current) {
       popupRef.current.close();
@@ -70,13 +78,19 @@ const RecordForm: FC = () => {
             <Button
               key={key}
               type="secondary"
-              containerStyle={[formStyles.button, items.isActive && formStyles.activeButton]}
+              containerStyle={[
+                formStyles.button,
+                items.isActive && formStyles.activeButton,
+              ]}
               onPress={onActionButtonPress}
             >
               <Typography
                 variant="text"
                 size="small"
-                style={[formStyles.buttonTitle, items.isActive && formStyles.activeButtonTitle]}
+                style={[
+                  formStyles.buttonTitle,
+                  items.isActive && formStyles.activeButtonTitle,
+                ]}
               >
                 {items.name}
               </Typography>
@@ -90,10 +104,15 @@ const RecordForm: FC = () => {
             <View style={formStyles.firstChild}>
               <Popover
                 forwardedRef={popupRef}
-                content={<PopupMenuOptions options={properties} onMenuOptionPress={closePopup} />}
+                content={
+                  <PopupMenuOptions
+                    options={properties}
+                    onMenuOptionPress={closePopup}
+                  />
+                }
                 popupProps={{
-                  position: 'bottom center',
-                  on: ['click'],
+                  position: "bottom center",
+                  on: ["click"],
                   arrow: false,
                   contentStyle: popupOptionStyle,
                   closeOnDocumentClick: true,
@@ -104,7 +123,7 @@ const RecordForm: FC = () => {
                   name="details"
                   label="Details"
                   inputType="default"
-                  placeholder={t('Eg. Rent or Plumbing fees')}
+                  placeholder={t("Eg. Rent or Plumbing fees")}
                   formProps={formProps}
                 />
               </Popover>
@@ -112,36 +131,41 @@ const RecordForm: FC = () => {
                 name="details"
                 label="Details"
                 inputType="default"
-                placeholder={t('Eg. Rent or Plumbing fees')}
+                placeholder={t("Eg. Rent or Plumbing fees")}
                 formProps={formProps}
               />
               <FormTextInput
                 name="personName"
                 label="Received From"
                 inputType="default"
-                placeholder={t('Eg. Rajat Kumar')}
+                placeholder={t("Eg. Rajat Kumar")}
                 formProps={formProps}
               />
               <FormTextInput
                 name="amount"
                 label="Amount"
                 inputType="number"
-                placeholder={t('Enter Your Money')}
+                placeholder={t("Enter Your Money")}
                 formProps={formProps}
               />
               <FormTextInput
                 name="amount"
                 label="Amount"
                 inputType="number"
-                placeholder={t('Enter Your Money')}
+                placeholder={t("Enter Your Money")}
                 formProps={formProps}
               />
               <Popover
                 forwardedRef={popupRef}
-                content={<PopupMenuOptions options={properties} onMenuOptionPress={closePopup} />}
+                content={
+                  <PopupMenuOptions
+                    options={properties}
+                    onMenuOptionPress={closePopup}
+                  />
+                }
                 popupProps={{
-                  position: 'bottom center',
-                  on: ['click'],
+                  position: "bottom center",
+                  on: ["click"],
                   arrow: false,
                   contentStyle: popupOptionStyle,
                   closeOnDocumentClick: true,
@@ -152,7 +176,7 @@ const RecordForm: FC = () => {
                   name="category"
                   label="Category"
                   inputType="default"
-                  placeholder={t('Select Your Category')}
+                  placeholder={t("Select Your Category")}
                   formProps={formProps}
                 />
               </Popover>
@@ -191,22 +215,25 @@ interface IFormItemSTyle {
   formContent: ViewStyle;
 }
 
-const formStyle = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyles<IFormItemSTyle> =>
+const formStyle = (
+  isMobile: boolean,
+  isDesktop: boolean
+): StyleSheet.NamedStyles<IFormItemSTyle> =>
   StyleSheet.create<IFormItemSTyle>({
     container: {
-      width: '100%',
+      width: "100%",
     },
     formContent: {
-      flexDirection: isDesktop ? 'column' : 'row',
+      flexDirection: isDesktop ? "column" : "row",
       margin: 10,
       marginTop: 0,
     },
     firstChild: {
-      width: isDesktop ? '100%' : '50%',
+      width: isDesktop ? "100%" : "50%",
       padding: 12,
     },
     secondChild: {
-      width: isDesktop ? '100%' : '50%',
+      width: isDesktop ? "100%" : "50%",
       padding: 20,
       marginTop: isDesktop ? 0 : -60,
     },
@@ -218,15 +245,15 @@ const formStyle = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyle
       borderColor: theme.colors.divider,
     },
     header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      justifyContent: "space-between",
       marginVertical: 20,
       marginHorizontal: 24,
     },
     buttonContainer: {
-      flexDirection: 'row',
+      flexDirection: "row",
       marginVertical: 20,
-      width: 'max-content',
+      width: "max-content",
       marginHorizontal: 24,
       borderRadius: 4,
       borderColor: theme.colors.blue,
@@ -234,8 +261,8 @@ const formStyle = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyle
       margin: isMobile ? 20 : 0,
     },
     button: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
       paddingVertical: 8,
       paddingHorizontal: isMobile ? 40 : 48,
       borderWidth: 0,
@@ -251,7 +278,7 @@ const formStyle = (isMobile: boolean, isDesktop: boolean): StyleSheet.NamedStyle
       color: theme.colors.white,
     },
     formContainer: {
-      flexDirection: 'row',
+      flexDirection: "row",
     },
   });
 

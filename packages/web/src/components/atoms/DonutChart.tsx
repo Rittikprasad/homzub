@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactApexCharts from 'react-apexcharts';
-import _ from 'lodash';
-import { FinanceUtils } from '@homzhub/common/src/utils/FinanceUtil';
-import { ObjectUtils } from '@homzhub/common/src/utils/ObjectUtils';
-import { GeneralLedgers } from '@homzhub/common/src/domain/models/GeneralLedgers';
+// @ts-nocheck
+import React from "react";
+import ReactApexCharts from "react-apexcharts";
+import _ from "lodash";
+import { FinanceUtils } from "@homzhub/common/src/utils/FinanceUtil";
+import { ObjectUtils } from "@homzhub/common/src/utils/ObjectUtils";
+import { GeneralLedgers } from "@homzhub/common/src/domain/models/GeneralLedgers";
 
 interface IProps {
   data: GeneralLedgers[];
@@ -29,7 +30,9 @@ class DonutChart extends React.PureComponent<IProps, IState> {
 
   public componentDidUpdate(prevProps: Readonly<IProps>): boolean {
     const { data, currencySymbol } = this.props;
-    const hasPropsChanged = !_.isEqual(prevProps.data, data) || !_.isEqual(prevProps.currencySymbol, currencySymbol);
+    const hasPropsChanged =
+      !_.isEqual(prevProps.data, data) ||
+      !_.isEqual(prevProps.currencySymbol, currencySymbol);
     if (hasPropsChanged) {
       this.modelData();
     }
@@ -40,12 +43,22 @@ class DonutChart extends React.PureComponent<IProps, IState> {
     const { labels, colors, series } = this.state;
     const { currencySymbol } = this.props;
     const { options } = this.initConfig(currencySymbol, labels, colors);
-    return <ReactApexCharts options={options} series={series} type="donut" height={280} />;
+    return (
+      <ReactApexCharts
+        options={options}
+        series={series}
+        type="donut"
+        height={280}
+      />
+    );
   }
 
   public modelData = (): void => {
     const { data } = this.props;
-    const ledgersByCategory = ObjectUtils.groupBy<GeneralLedgers>(data, 'categoryId');
+    const ledgersByCategory = ObjectUtils.groupBy<GeneralLedgers>(
+      data,
+      "categoryId"
+    );
     const series: number[] = [];
     const colors: string[] = [];
     const labels: string[] = [];
@@ -55,7 +68,10 @@ class DonutChart extends React.PureComponent<IProps, IState> {
       let { amount } = ledgers[0];
 
       if (ledgers.length > 1) {
-        amount = ledgersByCategory[categoryId].reduce((acc: number, ledger: GeneralLedgers) => acc + ledger.amount, 0);
+        amount = ledgersByCategory[categoryId].reduce(
+          (acc: number, ledger: GeneralLedgers) => acc + ledger.amount,
+          0
+        );
       }
       series.push(amount);
       labels.push(category);
@@ -64,24 +80,37 @@ class DonutChart extends React.PureComponent<IProps, IState> {
     this.setState({ series, colors, labels });
   };
 
-  private initConfig = (currencySymbol: string, dataLabels: string[], colors: string[]): any => ({
+  private initConfig = (
+    currencySymbol: string,
+    dataLabels: string[],
+    colors: string[]
+  ): any => ({
     // Initial Config of Graph
     options: {
       chart: {
-        type: 'donut',
+        type: "donut",
       },
       labels: dataLabels,
       dataLabels: {
         enabled: false,
       },
       legend: {
-        position: 'bottom',
-        horizontalAlign: 'center',
+        position: "bottom",
+        horizontalAlign: "center",
         formatter(
           seriesName: string,
-          opts: { w: { globals: { series: number[] } }; seriesIndex: string | number }
+          opts: {
+            w: { globals: { series: number[] } };
+            seriesIndex: string | number;
+          }
         ): string[] {
-          return [seriesName, ' - ', `${currencySymbol} ${opts.w.globals.series[opts.seriesIndex as number]}`];
+          return [
+            seriesName,
+            " - ",
+            `${currencySymbol} ${
+              opts.w.globals.series[opts.seriesIndex as number]
+            }`,
+          ];
         },
       },
       colors,

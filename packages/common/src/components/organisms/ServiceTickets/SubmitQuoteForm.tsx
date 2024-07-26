@@ -121,19 +121,15 @@ const SubmitQuoteForm = (props: IProps): React.ReactElement => {
           console.log(quoteItem.document, "step10");
           if (quoteItem.document) {
             // @ts-ignore
-            formData.append(
-              "files[]",
-              quoteItem.document.uri,
-              quoteItem.document.name
-            );
+            formData.append("files[]", quoteItem.document);
             console.log(formData, "formdata");
             // Upload Attachment to S3 and get attachment id
             const response = await AttachmentService.uploadImage(
               formData,
               AttachmentType.TICKET_DOCUMENTS
             );
-            console.log(response, "tttt");
-            const { data, error } = response;
+            console.log("tttt*9*9*9*9**********", response);
+            const { data, error } = response.data;
             if (data && data.length) {
               updatedData.push({
                 quote_number: quoteItem.quoteNumber,

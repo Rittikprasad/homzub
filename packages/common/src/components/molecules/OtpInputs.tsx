@@ -6,6 +6,7 @@ import {
   TextInput,
   TextInputKeyPressEventData,
   View,
+  Platform,
 } from "react-native";
 import RNOtpVerify from "react-native-otp-verify";
 import { PlatformUtils } from "@homzhub/common/src/utils/PlatformUtils";
